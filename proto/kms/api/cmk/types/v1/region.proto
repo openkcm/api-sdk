@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package kms.api.cmk.types.v1;
+
+enum Region {
+  REGION_UNSPECIFIED = 0;
+  REGION_EU = 1;
+  REGION_US = 2;
+  REGION_JP = 3;
+}

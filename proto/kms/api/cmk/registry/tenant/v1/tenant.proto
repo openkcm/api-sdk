@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+package kms.api.cmk.registry.tenant.v1;
+
+service Service {
+  rpc RegisterTenant(RegisterTenantRequest) returns (RegisterTenantResponse) {}
+  rpc ListTenants(ListTenantsRequest) returns (ListTenantsResponse) {}
+  rpc BlockTenant(BlockTenantRequest) returns (BlockTenantResponse) {}
+  rpc UnblockTenant(UnblockTenantRequest) returns (UnblockTenantResponse) {}
+  rpc TerminateTenant(TerminateTenantRequest) returns (TerminateTenantResponse) {}
+}
+
+message Tenant {
+  string id = 1;
+  string name = 2;
+  string region = 3;
+  string owner_id = 4;
+  string owner_type = 5;
+  Status status = 6;
+  string status_updated_at = 7;
+  Role role = 8;
+  string updated_at = 9;
+  string created_at = 10;
+  map<string, string> labels = 11;
+}
+
+message RegisterTenantRequest {
+  string name = 1;
+  string id = 2;
+  string region = 3;
+  string owner_id = 4;
+  string owner_type = 5;
+  Role role = 7;
+  map<string, string> labels = 8;
+}
+
+message RegisterTenantResponse {
+  string id = 1;
+}
+
+message ListTenantsRequest {
+  string id = 1;
+  string name = 2;
+  string region = 3;
+  string owner_id = 4;
+  string owner_type = 5;
+
+  // Default value is 50.
+  // Max value is 1000.
+  int32 limit = 6;
+  // Next page token.
+  string page_token = 7;
+}
+
+message ListTenantsResponse {
+  repeated Tenant tenants = 1;
+
+  // Token of the next pagination page.
+  string next_page_token = 2;
+}
+
+message BlockTenantRequest {
+  string id = 1;
+}
+
+message BlockTenantResponse {
+  bool success = 1;
+}
+
+message UnblockTenantRequest {
+  string id = 1;
+}
+
+message UnblockTenantResponse {
+  bool success = 1;
+}
+
+message TerminateTenantRequest {
+  string id = 1;
+}
+
+message TerminateTenantResponse {
+  bool success = 1;
+}
+
+enum Status {
+  STATUS_UNSPECIFIED = 0;
+  STATUS_REQUESTED = 1;
+  STATUS_PROVISIONING = 2;
+  STATUS_PROVISIONING_ERROR = 3;
+  STATUS_ACTIVE = 4;
+  STATUS_BLOCKING = 5;
+  STATUS_BLOCKING_ERROR = 6;
+  STATUS_BLOCKED = 7;
+  STATUS_UNBLOCKING = 8;
+  STATUS_UNBLOCKING_ERROR = 9;
+  STATUS_TERMINATING = 10;
+  STATUS_TERMINATION_ERROR = 11;
+  STATUS_TERMINATED = 12;
+}
+
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_LIVE = 1;
+  ROLE_TEST = 2;
+  ROLE_TRIAL = 3;
+}

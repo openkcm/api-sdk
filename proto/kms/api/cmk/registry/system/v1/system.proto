@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package kms.api.cmk.registry.system.v1;
+
+import "kms/api/cmk/types/v1/status.proto";
+
+service Service {
+  rpc RegisterSystem(RegisterSystemRequest) returns (RegisterSystemResponse) {}
+  rpc ListSystems(ListSystemsRequest) returns (ListSystemsResponse) {}
+  rpc DeleteSystem(DeleteSystemRequest) returns (DeleteSystemResponse) {}
+  rpc UpdateSystemL1KeyClaim(UpdateSystemL1KeyClaimRequest) returns (UpdateSystemL1KeyClaimResponse) {}
+  rpc UnlinkSystemsFromTenant(UnlinkSystemsFromTenantRequest) returns (UnlinkSystemsFromTenantResponse) {}
+  rpc LinkSystemsToTenant(LinkSystemsToTenantRequest) returns (LinkSystemsToTenantResponse) {}
+  rpc UpdateSystemStatus(UpdateSystemStatusRequest) returns (UpdateSystemStatusResponse) {}
+}
+
+message System {
+  string external_id = 1;
+  string tenant_id = 2;
+  string l2key_id = 3;
+  bool has_l1key_claim = 4;
+  string region = 5;
+  string type = 6;
+  kms.api.cmk.types.v1.Status status = 7;
+  string updated_at = 8;
+  string created_at = 9;
+}
+
+message RegisterSystemRequest {
+  string external_id = 1;
+  string tenant_id = 2;
+  string l2key_id = 3;
+  bool has_l1key_claim = 4;
+  string region = 5;
+  kms.api.cmk.types.v1.Status status = 7;
+  string type = 8;
+}
+
+message RegisterSystemResponse {
+  bool success = 1;
+}
+
+message ListSystemsRequest {
+  string external_id = 1;
+  string region = 2;
+  string tenant_id = 3;
+  string type = 4;
+
+  // Default value is 50.
+  // Max value is 1000.
+  int32 limit = 5;
+  // Next page token.
+  string page_token = 6;
+}
+
+message ListSystemsResponse {
+  repeated System systems = 1;
+
+  // Token of the next pagination page.
+  string next_page_token = 2;
+}
+
+message DeleteSystemRequest {
+  string external_id = 1;
+  string region = 2;
+}
+
+message DeleteSystemResponse {
+  bool success = 1;
+}
+
+message UpdateSystemL1KeyClaimRequest {
+  string external_id = 1;
+  string region = 2;
+  string tenant_id = 3;
+  bool l1key_claim = 4;
+}
+
+message UpdateSystemL1KeyClaimResponse {
+  bool success = 1;
+}
+
+message UnlinkSystemsFromTenantRequest {
+  repeated SystemIdentifier system_identifiers = 1;
+}
+
+message UnlinkSystemsFromTenantResponse {
+  bool success = 1;
+}
+
+message LinkSystemsToTenantRequest {
+  repeated SystemIdentifier system_identifiers = 1;
+  string tenant_id = 2;
+}
+
+message LinkSystemsToTenantResponse {
+  bool success = 1;
+}
+
+message UpdateSystemStatusRequest {
+  string external_id = 1;
+  string region = 2;
+  kms.api.cmk.types.v1.Status status = 3;
+}
+
+message UpdateSystemStatusResponse {
+  bool success = 1;
+}
+
+message SystemIdentifier {
+  string external_id = 1;
+  string region = 2;
+}
