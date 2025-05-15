@@ -86,8 +86,8 @@ const file_kms_api_cmk_types_v1_status_proto_rawDesc = "" +
 	"\x10STATUS_AVAILABLE\x10\x01\x12\x15\n" +
 	"\x11STATUS_PROCESSING\x10\x02\x12\x1e\n" +
 	"\x1aSTATUS_TERMINATION_PENDING\x10\x03\x12\x15\n" +
-	"\x11STATUS_TERMINATED\x10\x04B\xdd\x01\n" +
-	"\x18com.kms.api.cmk.types.v1B\vStatusProtoP\x01Z?github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1\xa2\x02\x04KACT\xaa\x02\x14Kms.Api.Cmk.Types.V1\xca\x02\x14Kms\\Api\\Cmk\\Types\\V1\xe2\x02 Kms\\Api\\Cmk\\Types\\V1\\GPBMetadata\xea\x02\x18Kms::Api::Cmk::Types::V1b\x06proto3"
+	"\x11STATUS_TERMINATED\x10\x04B\xdb\x01\n" +
+	"\x18com.kms.api.cmk.types.v1B\vStatusProtoP\x01Z=github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1\xa2\x02\x04KACT\xaa\x02\x14Kms.Api.Cmk.Types.V1\xca\x02\x14Kms\\Api\\Cmk\\Types\\V1\xe2\x02 Kms\\Api\\Cmk\\Types\\V1\\GPBMetadata\xea\x02\x18Kms::Api::Cmk::Types::V1b\x06proto3"
 
 var (
 	file_kms_api_cmk_types_v1_status_proto_rawDescOnce sync.Once

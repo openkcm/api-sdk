@@ -913,8 +913,8 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\vListTenants\x122.kms.api.cmk.registry.tenant.v1.ListTenantsRequest\x1a3.kms.api.cmk.registry.tenant.v1.ListTenantsResponse\"\x00\x12x\n" +
 	"\vBlockTenant\x122.kms.api.cmk.registry.tenant.v1.BlockTenantRequest\x1a3.kms.api.cmk.registry.tenant.v1.BlockTenantResponse\"\x00\x12~\n" +
 	"\rUnblockTenant\x124.kms.api.cmk.registry.tenant.v1.UnblockTenantRequest\x1a5.kms.api.cmk.registry.tenant.v1.UnblockTenantResponse\"\x00\x12\x84\x01\n" +
-	"\x0fTerminateTenant\x126.kms.api.cmk.registry.tenant.v1.TerminateTenantRequest\x1a7.kms.api.cmk.registry.tenant.v1.TerminateTenantResponse\"\x00B\x9c\x02\n" +
-	"\"com.kms.api.cmk.registry.tenant.v1B\vTenantProtoP\x01ZJgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/tenant/v1;tenantv1\xa2\x02\x05KACRT\xaa\x02\x1eKms.Api.Cmk.Registry.Tenant.V1\xca\x02\x1eKms\\Api\\Cmk\\Registry\\Tenant\\V1\xe2\x02*Kms\\Api\\Cmk\\Registry\\Tenant\\V1\\GPBMetadata\xea\x02#Kms::Api::Cmk::Registry::Tenant::V1b\x06proto3"
+	"\x0fTerminateTenant\x126.kms.api.cmk.registry.tenant.v1.TerminateTenantRequest\x1a7.kms.api.cmk.registry.tenant.v1.TerminateTenantResponse\"\x00B\x9a\x02\n" +
+	"\"com.kms.api.cmk.registry.tenant.v1B\vTenantProtoP\x01ZHgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/tenant/v1;tenantv1\xa2\x02\x05KACRT\xaa\x02\x1eKms.Api.Cmk.Registry.Tenant.V1\xca\x02\x1eKms\\Api\\Cmk\\Registry\\Tenant\\V1\xe2\x02*Kms\\Api\\Cmk\\Registry\\Tenant\\V1\\GPBMetadata\xea\x02#Kms::Api::Cmk::Registry::Tenant::V1b\x06proto3"
 
 var (
 	file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescOnce sync.Once

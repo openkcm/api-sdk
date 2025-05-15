@@ -82,8 +82,8 @@ const file_kms_api_cmk_types_v1_region_proto_rawDesc = "" +
 	"\x12REGION_UNSPECIFIED\x10\x00\x12\r\n" +
 	"\tREGION_EU\x10\x01\x12\r\n" +
 	"\tREGION_US\x10\x02\x12\r\n" +
-	"\tREGION_JP\x10\x03B\xdd\x01\n" +
-	"\x18com.kms.api.cmk.types.v1B\vRegionProtoP\x01Z?github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1\xa2\x02\x04KACT\xaa\x02\x14Kms.Api.Cmk.Types.V1\xca\x02\x14Kms\\Api\\Cmk\\Types\\V1\xe2\x02 Kms\\Api\\Cmk\\Types\\V1\\GPBMetadata\xea\x02\x18Kms::Api::Cmk::Types::V1b\x06proto3"
+	"\tREGION_JP\x10\x03B\xdb\x01\n" +
+	"\x18com.kms.api.cmk.types.v1B\vRegionProtoP\x01Z=github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1\xa2\x02\x04KACT\xaa\x02\x14Kms.Api.Cmk.Types.V1\xca\x02\x14Kms\\Api\\Cmk\\Types\\V1\xe2\x02 Kms\\Api\\Cmk\\Types\\V1\\GPBMetadata\xea\x02\x18Kms::Api::Cmk::Types::V1b\x06proto3"
 
 var (
 	file_kms_api_cmk_types_v1_region_proto_rawDescOnce sync.Once

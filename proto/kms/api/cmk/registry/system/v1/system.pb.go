@@ -1037,8 +1037,8 @@ const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"\x16UpdateSystemL1KeyClaim\x12=.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest\x1a>.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse\"\x00\x12\x9c\x01\n" +
 	"\x17UnlinkSystemsFromTenant\x12>.kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest\x1a?.kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantResponse\"\x00\x12\x90\x01\n" +
 	"\x13LinkSystemsToTenant\x12:.kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest\x1a;.kms.api.cmk.registry.system.v1.LinkSystemsToTenantResponse\"\x00\x12\x8d\x01\n" +
-	"\x12UpdateSystemStatus\x129.kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest\x1a:.kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse\"\x00B\x9c\x02\n" +
-	"\"com.kms.api.cmk.registry.system.v1B\vSystemProtoP\x01ZJgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/system/v1;systemv1\xa2\x02\x05KACRS\xaa\x02\x1eKms.Api.Cmk.Registry.System.V1\xca\x02\x1eKms\\Api\\Cmk\\Registry\\System\\V1\xe2\x02*Kms\\Api\\Cmk\\Registry\\System\\V1\\GPBMetadata\xea\x02#Kms::Api::Cmk::Registry::System::V1b\x06proto3"
+	"\x12UpdateSystemStatus\x129.kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest\x1a:.kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse\"\x00B\x9a\x02\n" +
+	"\"com.kms.api.cmk.registry.system.v1B\vSystemProtoP\x01ZHgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/system/v1;systemv1\xa2\x02\x05KACRS\xaa\x02\x1eKms.Api.Cmk.Registry.System.V1\xca\x02\x1eKms\\Api\\Cmk\\Registry\\System\\V1\xe2\x02*Kms\\Api\\Cmk\\Registry\\System\\V1\\GPBMetadata\xea\x02#Kms::Api::Cmk::Registry::System::V1b\x06proto3"
 
 var (
 	file_kms_api_cmk_registry_system_v1_system_proto_rawDescOnce sync.Once
