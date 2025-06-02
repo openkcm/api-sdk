@@ -8,5 +8,5 @@ includes:
       - generate:generate
       - generate:code
     vars:
-      CODE_DIRS: '{{.ROOT_DIR}}/proto/...'
+      CODE_DIRS: '{{.ROOT_DIR}}/pkg/...'
       GENERATE_DOCS_INDEX: "false"
