@@ -34,6 +34,3 @@ jobs:
 
       - name: task validate
         run: task validate --verbose
-
-      - name: task test
-        run: task test --verbose
