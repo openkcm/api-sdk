@@ -36,5 +36,6 @@ jobs:
       - name: task validate
         run: task validate --verbose
 
-      - name: task test
-        run: task test --verbose
+#  Enable back whenever there will any tests so far
+#      - name: task test
+#        run: task test --verbose
