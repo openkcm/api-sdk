@@ -78,6 +78,8 @@ func (m *System) validate(all bool) error {
 
 	// no validation rules for CreatedAt
 
+	// no validation rules for Labels
+
 	if len(errors) > 0 {
 		return SystemMultiError(errors)
 	}
@@ -190,6 +192,8 @@ func (m *RegisterSystemRequest) validate(all bool) error {
 	// no validation rules for Status
 
 	// no validation rules for Type
+
+	// no validation rules for Labels
 
 	if len(errors) > 0 {
 		return RegisterSystemRequestMultiError(errors)
