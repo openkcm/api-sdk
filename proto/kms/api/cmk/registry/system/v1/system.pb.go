@@ -33,6 +33,7 @@ type System struct {
 	Status        v1.Status              `protobuf:"varint,7,opt,name=status,proto3,enum=kms.api.cmk.types.v1.Status" json:"status,omitempty"`
 	UpdatedAt     string                 `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedAt     string                 `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Labels        map[string]string      `protobuf:"bytes,10,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -130,6 +131,13 @@ func (x *System) GetCreatedAt() string {
 	return ""
 }
 
+func (x *System) GetLabels() map[string]string {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
+}
+
 type RegisterSystemRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
@@ -139,6 +147,7 @@ type RegisterSystemRequest struct {
 	Region        string                 `protobuf:"bytes,5,opt,name=region,proto3" json:"region,omitempty"`
 	Status        v1.Status              `protobuf:"varint,7,opt,name=status,proto3,enum=kms.api.cmk.types.v1.Status" json:"status,omitempty"`
 	Type          string                 `protobuf:"bytes,8,opt,name=type,proto3" json:"type,omitempty"`
+	Labels        map[string]string      `protobuf:"bytes,9,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -220,6 +229,13 @@ func (x *RegisterSystemRequest) GetType() string {
 		return x.Type
 	}
 	return ""
+}
+
+func (x *RegisterSystemRequest) GetLabels() map[string]string {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
 }
 
 type RegisterSystemResponse struct {
@@ -958,7 +974,7 @@ var File_kms_api_cmk_registry_system_v1_system_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"\n" +
-	"+kms/api/cmk/registry/system/v1/system.proto\x12\x1ekms.api.cmk.registry.system.v1\x1a!kms/api/cmk/types/v1/status.proto\"\xa9\x02\n" +
+	"+kms/api/cmk/registry/system/v1/system.proto\x12\x1ekms.api.cmk.registry.system.v1\x1a!kms/api/cmk/types/v1/status.proto\"\xb0\x03\n" +
 	"\x06System\x12\x1f\n" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x1b\n" +
@@ -971,7 +987,12 @@ const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\b \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\t \x01(\tR\tcreatedAt\"\xfa\x01\n" +
+	"created_at\x18\t \x01(\tR\tcreatedAt\x12J\n" +
+	"\x06labels\x18\n" +
+	" \x03(\v22.kms.api.cmk.registry.system.v1.System.LabelsEntryR\x06labels\x1a9\n" +
+	"\vLabelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x90\x03\n" +
 	"\x15RegisterSystemRequest\x12\x1f\n" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x1b\n" +
@@ -980,7 +1001,11 @@ const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"\x0fhas_l1key_claim\x18\x04 \x01(\bR\rhasL1keyClaim\x12\x16\n" +
 	"\x06region\x18\x05 \x01(\tR\x06region\x124\n" +
 	"\x06status\x18\a \x01(\x0e2\x1c.kms.api.cmk.types.v1.StatusR\x06status\x12\x12\n" +
-	"\x04type\x18\b \x01(\tR\x04type\"2\n" +
+	"\x04type\x18\b \x01(\tR\x04type\x12Y\n" +
+	"\x06labels\x18\t \x03(\v2A.kms.api.cmk.registry.system.v1.RegisterSystemRequest.LabelsEntryR\x06labels\x1a9\n" +
+	"\vLabelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"2\n" +
 	"\x16RegisterSystemResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xb3\x01\n" +
 	"\x12ListSystemsRequest\x12\x1f\n" +
@@ -1052,7 +1077,7 @@ func file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP() []byte {
 	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescData
 }
 
-var file_kms_api_cmk_registry_system_v1_system_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_kms_api_cmk_registry_system_v1_system_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_kms_api_cmk_registry_system_v1_system_proto_goTypes = []any{
 	(*System)(nil),                          // 0: kms.api.cmk.registry.system.v1.System
 	(*RegisterSystemRequest)(nil),           // 1: kms.api.cmk.registry.system.v1.RegisterSystemRequest
@@ -1070,34 +1095,38 @@ var file_kms_api_cmk_registry_system_v1_system_proto_goTypes = []any{
 	(*UpdateSystemStatusRequest)(nil),       // 13: kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest
 	(*UpdateSystemStatusResponse)(nil),      // 14: kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse
 	(*SystemIdentifier)(nil),                // 15: kms.api.cmk.registry.system.v1.SystemIdentifier
-	(v1.Status)(0),                          // 16: kms.api.cmk.types.v1.Status
+	nil,                                     // 16: kms.api.cmk.registry.system.v1.System.LabelsEntry
+	nil,                                     // 17: kms.api.cmk.registry.system.v1.RegisterSystemRequest.LabelsEntry
+	(v1.Status)(0),                          // 18: kms.api.cmk.types.v1.Status
 }
 var file_kms_api_cmk_registry_system_v1_system_proto_depIdxs = []int32{
-	16, // 0: kms.api.cmk.registry.system.v1.System.status:type_name -> kms.api.cmk.types.v1.Status
-	16, // 1: kms.api.cmk.registry.system.v1.RegisterSystemRequest.status:type_name -> kms.api.cmk.types.v1.Status
-	0,  // 2: kms.api.cmk.registry.system.v1.ListSystemsResponse.systems:type_name -> kms.api.cmk.registry.system.v1.System
-	15, // 3: kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest.system_identifiers:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	15, // 4: kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest.system_identifiers:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	16, // 5: kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest.status:type_name -> kms.api.cmk.types.v1.Status
-	1,  // 6: kms.api.cmk.registry.system.v1.Service.RegisterSystem:input_type -> kms.api.cmk.registry.system.v1.RegisterSystemRequest
-	3,  // 7: kms.api.cmk.registry.system.v1.Service.ListSystems:input_type -> kms.api.cmk.registry.system.v1.ListSystemsRequest
-	5,  // 8: kms.api.cmk.registry.system.v1.Service.DeleteSystem:input_type -> kms.api.cmk.registry.system.v1.DeleteSystemRequest
-	7,  // 9: kms.api.cmk.registry.system.v1.Service.UpdateSystemL1KeyClaim:input_type -> kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest
-	9,  // 10: kms.api.cmk.registry.system.v1.Service.UnlinkSystemsFromTenant:input_type -> kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest
-	11, // 11: kms.api.cmk.registry.system.v1.Service.LinkSystemsToTenant:input_type -> kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest
-	13, // 12: kms.api.cmk.registry.system.v1.Service.UpdateSystemStatus:input_type -> kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest
-	2,  // 13: kms.api.cmk.registry.system.v1.Service.RegisterSystem:output_type -> kms.api.cmk.registry.system.v1.RegisterSystemResponse
-	4,  // 14: kms.api.cmk.registry.system.v1.Service.ListSystems:output_type -> kms.api.cmk.registry.system.v1.ListSystemsResponse
-	6,  // 15: kms.api.cmk.registry.system.v1.Service.DeleteSystem:output_type -> kms.api.cmk.registry.system.v1.DeleteSystemResponse
-	8,  // 16: kms.api.cmk.registry.system.v1.Service.UpdateSystemL1KeyClaim:output_type -> kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse
-	10, // 17: kms.api.cmk.registry.system.v1.Service.UnlinkSystemsFromTenant:output_type -> kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantResponse
-	12, // 18: kms.api.cmk.registry.system.v1.Service.LinkSystemsToTenant:output_type -> kms.api.cmk.registry.system.v1.LinkSystemsToTenantResponse
-	14, // 19: kms.api.cmk.registry.system.v1.Service.UpdateSystemStatus:output_type -> kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse
-	13, // [13:20] is the sub-list for method output_type
-	6,  // [6:13] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	18, // 0: kms.api.cmk.registry.system.v1.System.status:type_name -> kms.api.cmk.types.v1.Status
+	16, // 1: kms.api.cmk.registry.system.v1.System.labels:type_name -> kms.api.cmk.registry.system.v1.System.LabelsEntry
+	18, // 2: kms.api.cmk.registry.system.v1.RegisterSystemRequest.status:type_name -> kms.api.cmk.types.v1.Status
+	17, // 3: kms.api.cmk.registry.system.v1.RegisterSystemRequest.labels:type_name -> kms.api.cmk.registry.system.v1.RegisterSystemRequest.LabelsEntry
+	0,  // 4: kms.api.cmk.registry.system.v1.ListSystemsResponse.systems:type_name -> kms.api.cmk.registry.system.v1.System
+	15, // 5: kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest.system_identifiers:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
+	15, // 6: kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest.system_identifiers:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
+	18, // 7: kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest.status:type_name -> kms.api.cmk.types.v1.Status
+	1,  // 8: kms.api.cmk.registry.system.v1.Service.RegisterSystem:input_type -> kms.api.cmk.registry.system.v1.RegisterSystemRequest
+	3,  // 9: kms.api.cmk.registry.system.v1.Service.ListSystems:input_type -> kms.api.cmk.registry.system.v1.ListSystemsRequest
+	5,  // 10: kms.api.cmk.registry.system.v1.Service.DeleteSystem:input_type -> kms.api.cmk.registry.system.v1.DeleteSystemRequest
+	7,  // 11: kms.api.cmk.registry.system.v1.Service.UpdateSystemL1KeyClaim:input_type -> kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest
+	9,  // 12: kms.api.cmk.registry.system.v1.Service.UnlinkSystemsFromTenant:input_type -> kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest
+	11, // 13: kms.api.cmk.registry.system.v1.Service.LinkSystemsToTenant:input_type -> kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest
+	13, // 14: kms.api.cmk.registry.system.v1.Service.UpdateSystemStatus:input_type -> kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest
+	2,  // 15: kms.api.cmk.registry.system.v1.Service.RegisterSystem:output_type -> kms.api.cmk.registry.system.v1.RegisterSystemResponse
+	4,  // 16: kms.api.cmk.registry.system.v1.Service.ListSystems:output_type -> kms.api.cmk.registry.system.v1.ListSystemsResponse
+	6,  // 17: kms.api.cmk.registry.system.v1.Service.DeleteSystem:output_type -> kms.api.cmk.registry.system.v1.DeleteSystemResponse
+	8,  // 18: kms.api.cmk.registry.system.v1.Service.UpdateSystemL1KeyClaim:output_type -> kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse
+	10, // 19: kms.api.cmk.registry.system.v1.Service.UnlinkSystemsFromTenant:output_type -> kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantResponse
+	12, // 20: kms.api.cmk.registry.system.v1.Service.LinkSystemsToTenant:output_type -> kms.api.cmk.registry.system.v1.LinkSystemsToTenantResponse
+	14, // 21: kms.api.cmk.registry.system.v1.Service.UpdateSystemStatus:output_type -> kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse
+	15, // [15:22] is the sub-list for method output_type
+	8,  // [8:15] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_kms_api_cmk_registry_system_v1_system_proto_init() }
@@ -1111,7 +1140,7 @@ func file_kms_api_cmk_registry_system_v1_system_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_registry_system_v1_system_proto_rawDesc), len(file_kms_api_cmk_registry_system_v1_system_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
