@@ -12,6 +12,8 @@ service Service {
   rpc UnlinkSystemsFromTenant(UnlinkSystemsFromTenantRequest) returns (UnlinkSystemsFromTenantResponse) {}
   rpc LinkSystemsToTenant(LinkSystemsToTenantRequest) returns (LinkSystemsToTenantResponse) {}
   rpc UpdateSystemStatus(UpdateSystemStatusRequest) returns (UpdateSystemStatusResponse) {}
+  rpc SetSystemLabels(SetSystemLabelsRequest) returns (SetSystemLabelsResponse) {}
+  rpc RemoveSystemLabels(RemoveSystemLabelsRequest) returns (RemoveSystemLabelsResponse) {}
 }
 
 message System {
@@ -112,4 +114,24 @@ message UpdateSystemStatusResponse {
 message SystemIdentifier {
   string external_id = 1;
   string region = 2;
+}
+
+message SetSystemLabelsRequest {
+  string external_id = 1;
+  string region = 2;
+  map<string, string> labels = 3;
+}
+
+message SetSystemLabelsResponse {
+  bool success = 1;
+}
+
+message RemoveSystemLabelsRequest {
+  string external_id = 1;
+  string region = 2;
+  repeated string label_keys = 3; // Keys of labels to delete
+}
+
+message RemoveSystemLabelsResponse {
+  bool success = 1;
 }
