@@ -1252,3 +1252,421 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = TerminateTenantResponseValidationError{}
+
+// Validate checks the field values on SetTenantLabelsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetTenantLabelsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetTenantLabelsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetTenantLabelsRequestMultiError, or nil if none found.
+func (m *SetTenantLabelsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetTenantLabelsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for Labels
+
+	if len(errors) > 0 {
+		return SetTenantLabelsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetTenantLabelsRequestMultiError is an error wrapping multiple validation
+// errors returned by SetTenantLabelsRequest.ValidateAll() if the designated
+// constraints aren't met.
+type SetTenantLabelsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetTenantLabelsRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetTenantLabelsRequestMultiError) AllErrors() []error { return m }
+
+// SetTenantLabelsRequestValidationError is the validation error returned by
+// SetTenantLabelsRequest.Validate if the designated constraints aren't met.
+type SetTenantLabelsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetTenantLabelsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetTenantLabelsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetTenantLabelsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetTenantLabelsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetTenantLabelsRequestValidationError) ErrorName() string {
+	return "SetTenantLabelsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetTenantLabelsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetTenantLabelsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetTenantLabelsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetTenantLabelsRequestValidationError{}
+
+// Validate checks the field values on SetTenantLabelsResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetTenantLabelsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetTenantLabelsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetTenantLabelsResponseMultiError, or nil if none found.
+func (m *SetTenantLabelsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetTenantLabelsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return SetTenantLabelsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetTenantLabelsResponseMultiError is an error wrapping multiple validation
+// errors returned by SetTenantLabelsResponse.ValidateAll() if the designated
+// constraints aren't met.
+type SetTenantLabelsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetTenantLabelsResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetTenantLabelsResponseMultiError) AllErrors() []error { return m }
+
+// SetTenantLabelsResponseValidationError is the validation error returned by
+// SetTenantLabelsResponse.Validate if the designated constraints aren't met.
+type SetTenantLabelsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetTenantLabelsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetTenantLabelsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetTenantLabelsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetTenantLabelsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetTenantLabelsResponseValidationError) ErrorName() string {
+	return "SetTenantLabelsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetTenantLabelsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetTenantLabelsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetTenantLabelsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetTenantLabelsResponseValidationError{}
+
+// Validate checks the field values on RemoveTenantLabelsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *RemoveTenantLabelsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on RemoveTenantLabelsRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// RemoveTenantLabelsRequestMultiError, or nil if none found.
+func (m *RemoveTenantLabelsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *RemoveTenantLabelsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	if len(errors) > 0 {
+		return RemoveTenantLabelsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// RemoveTenantLabelsRequestMultiError is an error wrapping multiple validation
+// errors returned by RemoveTenantLabelsRequest.ValidateAll() if the
+// designated constraints aren't met.
+type RemoveTenantLabelsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m RemoveTenantLabelsRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m RemoveTenantLabelsRequestMultiError) AllErrors() []error { return m }
+
+// RemoveTenantLabelsRequestValidationError is the validation error returned by
+// RemoveTenantLabelsRequest.Validate if the designated constraints aren't met.
+type RemoveTenantLabelsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RemoveTenantLabelsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RemoveTenantLabelsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RemoveTenantLabelsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RemoveTenantLabelsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RemoveTenantLabelsRequestValidationError) ErrorName() string {
+	return "RemoveTenantLabelsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e RemoveTenantLabelsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRemoveTenantLabelsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RemoveTenantLabelsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RemoveTenantLabelsRequestValidationError{}
+
+// Validate checks the field values on RemoveTenantLabelsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *RemoveTenantLabelsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on RemoveTenantLabelsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// RemoveTenantLabelsResponseMultiError, or nil if none found.
+func (m *RemoveTenantLabelsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *RemoveTenantLabelsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return RemoveTenantLabelsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// RemoveTenantLabelsResponseMultiError is an error wrapping multiple
+// validation errors returned by RemoveTenantLabelsResponse.ValidateAll() if
+// the designated constraints aren't met.
+type RemoveTenantLabelsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m RemoveTenantLabelsResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m RemoveTenantLabelsResponseMultiError) AllErrors() []error { return m }
+
+// RemoveTenantLabelsResponseValidationError is the validation error returned
+// by RemoveTenantLabelsResponse.Validate if the designated constraints aren't met.
+type RemoveTenantLabelsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RemoveTenantLabelsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RemoveTenantLabelsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RemoveTenantLabelsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RemoveTenantLabelsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RemoveTenantLabelsResponseValidationError) ErrorName() string {
+	return "RemoveTenantLabelsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e RemoveTenantLabelsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRemoveTenantLabelsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RemoveTenantLabelsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RemoveTenantLabelsResponseValidationError{}
