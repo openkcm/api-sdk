@@ -1857,3 +1857,425 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = SystemIdentifierValidationError{}
+
+// Validate checks the field values on SetSystemLabelsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetSystemLabelsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetSystemLabelsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetSystemLabelsRequestMultiError, or nil if none found.
+func (m *SetSystemLabelsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetSystemLabelsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for ExternalId
+
+	// no validation rules for Region
+
+	// no validation rules for Labels
+
+	if len(errors) > 0 {
+		return SetSystemLabelsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetSystemLabelsRequestMultiError is an error wrapping multiple validation
+// errors returned by SetSystemLabelsRequest.ValidateAll() if the designated
+// constraints aren't met.
+type SetSystemLabelsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetSystemLabelsRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetSystemLabelsRequestMultiError) AllErrors() []error { return m }
+
+// SetSystemLabelsRequestValidationError is the validation error returned by
+// SetSystemLabelsRequest.Validate if the designated constraints aren't met.
+type SetSystemLabelsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetSystemLabelsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetSystemLabelsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetSystemLabelsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetSystemLabelsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetSystemLabelsRequestValidationError) ErrorName() string {
+	return "SetSystemLabelsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetSystemLabelsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetSystemLabelsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetSystemLabelsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetSystemLabelsRequestValidationError{}
+
+// Validate checks the field values on SetSystemLabelsResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetSystemLabelsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetSystemLabelsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetSystemLabelsResponseMultiError, or nil if none found.
+func (m *SetSystemLabelsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetSystemLabelsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return SetSystemLabelsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetSystemLabelsResponseMultiError is an error wrapping multiple validation
+// errors returned by SetSystemLabelsResponse.ValidateAll() if the designated
+// constraints aren't met.
+type SetSystemLabelsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetSystemLabelsResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetSystemLabelsResponseMultiError) AllErrors() []error { return m }
+
+// SetSystemLabelsResponseValidationError is the validation error returned by
+// SetSystemLabelsResponse.Validate if the designated constraints aren't met.
+type SetSystemLabelsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetSystemLabelsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetSystemLabelsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetSystemLabelsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetSystemLabelsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetSystemLabelsResponseValidationError) ErrorName() string {
+	return "SetSystemLabelsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetSystemLabelsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetSystemLabelsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetSystemLabelsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetSystemLabelsResponseValidationError{}
+
+// Validate checks the field values on RemoveSystemLabelsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *RemoveSystemLabelsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on RemoveSystemLabelsRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// RemoveSystemLabelsRequestMultiError, or nil if none found.
+func (m *RemoveSystemLabelsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *RemoveSystemLabelsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for ExternalId
+
+	// no validation rules for Region
+
+	if len(errors) > 0 {
+		return RemoveSystemLabelsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// RemoveSystemLabelsRequestMultiError is an error wrapping multiple validation
+// errors returned by RemoveSystemLabelsRequest.ValidateAll() if the
+// designated constraints aren't met.
+type RemoveSystemLabelsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m RemoveSystemLabelsRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m RemoveSystemLabelsRequestMultiError) AllErrors() []error { return m }
+
+// RemoveSystemLabelsRequestValidationError is the validation error returned by
+// RemoveSystemLabelsRequest.Validate if the designated constraints aren't met.
+type RemoveSystemLabelsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RemoveSystemLabelsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RemoveSystemLabelsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RemoveSystemLabelsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RemoveSystemLabelsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RemoveSystemLabelsRequestValidationError) ErrorName() string {
+	return "RemoveSystemLabelsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e RemoveSystemLabelsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRemoveSystemLabelsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RemoveSystemLabelsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RemoveSystemLabelsRequestValidationError{}
+
+// Validate checks the field values on RemoveSystemLabelsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *RemoveSystemLabelsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on RemoveSystemLabelsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// RemoveSystemLabelsResponseMultiError, or nil if none found.
+func (m *RemoveSystemLabelsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *RemoveSystemLabelsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return RemoveSystemLabelsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// RemoveSystemLabelsResponseMultiError is an error wrapping multiple
+// validation errors returned by RemoveSystemLabelsResponse.ValidateAll() if
+// the designated constraints aren't met.
+type RemoveSystemLabelsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m RemoveSystemLabelsResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m RemoveSystemLabelsResponseMultiError) AllErrors() []error { return m }
+
+// RemoveSystemLabelsResponseValidationError is the validation error returned
+// by RemoveSystemLabelsResponse.Validate if the designated constraints aren't met.
+type RemoveSystemLabelsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e RemoveSystemLabelsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e RemoveSystemLabelsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e RemoveSystemLabelsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e RemoveSystemLabelsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e RemoveSystemLabelsResponseValidationError) ErrorName() string {
+	return "RemoveSystemLabelsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e RemoveSystemLabelsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sRemoveSystemLabelsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = RemoveSystemLabelsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = RemoveSystemLabelsResponseValidationError{}

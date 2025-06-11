@@ -26,6 +26,8 @@ const (
 	Service_UnlinkSystemsFromTenant_FullMethodName = "/kms.api.cmk.registry.system.v1.Service/UnlinkSystemsFromTenant"
 	Service_LinkSystemsToTenant_FullMethodName     = "/kms.api.cmk.registry.system.v1.Service/LinkSystemsToTenant"
 	Service_UpdateSystemStatus_FullMethodName      = "/kms.api.cmk.registry.system.v1.Service/UpdateSystemStatus"
+	Service_SetSystemLabels_FullMethodName         = "/kms.api.cmk.registry.system.v1.Service/SetSystemLabels"
+	Service_RemoveSystemLabels_FullMethodName      = "/kms.api.cmk.registry.system.v1.Service/RemoveSystemLabels"
 )
 
 // ServiceClient is the client API for Service service.
@@ -39,6 +41,8 @@ type ServiceClient interface {
 	UnlinkSystemsFromTenant(ctx context.Context, in *UnlinkSystemsFromTenantRequest, opts ...grpc.CallOption) (*UnlinkSystemsFromTenantResponse, error)
 	LinkSystemsToTenant(ctx context.Context, in *LinkSystemsToTenantRequest, opts ...grpc.CallOption) (*LinkSystemsToTenantResponse, error)
 	UpdateSystemStatus(ctx context.Context, in *UpdateSystemStatusRequest, opts ...grpc.CallOption) (*UpdateSystemStatusResponse, error)
+	SetSystemLabels(ctx context.Context, in *SetSystemLabelsRequest, opts ...grpc.CallOption) (*SetSystemLabelsResponse, error)
+	RemoveSystemLabels(ctx context.Context, in *RemoveSystemLabelsRequest, opts ...grpc.CallOption) (*RemoveSystemLabelsResponse, error)
 }
 
 type serviceClient struct {
@@ -119,6 +123,26 @@ func (c *serviceClient) UpdateSystemStatus(ctx context.Context, in *UpdateSystem
 	return out, nil
 }
 
+func (c *serviceClient) SetSystemLabels(ctx context.Context, in *SetSystemLabelsRequest, opts ...grpc.CallOption) (*SetSystemLabelsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetSystemLabelsResponse)
+	err := c.cc.Invoke(ctx, Service_SetSystemLabels_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *serviceClient) RemoveSystemLabels(ctx context.Context, in *RemoveSystemLabelsRequest, opts ...grpc.CallOption) (*RemoveSystemLabelsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveSystemLabelsResponse)
+	err := c.cc.Invoke(ctx, Service_RemoveSystemLabels_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServiceServer is the server API for Service service.
 // All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
@@ -130,6 +154,8 @@ type ServiceServer interface {
 	UnlinkSystemsFromTenant(context.Context, *UnlinkSystemsFromTenantRequest) (*UnlinkSystemsFromTenantResponse, error)
 	LinkSystemsToTenant(context.Context, *LinkSystemsToTenantRequest) (*LinkSystemsToTenantResponse, error)
 	UpdateSystemStatus(context.Context, *UpdateSystemStatusRequest) (*UpdateSystemStatusResponse, error)
+	SetSystemLabels(context.Context, *SetSystemLabelsRequest) (*SetSystemLabelsResponse, error)
+	RemoveSystemLabels(context.Context, *RemoveSystemLabelsRequest) (*RemoveSystemLabelsResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
 
@@ -160,6 +186,12 @@ func (UnimplementedServiceServer) LinkSystemsToTenant(context.Context, *LinkSyst
 }
 func (UnimplementedServiceServer) UpdateSystemStatus(context.Context, *UpdateSystemStatusRequest) (*UpdateSystemStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateSystemStatus not implemented")
+}
+func (UnimplementedServiceServer) SetSystemLabels(context.Context, *SetSystemLabelsRequest) (*SetSystemLabelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetSystemLabels not implemented")
+}
+func (UnimplementedServiceServer) RemoveSystemLabels(context.Context, *RemoveSystemLabelsRequest) (*RemoveSystemLabelsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveSystemLabels not implemented")
 }
 func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
 func (UnimplementedServiceServer) testEmbeddedByValue()                 {}
@@ -308,6 +340,42 @@ func _Service_UpdateSystemStatus_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_SetSystemLabels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetSystemLabelsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).SetSystemLabels(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Service_SetSystemLabels_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).SetSystemLabels(ctx, req.(*SetSystemLabelsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Service_RemoveSystemLabels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveSystemLabelsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).RemoveSystemLabels(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Service_RemoveSystemLabels_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).RemoveSystemLabels(ctx, req.(*RemoveSystemLabelsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -342,6 +410,14 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateSystemStatus",
 			Handler:    _Service_UpdateSystemStatus_Handler,
+		},
+		{
+			MethodName: "SetSystemLabels",
+			Handler:    _Service_SetSystemLabels_Handler,
+		},
+		{
+			MethodName: "RemoveSystemLabels",
+			Handler:    _Service_RemoveSystemLabels_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
