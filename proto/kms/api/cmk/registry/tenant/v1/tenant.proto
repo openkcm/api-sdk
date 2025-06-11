@@ -8,6 +8,8 @@ service Service {
   rpc BlockTenant(BlockTenantRequest) returns (BlockTenantResponse) {}
   rpc UnblockTenant(UnblockTenantRequest) returns (UnblockTenantResponse) {}
   rpc TerminateTenant(TerminateTenantRequest) returns (TerminateTenantResponse) {}
+  rpc SetTenantLabels(SetTenantLabelsRequest) returns (SetTenantLabelsResponse) {}
+  rpc RemoveTenantLabels(RemoveTenantLabelsRequest) returns (RemoveTenantLabelsResponse) {}
 }
 
 message Tenant {
@@ -80,6 +82,24 @@ message TerminateTenantRequest {
 }
 
 message TerminateTenantResponse {
+  bool success = 1;
+}
+
+message SetTenantLabelsRequest {
+  string id = 1;
+  map<string, string> labels = 2;
+}
+
+message SetTenantLabelsResponse {
+  bool success = 1;
+}
+
+message RemoveTenantLabelsRequest {
+  string id = 1;
+  repeated string label_keys = 2;
+}
+
+message RemoveTenantLabelsResponse {
   bool success = 1;
 }
 

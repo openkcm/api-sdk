@@ -824,6 +824,198 @@ func (x *TerminateTenantResponse) GetSuccess() bool {
 	return false
 }
 
+type SetTenantLabelsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Labels        map[string]string      `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetTenantLabelsRequest) Reset() {
+	*x = SetTenantLabelsRequest{}
+	mi := &file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetTenantLabelsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetTenantLabelsRequest) ProtoMessage() {}
+
+func (x *SetTenantLabelsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetTenantLabelsRequest.ProtoReflect.Descriptor instead.
+func (*SetTenantLabelsRequest) Descriptor() ([]byte, []int) {
+	return file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *SetTenantLabelsRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *SetTenantLabelsRequest) GetLabels() map[string]string {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
+}
+
+type SetTenantLabelsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SetTenantLabelsResponse) Reset() {
+	*x = SetTenantLabelsResponse{}
+	mi := &file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SetTenantLabelsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetTenantLabelsResponse) ProtoMessage() {}
+
+func (x *SetTenantLabelsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetTenantLabelsResponse.ProtoReflect.Descriptor instead.
+func (*SetTenantLabelsResponse) Descriptor() ([]byte, []int) {
+	return file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *SetTenantLabelsResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type RemoveTenantLabelsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	LabelKeys     []string               `protobuf:"bytes,2,rep,name=label_keys,json=labelKeys,proto3" json:"label_keys,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveTenantLabelsRequest) Reset() {
+	*x = RemoveTenantLabelsRequest{}
+	mi := &file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveTenantLabelsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveTenantLabelsRequest) ProtoMessage() {}
+
+func (x *RemoveTenantLabelsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveTenantLabelsRequest.ProtoReflect.Descriptor instead.
+func (*RemoveTenantLabelsRequest) Descriptor() ([]byte, []int) {
+	return file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *RemoveTenantLabelsRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *RemoveTenantLabelsRequest) GetLabelKeys() []string {
+	if x != nil {
+		return x.LabelKeys
+	}
+	return nil
+}
+
+type RemoveTenantLabelsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemoveTenantLabelsResponse) Reset() {
+	*x = RemoveTenantLabelsResponse{}
+	mi := &file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemoveTenantLabelsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveTenantLabelsResponse) ProtoMessage() {}
+
+func (x *RemoveTenantLabelsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveTenantLabelsResponse.ProtoReflect.Descriptor instead.
+func (*RemoveTenantLabelsResponse) Descriptor() ([]byte, []int) {
+	return file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *RemoveTenantLabelsResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_kms_api_cmk_registry_tenant_v1_tenant_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
@@ -886,6 +1078,20 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\x16TerminateTenantRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"3\n" +
 	"\x17TerminateTenantResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xbf\x01\n" +
+	"\x16SetTenantLabelsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12Z\n" +
+	"\x06labels\x18\x02 \x03(\v2B.kms.api.cmk.registry.tenant.v1.SetTenantLabelsRequest.LabelsEntryR\x06labels\x1a9\n" +
+	"\vLabelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"3\n" +
+	"\x17SetTenantLabelsResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"J\n" +
+	"\x19RemoveTenantLabelsRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
+	"\n" +
+	"label_keys\x18\x02 \x03(\tR\tlabelKeys\"6\n" +
+	"\x1aRemoveTenantLabelsResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess*\xc6\x02\n" +
 	"\x06Status\x12\x16\n" +
 	"\x12STATUS_UNSPECIFIED\x10\x00\x12\x14\n" +
@@ -907,13 +1113,15 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\tROLE_LIVE\x10\x01\x12\r\n" +
 	"\tROLE_TEST\x10\x02\x12\x0e\n" +
 	"\n" +
-	"ROLE_TRIAL\x10\x032\x88\x05\n" +
+	"ROLE_TRIAL\x10\x032\x9f\a\n" +
 	"\aService\x12\x81\x01\n" +
 	"\x0eRegisterTenant\x125.kms.api.cmk.registry.tenant.v1.RegisterTenantRequest\x1a6.kms.api.cmk.registry.tenant.v1.RegisterTenantResponse\"\x00\x12x\n" +
 	"\vListTenants\x122.kms.api.cmk.registry.tenant.v1.ListTenantsRequest\x1a3.kms.api.cmk.registry.tenant.v1.ListTenantsResponse\"\x00\x12x\n" +
 	"\vBlockTenant\x122.kms.api.cmk.registry.tenant.v1.BlockTenantRequest\x1a3.kms.api.cmk.registry.tenant.v1.BlockTenantResponse\"\x00\x12~\n" +
 	"\rUnblockTenant\x124.kms.api.cmk.registry.tenant.v1.UnblockTenantRequest\x1a5.kms.api.cmk.registry.tenant.v1.UnblockTenantResponse\"\x00\x12\x84\x01\n" +
-	"\x0fTerminateTenant\x126.kms.api.cmk.registry.tenant.v1.TerminateTenantRequest\x1a7.kms.api.cmk.registry.tenant.v1.TerminateTenantResponse\"\x00B\x9a\x02\n" +
+	"\x0fTerminateTenant\x126.kms.api.cmk.registry.tenant.v1.TerminateTenantRequest\x1a7.kms.api.cmk.registry.tenant.v1.TerminateTenantResponse\"\x00\x12\x84\x01\n" +
+	"\x0fSetTenantLabels\x126.kms.api.cmk.registry.tenant.v1.SetTenantLabelsRequest\x1a7.kms.api.cmk.registry.tenant.v1.SetTenantLabelsResponse\"\x00\x12\x8d\x01\n" +
+	"\x12RemoveTenantLabels\x129.kms.api.cmk.registry.tenant.v1.RemoveTenantLabelsRequest\x1a:.kms.api.cmk.registry.tenant.v1.RemoveTenantLabelsResponse\"\x00B\x9a\x02\n" +
 	"\"com.kms.api.cmk.registry.tenant.v1B\vTenantProtoP\x01ZHgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/tenant/v1;tenantv1\xa2\x02\x05KACRT\xaa\x02\x1eKms.Api.Cmk.Registry.Tenant.V1\xca\x02\x1eKms\\Api\\Cmk\\Registry\\Tenant\\V1\xe2\x02*Kms\\Api\\Cmk\\Registry\\Tenant\\V1\\GPBMetadata\xea\x02#Kms::Api::Cmk::Registry::Tenant::V1b\x06proto3"
 
 var (
@@ -929,46 +1137,56 @@ func file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescGZIP() []byte {
 }
 
 var file_kms_api_cmk_registry_tenant_v1_tenant_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_kms_api_cmk_registry_tenant_v1_tenant_proto_goTypes = []any{
-	(Status)(0),                     // 0: kms.api.cmk.registry.tenant.v1.Status
-	(Role)(0),                       // 1: kms.api.cmk.registry.tenant.v1.Role
-	(*Tenant)(nil),                  // 2: kms.api.cmk.registry.tenant.v1.Tenant
-	(*RegisterTenantRequest)(nil),   // 3: kms.api.cmk.registry.tenant.v1.RegisterTenantRequest
-	(*RegisterTenantResponse)(nil),  // 4: kms.api.cmk.registry.tenant.v1.RegisterTenantResponse
-	(*ListTenantsRequest)(nil),      // 5: kms.api.cmk.registry.tenant.v1.ListTenantsRequest
-	(*ListTenantsResponse)(nil),     // 6: kms.api.cmk.registry.tenant.v1.ListTenantsResponse
-	(*BlockTenantRequest)(nil),      // 7: kms.api.cmk.registry.tenant.v1.BlockTenantRequest
-	(*BlockTenantResponse)(nil),     // 8: kms.api.cmk.registry.tenant.v1.BlockTenantResponse
-	(*UnblockTenantRequest)(nil),    // 9: kms.api.cmk.registry.tenant.v1.UnblockTenantRequest
-	(*UnblockTenantResponse)(nil),   // 10: kms.api.cmk.registry.tenant.v1.UnblockTenantResponse
-	(*TerminateTenantRequest)(nil),  // 11: kms.api.cmk.registry.tenant.v1.TerminateTenantRequest
-	(*TerminateTenantResponse)(nil), // 12: kms.api.cmk.registry.tenant.v1.TerminateTenantResponse
-	nil,                             // 13: kms.api.cmk.registry.tenant.v1.Tenant.LabelsEntry
-	nil,                             // 14: kms.api.cmk.registry.tenant.v1.RegisterTenantRequest.LabelsEntry
+	(Status)(0),                        // 0: kms.api.cmk.registry.tenant.v1.Status
+	(Role)(0),                          // 1: kms.api.cmk.registry.tenant.v1.Role
+	(*Tenant)(nil),                     // 2: kms.api.cmk.registry.tenant.v1.Tenant
+	(*RegisterTenantRequest)(nil),      // 3: kms.api.cmk.registry.tenant.v1.RegisterTenantRequest
+	(*RegisterTenantResponse)(nil),     // 4: kms.api.cmk.registry.tenant.v1.RegisterTenantResponse
+	(*ListTenantsRequest)(nil),         // 5: kms.api.cmk.registry.tenant.v1.ListTenantsRequest
+	(*ListTenantsResponse)(nil),        // 6: kms.api.cmk.registry.tenant.v1.ListTenantsResponse
+	(*BlockTenantRequest)(nil),         // 7: kms.api.cmk.registry.tenant.v1.BlockTenantRequest
+	(*BlockTenantResponse)(nil),        // 8: kms.api.cmk.registry.tenant.v1.BlockTenantResponse
+	(*UnblockTenantRequest)(nil),       // 9: kms.api.cmk.registry.tenant.v1.UnblockTenantRequest
+	(*UnblockTenantResponse)(nil),      // 10: kms.api.cmk.registry.tenant.v1.UnblockTenantResponse
+	(*TerminateTenantRequest)(nil),     // 11: kms.api.cmk.registry.tenant.v1.TerminateTenantRequest
+	(*TerminateTenantResponse)(nil),    // 12: kms.api.cmk.registry.tenant.v1.TerminateTenantResponse
+	(*SetTenantLabelsRequest)(nil),     // 13: kms.api.cmk.registry.tenant.v1.SetTenantLabelsRequest
+	(*SetTenantLabelsResponse)(nil),    // 14: kms.api.cmk.registry.tenant.v1.SetTenantLabelsResponse
+	(*RemoveTenantLabelsRequest)(nil),  // 15: kms.api.cmk.registry.tenant.v1.RemoveTenantLabelsRequest
+	(*RemoveTenantLabelsResponse)(nil), // 16: kms.api.cmk.registry.tenant.v1.RemoveTenantLabelsResponse
+	nil,                                // 17: kms.api.cmk.registry.tenant.v1.Tenant.LabelsEntry
+	nil,                                // 18: kms.api.cmk.registry.tenant.v1.RegisterTenantRequest.LabelsEntry
+	nil,                                // 19: kms.api.cmk.registry.tenant.v1.SetTenantLabelsRequest.LabelsEntry
 }
 var file_kms_api_cmk_registry_tenant_v1_tenant_proto_depIdxs = []int32{
 	0,  // 0: kms.api.cmk.registry.tenant.v1.Tenant.status:type_name -> kms.api.cmk.registry.tenant.v1.Status
 	1,  // 1: kms.api.cmk.registry.tenant.v1.Tenant.role:type_name -> kms.api.cmk.registry.tenant.v1.Role
-	13, // 2: kms.api.cmk.registry.tenant.v1.Tenant.labels:type_name -> kms.api.cmk.registry.tenant.v1.Tenant.LabelsEntry
+	17, // 2: kms.api.cmk.registry.tenant.v1.Tenant.labels:type_name -> kms.api.cmk.registry.tenant.v1.Tenant.LabelsEntry
 	1,  // 3: kms.api.cmk.registry.tenant.v1.RegisterTenantRequest.role:type_name -> kms.api.cmk.registry.tenant.v1.Role
-	14, // 4: kms.api.cmk.registry.tenant.v1.RegisterTenantRequest.labels:type_name -> kms.api.cmk.registry.tenant.v1.RegisterTenantRequest.LabelsEntry
+	18, // 4: kms.api.cmk.registry.tenant.v1.RegisterTenantRequest.labels:type_name -> kms.api.cmk.registry.tenant.v1.RegisterTenantRequest.LabelsEntry
 	2,  // 5: kms.api.cmk.registry.tenant.v1.ListTenantsResponse.tenants:type_name -> kms.api.cmk.registry.tenant.v1.Tenant
-	3,  // 6: kms.api.cmk.registry.tenant.v1.Service.RegisterTenant:input_type -> kms.api.cmk.registry.tenant.v1.RegisterTenantRequest
-	5,  // 7: kms.api.cmk.registry.tenant.v1.Service.ListTenants:input_type -> kms.api.cmk.registry.tenant.v1.ListTenantsRequest
-	7,  // 8: kms.api.cmk.registry.tenant.v1.Service.BlockTenant:input_type -> kms.api.cmk.registry.tenant.v1.BlockTenantRequest
-	9,  // 9: kms.api.cmk.registry.tenant.v1.Service.UnblockTenant:input_type -> kms.api.cmk.registry.tenant.v1.UnblockTenantRequest
-	11, // 10: kms.api.cmk.registry.tenant.v1.Service.TerminateTenant:input_type -> kms.api.cmk.registry.tenant.v1.TerminateTenantRequest
-	4,  // 11: kms.api.cmk.registry.tenant.v1.Service.RegisterTenant:output_type -> kms.api.cmk.registry.tenant.v1.RegisterTenantResponse
-	6,  // 12: kms.api.cmk.registry.tenant.v1.Service.ListTenants:output_type -> kms.api.cmk.registry.tenant.v1.ListTenantsResponse
-	8,  // 13: kms.api.cmk.registry.tenant.v1.Service.BlockTenant:output_type -> kms.api.cmk.registry.tenant.v1.BlockTenantResponse
-	10, // 14: kms.api.cmk.registry.tenant.v1.Service.UnblockTenant:output_type -> kms.api.cmk.registry.tenant.v1.UnblockTenantResponse
-	12, // 15: kms.api.cmk.registry.tenant.v1.Service.TerminateTenant:output_type -> kms.api.cmk.registry.tenant.v1.TerminateTenantResponse
-	11, // [11:16] is the sub-list for method output_type
-	6,  // [6:11] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	19, // 6: kms.api.cmk.registry.tenant.v1.SetTenantLabelsRequest.labels:type_name -> kms.api.cmk.registry.tenant.v1.SetTenantLabelsRequest.LabelsEntry
+	3,  // 7: kms.api.cmk.registry.tenant.v1.Service.RegisterTenant:input_type -> kms.api.cmk.registry.tenant.v1.RegisterTenantRequest
+	5,  // 8: kms.api.cmk.registry.tenant.v1.Service.ListTenants:input_type -> kms.api.cmk.registry.tenant.v1.ListTenantsRequest
+	7,  // 9: kms.api.cmk.registry.tenant.v1.Service.BlockTenant:input_type -> kms.api.cmk.registry.tenant.v1.BlockTenantRequest
+	9,  // 10: kms.api.cmk.registry.tenant.v1.Service.UnblockTenant:input_type -> kms.api.cmk.registry.tenant.v1.UnblockTenantRequest
+	11, // 11: kms.api.cmk.registry.tenant.v1.Service.TerminateTenant:input_type -> kms.api.cmk.registry.tenant.v1.TerminateTenantRequest
+	13, // 12: kms.api.cmk.registry.tenant.v1.Service.SetTenantLabels:input_type -> kms.api.cmk.registry.tenant.v1.SetTenantLabelsRequest
+	15, // 13: kms.api.cmk.registry.tenant.v1.Service.RemoveTenantLabels:input_type -> kms.api.cmk.registry.tenant.v1.RemoveTenantLabelsRequest
+	4,  // 14: kms.api.cmk.registry.tenant.v1.Service.RegisterTenant:output_type -> kms.api.cmk.registry.tenant.v1.RegisterTenantResponse
+	6,  // 15: kms.api.cmk.registry.tenant.v1.Service.ListTenants:output_type -> kms.api.cmk.registry.tenant.v1.ListTenantsResponse
+	8,  // 16: kms.api.cmk.registry.tenant.v1.Service.BlockTenant:output_type -> kms.api.cmk.registry.tenant.v1.BlockTenantResponse
+	10, // 17: kms.api.cmk.registry.tenant.v1.Service.UnblockTenant:output_type -> kms.api.cmk.registry.tenant.v1.UnblockTenantResponse
+	12, // 18: kms.api.cmk.registry.tenant.v1.Service.TerminateTenant:output_type -> kms.api.cmk.registry.tenant.v1.TerminateTenantResponse
+	14, // 19: kms.api.cmk.registry.tenant.v1.Service.SetTenantLabels:output_type -> kms.api.cmk.registry.tenant.v1.SetTenantLabelsResponse
+	16, // 20: kms.api.cmk.registry.tenant.v1.Service.RemoveTenantLabels:output_type -> kms.api.cmk.registry.tenant.v1.RemoveTenantLabelsResponse
+	14, // [14:21] is the sub-list for method output_type
+	7,  // [7:14] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_kms_api_cmk_registry_tenant_v1_tenant_proto_init() }
@@ -982,7 +1200,7 @@ func file_kms_api_cmk_registry_tenant_v1_tenant_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc), len(file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   13,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
