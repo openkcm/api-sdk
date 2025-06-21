@@ -19,5 +19,5 @@ permissions:
 
 jobs:
   check:
-    uses: openkcm/build/.github/workflows/ci.lib.yaml@main
+    uses: openkcm/build/.github/workflows/ci.lib.api.yaml@main
     secrets: inherit
