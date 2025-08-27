@@ -5,6 +5,7 @@ package kms.api.cmk.registry.tenant.v1;
 service Service {
   rpc RegisterTenant(RegisterTenantRequest) returns (RegisterTenantResponse) {}
   rpc ListTenants(ListTenantsRequest) returns (ListTenantsResponse) {}
+  rpc GetTenant(GetTenantRequest) returns (GetTenantResponse) {}
   rpc BlockTenant(BlockTenantRequest) returns (BlockTenantResponse) {}
   rpc UnblockTenant(UnblockTenantRequest) returns (UnblockTenantResponse) {}
   rpc TerminateTenant(TerminateTenantRequest) returns (TerminateTenantResponse) {}
@@ -101,6 +102,14 @@ message RemoveTenantLabelsRequest {
 
 message RemoveTenantLabelsResponse {
   bool success = 1;
+}
+
+message GetTenantRequest {
+  string id = 1;
+}
+
+message GetTenantResponse {
+  Tenant tenant = 1;
 }
 
 enum Status {
