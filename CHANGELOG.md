@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/openkcm/api-sdk/compare/v0.3.0...v0.4.0) (2025-08-27)
+
+
+### Features
+
+* added GetTenant RPC method ([#32](https://github.com/openkcm/api-sdk/issues/32)) ([9529ff3](https://github.com/openkcm/api-sdk/commit/9529ff34beb10e32a96aa086e05137923dfce496))
+
 ## [0.3.0](https://github.com/openkcm/api-sdk/compare/v0.2.0...v0.3.0) (2025-07-24)
 
 
