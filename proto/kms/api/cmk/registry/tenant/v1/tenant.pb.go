@@ -152,58 +152,61 @@ func (Role) EnumDescriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescGZIP(), []int{1}
 }
 
-type Job int32
+type ACTION int32
 
 const (
-	Job_JOB_UNSPECIFIED      Job = 0
-	Job_JOB_PROVISION_TENANT Job = 1
-	Job_JOB_BLOCK_TENANT     Job = 2
-	Job_JOB_UNBLOCK_TENANT   Job = 3
-	Job_JOB_TERMINATE_TENANT Job = 4
+	ACTION_ACTION_UNSPECIFIED       ACTION = 0
+	ACTION_ACTION_PROVISION_TENANT  ACTION = 1
+	ACTION_ACTION_BLOCK_TENANT      ACTION = 2
+	ACTION_ACTION_UNBLOCK_TENANT    ACTION = 3
+	ACTION_ACTION_TERMINATE_TENANT  ACTION = 4
+	ACTION_ACTION_APPLY_TENANT_AUTH ACTION = 5
 )
 
-// Enum value maps for Job.
+// Enum value maps for ACTION.
 var (
-	Job_name = map[int32]string{
-		0: "JOB_UNSPECIFIED",
-		1: "JOB_PROVISION_TENANT",
-		2: "JOB_BLOCK_TENANT",
-		3: "JOB_UNBLOCK_TENANT",
-		4: "JOB_TERMINATE_TENANT",
+	ACTION_name = map[int32]string{
+		0: "ACTION_UNSPECIFIED",
+		1: "ACTION_PROVISION_TENANT",
+		2: "ACTION_BLOCK_TENANT",
+		3: "ACTION_UNBLOCK_TENANT",
+		4: "ACTION_TERMINATE_TENANT",
+		5: "ACTION_APPLY_TENANT_AUTH",
 	}
-	Job_value = map[string]int32{
-		"JOB_UNSPECIFIED":      0,
-		"JOB_PROVISION_TENANT": 1,
-		"JOB_BLOCK_TENANT":     2,
-		"JOB_UNBLOCK_TENANT":   3,
-		"JOB_TERMINATE_TENANT": 4,
+	ACTION_value = map[string]int32{
+		"ACTION_UNSPECIFIED":       0,
+		"ACTION_PROVISION_TENANT":  1,
+		"ACTION_BLOCK_TENANT":      2,
+		"ACTION_UNBLOCK_TENANT":    3,
+		"ACTION_TERMINATE_TENANT":  4,
+		"ACTION_APPLY_TENANT_AUTH": 5,
 	}
 )
 
-func (x Job) Enum() *Job {
-	p := new(Job)
+func (x ACTION) Enum() *ACTION {
+	p := new(ACTION)
 	*p = x
 	return p
 }
 
-func (x Job) String() string {
+func (x ACTION) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (Job) Descriptor() protoreflect.EnumDescriptor {
+func (ACTION) Descriptor() protoreflect.EnumDescriptor {
 	return file_kms_api_cmk_registry_tenant_v1_tenant_proto_enumTypes[2].Descriptor()
 }
 
-func (Job) Type() protoreflect.EnumType {
+func (ACTION) Type() protoreflect.EnumType {
 	return &file_kms_api_cmk_registry_tenant_v1_tenant_proto_enumTypes[2]
 }
 
-func (x Job) Number() protoreflect.EnumNumber {
+func (x ACTION) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use Job.Descriptor instead.
-func (Job) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use ACTION.Descriptor instead.
+func (ACTION) EnumDescriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescGZIP(), []int{2}
 }
 
@@ -1260,13 +1263,14 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\tROLE_LIVE\x10\x01\x12\r\n" +
 	"\tROLE_TEST\x10\x02\x12\x0e\n" +
 	"\n" +
-	"ROLE_TRIAL\x10\x03*|\n" +
-	"\x03Job\x12\x13\n" +
-	"\x0fJOB_UNSPECIFIED\x10\x00\x12\x18\n" +
-	"\x14JOB_PROVISION_TENANT\x10\x01\x12\x14\n" +
-	"\x10JOB_BLOCK_TENANT\x10\x02\x12\x16\n" +
-	"\x12JOB_UNBLOCK_TENANT\x10\x03\x12\x18\n" +
-	"\x14JOB_TERMINATE_TENANT\x10\x042\x93\b\n" +
+	"ROLE_TRIAL\x10\x03*\xac\x01\n" +
+	"\x06ACTION\x12\x16\n" +
+	"\x12ACTION_UNSPECIFIED\x10\x00\x12\x1b\n" +
+	"\x17ACTION_PROVISION_TENANT\x10\x01\x12\x17\n" +
+	"\x13ACTION_BLOCK_TENANT\x10\x02\x12\x19\n" +
+	"\x15ACTION_UNBLOCK_TENANT\x10\x03\x12\x1b\n" +
+	"\x17ACTION_TERMINATE_TENANT\x10\x04\x12\x1c\n" +
+	"\x18ACTION_APPLY_TENANT_AUTH\x10\x052\x93\b\n" +
 	"\aService\x12\x81\x01\n" +
 	"\x0eRegisterTenant\x125.kms.api.cmk.registry.tenant.v1.RegisterTenantRequest\x1a6.kms.api.cmk.registry.tenant.v1.RegisterTenantResponse\"\x00\x12x\n" +
 	"\vListTenants\x122.kms.api.cmk.registry.tenant.v1.ListTenantsRequest\x1a3.kms.api.cmk.registry.tenant.v1.ListTenantsResponse\"\x00\x12r\n" +
@@ -1295,7 +1299,7 @@ var file_kms_api_cmk_registry_tenant_v1_tenant_proto_msgTypes = make([]protoimpl
 var file_kms_api_cmk_registry_tenant_v1_tenant_proto_goTypes = []any{
 	(Status)(0),                        // 0: kms.api.cmk.registry.tenant.v1.Status
 	(Role)(0),                          // 1: kms.api.cmk.registry.tenant.v1.Role
-	(Job)(0),                           // 2: kms.api.cmk.registry.tenant.v1.Job
+	(ACTION)(0),                        // 2: kms.api.cmk.registry.tenant.v1.ACTION
 	(*Tenant)(nil),                     // 3: kms.api.cmk.registry.tenant.v1.Tenant
 	(*RegisterTenantRequest)(nil),      // 4: kms.api.cmk.registry.tenant.v1.RegisterTenantRequest
 	(*RegisterTenantResponse)(nil),     // 5: kms.api.cmk.registry.tenant.v1.RegisterTenantResponse
