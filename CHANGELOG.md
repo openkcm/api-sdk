@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/openkcm/api-sdk/compare/v0.4.0...v0.5.0) (2025-09-05)
+
+
+### Features
+
+* add ACTION enum for tenant management operations ([#34](https://github.com/openkcm/api-sdk/issues/34)) ([15b11a8](https://github.com/openkcm/api-sdk/commit/15b11a8490e2db2c9c03545c0b09e7f41c380406))
+
 ## [0.4.0](https://github.com/openkcm/api-sdk/compare/v0.3.0...v0.4.0) (2025-08-27)
 
 
