@@ -6,6 +6,7 @@ service Service {
   rpc RegisterTenant(RegisterTenantRequest) returns (RegisterTenantResponse) {}
   rpc ListTenants(ListTenantsRequest) returns (ListTenantsResponse) {}
   rpc GetTenant(GetTenantRequest) returns (GetTenantResponse) {}
+  rpc ApplyTenantAuth(ApplyTenantAuthRequest) returns (ApplyTenantAuthResponse) {}
   rpc BlockTenant(BlockTenantRequest) returns (BlockTenantResponse) {}
   rpc UnblockTenant(UnblockTenantRequest) returns (UnblockTenantResponse) {}
   rpc TerminateTenant(TerminateTenantRequest) returns (TerminateTenantResponse) {}
@@ -60,6 +61,15 @@ message ListTenantsResponse {
 
   // Token of the next pagination page.
   string next_page_token = 2;
+}
+
+message ApplyTenantAuthRequest {
+  string id = 1;
+  map<string, string> auth_info = 2;
+}
+
+message ApplyTenantAuthResponse {
+  bool success = 1;
 }
 
 message BlockTenantRequest {

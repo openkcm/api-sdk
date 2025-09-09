@@ -629,6 +629,216 @@ var _ interface {
 	ErrorName() string
 } = ListTenantsResponseValidationError{}
 
+// Validate checks the field values on ApplyTenantAuthRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ApplyTenantAuthRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ApplyTenantAuthRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ApplyTenantAuthRequestMultiError, or nil if none found.
+func (m *ApplyTenantAuthRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ApplyTenantAuthRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for AuthInfo
+
+	if len(errors) > 0 {
+		return ApplyTenantAuthRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ApplyTenantAuthRequestMultiError is an error wrapping multiple validation
+// errors returned by ApplyTenantAuthRequest.ValidateAll() if the designated
+// constraints aren't met.
+type ApplyTenantAuthRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ApplyTenantAuthRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ApplyTenantAuthRequestMultiError) AllErrors() []error { return m }
+
+// ApplyTenantAuthRequestValidationError is the validation error returned by
+// ApplyTenantAuthRequest.Validate if the designated constraints aren't met.
+type ApplyTenantAuthRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ApplyTenantAuthRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ApplyTenantAuthRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ApplyTenantAuthRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ApplyTenantAuthRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ApplyTenantAuthRequestValidationError) ErrorName() string {
+	return "ApplyTenantAuthRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ApplyTenantAuthRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sApplyTenantAuthRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ApplyTenantAuthRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ApplyTenantAuthRequestValidationError{}
+
+// Validate checks the field values on ApplyTenantAuthResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ApplyTenantAuthResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ApplyTenantAuthResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ApplyTenantAuthResponseMultiError, or nil if none found.
+func (m *ApplyTenantAuthResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ApplyTenantAuthResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return ApplyTenantAuthResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ApplyTenantAuthResponseMultiError is an error wrapping multiple validation
+// errors returned by ApplyTenantAuthResponse.ValidateAll() if the designated
+// constraints aren't met.
+type ApplyTenantAuthResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ApplyTenantAuthResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ApplyTenantAuthResponseMultiError) AllErrors() []error { return m }
+
+// ApplyTenantAuthResponseValidationError is the validation error returned by
+// ApplyTenantAuthResponse.Validate if the designated constraints aren't met.
+type ApplyTenantAuthResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ApplyTenantAuthResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ApplyTenantAuthResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ApplyTenantAuthResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ApplyTenantAuthResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ApplyTenantAuthResponseValidationError) ErrorName() string {
+	return "ApplyTenantAuthResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ApplyTenantAuthResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sApplyTenantAuthResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ApplyTenantAuthResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ApplyTenantAuthResponseValidationError{}
+
 // Validate checks the field values on BlockTenantRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
