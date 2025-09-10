@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/openkcm/api-sdk/compare/v0.5.0...v0.6.0) (2025-09-10)
+
+
+### Features
+
+* apply tenant auth ([4afb4c5](https://github.com/openkcm/api-sdk/commit/4afb4c57830f5867d780cba5b9f5b8451a5c7a56)), closes [#37](https://github.com/openkcm/api-sdk/issues/37)
+
 ## [0.5.0](https://github.com/openkcm/api-sdk/compare/v0.4.0...v0.5.0) (2025-09-05)
 
 
