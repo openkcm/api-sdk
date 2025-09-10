@@ -12,6 +12,7 @@ service Service {
   rpc TerminateTenant(TerminateTenantRequest) returns (TerminateTenantResponse) {}
   rpc SetTenantLabels(SetTenantLabelsRequest) returns (SetTenantLabelsResponse) {}
   rpc RemoveTenantLabels(RemoveTenantLabelsRequest) returns (RemoveTenantLabelsResponse) {}
+  rpc SetTenantUserGroups(SetTenantUserGroupsRequest) returns (SetTenantUserGroupsResponse) {}
 }
 
 message Tenant {
@@ -111,6 +112,15 @@ message RemoveTenantLabelsRequest {
 }
 
 message RemoveTenantLabelsResponse {
+  bool success = 1;
+}
+
+message SetTenantUserGroupsRequest {
+  string id = 1;
+  repeated string usergroups = 2;
+}
+
+message SetTenantUserGroupsResponse {
   bool success = 1;
 }
 
