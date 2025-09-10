@@ -117,7 +117,7 @@ message RemoveTenantLabelsResponse {
 
 message SetTenantUserGroupsRequest {
   string id = 1;
-  repeated string usergroups = 2;
+  repeated string user_groups = 2;
 }
 
 message SetTenantUserGroupsResponse {

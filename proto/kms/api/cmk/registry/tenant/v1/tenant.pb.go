@@ -1173,7 +1173,7 @@ func (x *RemoveTenantLabelsResponse) GetSuccess() bool {
 type SetTenantUserGroupsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Usergroups    []string               `protobuf:"bytes,2,rep,name=usergroups,proto3" json:"usergroups,omitempty"`
+	UserGroups    []string               `protobuf:"bytes,2,rep,name=user_groups,json=userGroups,proto3" json:"user_groups,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1215,9 +1215,9 @@ func (x *SetTenantUserGroupsRequest) GetId() string {
 	return ""
 }
 
-func (x *SetTenantUserGroupsRequest) GetUsergroups() []string {
+func (x *SetTenantUserGroupsRequest) GetUserGroups() []string {
 	if x != nil {
-		return x.Usergroups
+		return x.UserGroups
 	}
 	return nil
 }
@@ -1438,12 +1438,11 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\n" +
 	"label_keys\x18\x02 \x03(\tR\tlabelKeys\"6\n" +
 	"\x1aRemoveTenantLabelsResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"L\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"M\n" +
 	"\x1aSetTenantUserGroupsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1e\n" +
-	"\n" +
-	"usergroups\x18\x02 \x03(\tR\n" +
-	"usergroups\"7\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1f\n" +
+	"\vuser_groups\x18\x02 \x03(\tR\n" +
+	"userGroups\"7\n" +
 	"\x1bSetTenantUserGroupsResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"\"\n" +
 	"\x10GetTenantRequest\x12\x0e\n" +
