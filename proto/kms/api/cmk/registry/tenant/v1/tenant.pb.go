@@ -223,6 +223,7 @@ type Tenant struct {
 	UpdatedAt       string                 `protobuf:"bytes,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	CreatedAt       string                 `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	Labels          map[string]string      `protobuf:"bytes,11,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	UserGroups      []string               `protobuf:"bytes,12,rep,name=user_groups,json=userGroups,proto3" json:"user_groups,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -330,6 +331,13 @@ func (x *Tenant) GetCreatedAt() string {
 func (x *Tenant) GetLabels() map[string]string {
 	if x != nil {
 		return x.Labels
+	}
+	return nil
+}
+
+func (x *Tenant) GetUserGroups() []string {
+	if x != nil {
+		return x.UserGroups
 	}
 	return nil
 }
@@ -1358,7 +1366,7 @@ var File_kms_api_cmk_registry_tenant_v1_tenant_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\n" +
-	"+kms/api/cmk/registry/tenant/v1/tenant.proto\x12\x1ekms.api.cmk.registry.tenant.v1\"\xe9\x03\n" +
+	"+kms/api/cmk/registry/tenant/v1/tenant.proto\x12\x1ekms.api.cmk.registry.tenant.v1\"\x8a\x04\n" +
 	"\x06Tenant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
@@ -1374,7 +1382,9 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\n" +
 	"created_at\x18\n" +
 	" \x01(\tR\tcreatedAt\x12J\n" +
-	"\x06labels\x18\v \x03(\v22.kms.api.cmk.registry.tenant.v1.Tenant.LabelsEntryR\x06labels\x1a9\n" +
+	"\x06labels\x18\v \x03(\v22.kms.api.cmk.registry.tenant.v1.Tenant.LabelsEntryR\x06labels\x12\x1f\n" +
+	"\vuser_groups\x18\f \x03(\tR\n" +
+	"userGroups\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xdd\x02\n" +

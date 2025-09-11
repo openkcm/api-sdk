@@ -27,6 +27,7 @@ message Tenant {
   string updated_at = 9;
   string created_at = 10;
   map<string, string> labels = 11;
+  repeated string user_groups = 12;
 }
 
 message RegisterTenantRequest {
