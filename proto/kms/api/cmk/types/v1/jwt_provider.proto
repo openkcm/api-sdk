@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package kms.api.cmk.types.v1;
+
+message JWTProviderConfig {
+  string tenant_id = 1;
+  string name = 2;
+  string issuer = 3;
+  repeated string audiences = 4;
+  string remote_jwks_uri = 5;
+}
