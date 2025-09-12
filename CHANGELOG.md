@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/openkcm/api-sdk/compare/v0.6.0...v0.7.0) (2025-09-12)
+
+
+### Features
+
+* proto add SetTenantUserGroups RPC  ([60da010](https://github.com/openkcm/api-sdk/commit/60da010dfdfecddcd0ac114d2e89d6666efc208c))
+
 ## [0.6.0](https://github.com/openkcm/api-sdk/compare/v0.5.0...v0.6.0) (2025-09-10)
 
 
