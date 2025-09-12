@@ -19,15 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Service_RegisterTenant_FullMethodName     = "/kms.api.cmk.registry.tenant.v1.Service/RegisterTenant"
-	Service_ListTenants_FullMethodName        = "/kms.api.cmk.registry.tenant.v1.Service/ListTenants"
-	Service_GetTenant_FullMethodName          = "/kms.api.cmk.registry.tenant.v1.Service/GetTenant"
-	Service_ApplyTenantAuth_FullMethodName    = "/kms.api.cmk.registry.tenant.v1.Service/ApplyTenantAuth"
-	Service_BlockTenant_FullMethodName        = "/kms.api.cmk.registry.tenant.v1.Service/BlockTenant"
-	Service_UnblockTenant_FullMethodName      = "/kms.api.cmk.registry.tenant.v1.Service/UnblockTenant"
-	Service_TerminateTenant_FullMethodName    = "/kms.api.cmk.registry.tenant.v1.Service/TerminateTenant"
-	Service_SetTenantLabels_FullMethodName    = "/kms.api.cmk.registry.tenant.v1.Service/SetTenantLabels"
-	Service_RemoveTenantLabels_FullMethodName = "/kms.api.cmk.registry.tenant.v1.Service/RemoveTenantLabels"
+	Service_RegisterTenant_FullMethodName      = "/kms.api.cmk.registry.tenant.v1.Service/RegisterTenant"
+	Service_ListTenants_FullMethodName         = "/kms.api.cmk.registry.tenant.v1.Service/ListTenants"
+	Service_GetTenant_FullMethodName           = "/kms.api.cmk.registry.tenant.v1.Service/GetTenant"
+	Service_ApplyTenantAuth_FullMethodName     = "/kms.api.cmk.registry.tenant.v1.Service/ApplyTenantAuth"
+	Service_BlockTenant_FullMethodName         = "/kms.api.cmk.registry.tenant.v1.Service/BlockTenant"
+	Service_UnblockTenant_FullMethodName       = "/kms.api.cmk.registry.tenant.v1.Service/UnblockTenant"
+	Service_TerminateTenant_FullMethodName     = "/kms.api.cmk.registry.tenant.v1.Service/TerminateTenant"
+	Service_SetTenantLabels_FullMethodName     = "/kms.api.cmk.registry.tenant.v1.Service/SetTenantLabels"
+	Service_RemoveTenantLabels_FullMethodName  = "/kms.api.cmk.registry.tenant.v1.Service/RemoveTenantLabels"
+	Service_SetTenantUserGroups_FullMethodName = "/kms.api.cmk.registry.tenant.v1.Service/SetTenantUserGroups"
 )
 
 // ServiceClient is the client API for Service service.
@@ -43,6 +44,7 @@ type ServiceClient interface {
 	TerminateTenant(ctx context.Context, in *TerminateTenantRequest, opts ...grpc.CallOption) (*TerminateTenantResponse, error)
 	SetTenantLabels(ctx context.Context, in *SetTenantLabelsRequest, opts ...grpc.CallOption) (*SetTenantLabelsResponse, error)
 	RemoveTenantLabels(ctx context.Context, in *RemoveTenantLabelsRequest, opts ...grpc.CallOption) (*RemoveTenantLabelsResponse, error)
+	SetTenantUserGroups(ctx context.Context, in *SetTenantUserGroupsRequest, opts ...grpc.CallOption) (*SetTenantUserGroupsResponse, error)
 }
 
 type serviceClient struct {
@@ -143,6 +145,16 @@ func (c *serviceClient) RemoveTenantLabels(ctx context.Context, in *RemoveTenant
 	return out, nil
 }
 
+func (c *serviceClient) SetTenantUserGroups(ctx context.Context, in *SetTenantUserGroupsRequest, opts ...grpc.CallOption) (*SetTenantUserGroupsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetTenantUserGroupsResponse)
+	err := c.cc.Invoke(ctx, Service_SetTenantUserGroups_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServiceServer is the server API for Service service.
 // All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
@@ -156,6 +168,7 @@ type ServiceServer interface {
 	TerminateTenant(context.Context, *TerminateTenantRequest) (*TerminateTenantResponse, error)
 	SetTenantLabels(context.Context, *SetTenantLabelsRequest) (*SetTenantLabelsResponse, error)
 	RemoveTenantLabels(context.Context, *RemoveTenantLabelsRequest) (*RemoveTenantLabelsResponse, error)
+	SetTenantUserGroups(context.Context, *SetTenantUserGroupsRequest) (*SetTenantUserGroupsResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
 
@@ -192,6 +205,9 @@ func (UnimplementedServiceServer) SetTenantLabels(context.Context, *SetTenantLab
 }
 func (UnimplementedServiceServer) RemoveTenantLabels(context.Context, *RemoveTenantLabelsRequest) (*RemoveTenantLabelsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveTenantLabels not implemented")
+}
+func (UnimplementedServiceServer) SetTenantUserGroups(context.Context, *SetTenantUserGroupsRequest) (*SetTenantUserGroupsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTenantUserGroups not implemented")
 }
 func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
 func (UnimplementedServiceServer) testEmbeddedByValue()                 {}
@@ -376,6 +392,24 @@ func _Service_RemoveTenantLabels_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_SetTenantUserGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetTenantUserGroupsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).SetTenantUserGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Service_SetTenantUserGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).SetTenantUserGroups(ctx, req.(*SetTenantUserGroupsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -418,6 +452,10 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RemoveTenantLabels",
 			Handler:    _Service_RemoveTenantLabels_Handler,
+		},
+		{
+			MethodName: "SetTenantUserGroups",
+			Handler:    _Service_SetTenantUserGroups_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

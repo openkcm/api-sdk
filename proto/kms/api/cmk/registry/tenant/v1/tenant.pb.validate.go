@@ -1881,6 +1881,215 @@ var _ interface {
 	ErrorName() string
 } = RemoveTenantLabelsResponseValidationError{}
 
+// Validate checks the field values on SetTenantUserGroupsRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetTenantUserGroupsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetTenantUserGroupsRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetTenantUserGroupsRequestMultiError, or nil if none found.
+func (m *SetTenantUserGroupsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetTenantUserGroupsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	if len(errors) > 0 {
+		return SetTenantUserGroupsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetTenantUserGroupsRequestMultiError is an error wrapping multiple
+// validation errors returned by SetTenantUserGroupsRequest.ValidateAll() if
+// the designated constraints aren't met.
+type SetTenantUserGroupsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetTenantUserGroupsRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetTenantUserGroupsRequestMultiError) AllErrors() []error { return m }
+
+// SetTenantUserGroupsRequestValidationError is the validation error returned
+// by SetTenantUserGroupsRequest.Validate if the designated constraints aren't met.
+type SetTenantUserGroupsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetTenantUserGroupsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetTenantUserGroupsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetTenantUserGroupsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetTenantUserGroupsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetTenantUserGroupsRequestValidationError) ErrorName() string {
+	return "SetTenantUserGroupsRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetTenantUserGroupsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetTenantUserGroupsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetTenantUserGroupsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetTenantUserGroupsRequestValidationError{}
+
+// Validate checks the field values on SetTenantUserGroupsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetTenantUserGroupsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetTenantUserGroupsResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetTenantUserGroupsResponseMultiError, or nil if none found.
+func (m *SetTenantUserGroupsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetTenantUserGroupsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return SetTenantUserGroupsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetTenantUserGroupsResponseMultiError is an error wrapping multiple
+// validation errors returned by SetTenantUserGroupsResponse.ValidateAll() if
+// the designated constraints aren't met.
+type SetTenantUserGroupsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetTenantUserGroupsResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetTenantUserGroupsResponseMultiError) AllErrors() []error { return m }
+
+// SetTenantUserGroupsResponseValidationError is the validation error returned
+// by SetTenantUserGroupsResponse.Validate if the designated constraints
+// aren't met.
+type SetTenantUserGroupsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetTenantUserGroupsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetTenantUserGroupsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetTenantUserGroupsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetTenantUserGroupsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetTenantUserGroupsResponseValidationError) ErrorName() string {
+	return "SetTenantUserGroupsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetTenantUserGroupsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetTenantUserGroupsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetTenantUserGroupsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetTenantUserGroupsResponseValidationError{}
+
 // Validate checks the field values on GetTenantRequest with the rules defined
 // in the proto definition for this message. If any rules are violated, the
 // first error encountered is returned, or nil if there are no violations.
