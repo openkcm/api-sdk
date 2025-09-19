@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package kms.api.cmk.sessionmanager.oidcmapping.v1;
+
+service OIDCMappingService {
+  rpc ApplyOIDCMapping(ApplyOIDCMappingRequest) returns (ApplyOIDCMappingResponse) {}
+  rpc RemoveOIDCMapping(RemoveOIDCMappingRequest) returns (RemoveOIDCMappingResponse) {}
+}
+
+// apply (create or update) the OIDC provider mapping for the given tenant
+message ApplyOIDCMappingRequest {
+  string tenant_id = 1;
+  bool blocked = 2;
+  string issuer = 3;
+  repeated string jwks_uris = 4;
+  repeated string audiences = 5;
+}
+
+message ApplyOIDCMappingResponse {
+  bool success = 1;
+  optional string message = 2;
+}
+
+// remove the OIDC provider mapping for the given tenant
+message RemoveOIDCMappingRequest {
+  string tenant_id = 1;
+}
+
+message RemoveOIDCMappingResponse {
+  bool success = 1;
+  optional string message = 2;
+}
