@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package kms.api.cmk.registry.auth.v1;
+
+service Service {
+  rpc ApplyAuth(ApplyAuthRequest) returns (ApplyAuthResponse) {}
+  rpc GetAuth(GetAuthRequest) returns (GetAuthResponse) {}
+  rpc RemoveAuth(RemoveAuthRequest) returns (RemoveAuthResponse) {}
+}
+
+message Auth {
+  string tenant_id = 1;
+  string type = 2;
+  map<string, string> properties = 3;
+  AuthStatus status = 4;
+  string error_message = 5;
+  string updated_at = 6;
+  string created_at = 7;
+}
+
+message ApplyAuthRequest {
+  string tenant_id = 1;
+  string type = 2;
+  map<string, string> properties = 3;
+}
+
+message ApplyAuthResponse {
+  bool success = 1;
+}
+
+message GetAuthRequest {
+  string tenant_id = 1;
+}
+
+message GetAuthResponse {
+  Auth auth = 1;
+}
+
+message RemoveAuthRequest {
+  string tenant_id = 1;
+}
+
+message RemoveAuthResponse {
+  bool success = 1;
+}
+
+enum AuthStatus {
+  UNSPECIFIED = 0;
+  APPLIED = 1;
+  APPLYING = 2;
+  APPLYING_ERROR = 3;
+  REMOVING = 4;
+  REMOVING_ERROR = 5;
+  REMOVED = 6;
+}
+
+enum AuthAction {
+  ACTION_UNSPECIFIED = 0;
+  ACTION_APPLY_AUTH = 1;
+}
