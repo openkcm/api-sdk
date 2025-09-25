@@ -24,34 +24,34 @@ const (
 type AuthStatus int32
 
 const (
-	AuthStatus_UNSPECIFIED    AuthStatus = 0
-	AuthStatus_APPLIED        AuthStatus = 1
-	AuthStatus_APPLYING       AuthStatus = 2
-	AuthStatus_APPLYING_ERROR AuthStatus = 3
-	AuthStatus_REMOVING       AuthStatus = 4
-	AuthStatus_REMOVING_ERROR AuthStatus = 5
-	AuthStatus_REMOVED        AuthStatus = 6
+	AuthStatus_AUTH_STATUS_UNSPECIFIED    AuthStatus = 0
+	AuthStatus_AUTH_STATUS_APPLIED        AuthStatus = 1
+	AuthStatus_AUTH_STATUS_APPLYING       AuthStatus = 2
+	AuthStatus_AUTH_STATUS_APPLYING_ERROR AuthStatus = 3
+	AuthStatus_AUTH_STATUS_REMOVING       AuthStatus = 4
+	AuthStatus_AUTH_STATUS_REMOVING_ERROR AuthStatus = 5
+	AuthStatus_AUTH_STATUS_REMOVED        AuthStatus = 6
 )
 
 // Enum value maps for AuthStatus.
 var (
 	AuthStatus_name = map[int32]string{
-		0: "UNSPECIFIED",
-		1: "APPLIED",
-		2: "APPLYING",
-		3: "APPLYING_ERROR",
-		4: "REMOVING",
-		5: "REMOVING_ERROR",
-		6: "REMOVED",
+		0: "AUTH_STATUS_UNSPECIFIED",
+		1: "AUTH_STATUS_APPLIED",
+		2: "AUTH_STATUS_APPLYING",
+		3: "AUTH_STATUS_APPLYING_ERROR",
+		4: "AUTH_STATUS_REMOVING",
+		5: "AUTH_STATUS_REMOVING_ERROR",
+		6: "AUTH_STATUS_REMOVED",
 	}
 	AuthStatus_value = map[string]int32{
-		"UNSPECIFIED":    0,
-		"APPLIED":        1,
-		"APPLYING":       2,
-		"APPLYING_ERROR": 3,
-		"REMOVING":       4,
-		"REMOVING_ERROR": 5,
-		"REMOVED":        6,
+		"AUTH_STATUS_UNSPECIFIED":    0,
+		"AUTH_STATUS_APPLIED":        1,
+		"AUTH_STATUS_APPLYING":       2,
+		"AUTH_STATUS_APPLYING_ERROR": 3,
+		"AUTH_STATUS_REMOVING":       4,
+		"AUTH_STATUS_REMOVING_ERROR": 5,
+		"AUTH_STATUS_REMOVED":        6,
 	}
 )
 
@@ -85,19 +85,19 @@ func (AuthStatus) EnumDescriptor() ([]byte, []int) {
 type AuthAction int32
 
 const (
-	AuthAction_ACTION_UNSPECIFIED AuthAction = 0
-	AuthAction_ACTION_APPLY_AUTH  AuthAction = 1
+	AuthAction_AUTH_ACTION_UNSPECIFIED AuthAction = 0
+	AuthAction_AUTH_ACTION_APPLY_AUTH  AuthAction = 1
 )
 
 // Enum value maps for AuthAction.
 var (
 	AuthAction_name = map[int32]string{
-		0: "ACTION_UNSPECIFIED",
-		1: "ACTION_APPLY_AUTH",
+		0: "AUTH_ACTION_UNSPECIFIED",
+		1: "AUTH_ACTION_APPLY_AUTH",
 	}
 	AuthAction_value = map[string]int32{
-		"ACTION_UNSPECIFIED": 0,
-		"ACTION_APPLY_AUTH":  1,
+		"AUTH_ACTION_UNSPECIFIED": 0,
+		"AUTH_ACTION_APPLY_AUTH":  1,
 	}
 )
 
@@ -196,7 +196,7 @@ func (x *Auth) GetStatus() AuthStatus {
 	if x != nil {
 		return x.Status
 	}
-	return AuthStatus_UNSPECIFIED
+	return AuthStatus_AUTH_STATUS_UNSPECIFIED
 }
 
 func (x *Auth) GetErrorMessage() string {
@@ -538,20 +538,20 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"\x11RemoveAuthRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\".\n" +
 	"\x12RemoveAuthResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess*{\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess*\xcf\x01\n" +
 	"\n" +
-	"AuthStatus\x12\x0f\n" +
-	"\vUNSPECIFIED\x10\x00\x12\v\n" +
-	"\aAPPLIED\x10\x01\x12\f\n" +
-	"\bAPPLYING\x10\x02\x12\x12\n" +
-	"\x0eAPPLYING_ERROR\x10\x03\x12\f\n" +
-	"\bREMOVING\x10\x04\x12\x12\n" +
-	"\x0eREMOVING_ERROR\x10\x05\x12\v\n" +
-	"\aREMOVED\x10\x06*;\n" +
+	"AuthStatus\x12\x1b\n" +
+	"\x17AUTH_STATUS_UNSPECIFIED\x10\x00\x12\x17\n" +
+	"\x13AUTH_STATUS_APPLIED\x10\x01\x12\x18\n" +
+	"\x14AUTH_STATUS_APPLYING\x10\x02\x12\x1e\n" +
+	"\x1aAUTH_STATUS_APPLYING_ERROR\x10\x03\x12\x18\n" +
+	"\x14AUTH_STATUS_REMOVING\x10\x04\x12\x1e\n" +
+	"\x1aAUTH_STATUS_REMOVING_ERROR\x10\x05\x12\x17\n" +
+	"\x13AUTH_STATUS_REMOVED\x10\x06*E\n" +
 	"\n" +
-	"AuthAction\x12\x16\n" +
-	"\x12ACTION_UNSPECIFIED\x10\x00\x12\x15\n" +
-	"\x11ACTION_APPLY_AUTH\x10\x012\xd6\x02\n" +
+	"AuthAction\x12\x1b\n" +
+	"\x17AUTH_ACTION_UNSPECIFIED\x10\x00\x12\x1a\n" +
+	"\x16AUTH_ACTION_APPLY_AUTH\x10\x012\xd6\x02\n" +
 	"\aService\x12n\n" +
 	"\tApplyAuth\x12..kms.api.cmk.registry.auth.v1.ApplyAuthRequest\x1a/.kms.api.cmk.registry.auth.v1.ApplyAuthResponse\"\x00\x12h\n" +
 	"\aGetAuth\x12,.kms.api.cmk.registry.auth.v1.GetAuthRequest\x1a-.kms.api.cmk.registry.auth.v1.GetAuthResponse\"\x00\x12q\n" +
