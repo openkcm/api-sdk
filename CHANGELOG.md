@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/openkcm/api-sdk/compare/v0.7.0...v0.8.0) (2025-09-25)
+
+
+### Features
+
+* add registry auth service ([136260d](https://github.com/openkcm/api-sdk/commit/136260de9fb62d96ae26326f09f541d20e7a9b02)), closes [#44](https://github.com/openkcm/api-sdk/issues/44)
+
 ## [0.7.0](https://github.com/openkcm/api-sdk/compare/v0.6.0...v0.7.0) (2025-09-12)
 
 
