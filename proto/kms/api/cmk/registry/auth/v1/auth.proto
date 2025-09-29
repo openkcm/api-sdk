@@ -5,7 +5,7 @@ package kms.api.cmk.registry.auth.v1;
 service Service {
   rpc ApplyAuth(ApplyAuthRequest) returns (ApplyAuthResponse) {}
   rpc GetAuth(GetAuthRequest) returns (GetAuthResponse) {}
-  rpc ListAuth(ListAuthRequest) returns (ListAuthResponse) {}
+  rpc ListAuths(ListAuthsRequest) returns (ListAuthsResponse) {}
   rpc RemoveAuth(RemoveAuthRequest) returns (RemoveAuthResponse) {}
 }
 
@@ -39,14 +39,14 @@ message GetAuthResponse {
   Auth auth = 1;
 }
 
-message ListAuthRequest {
+message ListAuthsRequest {
   string tenant_id = 1;
 
   int32 limit = 2; // default value is 50; max value is 1000
   string next_page_token = 3;
 }
 
-message ListAuthResponse {
+message ListAuthsResponse {
   repeated Auth auth = 1;
 
   string next_page_token = 2;

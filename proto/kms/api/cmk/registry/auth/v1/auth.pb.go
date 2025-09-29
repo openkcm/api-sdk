@@ -431,7 +431,7 @@ func (x *GetAuthResponse) GetAuth() *Auth {
 	return nil
 }
 
-type ListAuthRequest struct {
+type ListAuthsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"` // default value is 50; max value is 1000
@@ -440,20 +440,20 @@ type ListAuthRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListAuthRequest) Reset() {
-	*x = ListAuthRequest{}
+func (x *ListAuthsRequest) Reset() {
+	*x = ListAuthsRequest{}
 	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListAuthRequest) String() string {
+func (x *ListAuthsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListAuthRequest) ProtoMessage() {}
+func (*ListAuthsRequest) ProtoMessage() {}
 
-func (x *ListAuthRequest) ProtoReflect() protoreflect.Message {
+func (x *ListAuthsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -465,33 +465,33 @@ func (x *ListAuthRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListAuthRequest.ProtoReflect.Descriptor instead.
-func (*ListAuthRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListAuthsRequest.ProtoReflect.Descriptor instead.
+func (*ListAuthsRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ListAuthRequest) GetTenantId() string {
+func (x *ListAuthsRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
 	}
 	return ""
 }
 
-func (x *ListAuthRequest) GetLimit() int32 {
+func (x *ListAuthsRequest) GetLimit() int32 {
 	if x != nil {
 		return x.Limit
 	}
 	return 0
 }
 
-func (x *ListAuthRequest) GetNextPageToken() string {
+func (x *ListAuthsRequest) GetNextPageToken() string {
 	if x != nil {
 		return x.NextPageToken
 	}
 	return ""
 }
 
-type ListAuthResponse struct {
+type ListAuthsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Auth          []*Auth                `protobuf:"bytes,1,rep,name=auth,proto3" json:"auth,omitempty"`
 	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
@@ -499,20 +499,20 @@ type ListAuthResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ListAuthResponse) Reset() {
-	*x = ListAuthResponse{}
+func (x *ListAuthsResponse) Reset() {
+	*x = ListAuthsResponse{}
 	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ListAuthResponse) String() string {
+func (x *ListAuthsResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ListAuthResponse) ProtoMessage() {}
+func (*ListAuthsResponse) ProtoMessage() {}
 
-func (x *ListAuthResponse) ProtoReflect() protoreflect.Message {
+func (x *ListAuthsResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -524,19 +524,19 @@ func (x *ListAuthResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ListAuthResponse.ProtoReflect.Descriptor instead.
-func (*ListAuthResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListAuthsResponse.ProtoReflect.Descriptor instead.
+func (*ListAuthsResponse) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *ListAuthResponse) GetAuth() []*Auth {
+func (x *ListAuthsResponse) GetAuth() []*Auth {
 	if x != nil {
 		return x.Auth
 	}
 	return nil
 }
 
-func (x *ListAuthResponse) GetNextPageToken() string {
+func (x *ListAuthsResponse) GetNextPageToken() string {
 	if x != nil {
 		return x.NextPageToken
 	}
@@ -670,12 +670,12 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\"I\n" +
 	"\x0fGetAuthResponse\x126\n" +
-	"\x04auth\x18\x01 \x01(\v2\".kms.api.cmk.registry.auth.v1.AuthR\x04auth\"l\n" +
-	"\x0fListAuthRequest\x12\x1b\n" +
+	"\x04auth\x18\x01 \x01(\v2\".kms.api.cmk.registry.auth.v1.AuthR\x04auth\"m\n" +
+	"\x10ListAuthsRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12&\n" +
-	"\x0fnext_page_token\x18\x03 \x01(\tR\rnextPageToken\"r\n" +
-	"\x10ListAuthResponse\x126\n" +
+	"\x0fnext_page_token\x18\x03 \x01(\tR\rnextPageToken\"s\n" +
+	"\x11ListAuthsResponse\x126\n" +
 	"\x04auth\x18\x01 \x03(\v2\".kms.api.cmk.registry.auth.v1.AuthR\x04auth\x12&\n" +
 	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"4\n" +
 	"\x11RemoveAuthRequest\x12\x1f\n" +
@@ -696,11 +696,11 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"AuthAction\x12\x1b\n" +
 	"\x17AUTH_ACTION_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16AUTH_ACTION_APPLY_AUTH\x10\x01\x12\x1b\n" +
-	"\x17AUTH_ACTION_REMOVE_AUTH\x10\x022\xc3\x03\n" +
+	"\x17AUTH_ACTION_REMOVE_AUTH\x10\x022\xc6\x03\n" +
 	"\aService\x12n\n" +
 	"\tApplyAuth\x12..kms.api.cmk.registry.auth.v1.ApplyAuthRequest\x1a/.kms.api.cmk.registry.auth.v1.ApplyAuthResponse\"\x00\x12h\n" +
-	"\aGetAuth\x12,.kms.api.cmk.registry.auth.v1.GetAuthRequest\x1a-.kms.api.cmk.registry.auth.v1.GetAuthResponse\"\x00\x12k\n" +
-	"\bListAuth\x12-.kms.api.cmk.registry.auth.v1.ListAuthRequest\x1a..kms.api.cmk.registry.auth.v1.ListAuthResponse\"\x00\x12q\n" +
+	"\aGetAuth\x12,.kms.api.cmk.registry.auth.v1.GetAuthRequest\x1a-.kms.api.cmk.registry.auth.v1.GetAuthResponse\"\x00\x12n\n" +
+	"\tListAuths\x12..kms.api.cmk.registry.auth.v1.ListAuthsRequest\x1a/.kms.api.cmk.registry.auth.v1.ListAuthsResponse\"\x00\x12q\n" +
 	"\n" +
 	"RemoveAuth\x12/.kms.api.cmk.registry.auth.v1.RemoveAuthRequest\x1a0.kms.api.cmk.registry.auth.v1.RemoveAuthResponse\"\x00B\x8a\x02\n" +
 	" com.kms.api.cmk.registry.auth.v1B\tAuthProtoP\x01ZDgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/auth/v1;authv1\xa2\x02\x05KACRA\xaa\x02\x1cKms.Api.Cmk.Registry.Auth.V1\xca\x02\x1cKms\\Api\\Cmk\\Registry\\Auth\\V1\xe2\x02(Kms\\Api\\Cmk\\Registry\\Auth\\V1\\GPBMetadata\xea\x02!Kms::Api::Cmk::Registry::Auth::V1b\x06proto3"
@@ -727,8 +727,8 @@ var file_kms_api_cmk_registry_auth_v1_auth_proto_goTypes = []any{
 	(*ApplyAuthResponse)(nil),  // 4: kms.api.cmk.registry.auth.v1.ApplyAuthResponse
 	(*GetAuthRequest)(nil),     // 5: kms.api.cmk.registry.auth.v1.GetAuthRequest
 	(*GetAuthResponse)(nil),    // 6: kms.api.cmk.registry.auth.v1.GetAuthResponse
-	(*ListAuthRequest)(nil),    // 7: kms.api.cmk.registry.auth.v1.ListAuthRequest
-	(*ListAuthResponse)(nil),   // 8: kms.api.cmk.registry.auth.v1.ListAuthResponse
+	(*ListAuthsRequest)(nil),   // 7: kms.api.cmk.registry.auth.v1.ListAuthsRequest
+	(*ListAuthsResponse)(nil),  // 8: kms.api.cmk.registry.auth.v1.ListAuthsResponse
 	(*RemoveAuthRequest)(nil),  // 9: kms.api.cmk.registry.auth.v1.RemoveAuthRequest
 	(*RemoveAuthResponse)(nil), // 10: kms.api.cmk.registry.auth.v1.RemoveAuthResponse
 	nil,                        // 11: kms.api.cmk.registry.auth.v1.Auth.PropertiesEntry
@@ -739,14 +739,14 @@ var file_kms_api_cmk_registry_auth_v1_auth_proto_depIdxs = []int32{
 	0,  // 1: kms.api.cmk.registry.auth.v1.Auth.status:type_name -> kms.api.cmk.registry.auth.v1.AuthStatus
 	12, // 2: kms.api.cmk.registry.auth.v1.ApplyAuthRequest.properties:type_name -> kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntry
 	2,  // 3: kms.api.cmk.registry.auth.v1.GetAuthResponse.auth:type_name -> kms.api.cmk.registry.auth.v1.Auth
-	2,  // 4: kms.api.cmk.registry.auth.v1.ListAuthResponse.auth:type_name -> kms.api.cmk.registry.auth.v1.Auth
+	2,  // 4: kms.api.cmk.registry.auth.v1.ListAuthsResponse.auth:type_name -> kms.api.cmk.registry.auth.v1.Auth
 	3,  // 5: kms.api.cmk.registry.auth.v1.Service.ApplyAuth:input_type -> kms.api.cmk.registry.auth.v1.ApplyAuthRequest
 	5,  // 6: kms.api.cmk.registry.auth.v1.Service.GetAuth:input_type -> kms.api.cmk.registry.auth.v1.GetAuthRequest
-	7,  // 7: kms.api.cmk.registry.auth.v1.Service.ListAuth:input_type -> kms.api.cmk.registry.auth.v1.ListAuthRequest
+	7,  // 7: kms.api.cmk.registry.auth.v1.Service.ListAuths:input_type -> kms.api.cmk.registry.auth.v1.ListAuthsRequest
 	9,  // 8: kms.api.cmk.registry.auth.v1.Service.RemoveAuth:input_type -> kms.api.cmk.registry.auth.v1.RemoveAuthRequest
 	4,  // 9: kms.api.cmk.registry.auth.v1.Service.ApplyAuth:output_type -> kms.api.cmk.registry.auth.v1.ApplyAuthResponse
 	6,  // 10: kms.api.cmk.registry.auth.v1.Service.GetAuth:output_type -> kms.api.cmk.registry.auth.v1.GetAuthResponse
-	8,  // 11: kms.api.cmk.registry.auth.v1.Service.ListAuth:output_type -> kms.api.cmk.registry.auth.v1.ListAuthResponse
+	8,  // 11: kms.api.cmk.registry.auth.v1.Service.ListAuths:output_type -> kms.api.cmk.registry.auth.v1.ListAuthsResponse
 	10, // 12: kms.api.cmk.registry.auth.v1.Service.RemoveAuth:output_type -> kms.api.cmk.registry.auth.v1.RemoveAuthResponse
 	9,  // [9:13] is the sub-list for method output_type
 	5,  // [5:9] is the sub-list for method input_type

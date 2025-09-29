@@ -21,7 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Service_ApplyAuth_FullMethodName  = "/kms.api.cmk.registry.auth.v1.Service/ApplyAuth"
 	Service_GetAuth_FullMethodName    = "/kms.api.cmk.registry.auth.v1.Service/GetAuth"
-	Service_ListAuth_FullMethodName   = "/kms.api.cmk.registry.auth.v1.Service/ListAuth"
+	Service_ListAuths_FullMethodName  = "/kms.api.cmk.registry.auth.v1.Service/ListAuths"
 	Service_RemoveAuth_FullMethodName = "/kms.api.cmk.registry.auth.v1.Service/RemoveAuth"
 )
 
@@ -31,7 +31,7 @@ const (
 type ServiceClient interface {
 	ApplyAuth(ctx context.Context, in *ApplyAuthRequest, opts ...grpc.CallOption) (*ApplyAuthResponse, error)
 	GetAuth(ctx context.Context, in *GetAuthRequest, opts ...grpc.CallOption) (*GetAuthResponse, error)
-	ListAuth(ctx context.Context, in *ListAuthRequest, opts ...grpc.CallOption) (*ListAuthResponse, error)
+	ListAuths(ctx context.Context, in *ListAuthsRequest, opts ...grpc.CallOption) (*ListAuthsResponse, error)
 	RemoveAuth(ctx context.Context, in *RemoveAuthRequest, opts ...grpc.CallOption) (*RemoveAuthResponse, error)
 }
 
@@ -63,10 +63,10 @@ func (c *serviceClient) GetAuth(ctx context.Context, in *GetAuthRequest, opts ..
 	return out, nil
 }
 
-func (c *serviceClient) ListAuth(ctx context.Context, in *ListAuthRequest, opts ...grpc.CallOption) (*ListAuthResponse, error) {
+func (c *serviceClient) ListAuths(ctx context.Context, in *ListAuthsRequest, opts ...grpc.CallOption) (*ListAuthsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListAuthResponse)
-	err := c.cc.Invoke(ctx, Service_ListAuth_FullMethodName, in, out, cOpts...)
+	out := new(ListAuthsResponse)
+	err := c.cc.Invoke(ctx, Service_ListAuths_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +89,7 @@ func (c *serviceClient) RemoveAuth(ctx context.Context, in *RemoveAuthRequest, o
 type ServiceServer interface {
 	ApplyAuth(context.Context, *ApplyAuthRequest) (*ApplyAuthResponse, error)
 	GetAuth(context.Context, *GetAuthRequest) (*GetAuthResponse, error)
-	ListAuth(context.Context, *ListAuthRequest) (*ListAuthResponse, error)
+	ListAuths(context.Context, *ListAuthsRequest) (*ListAuthsResponse, error)
 	RemoveAuth(context.Context, *RemoveAuthRequest) (*RemoveAuthResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
@@ -107,8 +107,8 @@ func (UnimplementedServiceServer) ApplyAuth(context.Context, *ApplyAuthRequest) 
 func (UnimplementedServiceServer) GetAuth(context.Context, *GetAuthRequest) (*GetAuthResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAuth not implemented")
 }
-func (UnimplementedServiceServer) ListAuth(context.Context, *ListAuthRequest) (*ListAuthResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListAuth not implemented")
+func (UnimplementedServiceServer) ListAuths(context.Context, *ListAuthsRequest) (*ListAuthsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAuths not implemented")
 }
 func (UnimplementedServiceServer) RemoveAuth(context.Context, *RemoveAuthRequest) (*RemoveAuthResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveAuth not implemented")
@@ -170,20 +170,20 @@ func _Service_GetAuth_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Service_ListAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListAuthRequest)
+func _Service_ListAuths_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAuthsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ServiceServer).ListAuth(ctx, in)
+		return srv.(ServiceServer).ListAuths(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Service_ListAuth_FullMethodName,
+		FullMethod: Service_ListAuths_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ServiceServer).ListAuth(ctx, req.(*ListAuthRequest))
+		return srv.(ServiceServer).ListAuths(ctx, req.(*ListAuthsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -222,8 +222,8 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Service_GetAuth_Handler,
 		},
 		{
-			MethodName: "ListAuth",
-			Handler:    _Service_ListAuth_Handler,
+			MethodName: "ListAuths",
+			Handler:    _Service_ListAuths_Handler,
 		},
 		{
 			MethodName: "RemoveAuth",

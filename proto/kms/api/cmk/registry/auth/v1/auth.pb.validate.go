@@ -592,22 +592,22 @@ var _ interface {
 	ErrorName() string
 } = GetAuthResponseValidationError{}
 
-// Validate checks the field values on ListAuthRequest with the rules defined
+// Validate checks the field values on ListAuthsRequest with the rules defined
 // in the proto definition for this message. If any rules are violated, the
 // first error encountered is returned, or nil if there are no violations.
-func (m *ListAuthRequest) Validate() error {
+func (m *ListAuthsRequest) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ListAuthRequest with the rules
+// ValidateAll checks the field values on ListAuthsRequest with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ListAuthRequestMultiError, or nil if none found.
-func (m *ListAuthRequest) ValidateAll() error {
+// ListAuthsRequestMultiError, or nil if none found.
+func (m *ListAuthsRequest) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ListAuthRequest) validate(all bool) error {
+func (m *ListAuthsRequest) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -621,19 +621,19 @@ func (m *ListAuthRequest) validate(all bool) error {
 	// no validation rules for NextPageToken
 
 	if len(errors) > 0 {
-		return ListAuthRequestMultiError(errors)
+		return ListAuthsRequestMultiError(errors)
 	}
 
 	return nil
 }
 
-// ListAuthRequestMultiError is an error wrapping multiple validation errors
-// returned by ListAuthRequest.ValidateAll() if the designated constraints
+// ListAuthsRequestMultiError is an error wrapping multiple validation errors
+// returned by ListAuthsRequest.ValidateAll() if the designated constraints
 // aren't met.
-type ListAuthRequestMultiError []error
+type ListAuthsRequestMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ListAuthRequestMultiError) Error() string {
+func (m ListAuthsRequestMultiError) Error() string {
 	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -642,11 +642,11 @@ func (m ListAuthRequestMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ListAuthRequestMultiError) AllErrors() []error { return m }
+func (m ListAuthsRequestMultiError) AllErrors() []error { return m }
 
-// ListAuthRequestValidationError is the validation error returned by
-// ListAuthRequest.Validate if the designated constraints aren't met.
-type ListAuthRequestValidationError struct {
+// ListAuthsRequestValidationError is the validation error returned by
+// ListAuthsRequest.Validate if the designated constraints aren't met.
+type ListAuthsRequestValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -654,22 +654,22 @@ type ListAuthRequestValidationError struct {
 }
 
 // Field function returns field value.
-func (e ListAuthRequestValidationError) Field() string { return e.field }
+func (e ListAuthsRequestValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ListAuthRequestValidationError) Reason() string { return e.reason }
+func (e ListAuthsRequestValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ListAuthRequestValidationError) Cause() error { return e.cause }
+func (e ListAuthsRequestValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ListAuthRequestValidationError) Key() bool { return e.key }
+func (e ListAuthsRequestValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ListAuthRequestValidationError) ErrorName() string { return "ListAuthRequestValidationError" }
+func (e ListAuthsRequestValidationError) ErrorName() string { return "ListAuthsRequestValidationError" }
 
 // Error satisfies the builtin error interface
-func (e ListAuthRequestValidationError) Error() string {
+func (e ListAuthsRequestValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -681,14 +681,14 @@ func (e ListAuthRequestValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sListAuthRequest.%s: %s%s",
+		"invalid %sListAuthsRequest.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ListAuthRequestValidationError{}
+var _ error = ListAuthsRequestValidationError{}
 
 var _ interface {
 	Field() string
@@ -696,24 +696,24 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ListAuthRequestValidationError{}
+} = ListAuthsRequestValidationError{}
 
-// Validate checks the field values on ListAuthResponse with the rules defined
+// Validate checks the field values on ListAuthsResponse with the rules defined
 // in the proto definition for this message. If any rules are violated, the
 // first error encountered is returned, or nil if there are no violations.
-func (m *ListAuthResponse) Validate() error {
+func (m *ListAuthsResponse) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ListAuthResponse with the rules
+// ValidateAll checks the field values on ListAuthsResponse with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ListAuthResponseMultiError, or nil if none found.
-func (m *ListAuthResponse) ValidateAll() error {
+// ListAuthsResponseMultiError, or nil if none found.
+func (m *ListAuthsResponse) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ListAuthResponse) validate(all bool) error {
+func (m *ListAuthsResponse) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -727,7 +727,7 @@ func (m *ListAuthResponse) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ListAuthResponseValidationError{
+					errors = append(errors, ListAuthsResponseValidationError{
 						field:  fmt.Sprintf("Auth[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -735,7 +735,7 @@ func (m *ListAuthResponse) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, ListAuthResponseValidationError{
+					errors = append(errors, ListAuthsResponseValidationError{
 						field:  fmt.Sprintf("Auth[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -744,7 +744,7 @@ func (m *ListAuthResponse) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return ListAuthResponseValidationError{
+				return ListAuthsResponseValidationError{
 					field:  fmt.Sprintf("Auth[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -757,19 +757,19 @@ func (m *ListAuthResponse) validate(all bool) error {
 	// no validation rules for NextPageToken
 
 	if len(errors) > 0 {
-		return ListAuthResponseMultiError(errors)
+		return ListAuthsResponseMultiError(errors)
 	}
 
 	return nil
 }
 
-// ListAuthResponseMultiError is an error wrapping multiple validation errors
-// returned by ListAuthResponse.ValidateAll() if the designated constraints
+// ListAuthsResponseMultiError is an error wrapping multiple validation errors
+// returned by ListAuthsResponse.ValidateAll() if the designated constraints
 // aren't met.
-type ListAuthResponseMultiError []error
+type ListAuthsResponseMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ListAuthResponseMultiError) Error() string {
+func (m ListAuthsResponseMultiError) Error() string {
 	msgs := make([]string, 0, len(m))
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -778,11 +778,11 @@ func (m ListAuthResponseMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ListAuthResponseMultiError) AllErrors() []error { return m }
+func (m ListAuthsResponseMultiError) AllErrors() []error { return m }
 
-// ListAuthResponseValidationError is the validation error returned by
-// ListAuthResponse.Validate if the designated constraints aren't met.
-type ListAuthResponseValidationError struct {
+// ListAuthsResponseValidationError is the validation error returned by
+// ListAuthsResponse.Validate if the designated constraints aren't met.
+type ListAuthsResponseValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -790,22 +790,24 @@ type ListAuthResponseValidationError struct {
 }
 
 // Field function returns field value.
-func (e ListAuthResponseValidationError) Field() string { return e.field }
+func (e ListAuthsResponseValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ListAuthResponseValidationError) Reason() string { return e.reason }
+func (e ListAuthsResponseValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ListAuthResponseValidationError) Cause() error { return e.cause }
+func (e ListAuthsResponseValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ListAuthResponseValidationError) Key() bool { return e.key }
+func (e ListAuthsResponseValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ListAuthResponseValidationError) ErrorName() string { return "ListAuthResponseValidationError" }
+func (e ListAuthsResponseValidationError) ErrorName() string {
+	return "ListAuthsResponseValidationError"
+}
 
 // Error satisfies the builtin error interface
-func (e ListAuthResponseValidationError) Error() string {
+func (e ListAuthsResponseValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -817,14 +819,14 @@ func (e ListAuthResponseValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sListAuthResponse.%s: %s%s",
+		"invalid %sListAuthsResponse.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ListAuthResponseValidationError{}
+var _ error = ListAuthsResponseValidationError{}
 
 var _ interface {
 	Field() string
@@ -832,7 +834,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ListAuthResponseValidationError{}
+} = ListAuthsResponseValidationError{}
 
 // Validate checks the field values on RemoveAuthRequest with the rules defined
 // in the proto definition for this message. If any rules are violated, the
