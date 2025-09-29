@@ -25,9 +25,9 @@ type AuthStatus int32
 
 const (
 	AuthStatus_AUTH_STATUS_UNSPECIFIED    AuthStatus = 0
-	AuthStatus_AUTH_STATUS_APPLIED        AuthStatus = 1
-	AuthStatus_AUTH_STATUS_APPLYING       AuthStatus = 2
-	AuthStatus_AUTH_STATUS_APPLYING_ERROR AuthStatus = 3
+	AuthStatus_AUTH_STATUS_APPLYING       AuthStatus = 1
+	AuthStatus_AUTH_STATUS_APPLYING_ERROR AuthStatus = 2
+	AuthStatus_AUTH_STATUS_APPLIED        AuthStatus = 3
 	AuthStatus_AUTH_STATUS_REMOVING       AuthStatus = 4
 	AuthStatus_AUTH_STATUS_REMOVING_ERROR AuthStatus = 5
 	AuthStatus_AUTH_STATUS_REMOVED        AuthStatus = 6
@@ -37,18 +37,18 @@ const (
 var (
 	AuthStatus_name = map[int32]string{
 		0: "AUTH_STATUS_UNSPECIFIED",
-		1: "AUTH_STATUS_APPLIED",
-		2: "AUTH_STATUS_APPLYING",
-		3: "AUTH_STATUS_APPLYING_ERROR",
+		1: "AUTH_STATUS_APPLYING",
+		2: "AUTH_STATUS_APPLYING_ERROR",
+		3: "AUTH_STATUS_APPLIED",
 		4: "AUTH_STATUS_REMOVING",
 		5: "AUTH_STATUS_REMOVING_ERROR",
 		6: "AUTH_STATUS_REMOVED",
 	}
 	AuthStatus_value = map[string]int32{
 		"AUTH_STATUS_UNSPECIFIED":    0,
-		"AUTH_STATUS_APPLIED":        1,
-		"AUTH_STATUS_APPLYING":       2,
-		"AUTH_STATUS_APPLYING_ERROR": 3,
+		"AUTH_STATUS_APPLYING":       1,
+		"AUTH_STATUS_APPLYING_ERROR": 2,
+		"AUTH_STATUS_APPLIED":        3,
 		"AUTH_STATUS_REMOVING":       4,
 		"AUTH_STATUS_REMOVING_ERROR": 5,
 		"AUTH_STATUS_REMOVED":        6,
@@ -87,6 +87,7 @@ type AuthAction int32
 const (
 	AuthAction_AUTH_ACTION_UNSPECIFIED AuthAction = 0
 	AuthAction_AUTH_ACTION_APPLY_AUTH  AuthAction = 1
+	AuthAction_AUTH_ACTION_REMOVE_AUTH AuthAction = 2
 )
 
 // Enum value maps for AuthAction.
@@ -94,10 +95,12 @@ var (
 	AuthAction_name = map[int32]string{
 		0: "AUTH_ACTION_UNSPECIFIED",
 		1: "AUTH_ACTION_APPLY_AUTH",
+		2: "AUTH_ACTION_REMOVE_AUTH",
 	}
 	AuthAction_value = map[string]int32{
 		"AUTH_ACTION_UNSPECIFIED": 0,
 		"AUTH_ACTION_APPLY_AUTH":  1,
+		"AUTH_ACTION_REMOVE_AUTH": 2,
 	}
 )
 
@@ -130,13 +133,14 @@ func (AuthAction) EnumDescriptor() ([]byte, []int) {
 
 type Auth struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	Properties    map[string]string      `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Status        AuthStatus             `protobuf:"varint,4,opt,name=status,proto3,enum=kms.api.cmk.registry.auth.v1.AuthStatus" json:"status,omitempty"`
-	ErrorMessage  string                 `protobuf:"bytes,5,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	Properties    map[string]string      `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Status        AuthStatus             `protobuf:"varint,5,opt,name=status,proto3,enum=kms.api.cmk.registry.auth.v1.AuthStatus" json:"status,omitempty"`
+	ErrorMessage  string                 `protobuf:"bytes,6,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -169,6 +173,13 @@ func (x *Auth) ProtoReflect() protoreflect.Message {
 // Deprecated: Use Auth.ProtoReflect.Descriptor instead.
 func (*Auth) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Auth) GetExternalId() string {
+	if x != nil {
+		return x.ExternalId
+	}
+	return ""
 }
 
 func (x *Auth) GetTenantId() string {
@@ -222,9 +233,10 @@ func (x *Auth) GetCreatedAt() string {
 
 type ApplyAuthRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Type          string                 `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-	Properties    map[string]string      `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	Properties    map[string]string      `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -257,6 +269,13 @@ func (x *ApplyAuthRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ApplyAuthRequest.ProtoReflect.Descriptor instead.
 func (*ApplyAuthRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ApplyAuthRequest) GetExternalId() string {
+	if x != nil {
+		return x.ExternalId
+	}
+	return ""
 }
 
 func (x *ApplyAuthRequest) GetTenantId() string {
@@ -326,7 +345,7 @@ func (x *ApplyAuthResponse) GetSuccess() bool {
 
 type GetAuthRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -361,9 +380,9 @@ func (*GetAuthRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetAuthRequest) GetTenantId() string {
+func (x *GetAuthRequest) GetExternalId() string {
 	if x != nil {
-		return x.TenantId
+		return x.ExternalId
 	}
 	return ""
 }
@@ -412,16 +431,128 @@ func (x *GetAuthResponse) GetAuth() *Auth {
 	return nil
 }
 
-type RemoveAuthRequest struct {
+type ListAuthRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"` // default value is 50; max value is 1000
+	NextPageToken string                 `protobuf:"bytes,3,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAuthRequest) Reset() {
+	*x = ListAuthRequest{}
+	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAuthRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAuthRequest) ProtoMessage() {}
+
+func (x *ListAuthRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAuthRequest.ProtoReflect.Descriptor instead.
+func (*ListAuthRequest) Descriptor() ([]byte, []int) {
+	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ListAuthRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *ListAuthRequest) GetLimit() int32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListAuthRequest) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type ListAuthResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Auth          []*Auth                `protobuf:"bytes,1,rep,name=auth,proto3" json:"auth,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListAuthResponse) Reset() {
+	*x = ListAuthResponse{}
+	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListAuthResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListAuthResponse) ProtoMessage() {}
+
+func (x *ListAuthResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListAuthResponse.ProtoReflect.Descriptor instead.
+func (*ListAuthResponse) Descriptor() ([]byte, []int) {
+	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *ListAuthResponse) GetAuth() []*Auth {
+	if x != nil {
+		return x.Auth
+	}
+	return nil
+}
+
+func (x *ListAuthResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type RemoveAuthRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RemoveAuthRequest) Reset() {
 	*x = RemoveAuthRequest{}
-	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[5]
+	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -433,7 +564,7 @@ func (x *RemoveAuthRequest) String() string {
 func (*RemoveAuthRequest) ProtoMessage() {}
 
 func (x *RemoveAuthRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[5]
+	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -446,12 +577,12 @@ func (x *RemoveAuthRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveAuthRequest.ProtoReflect.Descriptor instead.
 func (*RemoveAuthRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{5}
+	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *RemoveAuthRequest) GetTenantId() string {
+func (x *RemoveAuthRequest) GetExternalId() string {
 	if x != nil {
-		return x.TenantId
+		return x.ExternalId
 	}
 	return ""
 }
@@ -465,7 +596,7 @@ type RemoveAuthResponse struct {
 
 func (x *RemoveAuthResponse) Reset() {
 	*x = RemoveAuthResponse{}
-	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[6]
+	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -477,7 +608,7 @@ func (x *RemoveAuthResponse) String() string {
 func (*RemoveAuthResponse) ProtoMessage() {}
 
 func (x *RemoveAuthResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[6]
+	mi := &file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -490,7 +621,7 @@ func (x *RemoveAuthResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveAuthResponse.ProtoReflect.Descriptor instead.
 func (*RemoveAuthResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{6}
+	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *RemoveAuthResponse) GetSuccess() bool {
@@ -504,57 +635,72 @@ var File_kms_api_cmk_registry_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
-	"'kms/api/cmk/registry/auth/v1/auth.proto\x12\x1ckms.api.cmk.registry.auth.v1\"\xef\x02\n" +
-	"\x04Auth\x12\x1b\n" +
-	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x12\n" +
-	"\x04type\x18\x02 \x01(\tR\x04type\x12R\n" +
+	"'kms/api/cmk/registry/auth/v1/auth.proto\x12\x1ckms.api.cmk.registry.auth.v1\"\x90\x03\n" +
+	"\x04Auth\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
+	"externalId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x12\n" +
+	"\x04type\x18\x03 \x01(\tR\x04type\x12R\n" +
 	"\n" +
-	"properties\x18\x03 \x03(\v22.kms.api.cmk.registry.auth.v1.Auth.PropertiesEntryR\n" +
+	"properties\x18\x04 \x03(\v22.kms.api.cmk.registry.auth.v1.Auth.PropertiesEntryR\n" +
 	"properties\x12@\n" +
-	"\x06status\x18\x04 \x01(\x0e2(.kms.api.cmk.registry.auth.v1.AuthStatusR\x06status\x12#\n" +
-	"\rerror_message\x18\x05 \x01(\tR\ferrorMessage\x12\x1d\n" +
+	"\x06status\x18\x05 \x01(\x0e2(.kms.api.cmk.registry.auth.v1.AuthStatusR\x06status\x12#\n" +
+	"\rerror_message\x18\x06 \x01(\tR\ferrorMessage\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\tR\tupdatedAt\x12\x1d\n" +
+	"updated_at\x18\a \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\a \x01(\tR\tcreatedAt\x1a=\n" +
+	"created_at\x18\b \x01(\tR\tcreatedAt\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe2\x01\n" +
-	"\x10ApplyAuthRequest\x12\x1b\n" +
-	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x12\n" +
-	"\x04type\x18\x02 \x01(\tR\x04type\x12^\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x83\x02\n" +
+	"\x10ApplyAuthRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
+	"externalId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x12\n" +
+	"\x04type\x18\x03 \x01(\tR\x04type\x12^\n" +
 	"\n" +
-	"properties\x18\x03 \x03(\v2>.kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntryR\n" +
+	"properties\x18\x04 \x03(\v2>.kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntryR\n" +
 	"properties\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"-\n" +
 	"\x11ApplyAuthResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"-\n" +
-	"\x0eGetAuthRequest\x12\x1b\n" +
-	"\ttenant_id\x18\x01 \x01(\tR\btenantId\"I\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"1\n" +
+	"\x0eGetAuthRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
+	"externalId\"I\n" +
 	"\x0fGetAuthResponse\x126\n" +
-	"\x04auth\x18\x01 \x01(\v2\".kms.api.cmk.registry.auth.v1.AuthR\x04auth\"0\n" +
-	"\x11RemoveAuthRequest\x12\x1b\n" +
-	"\ttenant_id\x18\x01 \x01(\tR\btenantId\".\n" +
+	"\x04auth\x18\x01 \x01(\v2\".kms.api.cmk.registry.auth.v1.AuthR\x04auth\"l\n" +
+	"\x0fListAuthRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12&\n" +
+	"\x0fnext_page_token\x18\x03 \x01(\tR\rnextPageToken\"r\n" +
+	"\x10ListAuthResponse\x126\n" +
+	"\x04auth\x18\x01 \x03(\v2\".kms.api.cmk.registry.auth.v1.AuthR\x04auth\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"4\n" +
+	"\x11RemoveAuthRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
+	"externalId\".\n" +
 	"\x12RemoveAuthResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess*\xcf\x01\n" +
 	"\n" +
 	"AuthStatus\x12\x1b\n" +
-	"\x17AUTH_STATUS_UNSPECIFIED\x10\x00\x12\x17\n" +
-	"\x13AUTH_STATUS_APPLIED\x10\x01\x12\x18\n" +
-	"\x14AUTH_STATUS_APPLYING\x10\x02\x12\x1e\n" +
-	"\x1aAUTH_STATUS_APPLYING_ERROR\x10\x03\x12\x18\n" +
+	"\x17AUTH_STATUS_UNSPECIFIED\x10\x00\x12\x18\n" +
+	"\x14AUTH_STATUS_APPLYING\x10\x01\x12\x1e\n" +
+	"\x1aAUTH_STATUS_APPLYING_ERROR\x10\x02\x12\x17\n" +
+	"\x13AUTH_STATUS_APPLIED\x10\x03\x12\x18\n" +
 	"\x14AUTH_STATUS_REMOVING\x10\x04\x12\x1e\n" +
 	"\x1aAUTH_STATUS_REMOVING_ERROR\x10\x05\x12\x17\n" +
-	"\x13AUTH_STATUS_REMOVED\x10\x06*E\n" +
+	"\x13AUTH_STATUS_REMOVED\x10\x06*b\n" +
 	"\n" +
 	"AuthAction\x12\x1b\n" +
 	"\x17AUTH_ACTION_UNSPECIFIED\x10\x00\x12\x1a\n" +
-	"\x16AUTH_ACTION_APPLY_AUTH\x10\x012\xd6\x02\n" +
+	"\x16AUTH_ACTION_APPLY_AUTH\x10\x01\x12\x1b\n" +
+	"\x17AUTH_ACTION_REMOVE_AUTH\x10\x022\xc3\x03\n" +
 	"\aService\x12n\n" +
 	"\tApplyAuth\x12..kms.api.cmk.registry.auth.v1.ApplyAuthRequest\x1a/.kms.api.cmk.registry.auth.v1.ApplyAuthResponse\"\x00\x12h\n" +
-	"\aGetAuth\x12,.kms.api.cmk.registry.auth.v1.GetAuthRequest\x1a-.kms.api.cmk.registry.auth.v1.GetAuthResponse\"\x00\x12q\n" +
+	"\aGetAuth\x12,.kms.api.cmk.registry.auth.v1.GetAuthRequest\x1a-.kms.api.cmk.registry.auth.v1.GetAuthResponse\"\x00\x12k\n" +
+	"\bListAuth\x12-.kms.api.cmk.registry.auth.v1.ListAuthRequest\x1a..kms.api.cmk.registry.auth.v1.ListAuthResponse\"\x00\x12q\n" +
 	"\n" +
 	"RemoveAuth\x12/.kms.api.cmk.registry.auth.v1.RemoveAuthRequest\x1a0.kms.api.cmk.registry.auth.v1.RemoveAuthResponse\"\x00B\x8a\x02\n" +
 	" com.kms.api.cmk.registry.auth.v1B\tAuthProtoP\x01ZDgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/auth/v1;authv1\xa2\x02\x05KACRA\xaa\x02\x1cKms.Api.Cmk.Registry.Auth.V1\xca\x02\x1cKms\\Api\\Cmk\\Registry\\Auth\\V1\xe2\x02(Kms\\Api\\Cmk\\Registry\\Auth\\V1\\GPBMetadata\xea\x02!Kms::Api::Cmk::Registry::Auth::V1b\x06proto3"
@@ -572,7 +718,7 @@ func file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP() []byte {
 }
 
 var file_kms_api_cmk_registry_auth_v1_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_kms_api_cmk_registry_auth_v1_auth_proto_goTypes = []any{
 	(AuthStatus)(0),            // 0: kms.api.cmk.registry.auth.v1.AuthStatus
 	(AuthAction)(0),            // 1: kms.api.cmk.registry.auth.v1.AuthAction
@@ -581,27 +727,32 @@ var file_kms_api_cmk_registry_auth_v1_auth_proto_goTypes = []any{
 	(*ApplyAuthResponse)(nil),  // 4: kms.api.cmk.registry.auth.v1.ApplyAuthResponse
 	(*GetAuthRequest)(nil),     // 5: kms.api.cmk.registry.auth.v1.GetAuthRequest
 	(*GetAuthResponse)(nil),    // 6: kms.api.cmk.registry.auth.v1.GetAuthResponse
-	(*RemoveAuthRequest)(nil),  // 7: kms.api.cmk.registry.auth.v1.RemoveAuthRequest
-	(*RemoveAuthResponse)(nil), // 8: kms.api.cmk.registry.auth.v1.RemoveAuthResponse
-	nil,                        // 9: kms.api.cmk.registry.auth.v1.Auth.PropertiesEntry
-	nil,                        // 10: kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntry
+	(*ListAuthRequest)(nil),    // 7: kms.api.cmk.registry.auth.v1.ListAuthRequest
+	(*ListAuthResponse)(nil),   // 8: kms.api.cmk.registry.auth.v1.ListAuthResponse
+	(*RemoveAuthRequest)(nil),  // 9: kms.api.cmk.registry.auth.v1.RemoveAuthRequest
+	(*RemoveAuthResponse)(nil), // 10: kms.api.cmk.registry.auth.v1.RemoveAuthResponse
+	nil,                        // 11: kms.api.cmk.registry.auth.v1.Auth.PropertiesEntry
+	nil,                        // 12: kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntry
 }
 var file_kms_api_cmk_registry_auth_v1_auth_proto_depIdxs = []int32{
-	9,  // 0: kms.api.cmk.registry.auth.v1.Auth.properties:type_name -> kms.api.cmk.registry.auth.v1.Auth.PropertiesEntry
+	11, // 0: kms.api.cmk.registry.auth.v1.Auth.properties:type_name -> kms.api.cmk.registry.auth.v1.Auth.PropertiesEntry
 	0,  // 1: kms.api.cmk.registry.auth.v1.Auth.status:type_name -> kms.api.cmk.registry.auth.v1.AuthStatus
-	10, // 2: kms.api.cmk.registry.auth.v1.ApplyAuthRequest.properties:type_name -> kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntry
+	12, // 2: kms.api.cmk.registry.auth.v1.ApplyAuthRequest.properties:type_name -> kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntry
 	2,  // 3: kms.api.cmk.registry.auth.v1.GetAuthResponse.auth:type_name -> kms.api.cmk.registry.auth.v1.Auth
-	3,  // 4: kms.api.cmk.registry.auth.v1.Service.ApplyAuth:input_type -> kms.api.cmk.registry.auth.v1.ApplyAuthRequest
-	5,  // 5: kms.api.cmk.registry.auth.v1.Service.GetAuth:input_type -> kms.api.cmk.registry.auth.v1.GetAuthRequest
-	7,  // 6: kms.api.cmk.registry.auth.v1.Service.RemoveAuth:input_type -> kms.api.cmk.registry.auth.v1.RemoveAuthRequest
-	4,  // 7: kms.api.cmk.registry.auth.v1.Service.ApplyAuth:output_type -> kms.api.cmk.registry.auth.v1.ApplyAuthResponse
-	6,  // 8: kms.api.cmk.registry.auth.v1.Service.GetAuth:output_type -> kms.api.cmk.registry.auth.v1.GetAuthResponse
-	8,  // 9: kms.api.cmk.registry.auth.v1.Service.RemoveAuth:output_type -> kms.api.cmk.registry.auth.v1.RemoveAuthResponse
-	7,  // [7:10] is the sub-list for method output_type
-	4,  // [4:7] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	2,  // 4: kms.api.cmk.registry.auth.v1.ListAuthResponse.auth:type_name -> kms.api.cmk.registry.auth.v1.Auth
+	3,  // 5: kms.api.cmk.registry.auth.v1.Service.ApplyAuth:input_type -> kms.api.cmk.registry.auth.v1.ApplyAuthRequest
+	5,  // 6: kms.api.cmk.registry.auth.v1.Service.GetAuth:input_type -> kms.api.cmk.registry.auth.v1.GetAuthRequest
+	7,  // 7: kms.api.cmk.registry.auth.v1.Service.ListAuth:input_type -> kms.api.cmk.registry.auth.v1.ListAuthRequest
+	9,  // 8: kms.api.cmk.registry.auth.v1.Service.RemoveAuth:input_type -> kms.api.cmk.registry.auth.v1.RemoveAuthRequest
+	4,  // 9: kms.api.cmk.registry.auth.v1.Service.ApplyAuth:output_type -> kms.api.cmk.registry.auth.v1.ApplyAuthResponse
+	6,  // 10: kms.api.cmk.registry.auth.v1.Service.GetAuth:output_type -> kms.api.cmk.registry.auth.v1.GetAuthResponse
+	8,  // 11: kms.api.cmk.registry.auth.v1.Service.ListAuth:output_type -> kms.api.cmk.registry.auth.v1.ListAuthResponse
+	10, // 12: kms.api.cmk.registry.auth.v1.Service.RemoveAuth:output_type -> kms.api.cmk.registry.auth.v1.RemoveAuthResponse
+	9,  // [9:13] is the sub-list for method output_type
+	5,  // [5:9] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_kms_api_cmk_registry_auth_v1_auth_proto_init() }
@@ -615,7 +766,7 @@ func file_kms_api_cmk_registry_auth_v1_auth_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc), len(file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

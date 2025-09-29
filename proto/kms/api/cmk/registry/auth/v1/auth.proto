@@ -5,23 +5,26 @@ package kms.api.cmk.registry.auth.v1;
 service Service {
   rpc ApplyAuth(ApplyAuthRequest) returns (ApplyAuthResponse) {}
   rpc GetAuth(GetAuthRequest) returns (GetAuthResponse) {}
+  rpc ListAuth(ListAuthRequest) returns (ListAuthResponse) {}
   rpc RemoveAuth(RemoveAuthRequest) returns (RemoveAuthResponse) {}
 }
 
 message Auth {
-  string tenant_id = 1;
-  string type = 2;
-  map<string, string> properties = 3;
-  AuthStatus status = 4;
-  string error_message = 5;
-  string updated_at = 6;
-  string created_at = 7;
+  string external_id = 1;
+  string tenant_id = 2;
+  string type = 3;
+  map<string, string> properties = 4;
+  AuthStatus status = 5;
+  string error_message = 6;
+  string updated_at = 7;
+  string created_at = 8;
 }
 
 message ApplyAuthRequest {
-  string tenant_id = 1;
-  string type = 2;
-  map<string, string> properties = 3;
+  string external_id = 1;
+  string tenant_id = 2;
+  string type = 3;
+  map<string, string> properties = 4;
 }
 
 message ApplyAuthResponse {
@@ -29,15 +32,28 @@ message ApplyAuthResponse {
 }
 
 message GetAuthRequest {
-  string tenant_id = 1;
+  string external_id = 1;
 }
 
 message GetAuthResponse {
   Auth auth = 1;
 }
 
-message RemoveAuthRequest {
+message ListAuthRequest {
   string tenant_id = 1;
+
+  int32 limit = 2; // default value is 50; max value is 1000
+  string next_page_token = 3;
+}
+
+message ListAuthResponse {
+  repeated Auth auth = 1;
+
+  string next_page_token = 2;
+}
+
+message RemoveAuthRequest {
+  string external_id = 1;
 }
 
 message RemoveAuthResponse {
@@ -46,9 +62,9 @@ message RemoveAuthResponse {
 
 enum AuthStatus {
   AUTH_STATUS_UNSPECIFIED = 0;
-  AUTH_STATUS_APPLIED = 1;
-  AUTH_STATUS_APPLYING = 2;
-  AUTH_STATUS_APPLYING_ERROR = 3;
+  AUTH_STATUS_APPLYING = 1;
+  AUTH_STATUS_APPLYING_ERROR = 2;
+  AUTH_STATUS_APPLIED = 3;
   AUTH_STATUS_REMOVING = 4;
   AUTH_STATUS_REMOVING_ERROR = 5;
   AUTH_STATUS_REMOVED = 6;
@@ -57,4 +73,5 @@ enum AuthStatus {
 enum AuthAction {
   AUTH_ACTION_UNSPECIFIED = 0;
   AUTH_ACTION_APPLY_AUTH = 1;
+  AUTH_ACTION_REMOVE_AUTH = 2;
 }
