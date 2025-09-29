@@ -56,6 +56,8 @@ func (m *Auth) validate(all bool) error {
 
 	var errors []error
 
+	// no validation rules for ExternalId
+
 	// no validation rules for TenantId
 
 	// no validation rules for Type
@@ -168,6 +170,8 @@ func (m *ApplyAuthRequest) validate(all bool) error {
 	}
 
 	var errors []error
+
+	// no validation rules for ExternalId
 
 	// no validation rules for TenantId
 
@@ -379,7 +383,7 @@ func (m *GetAuthRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for TenantId
+	// no validation rules for ExternalId
 
 	if len(errors) > 0 {
 		return GetAuthRequestMultiError(errors)
@@ -588,6 +592,250 @@ var _ interface {
 	ErrorName() string
 } = GetAuthResponseValidationError{}
 
+// Validate checks the field values on ListAuthsRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ListAuthsRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListAuthsRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListAuthsRequestMultiError, or nil if none found.
+func (m *ListAuthsRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListAuthsRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for TenantId
+
+	// no validation rules for Limit
+
+	// no validation rules for NextPageToken
+
+	if len(errors) > 0 {
+		return ListAuthsRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListAuthsRequestMultiError is an error wrapping multiple validation errors
+// returned by ListAuthsRequest.ValidateAll() if the designated constraints
+// aren't met.
+type ListAuthsRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListAuthsRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListAuthsRequestMultiError) AllErrors() []error { return m }
+
+// ListAuthsRequestValidationError is the validation error returned by
+// ListAuthsRequest.Validate if the designated constraints aren't met.
+type ListAuthsRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListAuthsRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListAuthsRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListAuthsRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListAuthsRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListAuthsRequestValidationError) ErrorName() string { return "ListAuthsRequestValidationError" }
+
+// Error satisfies the builtin error interface
+func (e ListAuthsRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListAuthsRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListAuthsRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListAuthsRequestValidationError{}
+
+// Validate checks the field values on ListAuthsResponse with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ListAuthsResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ListAuthsResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ListAuthsResponseMultiError, or nil if none found.
+func (m *ListAuthsResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ListAuthsResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetAuth() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ListAuthsResponseValidationError{
+						field:  fmt.Sprintf("Auth[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ListAuthsResponseValidationError{
+						field:  fmt.Sprintf("Auth[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ListAuthsResponseValidationError{
+					field:  fmt.Sprintf("Auth[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	// no validation rules for NextPageToken
+
+	if len(errors) > 0 {
+		return ListAuthsResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ListAuthsResponseMultiError is an error wrapping multiple validation errors
+// returned by ListAuthsResponse.ValidateAll() if the designated constraints
+// aren't met.
+type ListAuthsResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ListAuthsResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ListAuthsResponseMultiError) AllErrors() []error { return m }
+
+// ListAuthsResponseValidationError is the validation error returned by
+// ListAuthsResponse.Validate if the designated constraints aren't met.
+type ListAuthsResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ListAuthsResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ListAuthsResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ListAuthsResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ListAuthsResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ListAuthsResponseValidationError) ErrorName() string {
+	return "ListAuthsResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ListAuthsResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sListAuthsResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ListAuthsResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ListAuthsResponseValidationError{}
+
 // Validate checks the field values on RemoveAuthRequest with the rules defined
 // in the proto definition for this message. If any rules are violated, the
 // first error encountered is returned, or nil if there are no violations.
@@ -610,7 +858,7 @@ func (m *RemoveAuthRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for TenantId
+	// no validation rules for ExternalId
 
 	if len(errors) > 0 {
 		return RemoveAuthRequestMultiError(errors)

@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Service_ApplyAuth_FullMethodName  = "/kms.api.cmk.registry.auth.v1.Service/ApplyAuth"
 	Service_GetAuth_FullMethodName    = "/kms.api.cmk.registry.auth.v1.Service/GetAuth"
+	Service_ListAuths_FullMethodName  = "/kms.api.cmk.registry.auth.v1.Service/ListAuths"
 	Service_RemoveAuth_FullMethodName = "/kms.api.cmk.registry.auth.v1.Service/RemoveAuth"
 )
 
@@ -30,6 +31,7 @@ const (
 type ServiceClient interface {
 	ApplyAuth(ctx context.Context, in *ApplyAuthRequest, opts ...grpc.CallOption) (*ApplyAuthResponse, error)
 	GetAuth(ctx context.Context, in *GetAuthRequest, opts ...grpc.CallOption) (*GetAuthResponse, error)
+	ListAuths(ctx context.Context, in *ListAuthsRequest, opts ...grpc.CallOption) (*ListAuthsResponse, error)
 	RemoveAuth(ctx context.Context, in *RemoveAuthRequest, opts ...grpc.CallOption) (*RemoveAuthResponse, error)
 }
 
@@ -61,6 +63,16 @@ func (c *serviceClient) GetAuth(ctx context.Context, in *GetAuthRequest, opts ..
 	return out, nil
 }
 
+func (c *serviceClient) ListAuths(ctx context.Context, in *ListAuthsRequest, opts ...grpc.CallOption) (*ListAuthsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListAuthsResponse)
+	err := c.cc.Invoke(ctx, Service_ListAuths_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *serviceClient) RemoveAuth(ctx context.Context, in *RemoveAuthRequest, opts ...grpc.CallOption) (*RemoveAuthResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RemoveAuthResponse)
@@ -77,6 +89,7 @@ func (c *serviceClient) RemoveAuth(ctx context.Context, in *RemoveAuthRequest, o
 type ServiceServer interface {
 	ApplyAuth(context.Context, *ApplyAuthRequest) (*ApplyAuthResponse, error)
 	GetAuth(context.Context, *GetAuthRequest) (*GetAuthResponse, error)
+	ListAuths(context.Context, *ListAuthsRequest) (*ListAuthsResponse, error)
 	RemoveAuth(context.Context, *RemoveAuthRequest) (*RemoveAuthResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
@@ -93,6 +106,9 @@ func (UnimplementedServiceServer) ApplyAuth(context.Context, *ApplyAuthRequest) 
 }
 func (UnimplementedServiceServer) GetAuth(context.Context, *GetAuthRequest) (*GetAuthResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAuth not implemented")
+}
+func (UnimplementedServiceServer) ListAuths(context.Context, *ListAuthsRequest) (*ListAuthsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAuths not implemented")
 }
 func (UnimplementedServiceServer) RemoveAuth(context.Context, *RemoveAuthRequest) (*RemoveAuthResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveAuth not implemented")
@@ -154,6 +170,24 @@ func _Service_GetAuth_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_ListAuths_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAuthsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).ListAuths(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Service_ListAuths_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).ListAuths(ctx, req.(*ListAuthsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Service_RemoveAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RemoveAuthRequest)
 	if err := dec(in); err != nil {
@@ -186,6 +220,10 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetAuth",
 			Handler:    _Service_GetAuth_Handler,
+		},
+		{
+			MethodName: "ListAuths",
+			Handler:    _Service_ListAuths_Handler,
 		},
 		{
 			MethodName: "RemoveAuth",
