@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.9.0](https://github.com/openkcm/api-sdk/compare/v0.8.1...v0.9.0) (2025-10-14)
+
+
+### Features
+
+* session manager services ([#43](https://github.com/openkcm/api-sdk/issues/43)) ([360d28e](https://github.com/openkcm/api-sdk/commit/360d28ee85d980cfb9f0a0282d9f073c5ab48851))
+
+
+### Bug Fixes
+
+* **deps:** bump google.golang.org/grpc from 1.75.1 to 1.76.0 ([#49](https://github.com/openkcm/api-sdk/issues/49)) ([cd6e1be](https://github.com/openkcm/api-sdk/commit/cd6e1bec36227434dba1244066c4a78980e461ac))
+* **deps:** bump google.golang.org/protobuf from 1.36.9 to 1.36.10 ([#48](https://github.com/openkcm/api-sdk/issues/48)) ([a2b8bbc](https://github.com/openkcm/api-sdk/commit/a2b8bbcc425cec1674d2ce4f185ee3794a922c7f))
+
 ## [0.8.1](https://github.com/openkcm/api-sdk/compare/v0.8.0...v0.8.1) (2025-09-29)
 
 
