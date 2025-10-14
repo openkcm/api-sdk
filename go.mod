@@ -4,7 +4,7 @@ go 1.24.2
 
 require (
 	google.golang.org/grpc v1.76.0
-	google.golang.org/protobuf v1.36.9
+	google.golang.org/protobuf v1.36.10
 )
 
 require (
