@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/openkcm/api-sdk/compare/v0.8.1...v0.9.0) (2025-10-14)
+
+
+### Features
+
+* session manager services ([#43](https://github.com/openkcm/api-sdk/issues/43)) ([360d28e](https://github.com/openkcm/api-sdk/commit/360d28ee85d980cfb9f0a0282d9f073c5ab48851))
+
 ## [0.8.1](https://github.com/openkcm/api-sdk/compare/v0.8.0...v0.8.1) (2025-09-29)
 
 
