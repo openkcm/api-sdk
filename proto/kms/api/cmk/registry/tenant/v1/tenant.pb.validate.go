@@ -2112,3 +2112,215 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = GetTenantResponseValidationError{}
+
+// Validate checks the field values on SetTenantOwnerRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetTenantOwnerRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetTenantOwnerRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetTenantOwnerRequestMultiError, or nil if none found.
+func (m *SetTenantOwnerRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetTenantOwnerRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	// no validation rules for OwnerId
+
+	// no validation rules for OwnerType
+
+	if len(errors) > 0 {
+		return SetTenantOwnerRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetTenantOwnerRequestMultiError is an error wrapping multiple validation
+// errors returned by SetTenantOwnerRequest.ValidateAll() if the designated
+// constraints aren't met.
+type SetTenantOwnerRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetTenantOwnerRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetTenantOwnerRequestMultiError) AllErrors() []error { return m }
+
+// SetTenantOwnerRequestValidationError is the validation error returned by
+// SetTenantOwnerRequest.Validate if the designated constraints aren't met.
+type SetTenantOwnerRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetTenantOwnerRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetTenantOwnerRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetTenantOwnerRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetTenantOwnerRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetTenantOwnerRequestValidationError) ErrorName() string {
+	return "SetTenantOwnerRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetTenantOwnerRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetTenantOwnerRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetTenantOwnerRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetTenantOwnerRequestValidationError{}
+
+// Validate checks the field values on SetTenantOwnerResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetTenantOwnerResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetTenantOwnerResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetTenantOwnerResponseMultiError, or nil if none found.
+func (m *SetTenantOwnerResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetTenantOwnerResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if len(errors) > 0 {
+		return SetTenantOwnerResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetTenantOwnerResponseMultiError is an error wrapping multiple validation
+// errors returned by SetTenantOwnerResponse.ValidateAll() if the designated
+// constraints aren't met.
+type SetTenantOwnerResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetTenantOwnerResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetTenantOwnerResponseMultiError) AllErrors() []error { return m }
+
+// SetTenantOwnerResponseValidationError is the validation error returned by
+// SetTenantOwnerResponse.Validate if the designated constraints aren't met.
+type SetTenantOwnerResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetTenantOwnerResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetTenantOwnerResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetTenantOwnerResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetTenantOwnerResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetTenantOwnerResponseValidationError) ErrorName() string {
+	return "SetTenantOwnerResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetTenantOwnerResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetTenantOwnerResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetTenantOwnerResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetTenantOwnerResponseValidationError{}

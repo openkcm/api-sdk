@@ -28,6 +28,7 @@ const (
 	Service_SetTenantLabels_FullMethodName     = "/kms.api.cmk.registry.tenant.v1.Service/SetTenantLabels"
 	Service_RemoveTenantLabels_FullMethodName  = "/kms.api.cmk.registry.tenant.v1.Service/RemoveTenantLabels"
 	Service_SetTenantUserGroups_FullMethodName = "/kms.api.cmk.registry.tenant.v1.Service/SetTenantUserGroups"
+	Service_SetTenantOwner_FullMethodName      = "/kms.api.cmk.registry.tenant.v1.Service/SetTenantOwner"
 )
 
 // ServiceClient is the client API for Service service.
@@ -43,6 +44,7 @@ type ServiceClient interface {
 	SetTenantLabels(ctx context.Context, in *SetTenantLabelsRequest, opts ...grpc.CallOption) (*SetTenantLabelsResponse, error)
 	RemoveTenantLabels(ctx context.Context, in *RemoveTenantLabelsRequest, opts ...grpc.CallOption) (*RemoveTenantLabelsResponse, error)
 	SetTenantUserGroups(ctx context.Context, in *SetTenantUserGroupsRequest, opts ...grpc.CallOption) (*SetTenantUserGroupsResponse, error)
+	SetTenantOwner(ctx context.Context, in *SetTenantOwnerRequest, opts ...grpc.CallOption) (*SetTenantOwnerResponse, error)
 }
 
 type serviceClient struct {
@@ -143,6 +145,16 @@ func (c *serviceClient) SetTenantUserGroups(ctx context.Context, in *SetTenantUs
 	return out, nil
 }
 
+func (c *serviceClient) SetTenantOwner(ctx context.Context, in *SetTenantOwnerRequest, opts ...grpc.CallOption) (*SetTenantOwnerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SetTenantOwnerResponse)
+	err := c.cc.Invoke(ctx, Service_SetTenantOwner_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServiceServer is the server API for Service service.
 // All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
@@ -156,6 +168,7 @@ type ServiceServer interface {
 	SetTenantLabels(context.Context, *SetTenantLabelsRequest) (*SetTenantLabelsResponse, error)
 	RemoveTenantLabels(context.Context, *RemoveTenantLabelsRequest) (*RemoveTenantLabelsResponse, error)
 	SetTenantUserGroups(context.Context, *SetTenantUserGroupsRequest) (*SetTenantUserGroupsResponse, error)
+	SetTenantOwner(context.Context, *SetTenantOwnerRequest) (*SetTenantOwnerResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
 
@@ -192,6 +205,9 @@ func (UnimplementedServiceServer) RemoveTenantLabels(context.Context, *RemoveTen
 }
 func (UnimplementedServiceServer) SetTenantUserGroups(context.Context, *SetTenantUserGroupsRequest) (*SetTenantUserGroupsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetTenantUserGroups not implemented")
+}
+func (UnimplementedServiceServer) SetTenantOwner(context.Context, *SetTenantOwnerRequest) (*SetTenantOwnerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTenantOwner not implemented")
 }
 func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
 func (UnimplementedServiceServer) testEmbeddedByValue()                 {}
@@ -376,6 +392,24 @@ func _Service_SetTenantUserGroups_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_SetTenantOwner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetTenantOwnerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).SetTenantOwner(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Service_SetTenantOwner_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).SetTenantOwner(ctx, req.(*SetTenantOwnerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -418,6 +452,10 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetTenantUserGroups",
 			Handler:    _Service_SetTenantUserGroups_Handler,
+		},
+		{
+			MethodName: "SetTenantOwner",
+			Handler:    _Service_SetTenantOwner_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

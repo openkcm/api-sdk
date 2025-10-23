@@ -12,6 +12,7 @@ service Service {
   rpc SetTenantLabels(SetTenantLabelsRequest) returns (SetTenantLabelsResponse) {}
   rpc RemoveTenantLabels(RemoveTenantLabelsRequest) returns (RemoveTenantLabelsResponse) {}
   rpc SetTenantUserGroups(SetTenantUserGroupsRequest) returns (SetTenantUserGroupsResponse) {}
+  rpc SetTenantOwner(SetTenantOwnerRequest) returns (SetTenantOwnerResponse) {}
 }
 
 message Tenant {
@@ -121,6 +122,16 @@ message GetTenantRequest {
 
 message GetTenantResponse {
   Tenant tenant = 1;
+}
+
+message SetTenantOwnerRequest {
+  string id = 1;
+  string owner_id = 2;
+  string owner_type = 3;
+}
+
+message SetTenantOwnerResponse {
+  bool success = 1;
 }
 
 enum Status {
