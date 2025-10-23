@@ -12,7 +12,7 @@ service Service {
   rpc SetTenantLabels(SetTenantLabelsRequest) returns (SetTenantLabelsResponse) {}
   rpc RemoveTenantLabels(RemoveTenantLabelsRequest) returns (RemoveTenantLabelsResponse) {}
   rpc SetTenantUserGroups(SetTenantUserGroupsRequest) returns (SetTenantUserGroupsResponse) {}
-  rpc SetTenantOwner(SetTenantOwnerRequest) returns (SetTenantOwnerResponse) {}
+  rpc ApplyTenantOwner(ApplyTenantOwnerRequest) returns (ApplyTenantOwnerResponse) {}
 }
 
 message Tenant {
@@ -124,13 +124,13 @@ message GetTenantResponse {
   Tenant tenant = 1;
 }
 
-message SetTenantOwnerRequest {
+message ApplyTenantOwnerRequest {
   string id = 1;
   string owner_id = 2;
   string owner_type = 3;
 }
 
-message SetTenantOwnerResponse {
+message ApplyTenantOwnerResponse {
   bool success = 1;
 }
 
@@ -163,4 +163,5 @@ enum ACTION {
   ACTION_BLOCK_TENANT = 2;
   ACTION_UNBLOCK_TENANT = 3;
   ACTION_TERMINATE_TENANT = 4;
+  ACTION_APPLY_TENANT_OWNER = 5;
 }
