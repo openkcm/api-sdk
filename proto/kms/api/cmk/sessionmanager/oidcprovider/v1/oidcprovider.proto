@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package kms.api.cmk.sessionmanager.oidcprovider.v1;
 
-service OIDCProviderService {
+service Service {
   rpc GetOIDCProvider(GetOIDCProviderRequest) returns (GetOIDCProviderResponse) {}
 }
 

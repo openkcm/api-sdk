@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OIDCProvider_GetOIDCProvider_FullMethodName = "/kms.api.cmk.sessionmanager.oidcprovider.v1.OIDCProvider/GetOIDCProvider"
+	Service_GetOIDCProvider_FullMethodName = "/kms.api.cmk.sessionmanager.oidcprovider.v1.Service/GetOIDCProvider"
 )
 
-// OIDCProviderClient is the client API for OIDCProvider service.
+// ServiceClient is the client API for Service service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type OIDCProviderClient interface {
+type ServiceClient interface {
 	GetOIDCProvider(ctx context.Context, in *GetOIDCProviderRequest, opts ...grpc.CallOption) (*GetOIDCProviderResponse, error)
 }
 
-type oIDCProviderClient struct {
+type serviceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewOIDCProviderClient(cc grpc.ClientConnInterface) OIDCProviderClient {
-	return &oIDCProviderClient{cc}
+func NewServiceClient(cc grpc.ClientConnInterface) ServiceClient {
+	return &serviceClient{cc}
 }
 
-func (c *oIDCProviderClient) GetOIDCProvider(ctx context.Context, in *GetOIDCProviderRequest, opts ...grpc.CallOption) (*GetOIDCProviderResponse, error) {
+func (c *serviceClient) GetOIDCProvider(ctx context.Context, in *GetOIDCProviderRequest, opts ...grpc.CallOption) (*GetOIDCProviderResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetOIDCProviderResponse)
-	err := c.cc.Invoke(ctx, OIDCProvider_GetOIDCProvider_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, Service_GetOIDCProvider_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// OIDCProviderServer is the server API for OIDCProvider service.
-// All implementations must embed UnimplementedOIDCProviderServer
+// ServiceServer is the server API for Service service.
+// All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
-type OIDCProviderServer interface {
+type ServiceServer interface {
 	GetOIDCProvider(context.Context, *GetOIDCProviderRequest) (*GetOIDCProviderResponse, error)
-	mustEmbedUnimplementedOIDCProviderServer()
+	mustEmbedUnimplementedServiceServer()
 }
 
-// UnimplementedOIDCProviderServer must be embedded to have
+// UnimplementedServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedOIDCProviderServer struct{}
+type UnimplementedServiceServer struct{}
 
-func (UnimplementedOIDCProviderServer) GetOIDCProvider(context.Context, *GetOIDCProviderRequest) (*GetOIDCProviderResponse, error) {
+func (UnimplementedServiceServer) GetOIDCProvider(context.Context, *GetOIDCProviderRequest) (*GetOIDCProviderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetOIDCProvider not implemented")
 }
-func (UnimplementedOIDCProviderServer) mustEmbedUnimplementedOIDCProviderServer() {}
-func (UnimplementedOIDCProviderServer) testEmbeddedByValue()                      {}
+func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
+func (UnimplementedServiceServer) testEmbeddedByValue()                 {}
 
-// UnsafeOIDCProviderServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to OIDCProviderServer will
+// UnsafeServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ServiceServer will
 // result in compilation errors.
-type UnsafeOIDCProviderServer interface {
-	mustEmbedUnimplementedOIDCProviderServer()
+type UnsafeServiceServer interface {
+	mustEmbedUnimplementedServiceServer()
 }
 
-func RegisterOIDCProviderServer(s grpc.ServiceRegistrar, srv OIDCProviderServer) {
-	// If the following call pancis, it indicates UnimplementedOIDCProviderServer was
+func RegisterServiceServer(s grpc.ServiceRegistrar, srv ServiceServer) {
+	// If the following call pancis, it indicates UnimplementedServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&OIDCProvider_ServiceDesc, srv)
+	s.RegisterService(&Service_ServiceDesc, srv)
 }
 
-func _OIDCProvider_GetOIDCProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Service_GetOIDCProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetOIDCProviderRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OIDCProviderServer).GetOIDCProvider(ctx, in)
+		return srv.(ServiceServer).GetOIDCProvider(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OIDCProvider_GetOIDCProvider_FullMethodName,
+		FullMethod: Service_GetOIDCProvider_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OIDCProviderServer).GetOIDCProvider(ctx, req.(*GetOIDCProviderRequest))
+		return srv.(ServiceServer).GetOIDCProvider(ctx, req.(*GetOIDCProviderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// OIDCProvider_ServiceDesc is the grpc.ServiceDesc for OIDCProvider service.
+// Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var OIDCProvider_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "kms.api.cmk.sessionmanager.oidcprovider.v1.OIDCProvider",
-	HandlerType: (*OIDCProviderServer)(nil),
+var Service_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kms.api.cmk.sessionmanager.oidcprovider.v1.Service",
+	HandlerType: (*ServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetOIDCProvider",
-			Handler:    _OIDCProvider_GetOIDCProvider_Handler,
+			Handler:    _Service_GetOIDCProvider_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

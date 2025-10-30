@@ -59,8 +59,6 @@ func (m *ApplyOIDCMappingRequest) validate(all bool) error {
 
 	// no validation rules for TenantId
 
-	// no validation rules for Blocked
-
 	// no validation rules for Issuer
 
 	if len(errors) > 0 {
@@ -462,3 +460,427 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = RemoveOIDCMappingResponseValidationError{}
+
+// Validate checks the field values on BlockOIDCMappingRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *BlockOIDCMappingRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on BlockOIDCMappingRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// BlockOIDCMappingRequestMultiError, or nil if none found.
+func (m *BlockOIDCMappingRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *BlockOIDCMappingRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for TenantId
+
+	if len(errors) > 0 {
+		return BlockOIDCMappingRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// BlockOIDCMappingRequestMultiError is an error wrapping multiple validation
+// errors returned by BlockOIDCMappingRequest.ValidateAll() if the designated
+// constraints aren't met.
+type BlockOIDCMappingRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m BlockOIDCMappingRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m BlockOIDCMappingRequestMultiError) AllErrors() []error { return m }
+
+// BlockOIDCMappingRequestValidationError is the validation error returned by
+// BlockOIDCMappingRequest.Validate if the designated constraints aren't met.
+type BlockOIDCMappingRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e BlockOIDCMappingRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e BlockOIDCMappingRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e BlockOIDCMappingRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e BlockOIDCMappingRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e BlockOIDCMappingRequestValidationError) ErrorName() string {
+	return "BlockOIDCMappingRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e BlockOIDCMappingRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sBlockOIDCMappingRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = BlockOIDCMappingRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = BlockOIDCMappingRequestValidationError{}
+
+// Validate checks the field values on BlockOIDCMappingResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *BlockOIDCMappingResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on BlockOIDCMappingResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// BlockOIDCMappingResponseMultiError, or nil if none found.
+func (m *BlockOIDCMappingResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *BlockOIDCMappingResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if m.Message != nil {
+		// no validation rules for Message
+	}
+
+	if len(errors) > 0 {
+		return BlockOIDCMappingResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// BlockOIDCMappingResponseMultiError is an error wrapping multiple validation
+// errors returned by BlockOIDCMappingResponse.ValidateAll() if the designated
+// constraints aren't met.
+type BlockOIDCMappingResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m BlockOIDCMappingResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m BlockOIDCMappingResponseMultiError) AllErrors() []error { return m }
+
+// BlockOIDCMappingResponseValidationError is the validation error returned by
+// BlockOIDCMappingResponse.Validate if the designated constraints aren't met.
+type BlockOIDCMappingResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e BlockOIDCMappingResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e BlockOIDCMappingResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e BlockOIDCMappingResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e BlockOIDCMappingResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e BlockOIDCMappingResponseValidationError) ErrorName() string {
+	return "BlockOIDCMappingResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e BlockOIDCMappingResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sBlockOIDCMappingResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = BlockOIDCMappingResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = BlockOIDCMappingResponseValidationError{}
+
+// Validate checks the field values on UnblockOIDCMappingRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *UnblockOIDCMappingRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UnblockOIDCMappingRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UnblockOIDCMappingRequestMultiError, or nil if none found.
+func (m *UnblockOIDCMappingRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UnblockOIDCMappingRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for TenantId
+
+	if len(errors) > 0 {
+		return UnblockOIDCMappingRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// UnblockOIDCMappingRequestMultiError is an error wrapping multiple validation
+// errors returned by UnblockOIDCMappingRequest.ValidateAll() if the
+// designated constraints aren't met.
+type UnblockOIDCMappingRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UnblockOIDCMappingRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UnblockOIDCMappingRequestMultiError) AllErrors() []error { return m }
+
+// UnblockOIDCMappingRequestValidationError is the validation error returned by
+// UnblockOIDCMappingRequest.Validate if the designated constraints aren't met.
+type UnblockOIDCMappingRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UnblockOIDCMappingRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UnblockOIDCMappingRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UnblockOIDCMappingRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UnblockOIDCMappingRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UnblockOIDCMappingRequestValidationError) ErrorName() string {
+	return "UnblockOIDCMappingRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UnblockOIDCMappingRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUnblockOIDCMappingRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UnblockOIDCMappingRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UnblockOIDCMappingRequestValidationError{}
+
+// Validate checks the field values on UnblockOIDCMappingResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *UnblockOIDCMappingResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on UnblockOIDCMappingResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// UnblockOIDCMappingResponseMultiError, or nil if none found.
+func (m *UnblockOIDCMappingResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *UnblockOIDCMappingResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	if m.Message != nil {
+		// no validation rules for Message
+	}
+
+	if len(errors) > 0 {
+		return UnblockOIDCMappingResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// UnblockOIDCMappingResponseMultiError is an error wrapping multiple
+// validation errors returned by UnblockOIDCMappingResponse.ValidateAll() if
+// the designated constraints aren't met.
+type UnblockOIDCMappingResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m UnblockOIDCMappingResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m UnblockOIDCMappingResponseMultiError) AllErrors() []error { return m }
+
+// UnblockOIDCMappingResponseValidationError is the validation error returned
+// by UnblockOIDCMappingResponse.Validate if the designated constraints aren't met.
+type UnblockOIDCMappingResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e UnblockOIDCMappingResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e UnblockOIDCMappingResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e UnblockOIDCMappingResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e UnblockOIDCMappingResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e UnblockOIDCMappingResponseValidationError) ErrorName() string {
+	return "UnblockOIDCMappingResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e UnblockOIDCMappingResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sUnblockOIDCMappingResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = UnblockOIDCMappingResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = UnblockOIDCMappingResponseValidationError{}
