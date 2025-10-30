@@ -19,139 +19,215 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OIDCMapping_ApplyOIDCMapping_FullMethodName  = "/kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMapping/ApplyOIDCMapping"
-	OIDCMapping_RemoveOIDCMapping_FullMethodName = "/kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMapping/RemoveOIDCMapping"
+	OIDCMappingService_ApplyOIDCMapping_FullMethodName   = "/kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService/ApplyOIDCMapping"
+	OIDCMappingService_RemoveOIDCMapping_FullMethodName  = "/kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService/RemoveOIDCMapping"
+	OIDCMappingService_BlockOIDCMapping_FullMethodName   = "/kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService/BlockOIDCMapping"
+	OIDCMappingService_UnblockOIDCMapping_FullMethodName = "/kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService/UnblockOIDCMapping"
 )
 
-// OIDCMappingClient is the client API for OIDCMapping service.
+// OIDCMappingServiceClient is the client API for OIDCMappingService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type OIDCMappingClient interface {
+type OIDCMappingServiceClient interface {
 	ApplyOIDCMapping(ctx context.Context, in *ApplyOIDCMappingRequest, opts ...grpc.CallOption) (*ApplyOIDCMappingResponse, error)
 	RemoveOIDCMapping(ctx context.Context, in *RemoveOIDCMappingRequest, opts ...grpc.CallOption) (*RemoveOIDCMappingResponse, error)
+	BlockOIDCMapping(ctx context.Context, in *BlockOIDCMappingRequest, opts ...grpc.CallOption) (*BlockOIDCMappingResponse, error)
+	UnblockOIDCMapping(ctx context.Context, in *UnblockOIDCMappingRequest, opts ...grpc.CallOption) (*UnblockOIDCMappingResponse, error)
 }
 
-type oIDCMappingClient struct {
+type oIDCMappingServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewOIDCMappingClient(cc grpc.ClientConnInterface) OIDCMappingClient {
-	return &oIDCMappingClient{cc}
+func NewOIDCMappingServiceClient(cc grpc.ClientConnInterface) OIDCMappingServiceClient {
+	return &oIDCMappingServiceClient{cc}
 }
 
-func (c *oIDCMappingClient) ApplyOIDCMapping(ctx context.Context, in *ApplyOIDCMappingRequest, opts ...grpc.CallOption) (*ApplyOIDCMappingResponse, error) {
+func (c *oIDCMappingServiceClient) ApplyOIDCMapping(ctx context.Context, in *ApplyOIDCMappingRequest, opts ...grpc.CallOption) (*ApplyOIDCMappingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ApplyOIDCMappingResponse)
-	err := c.cc.Invoke(ctx, OIDCMapping_ApplyOIDCMapping_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, OIDCMappingService_ApplyOIDCMapping_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *oIDCMappingClient) RemoveOIDCMapping(ctx context.Context, in *RemoveOIDCMappingRequest, opts ...grpc.CallOption) (*RemoveOIDCMappingResponse, error) {
+func (c *oIDCMappingServiceClient) RemoveOIDCMapping(ctx context.Context, in *RemoveOIDCMappingRequest, opts ...grpc.CallOption) (*RemoveOIDCMappingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RemoveOIDCMappingResponse)
-	err := c.cc.Invoke(ctx, OIDCMapping_RemoveOIDCMapping_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, OIDCMappingService_RemoveOIDCMapping_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// OIDCMappingServer is the server API for OIDCMapping service.
-// All implementations must embed UnimplementedOIDCMappingServer
-// for forward compatibility.
-type OIDCMappingServer interface {
-	ApplyOIDCMapping(context.Context, *ApplyOIDCMappingRequest) (*ApplyOIDCMappingResponse, error)
-	RemoveOIDCMapping(context.Context, *RemoveOIDCMappingRequest) (*RemoveOIDCMappingResponse, error)
-	mustEmbedUnimplementedOIDCMappingServer()
+func (c *oIDCMappingServiceClient) BlockOIDCMapping(ctx context.Context, in *BlockOIDCMappingRequest, opts ...grpc.CallOption) (*BlockOIDCMappingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(BlockOIDCMappingResponse)
+	err := c.cc.Invoke(ctx, OIDCMappingService_BlockOIDCMapping_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
-// UnimplementedOIDCMappingServer must be embedded to have
+func (c *oIDCMappingServiceClient) UnblockOIDCMapping(ctx context.Context, in *UnblockOIDCMappingRequest, opts ...grpc.CallOption) (*UnblockOIDCMappingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UnblockOIDCMappingResponse)
+	err := c.cc.Invoke(ctx, OIDCMappingService_UnblockOIDCMapping_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// OIDCMappingServiceServer is the server API for OIDCMappingService service.
+// All implementations must embed UnimplementedOIDCMappingServiceServer
+// for forward compatibility.
+type OIDCMappingServiceServer interface {
+	ApplyOIDCMapping(context.Context, *ApplyOIDCMappingRequest) (*ApplyOIDCMappingResponse, error)
+	RemoveOIDCMapping(context.Context, *RemoveOIDCMappingRequest) (*RemoveOIDCMappingResponse, error)
+	BlockOIDCMapping(context.Context, *BlockOIDCMappingRequest) (*BlockOIDCMappingResponse, error)
+	UnblockOIDCMapping(context.Context, *UnblockOIDCMappingRequest) (*UnblockOIDCMappingResponse, error)
+	mustEmbedUnimplementedOIDCMappingServiceServer()
+}
+
+// UnimplementedOIDCMappingServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedOIDCMappingServer struct{}
+type UnimplementedOIDCMappingServiceServer struct{}
 
-func (UnimplementedOIDCMappingServer) ApplyOIDCMapping(context.Context, *ApplyOIDCMappingRequest) (*ApplyOIDCMappingResponse, error) {
+func (UnimplementedOIDCMappingServiceServer) ApplyOIDCMapping(context.Context, *ApplyOIDCMappingRequest) (*ApplyOIDCMappingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ApplyOIDCMapping not implemented")
 }
-func (UnimplementedOIDCMappingServer) RemoveOIDCMapping(context.Context, *RemoveOIDCMappingRequest) (*RemoveOIDCMappingResponse, error) {
+func (UnimplementedOIDCMappingServiceServer) RemoveOIDCMapping(context.Context, *RemoveOIDCMappingRequest) (*RemoveOIDCMappingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveOIDCMapping not implemented")
 }
-func (UnimplementedOIDCMappingServer) mustEmbedUnimplementedOIDCMappingServer() {}
-func (UnimplementedOIDCMappingServer) testEmbeddedByValue()                     {}
+func (UnimplementedOIDCMappingServiceServer) BlockOIDCMapping(context.Context, *BlockOIDCMappingRequest) (*BlockOIDCMappingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BlockOIDCMapping not implemented")
+}
+func (UnimplementedOIDCMappingServiceServer) UnblockOIDCMapping(context.Context, *UnblockOIDCMappingRequest) (*UnblockOIDCMappingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnblockOIDCMapping not implemented")
+}
+func (UnimplementedOIDCMappingServiceServer) mustEmbedUnimplementedOIDCMappingServiceServer() {}
+func (UnimplementedOIDCMappingServiceServer) testEmbeddedByValue()                            {}
 
-// UnsafeOIDCMappingServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to OIDCMappingServer will
+// UnsafeOIDCMappingServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to OIDCMappingServiceServer will
 // result in compilation errors.
-type UnsafeOIDCMappingServer interface {
-	mustEmbedUnimplementedOIDCMappingServer()
+type UnsafeOIDCMappingServiceServer interface {
+	mustEmbedUnimplementedOIDCMappingServiceServer()
 }
 
-func RegisterOIDCMappingServer(s grpc.ServiceRegistrar, srv OIDCMappingServer) {
-	// If the following call pancis, it indicates UnimplementedOIDCMappingServer was
+func RegisterOIDCMappingServiceServer(s grpc.ServiceRegistrar, srv OIDCMappingServiceServer) {
+	// If the following call pancis, it indicates UnimplementedOIDCMappingServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&OIDCMapping_ServiceDesc, srv)
+	s.RegisterService(&OIDCMappingService_ServiceDesc, srv)
 }
 
-func _OIDCMapping_ApplyOIDCMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OIDCMappingService_ApplyOIDCMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ApplyOIDCMappingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OIDCMappingServer).ApplyOIDCMapping(ctx, in)
+		return srv.(OIDCMappingServiceServer).ApplyOIDCMapping(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OIDCMapping_ApplyOIDCMapping_FullMethodName,
+		FullMethod: OIDCMappingService_ApplyOIDCMapping_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OIDCMappingServer).ApplyOIDCMapping(ctx, req.(*ApplyOIDCMappingRequest))
+		return srv.(OIDCMappingServiceServer).ApplyOIDCMapping(ctx, req.(*ApplyOIDCMappingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OIDCMapping_RemoveOIDCMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OIDCMappingService_RemoveOIDCMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RemoveOIDCMappingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OIDCMappingServer).RemoveOIDCMapping(ctx, in)
+		return srv.(OIDCMappingServiceServer).RemoveOIDCMapping(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OIDCMapping_RemoveOIDCMapping_FullMethodName,
+		FullMethod: OIDCMappingService_RemoveOIDCMapping_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OIDCMappingServer).RemoveOIDCMapping(ctx, req.(*RemoveOIDCMappingRequest))
+		return srv.(OIDCMappingServiceServer).RemoveOIDCMapping(ctx, req.(*RemoveOIDCMappingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// OIDCMapping_ServiceDesc is the grpc.ServiceDesc for OIDCMapping service.
+func _OIDCMappingService_BlockOIDCMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BlockOIDCMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OIDCMappingServiceServer).BlockOIDCMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OIDCMappingService_BlockOIDCMapping_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OIDCMappingServiceServer).BlockOIDCMapping(ctx, req.(*BlockOIDCMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OIDCMappingService_UnblockOIDCMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnblockOIDCMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OIDCMappingServiceServer).UnblockOIDCMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OIDCMappingService_UnblockOIDCMapping_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OIDCMappingServiceServer).UnblockOIDCMapping(ctx, req.(*UnblockOIDCMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// OIDCMappingService_ServiceDesc is the grpc.ServiceDesc for OIDCMappingService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var OIDCMapping_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMapping",
-	HandlerType: (*OIDCMappingServer)(nil),
+var OIDCMappingService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService",
+	HandlerType: (*OIDCMappingServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "ApplyOIDCMapping",
-			Handler:    _OIDCMapping_ApplyOIDCMapping_Handler,
+			Handler:    _OIDCMappingService_ApplyOIDCMapping_Handler,
 		},
 		{
 			MethodName: "RemoveOIDCMapping",
-			Handler:    _OIDCMapping_RemoveOIDCMapping_Handler,
+			Handler:    _OIDCMappingService_RemoveOIDCMapping_Handler,
+		},
+		{
+			MethodName: "BlockOIDCMapping",
+			Handler:    _OIDCMappingService_BlockOIDCMapping_Handler,
+		},
+		{
+			MethodName: "UnblockOIDCMapping",
+			Handler:    _OIDCMappingService_UnblockOIDCMapping_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -5,15 +5,16 @@ package kms.api.cmk.sessionmanager.oidcmapping.v1;
 service OIDCMappingService {
   rpc ApplyOIDCMapping(ApplyOIDCMappingRequest) returns (ApplyOIDCMappingResponse) {}
   rpc RemoveOIDCMapping(RemoveOIDCMappingRequest) returns (RemoveOIDCMappingResponse) {}
+  rpc BlockOIDCMapping(BlockOIDCMappingRequest) returns (BlockOIDCMappingResponse) {}
+  rpc UnblockOIDCMapping(UnblockOIDCMappingRequest) returns (UnblockOIDCMappingResponse) {}
 }
 
 // apply (create or update) the OIDC provider mapping for the given tenant
 message ApplyOIDCMappingRequest {
   string tenant_id = 1;
-  bool blocked = 2;
-  string issuer = 3;
-  repeated string jwks_uris = 4;
-  repeated string audiences = 5;
+  string issuer = 2;
+  repeated string jwks_uris = 3;
+  repeated string audiences = 4;
 }
 
 message ApplyOIDCMappingResponse {
@@ -27,6 +28,26 @@ message RemoveOIDCMappingRequest {
 }
 
 message RemoveOIDCMappingResponse {
+  bool success = 1;
+  optional string message = 2;
+}
+
+// block OIDC provider for the given tenant
+message BlockOIDCMappingRequest {
+  string tenant_id = 1;
+}
+
+message BlockOIDCMappingResponse {
+  bool success = 1;
+  optional string message = 2;
+}
+
+// unblock OIDC provider for the given tenant
+message UnblockOIDCMappingRequest {
+  string tenant_id = 1;
+}
+
+message UnblockOIDCMappingResponse {
   bool success = 1;
   optional string message = 2;
 }
