@@ -468,8 +468,8 @@ const file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDesc =
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1d\n" +
 	"\amessage\x18\x02 \x01(\tH\x00R\amessage\x88\x01\x01B\n" +
 	"\n" +
-	"\b_message2\x9d\x05\n" +
-	"\x12OIDCMappingService\x12\x9d\x01\n" +
+	"\b_message2\x92\x05\n" +
+	"\aService\x12\x9d\x01\n" +
 	"\x10ApplyOIDCMapping\x12B.kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest\x1aC.kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingResponse\"\x00\x12\xa0\x01\n" +
 	"\x11RemoveOIDCMapping\x12C.kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingRequest\x1aD.kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingResponse\"\x00\x12\x9d\x01\n" +
 	"\x10BlockOIDCMapping\x12B.kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingRequest\x1aC.kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingResponse\"\x00\x12\xa3\x01\n" +
@@ -500,14 +500,14 @@ var file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_goTypes = [
 	(*UnblockOIDCMappingResponse)(nil), // 7: kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingResponse
 }
 var file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_depIdxs = []int32{
-	0, // 0: kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService.ApplyOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest
-	2, // 1: kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService.RemoveOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingRequest
-	4, // 2: kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService.BlockOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingRequest
-	6, // 3: kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService.UnblockOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingRequest
-	1, // 4: kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService.ApplyOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingResponse
-	3, // 5: kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService.RemoveOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingResponse
-	5, // 6: kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService.BlockOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingResponse
-	7, // 7: kms.api.cmk.sessionmanager.oidcmapping.v1.OIDCMappingService.UnblockOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingResponse
+	0, // 0: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.ApplyOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest
+	2, // 1: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.RemoveOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingRequest
+	4, // 2: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.BlockOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingRequest
+	6, // 3: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.UnblockOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingRequest
+	1, // 4: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.ApplyOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingResponse
+	3, // 5: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.RemoveOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingResponse
+	5, // 6: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.BlockOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingResponse
+	7, // 7: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.UnblockOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingResponse
 	4, // [4:8] is the sub-list for method output_type
 	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

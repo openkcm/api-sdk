@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package kms.api.cmk.sessionmanager.oidcmapping.v1;
 
-service OIDCMappingService {
+service Service {
   rpc ApplyOIDCMapping(ApplyOIDCMappingRequest) returns (ApplyOIDCMappingResponse) {}
   rpc RemoveOIDCMapping(RemoveOIDCMappingRequest) returns (RemoveOIDCMappingResponse) {}
   rpc BlockOIDCMapping(BlockOIDCMappingRequest) returns (BlockOIDCMappingResponse) {}
