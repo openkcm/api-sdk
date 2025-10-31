@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/openkcm/api-sdk/compare/v0.9.0...v0.10.0) (2025-10-30)
+
+
+### Features
+
+* session manager block and unblock  ([2822c62](https://github.com/openkcm/api-sdk/commit/2822c629b5c8d6cfb83dae2ddf1f2f4abd6a6859))
+
 ## [0.9.0](https://github.com/openkcm/api-sdk/compare/v0.8.1...v0.9.0) (2025-10-14)
 
 
