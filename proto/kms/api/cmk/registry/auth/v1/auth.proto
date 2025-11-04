@@ -2,11 +2,30 @@ syntax = "proto3";
 
 package kms.api.cmk.registry.auth.v1;
 
+import "google/api/annotations.proto";
+
 service Service {
-  rpc ApplyAuth(ApplyAuthRequest) returns (ApplyAuthResponse) {}
-  rpc GetAuth(GetAuthRequest) returns (GetAuthResponse) {}
-  rpc ListAuths(ListAuthsRequest) returns (ListAuthsResponse) {}
-  rpc RemoveAuth(RemoveAuthRequest) returns (RemoveAuthResponse) {}
+  rpc ApplyAuth(ApplyAuthRequest) returns (ApplyAuthResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth"
+      body: "*"
+    };
+  }
+  rpc GetAuth(GetAuthRequest) returns (GetAuthResponse) {
+    option (google.api.http) = {
+      get: "/v1/auth/{external_id}"
+    };
+  }
+  rpc ListAuths(ListAuthsRequest) returns (ListAuthsResponse) {
+    option (google.api.http) = {
+      get: "/v1/auths"
+    };
+  }
+  rpc RemoveAuth(RemoveAuthRequest) returns (RemoveAuthResponse) {
+    option (google.api.http) = {
+      delete: "/v1/auth/{external_id}"
+    };
+  }
 }
 
 message Auth {

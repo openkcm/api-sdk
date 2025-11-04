@@ -8,6 +8,7 @@ package systemv1
 
 import (
 	v1 "github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -1182,7 +1183,7 @@ var File_kms_api_cmk_registry_system_v1_system_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"\n" +
-	"+kms/api/cmk/registry/system/v1/system.proto\x12\x1ekms.api.cmk.registry.system.v1\x1a!kms/api/cmk/types/v1/status.proto\"\xb0\x03\n" +
+	"+kms/api/cmk/registry/system/v1/system.proto\x12\x1ekms.api.cmk.registry.system.v1\x1a\x1cgoogle/api/annotations.proto\x1a!kms/api/cmk/types/v1/status.proto\"\xb0\x03\n" +
 	"\x06System\x12\x1f\n" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x1b\n" +
@@ -1280,17 +1281,18 @@ const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"\n" +
 	"label_keys\x18\x03 \x03(\tR\tlabelKeys\"6\n" +
 	"\x1aRemoveSystemLabelsResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xf9\t\n" +
-	"\aService\x12\x81\x01\n" +
-	"\x0eRegisterSystem\x125.kms.api.cmk.registry.system.v1.RegisterSystemRequest\x1a6.kms.api.cmk.registry.system.v1.RegisterSystemResponse\"\x00\x12x\n" +
-	"\vListSystems\x122.kms.api.cmk.registry.system.v1.ListSystemsRequest\x1a3.kms.api.cmk.registry.system.v1.ListSystemsResponse\"\x00\x12{\n" +
-	"\fDeleteSystem\x123.kms.api.cmk.registry.system.v1.DeleteSystemRequest\x1a4.kms.api.cmk.registry.system.v1.DeleteSystemResponse\"\x00\x12\x99\x01\n" +
-	"\x16UpdateSystemL1KeyClaim\x12=.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest\x1a>.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse\"\x00\x12\x9c\x01\n" +
-	"\x17UnlinkSystemsFromTenant\x12>.kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest\x1a?.kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantResponse\"\x00\x12\x90\x01\n" +
-	"\x13LinkSystemsToTenant\x12:.kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest\x1a;.kms.api.cmk.registry.system.v1.LinkSystemsToTenantResponse\"\x00\x12\x8d\x01\n" +
-	"\x12UpdateSystemStatus\x129.kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest\x1a:.kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse\"\x00\x12\x84\x01\n" +
-	"\x0fSetSystemLabels\x126.kms.api.cmk.registry.system.v1.SetSystemLabelsRequest\x1a7.kms.api.cmk.registry.system.v1.SetSystemLabelsResponse\"\x00\x12\x8d\x01\n" +
-	"\x12RemoveSystemLabels\x129.kms.api.cmk.registry.system.v1.RemoveSystemLabelsRequest\x1a:.kms.api.cmk.registry.system.v1.RemoveSystemLabelsResponse\"\x00B\x9a\x02\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xa8\f\n" +
+	"\aService\x12\x96\x01\n" +
+	"\x0eRegisterSystem\x125.kms.api.cmk.registry.system.v1.RegisterSystemRequest\x1a6.kms.api.cmk.registry.system.v1.RegisterSystemResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
+	"/v1/system\x12\x8b\x01\n" +
+	"\vListSystems\x122.kms.api.cmk.registry.system.v1.ListSystemsRequest\x1a3.kms.api.cmk.registry.system.v1.ListSystemsResponse\"\x13\x82\xd3\xe4\x93\x02\r\x12\v/v1/systems\x12\x9b\x01\n" +
+	"\fDeleteSystem\x123.kms.api.cmk.registry.system.v1.DeleteSystemRequest\x1a4.kms.api.cmk.registry.system.v1.DeleteSystemResponse\" \x82\xd3\xe4\x93\x02\x1a*\x18/v1/system/{external_id}\x12\xc8\x01\n" +
+	"\x16UpdateSystemL1KeyClaim\x12=.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest\x1a>.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse\"/\x82\xd3\xe4\x93\x02):\x01*2$/v1/system/{external_id}/l1key-claim\x12\xb9\x01\n" +
+	"\x17UnlinkSystemsFromTenant\x12>.kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest\x1a?.kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/v1/systems/unlink\x12\xab\x01\n" +
+	"\x13LinkSystemsToTenant\x12:.kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest\x1a;.kms.api.cmk.registry.system.v1.LinkSystemsToTenantResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/v1/systems/link\x12\xb7\x01\n" +
+	"\x12UpdateSystemStatus\x129.kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest\x1a:.kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse\"*\x82\xd3\xe4\x93\x02$:\x01*2\x1f/v1/system/{external_id}/status\x12\xae\x01\n" +
+	"\x0fSetSystemLabels\x126.kms.api.cmk.registry.system.v1.SetSystemLabelsRequest\x1a7.kms.api.cmk.registry.system.v1.SetSystemLabelsResponse\"*\x82\xd3\xe4\x93\x02$:\x01*2\x1f/v1/system/{external_id}/labels\x12\xb7\x01\n" +
+	"\x12RemoveSystemLabels\x129.kms.api.cmk.registry.system.v1.RemoveSystemLabelsRequest\x1a:.kms.api.cmk.registry.system.v1.RemoveSystemLabelsResponse\"*\x82\xd3\xe4\x93\x02$:\x01**\x1f/v1/system/{external_id}/labelsB\x9a\x02\n" +
 	"\"com.kms.api.cmk.registry.system.v1B\vSystemProtoP\x01ZHgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/system/v1;systemv1\xa2\x02\x05KACRS\xaa\x02\x1eKms.Api.Cmk.Registry.System.V1\xca\x02\x1eKms\\Api\\Cmk\\Registry\\System\\V1\xe2\x02*Kms\\Api\\Cmk\\Registry\\System\\V1\\GPBMetadata\xea\x02#Kms::Api::Cmk::Registry::System::V1b\x06proto3"
 
 var (

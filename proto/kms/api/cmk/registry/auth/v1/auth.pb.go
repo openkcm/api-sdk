@@ -7,6 +7,7 @@
 package authv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -635,7 +636,7 @@ var File_kms_api_cmk_registry_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
-	"'kms/api/cmk/registry/auth/v1/auth.proto\x12\x1ckms.api.cmk.registry.auth.v1\"\x90\x03\n" +
+	"'kms/api/cmk/registry/auth/v1/auth.proto\x12\x1ckms.api.cmk.registry.auth.v1\x1a\x1cgoogle/api/annotations.proto\"\x90\x03\n" +
 	"\x04Auth\x12\x1f\n" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x1b\n" +
@@ -696,13 +697,13 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"AuthAction\x12\x1b\n" +
 	"\x17AUTH_ACTION_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16AUTH_ACTION_APPLY_AUTH\x10\x01\x12\x1b\n" +
-	"\x17AUTH_ACTION_REMOVE_AUTH\x10\x022\xc6\x03\n" +
-	"\aService\x12n\n" +
-	"\tApplyAuth\x12..kms.api.cmk.registry.auth.v1.ApplyAuthRequest\x1a/.kms.api.cmk.registry.auth.v1.ApplyAuthResponse\"\x00\x12h\n" +
-	"\aGetAuth\x12,.kms.api.cmk.registry.auth.v1.GetAuthRequest\x1a-.kms.api.cmk.registry.auth.v1.GetAuthResponse\"\x00\x12n\n" +
-	"\tListAuths\x12..kms.api.cmk.registry.auth.v1.ListAuthsRequest\x1a/.kms.api.cmk.registry.auth.v1.ListAuthsResponse\"\x00\x12q\n" +
+	"\x17AUTH_ACTION_REMOVE_AUTH\x10\x022\xa9\x04\n" +
+	"\aService\x12\x81\x01\n" +
+	"\tApplyAuth\x12..kms.api.cmk.registry.auth.v1.ApplyAuthRequest\x1a/.kms.api.cmk.registry.auth.v1.ApplyAuthResponse\"\x13\x82\xd3\xe4\x93\x02\r:\x01*\"\b/v1/auth\x12\x86\x01\n" +
+	"\aGetAuth\x12,.kms.api.cmk.registry.auth.v1.GetAuthRequest\x1a-.kms.api.cmk.registry.auth.v1.GetAuthResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/v1/auth/{external_id}\x12\x7f\n" +
+	"\tListAuths\x12..kms.api.cmk.registry.auth.v1.ListAuthsRequest\x1a/.kms.api.cmk.registry.auth.v1.ListAuthsResponse\"\x11\x82\xd3\xe4\x93\x02\v\x12\t/v1/auths\x12\x8f\x01\n" +
 	"\n" +
-	"RemoveAuth\x12/.kms.api.cmk.registry.auth.v1.RemoveAuthRequest\x1a0.kms.api.cmk.registry.auth.v1.RemoveAuthResponse\"\x00B\x8a\x02\n" +
+	"RemoveAuth\x12/.kms.api.cmk.registry.auth.v1.RemoveAuthRequest\x1a0.kms.api.cmk.registry.auth.v1.RemoveAuthResponse\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/v1/auth/{external_id}B\x8a\x02\n" +
 	" com.kms.api.cmk.registry.auth.v1B\tAuthProtoP\x01ZDgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/auth/v1;authv1\xa2\x02\x05KACRA\xaa\x02\x1cKms.Api.Cmk.Registry.Auth.V1\xca\x02\x1cKms\\Api\\Cmk\\Registry\\Auth\\V1\xe2\x02(Kms\\Api\\Cmk\\Registry\\Auth\\V1\\GPBMetadata\xea\x02!Kms::Api::Cmk::Registry::Auth::V1b\x06proto3"
 
 var (

@@ -2,18 +2,62 @@ syntax = "proto3";
 
 package kms.api.cmk.registry.system.v1;
 
+import "google/api/annotations.proto";
 import "kms/api/cmk/types/v1/status.proto";
 
 service Service {
-  rpc RegisterSystem(RegisterSystemRequest) returns (RegisterSystemResponse) {}
-  rpc ListSystems(ListSystemsRequest) returns (ListSystemsResponse) {}
-  rpc DeleteSystem(DeleteSystemRequest) returns (DeleteSystemResponse) {}
-  rpc UpdateSystemL1KeyClaim(UpdateSystemL1KeyClaimRequest) returns (UpdateSystemL1KeyClaimResponse) {}
-  rpc UnlinkSystemsFromTenant(UnlinkSystemsFromTenantRequest) returns (UnlinkSystemsFromTenantResponse) {}
-  rpc LinkSystemsToTenant(LinkSystemsToTenantRequest) returns (LinkSystemsToTenantResponse) {}
-  rpc UpdateSystemStatus(UpdateSystemStatusRequest) returns (UpdateSystemStatusResponse) {}
-  rpc SetSystemLabels(SetSystemLabelsRequest) returns (SetSystemLabelsResponse) {}
-  rpc RemoveSystemLabels(RemoveSystemLabelsRequest) returns (RemoveSystemLabelsResponse) {}
+  rpc RegisterSystem(RegisterSystemRequest) returns (RegisterSystemResponse) {
+    option (google.api.http) = {
+      post: "/v1/system"
+      body: "*"
+    };
+  }
+  rpc ListSystems(ListSystemsRequest) returns (ListSystemsResponse) {
+    option (google.api.http) = {
+      get: "/v1/systems"
+    };
+  }
+  rpc DeleteSystem(DeleteSystemRequest) returns (DeleteSystemResponse) {
+    option (google.api.http) = {
+      delete: "/v1/system/{external_id}"
+    };
+  }
+  rpc UpdateSystemL1KeyClaim(UpdateSystemL1KeyClaimRequest) returns (UpdateSystemL1KeyClaimResponse) {
+    option (google.api.http) = {
+      patch: "/v1/system/{external_id}/l1key-claim"
+      body: "*"
+    };
+  }
+  rpc UnlinkSystemsFromTenant(UnlinkSystemsFromTenantRequest) returns (UnlinkSystemsFromTenantResponse) {
+    option (google.api.http) = {
+      post: "/v1/systems/unlink"
+      body: "*"
+    };
+  }
+  rpc LinkSystemsToTenant(LinkSystemsToTenantRequest) returns (LinkSystemsToTenantResponse) {
+    option (google.api.http) = {
+      post: "/v1/systems/link"
+      body: "*"
+    };
+  }
+  rpc UpdateSystemStatus(UpdateSystemStatusRequest) returns (UpdateSystemStatusResponse) {
+    option (google.api.http) = {
+      patch: "/v1/system/{external_id}/status"
+      body: "*"
+    };
+  }
+  rpc SetSystemLabels(SetSystemLabelsRequest) returns (SetSystemLabelsResponse) {
+    option (google.api.http) = {
+      patch: "/v1/system/{external_id}/labels"
+      body: "*"
+    };
+  }
+  rpc RemoveSystemLabels(RemoveSystemLabelsRequest) returns (RemoveSystemLabelsResponse) {
+    option (google.api.http) = {
+      delete: "/v1/system/{external_id}/labels"
+      body: "*"
+    };
+  }
 }
 
 message System {
