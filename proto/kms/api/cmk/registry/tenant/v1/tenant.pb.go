@@ -7,6 +7,7 @@
 package tenantv1
 
 import (
+	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -1268,7 +1269,7 @@ var File_kms_api_cmk_registry_tenant_v1_tenant_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\n" +
-	"+kms/api/cmk/registry/tenant/v1/tenant.proto\x12\x1ekms.api.cmk.registry.tenant.v1\x1a\x1cgoogle/api/annotations.proto\"\x8a\x04\n" +
+	"+kms/api/cmk/registry/tenant/v1/tenant.proto\x12\x1ekms.api.cmk.registry.tenant.v1\x1a\x1cgoogle/api/annotations.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\x8a\x04\n" +
 	"\x06Tenant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
@@ -1379,7 +1380,7 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\x17ACTION_PROVISION_TENANT\x10\x01\x12\x17\n" +
 	"\x13ACTION_BLOCK_TENANT\x10\x02\x12\x19\n" +
 	"\x15ACTION_UNBLOCK_TENANT\x10\x03\x12\x1b\n" +
-	"\x17ACTION_TERMINATE_TENANT\x10\x042\xaa\v\n" +
+	"\x17ACTION_TERMINATE_TENANT\x10\x042\xb7\v\n" +
 	"\aService\x12\x96\x01\n" +
 	"\x0eRegisterTenant\x125.kms.api.cmk.registry.tenant.v1.RegisterTenantRequest\x1a6.kms.api.cmk.registry.tenant.v1.RegisterTenantResponse\"\x15\x82\xd3\xe4\x93\x02\x0f:\x01*\"\n" +
 	"/v1/tenant\x12\x8b\x01\n" +
@@ -1390,7 +1391,8 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\x0fTerminateTenant\x126.kms.api.cmk.registry.tenant.v1.TerminateTenantRequest\x1a7.kms.api.cmk.registry.tenant.v1.TerminateTenantResponse\"\x17\x82\xd3\xe4\x93\x02\x11*\x0f/v1/tenant/{id}\x12\xa5\x01\n" +
 	"\x0fSetTenantLabels\x126.kms.api.cmk.registry.tenant.v1.SetTenantLabelsRequest\x1a7.kms.api.cmk.registry.tenant.v1.SetTenantLabelsResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01*2\x16/v1/tenant/{id}/labels\x12\xae\x01\n" +
 	"\x12RemoveTenantLabels\x129.kms.api.cmk.registry.tenant.v1.RemoveTenantLabelsRequest\x1a:.kms.api.cmk.registry.tenant.v1.RemoveTenantLabelsResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01**\x16/v1/tenant/{id}/labels\x12\xb6\x01\n" +
-	"\x13SetTenantUserGroups\x12:.kms.api.cmk.registry.tenant.v1.SetTenantUserGroupsRequest\x1a;.kms.api.cmk.registry.tenant.v1.SetTenantUserGroupsResponse\"&\x82\xd3\xe4\x93\x02 :\x01*2\x1b/v1/tenant/{id}/user-groupsB\x9a\x02\n" +
+	"\x13SetTenantUserGroups\x12:.kms.api.cmk.registry.tenant.v1.SetTenantUserGroupsRequest\x1a;.kms.api.cmk.registry.tenant.v1.SetTenantUserGroupsResponse\"&\x82\xd3\xe4\x93\x02 :\x01*2\x1b/v1/tenant/{id}/user-groups\x1a\v\x92A\b\n" +
+	"\x06TenantB\x9a\x02\n" +
 	"\"com.kms.api.cmk.registry.tenant.v1B\vTenantProtoP\x01ZHgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/tenant/v1;tenantv1\xa2\x02\x05KACRT\xaa\x02\x1eKms.Api.Cmk.Registry.Tenant.V1\xca\x02\x1eKms\\Api\\Cmk\\Registry\\Tenant\\V1\xe2\x02*Kms\\Api\\Cmk\\Registry\\Tenant\\V1\\GPBMetadata\xea\x02#Kms::Api::Cmk::Registry::Tenant::V1b\x06proto3"
 
 var (

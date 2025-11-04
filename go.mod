@@ -3,6 +3,7 @@ module github.com/openkcm/api-sdk
 go 1.24.2
 
 require (
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.27.3
 	google.golang.org/genproto/googleapis/api v0.0.0-20251103181224-f26f9409b101
 	google.golang.org/grpc v1.76.0
 	google.golang.org/protobuf v1.36.10

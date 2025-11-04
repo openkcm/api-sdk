@@ -7,6 +7,7 @@
 package authv1
 
 import (
+	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -636,7 +637,7 @@ var File_kms_api_cmk_registry_auth_v1_auth_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"\n" +
-	"'kms/api/cmk/registry/auth/v1/auth.proto\x12\x1ckms.api.cmk.registry.auth.v1\x1a\x1cgoogle/api/annotations.proto\"\x90\x03\n" +
+	"'kms/api/cmk/registry/auth/v1/auth.proto\x12\x1ckms.api.cmk.registry.auth.v1\x1a\x1cgoogle/api/annotations.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\x90\x03\n" +
 	"\x04Auth\x12\x1f\n" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x1b\n" +
@@ -653,18 +654,19 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"created_at\x18\b \x01(\tR\tcreatedAt\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x83\x02\n" +
-	"\x10ApplyAuthRequest\x12\x1f\n" +
-	"\vexternal_id\x18\x01 \x01(\tR\n" +
-	"externalId\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\tR\x04type\x12^\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xd5\x06\n" +
+	"\x10ApplyAuthRequest\x12^\n" +
+	"\vexternal_id\x18\x01 \x01(\tB=\x92A:28External identifier for the authentication configurationR\n" +
+	"externalId\x12A\n" +
+	"\ttenant_id\x18\x02 \x01(\tB$\x92A!2\x1fUnique identifier of the tenantR\btenantId\x12J\n" +
+	"\x04type\x18\x03 \x01(\tB6\x92A321Type of authentication to be applied (e.g., OIDC)R\x04type\x12\xd5\x01\n" +
 	"\n" +
-	"properties\x18\x04 \x03(\v2>.kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntryR\n" +
+	"properties\x18\x04 \x03(\v2>.kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntryBu\x92Ar2pKey-value pairs representing authentication properties. For OIDC this should be issuer, jwks_uris and audiences.R\n" +
 	"properties\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"-\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01:\xba\x02\x92A\xb6\x02\n" +
+	"\xb3\x02*\x12Apply Auth Request2ERequest message for applying authentication configuration to a tenantJ\xd5\x01{ \"external_id\": \"auth-123\", \"tenant_id\": \"tenant-abc\", \"type\": \"OIDC\", \"properties\": { \"issuer\": \"https://issuer.example\", \"jwks_uris\": \"https://issuer.example/.well-known/jwks.json\", \"audiences\": \"aud1,aud2\" } }\"-\n" +
 	"\x11ApplyAuthResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"1\n" +
 	"\x0eGetAuthRequest\x12\x1f\n" +
@@ -697,13 +699,15 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"AuthAction\x12\x1b\n" +
 	"\x17AUTH_ACTION_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16AUTH_ACTION_APPLY_AUTH\x10\x01\x12\x1b\n" +
-	"\x17AUTH_ACTION_REMOVE_AUTH\x10\x022\xa9\x04\n" +
-	"\aService\x12\x81\x01\n" +
-	"\tApplyAuth\x12..kms.api.cmk.registry.auth.v1.ApplyAuthRequest\x1a/.kms.api.cmk.registry.auth.v1.ApplyAuthResponse\"\x13\x82\xd3\xe4\x93\x02\r:\x01*\"\b/v1/auth\x12\x86\x01\n" +
+	"\x17AUTH_ACTION_REMOVE_AUTH\x10\x022\xc6\x06\n" +
+	"\aService\x12\x93\x03\n" +
+	"\tApplyAuth\x12..kms.api.cmk.registry.auth.v1.ApplyAuthRequest\x1a/.kms.api.cmk.registry.auth.v1.ApplyAuthResponse\"\xa4\x02\x92A\x8d\x02\n" +
+	"\x04Auth\x12\"Apply authentication configuration\x1a\xe0\x01Creates or updates authentication configuration for a tenant. Use this endpoint to configure authentication methods like OIDC. For OIDC authentication, provide the issuer URL, JWKS URI, and audiences in the properties field.\x82\xd3\xe4\x93\x02\r:\x01*\"\b/v1/auth\x12\x86\x01\n" +
 	"\aGetAuth\x12,.kms.api.cmk.registry.auth.v1.GetAuthRequest\x1a-.kms.api.cmk.registry.auth.v1.GetAuthResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\x12\x16/v1/auth/{external_id}\x12\x7f\n" +
 	"\tListAuths\x12..kms.api.cmk.registry.auth.v1.ListAuthsRequest\x1a/.kms.api.cmk.registry.auth.v1.ListAuthsResponse\"\x11\x82\xd3\xe4\x93\x02\v\x12\t/v1/auths\x12\x8f\x01\n" +
 	"\n" +
-	"RemoveAuth\x12/.kms.api.cmk.registry.auth.v1.RemoveAuthRequest\x1a0.kms.api.cmk.registry.auth.v1.RemoveAuthResponse\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/v1/auth/{external_id}B\x8a\x02\n" +
+	"RemoveAuth\x12/.kms.api.cmk.registry.auth.v1.RemoveAuthRequest\x1a0.kms.api.cmk.registry.auth.v1.RemoveAuthResponse\"\x1e\x82\xd3\xe4\x93\x02\x18*\x16/v1/auth/{external_id}\x1a\t\x92A\x06\n" +
+	"\x04AuthB\x8a\x02\n" +
 	" com.kms.api.cmk.registry.auth.v1B\tAuthProtoP\x01ZDgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/auth/v1;authv1\xa2\x02\x05KACRA\xaa\x02\x1cKms.Api.Cmk.Registry.Auth.V1\xca\x02\x1cKms\\Api\\Cmk\\Registry\\Auth\\V1\xe2\x02(Kms\\Api\\Cmk\\Registry\\Auth\\V1\\GPBMetadata\xea\x02!Kms::Api::Cmk::Registry::Auth::V1b\x06proto3"
 
 var (

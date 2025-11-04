@@ -3,12 +3,22 @@ syntax = "proto3";
 package kms.api.cmk.registry.auth.v1;
 
 import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 service Service {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_tag) = {
+    name: "Auth"
+  };
+
   rpc ApplyAuth(ApplyAuthRequest) returns (ApplyAuthResponse) {
     option (google.api.http) = {
       post: "/v1/auth"
       body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Apply authentication configuration"
+      description: "Creates or updates authentication configuration for a tenant. Use this endpoint to configure authentication methods like OIDC. For OIDC authentication, provide the issuer URL, JWKS URI, and audiences in the properties field."
+      tags: ["Auth"]
     };
   }
   rpc GetAuth(GetAuthRequest) returns (GetAuthResponse) {
@@ -40,10 +50,26 @@ message Auth {
 }
 
 message ApplyAuthRequest {
-  string external_id = 1;
-  string tenant_id = 2;
-  string type = 3;
-  map<string, string> properties = 4;
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_schema) = {
+    json_schema: {
+      title: "Apply Auth Request"
+      description: "Request message for applying authentication configuration to a tenant"
+      example: "{ \"external_id\": \"auth-123\", \"tenant_id\": \"tenant-abc\", \"type\": \"OIDC\", \"properties\": { \"issuer\": \"https://issuer.example\", \"jwks_uris\": \"https://issuer.example/.well-known/jwks.json\", \"audiences\": \"aud1,aud2\" } }"
+    }
+  };
+
+  string external_id = 1 [(.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "External identifier for the authentication configuration"
+  }];
+  string tenant_id = 2 [(.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Unique identifier of the tenant"
+  }];
+  string type = 3 [(.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Type of authentication to be applied (e.g., OIDC)"
+  }];
+  map<string, string> properties = 4 [(.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Key-value pairs representing authentication properties. For OIDC this should be issuer, jwks_uris and audiences."
+  }];
 }
 
 message ApplyAuthResponse {

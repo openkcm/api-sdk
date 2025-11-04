@@ -4,8 +4,13 @@ package kms.api.cmk.registry.system.v1;
 
 import "google/api/annotations.proto";
 import "kms/api/cmk/types/v1/status.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 
 service Service {
+  option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_tag) = {
+    name: "System"
+  };
+
   rpc RegisterSystem(RegisterSystemRequest) returns (RegisterSystemResponse) {
     option (google.api.http) = {
       post: "/v1/system"
