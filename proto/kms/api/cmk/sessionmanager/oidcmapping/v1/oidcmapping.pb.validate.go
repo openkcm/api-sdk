@@ -61,6 +61,8 @@ func (m *ApplyOIDCMappingRequest) validate(all bool) error {
 
 	// no validation rules for Issuer
 
+	// no validation rules for Properties
+
 	if len(errors) > 0 {
 		return ApplyOIDCMappingRequestMultiError(errors)
 	}
