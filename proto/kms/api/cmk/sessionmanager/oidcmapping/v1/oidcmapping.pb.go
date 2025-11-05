@@ -28,6 +28,7 @@ type ApplyOIDCMappingRequest struct {
 	Issuer        string                 `protobuf:"bytes,2,opt,name=issuer,proto3" json:"issuer,omitempty"`
 	JwksUris      []string               `protobuf:"bytes,3,rep,name=jwks_uris,json=jwksUris,proto3" json:"jwks_uris,omitempty"`
 	Audiences     []string               `protobuf:"bytes,4,rep,name=audiences,proto3" json:"audiences,omitempty"`
+	Properties    map[string]string      `protobuf:"bytes,5,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -86,6 +87,13 @@ func (x *ApplyOIDCMappingRequest) GetJwksUris() []string {
 func (x *ApplyOIDCMappingRequest) GetAudiences() []string {
 	if x != nil {
 		return x.Audiences
+	}
+	return nil
+}
+
+func (x *ApplyOIDCMappingRequest) GetProperties() map[string]string {
+	if x != nil {
+		return x.Properties
 	}
 	return nil
 }
@@ -437,12 +445,18 @@ var File_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto protoreflec
 
 const file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDesc = "" +
 	"\n" +
-	";kms/api/cmk/sessionmanager/oidcmapping/v1/oidcmapping.proto\x12)kms.api.cmk.sessionmanager.oidcmapping.v1\"\x89\x01\n" +
+	";kms/api/cmk/sessionmanager/oidcmapping/v1/oidcmapping.proto\x12)kms.api.cmk.sessionmanager.oidcmapping.v1\"\xbc\x02\n" +
 	"\x17ApplyOIDCMappingRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06issuer\x18\x02 \x01(\tR\x06issuer\x12\x1b\n" +
 	"\tjwks_uris\x18\x03 \x03(\tR\bjwksUris\x12\x1c\n" +
-	"\taudiences\x18\x04 \x03(\tR\taudiences\"_\n" +
+	"\taudiences\x18\x04 \x03(\tR\taudiences\x12r\n" +
+	"\n" +
+	"properties\x18\x05 \x03(\v2R.kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest.PropertiesEntryR\n" +
+	"properties\x1a=\n" +
+	"\x0fPropertiesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"_\n" +
 	"\x18ApplyOIDCMappingResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1d\n" +
 	"\amessage\x18\x02 \x01(\tH\x00R\amessage\x88\x01\x01B\n" +
@@ -488,7 +502,7 @@ func file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDescGZI
 	return file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDescData
 }
 
-var file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_goTypes = []any{
 	(*ApplyOIDCMappingRequest)(nil),    // 0: kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest
 	(*ApplyOIDCMappingResponse)(nil),   // 1: kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingResponse
@@ -498,21 +512,23 @@ var file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_goTypes = [
 	(*BlockOIDCMappingResponse)(nil),   // 5: kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingResponse
 	(*UnblockOIDCMappingRequest)(nil),  // 6: kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingRequest
 	(*UnblockOIDCMappingResponse)(nil), // 7: kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingResponse
+	nil,                                // 8: kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest.PropertiesEntry
 }
 var file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_depIdxs = []int32{
-	0, // 0: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.ApplyOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest
-	2, // 1: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.RemoveOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingRequest
-	4, // 2: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.BlockOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingRequest
-	6, // 3: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.UnblockOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingRequest
-	1, // 4: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.ApplyOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingResponse
-	3, // 5: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.RemoveOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingResponse
-	5, // 6: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.BlockOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingResponse
-	7, // 7: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.UnblockOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	8, // 0: kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest.properties:type_name -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest.PropertiesEntry
+	0, // 1: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.ApplyOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest
+	2, // 2: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.RemoveOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingRequest
+	4, // 3: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.BlockOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingRequest
+	6, // 4: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.UnblockOIDCMapping:input_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingRequest
+	1, // 5: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.ApplyOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingResponse
+	3, // 6: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.RemoveOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.RemoveOIDCMappingResponse
+	5, // 7: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.BlockOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.BlockOIDCMappingResponse
+	7, // 8: kms.api.cmk.sessionmanager.oidcmapping.v1.Service.UnblockOIDCMapping:output_type -> kms.api.cmk.sessionmanager.oidcmapping.v1.UnblockOIDCMappingResponse
+	5, // [5:9] is the sub-list for method output_type
+	1, // [1:5] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_init() }
@@ -530,7 +546,7 @@ func file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDesc), len(file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

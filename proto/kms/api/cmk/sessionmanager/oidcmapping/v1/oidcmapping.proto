@@ -15,6 +15,7 @@ message ApplyOIDCMappingRequest {
   string issuer = 2;
   repeated string jwks_uris = 3;
   repeated string audiences = 4;
+  map<string, string> properties = 5;
 }
 
 message ApplyOIDCMappingResponse {
