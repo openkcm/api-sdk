@@ -24,34 +24,49 @@ const (
 type AuthStatus int32
 
 const (
-	AuthStatus_AUTH_STATUS_UNSPECIFIED    AuthStatus = 0
-	AuthStatus_AUTH_STATUS_APPLYING       AuthStatus = 1
-	AuthStatus_AUTH_STATUS_APPLYING_ERROR AuthStatus = 2
-	AuthStatus_AUTH_STATUS_APPLIED        AuthStatus = 3
-	AuthStatus_AUTH_STATUS_REMOVING       AuthStatus = 4
-	AuthStatus_AUTH_STATUS_REMOVING_ERROR AuthStatus = 5
-	AuthStatus_AUTH_STATUS_REMOVED        AuthStatus = 6
+	AuthStatus_AUTH_STATUS_UNSPECIFIED      AuthStatus = 0
+	AuthStatus_AUTH_STATUS_APPLYING         AuthStatus = 1
+	AuthStatus_AUTH_STATUS_APPLYING_ERROR   AuthStatus = 2
+	AuthStatus_AUTH_STATUS_APPLIED          AuthStatus = 3
+	AuthStatus_AUTH_STATUS_REMOVING         AuthStatus = 4
+	AuthStatus_AUTH_STATUS_REMOVING_ERROR   AuthStatus = 5
+	AuthStatus_AUTH_STATUS_REMOVED          AuthStatus = 6
+	AuthStatus_AUTH_STATUS_BLOCKING         AuthStatus = 7
+	AuthStatus_AUTH_STATUS_BLOCKING_ERROR   AuthStatus = 8
+	AuthStatus_AUTH_STATUS_BLOCKED          AuthStatus = 9
+	AuthStatus_AUTH_STATUS_UNBLOCKING       AuthStatus = 10
+	AuthStatus_AUTH_STATUS_UNBLOCKING_ERROR AuthStatus = 11
 )
 
 // Enum value maps for AuthStatus.
 var (
 	AuthStatus_name = map[int32]string{
-		0: "AUTH_STATUS_UNSPECIFIED",
-		1: "AUTH_STATUS_APPLYING",
-		2: "AUTH_STATUS_APPLYING_ERROR",
-		3: "AUTH_STATUS_APPLIED",
-		4: "AUTH_STATUS_REMOVING",
-		5: "AUTH_STATUS_REMOVING_ERROR",
-		6: "AUTH_STATUS_REMOVED",
+		0:  "AUTH_STATUS_UNSPECIFIED",
+		1:  "AUTH_STATUS_APPLYING",
+		2:  "AUTH_STATUS_APPLYING_ERROR",
+		3:  "AUTH_STATUS_APPLIED",
+		4:  "AUTH_STATUS_REMOVING",
+		5:  "AUTH_STATUS_REMOVING_ERROR",
+		6:  "AUTH_STATUS_REMOVED",
+		7:  "AUTH_STATUS_BLOCKING",
+		8:  "AUTH_STATUS_BLOCKING_ERROR",
+		9:  "AUTH_STATUS_BLOCKED",
+		10: "AUTH_STATUS_UNBLOCKING",
+		11: "AUTH_STATUS_UNBLOCKING_ERROR",
 	}
 	AuthStatus_value = map[string]int32{
-		"AUTH_STATUS_UNSPECIFIED":    0,
-		"AUTH_STATUS_APPLYING":       1,
-		"AUTH_STATUS_APPLYING_ERROR": 2,
-		"AUTH_STATUS_APPLIED":        3,
-		"AUTH_STATUS_REMOVING":       4,
-		"AUTH_STATUS_REMOVING_ERROR": 5,
-		"AUTH_STATUS_REMOVED":        6,
+		"AUTH_STATUS_UNSPECIFIED":      0,
+		"AUTH_STATUS_APPLYING":         1,
+		"AUTH_STATUS_APPLYING_ERROR":   2,
+		"AUTH_STATUS_APPLIED":          3,
+		"AUTH_STATUS_REMOVING":         4,
+		"AUTH_STATUS_REMOVING_ERROR":   5,
+		"AUTH_STATUS_REMOVED":          6,
+		"AUTH_STATUS_BLOCKING":         7,
+		"AUTH_STATUS_BLOCKING_ERROR":   8,
+		"AUTH_STATUS_BLOCKED":          9,
+		"AUTH_STATUS_UNBLOCKING":       10,
+		"AUTH_STATUS_UNBLOCKING_ERROR": 11,
 	}
 )
 
@@ -682,7 +697,7 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\".\n" +
 	"\x12RemoveAuthResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess*\xcf\x01\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess*\xe0\x02\n" +
 	"\n" +
 	"AuthStatus\x12\x1b\n" +
 	"\x17AUTH_STATUS_UNSPECIFIED\x10\x00\x12\x18\n" +
@@ -691,7 +706,13 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"\x13AUTH_STATUS_APPLIED\x10\x03\x12\x18\n" +
 	"\x14AUTH_STATUS_REMOVING\x10\x04\x12\x1e\n" +
 	"\x1aAUTH_STATUS_REMOVING_ERROR\x10\x05\x12\x17\n" +
-	"\x13AUTH_STATUS_REMOVED\x10\x06*b\n" +
+	"\x13AUTH_STATUS_REMOVED\x10\x06\x12\x18\n" +
+	"\x14AUTH_STATUS_BLOCKING\x10\a\x12\x1e\n" +
+	"\x1aAUTH_STATUS_BLOCKING_ERROR\x10\b\x12\x17\n" +
+	"\x13AUTH_STATUS_BLOCKED\x10\t\x12\x1a\n" +
+	"\x16AUTH_STATUS_UNBLOCKING\x10\n" +
+	"\x12 \n" +
+	"\x1cAUTH_STATUS_UNBLOCKING_ERROR\x10\v*b\n" +
 	"\n" +
 	"AuthAction\x12\x1b\n" +
 	"\x17AUTH_ACTION_UNSPECIFIED\x10\x00\x12\x1a\n" +
