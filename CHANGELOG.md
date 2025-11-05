@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.11.0](https://github.com/openkcm/api-sdk/compare/v0.10.0...v0.11.0) (2025-11-05)
+
+
+### Features
+
+* add block and unblock for auth  ([b9d39fd](https://github.com/openkcm/api-sdk/commit/b9d39fd887fdc3c2b5ade1b9ffc5b3adb0ca3416))
+* add properties to ApplyOIDCMapping rpc ([#57](https://github.com/openkcm/api-sdk/issues/57)) ([1137f57](https://github.com/openkcm/api-sdk/commit/1137f57f1a79a80c7a20aca3b0abbf062d768f32))
+
 ## [0.10.0](https://github.com/openkcm/api-sdk/compare/v0.9.0...v0.10.0) (2025-10-30)
 
 
