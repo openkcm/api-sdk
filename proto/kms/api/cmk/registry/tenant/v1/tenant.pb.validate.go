@@ -411,6 +411,8 @@ func (m *ListTenantsRequest) validate(all bool) error {
 
 	// no validation rules for PageToken
 
+	// no validation rules for Labels
+
 	if len(errors) > 0 {
 		return ListTenantsRequestMultiError(errors)
 	}
