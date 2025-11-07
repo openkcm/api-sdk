@@ -53,8 +53,11 @@ message ListTenantsRequest {
   // Default value is 50.
   // Max value is 1000.
   int32 limit = 6;
+
   // Next page token.
   string page_token = 7;
+
+  map<string, string> labels = 8;
 }
 
 message ListTenantsResponse {
