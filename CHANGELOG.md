@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/openkcm/api-sdk/compare/v0.11.0...v0.12.0) (2025-11-07)
+
+
+### Features
+
+* List tenants by labels ([#60](https://github.com/openkcm/api-sdk/issues/60)) ([219b652](https://github.com/openkcm/api-sdk/commit/219b652410c75221640461927328ffff4e1084bf))
+
 ## [0.11.0](https://github.com/openkcm/api-sdk/compare/v0.10.0...v0.11.0) (2025-11-05)
 
 
