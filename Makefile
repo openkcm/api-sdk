@@ -5,7 +5,7 @@ generate: patch-swagger-doc format
 	go mod vendor
 
 patch-swagger-doc: buf-gen
-	#./scripts/update_swagger.sh docs/openapiv2/apidocs.swagger.json
+	./scripts/update_swagger.sh docs/openapiv2/apidocs.swagger.json
 
 init-git-hooks:
 	git config --local core.hooksPath .githooks/
