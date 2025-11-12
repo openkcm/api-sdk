@@ -21,20 +21,33 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// The status of an authentication.
 type AuthStatus int32
 
 const (
-	AuthStatus_AUTH_STATUS_UNSPECIFIED      AuthStatus = 0
-	AuthStatus_AUTH_STATUS_APPLYING         AuthStatus = 1
-	AuthStatus_AUTH_STATUS_APPLYING_ERROR   AuthStatus = 2
-	AuthStatus_AUTH_STATUS_APPLIED          AuthStatus = 3
-	AuthStatus_AUTH_STATUS_REMOVING         AuthStatus = 4
-	AuthStatus_AUTH_STATUS_REMOVING_ERROR   AuthStatus = 5
-	AuthStatus_AUTH_STATUS_REMOVED          AuthStatus = 6
-	AuthStatus_AUTH_STATUS_BLOCKING         AuthStatus = 7
-	AuthStatus_AUTH_STATUS_BLOCKING_ERROR   AuthStatus = 8
-	AuthStatus_AUTH_STATUS_BLOCKED          AuthStatus = 9
-	AuthStatus_AUTH_STATUS_UNBLOCKING       AuthStatus = 10
+	// The status is not specified.
+	AuthStatus_AUTH_STATUS_UNSPECIFIED AuthStatus = 0
+	// The authentication is being applied.
+	AuthStatus_AUTH_STATUS_APPLYING AuthStatus = 1
+	// An error occurred while applying the authentication.
+	AuthStatus_AUTH_STATUS_APPLYING_ERROR AuthStatus = 2
+	// The authentication has been applied.
+	AuthStatus_AUTH_STATUS_APPLIED AuthStatus = 3
+	// The authentication is being removed.
+	AuthStatus_AUTH_STATUS_REMOVING AuthStatus = 4
+	// An error occurred while removing the authentication.
+	AuthStatus_AUTH_STATUS_REMOVING_ERROR AuthStatus = 5
+	// The authentication has been removed.
+	AuthStatus_AUTH_STATUS_REMOVED AuthStatus = 6
+	// The authentication is being blocked.
+	AuthStatus_AUTH_STATUS_BLOCKING AuthStatus = 7
+	// An error occurred while blocking the authentication.
+	AuthStatus_AUTH_STATUS_BLOCKING_ERROR AuthStatus = 8
+	// The authentication has been blocked.
+	AuthStatus_AUTH_STATUS_BLOCKED AuthStatus = 9
+	// The authentication is being unblocked.
+	AuthStatus_AUTH_STATUS_UNBLOCKING AuthStatus = 10
+	// An error occurred while unblocking the authentication.
 	AuthStatus_AUTH_STATUS_UNBLOCKING_ERROR AuthStatus = 11
 )
 
@@ -97,11 +110,15 @@ func (AuthStatus) EnumDescriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{0}
 }
 
+// The action to perform on an authentication.
 type AuthAction int32
 
 const (
+	// The action is not specified.
 	AuthAction_AUTH_ACTION_UNSPECIFIED AuthAction = 0
-	AuthAction_AUTH_ACTION_APPLY_AUTH  AuthAction = 1
+	// Apply an authentication.
+	AuthAction_AUTH_ACTION_APPLY_AUTH AuthAction = 1
+	// Remove an authentication.
 	AuthAction_AUTH_ACTION_REMOVE_AUTH AuthAction = 2
 )
 
@@ -146,16 +163,25 @@ func (AuthAction) EnumDescriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_auth_v1_auth_proto_rawDescGZIP(), []int{1}
 }
 
+// Represents an authentication.
 type Auth struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	Properties    map[string]string      `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Status        AuthStatus             `protobuf:"varint,5,opt,name=status,proto3,enum=kms.api.cmk.registry.auth.v1.AuthStatus" json:"status,omitempty"`
-	ErrorMessage  string                 `protobuf:"bytes,6,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
-	UpdatedAt     string                 `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The external ID of the authentication.
+	ExternalId string `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	// The tenant ID associated with the authentication.
+	TenantId string `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	// The type of the authentication.
+	Type string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	// A map of properties for the authentication.
+	Properties map[string]string `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// The status of the authentication.
+	Status AuthStatus `protobuf:"varint,5,opt,name=status,proto3,enum=kms.api.cmk.registry.auth.v1.AuthStatus" json:"status,omitempty"`
+	// An error message, if any.
+	ErrorMessage string `protobuf:"bytes,6,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	// The timestamp of the last update.
+	UpdatedAt string `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// The timestamp of creation.
+	CreatedAt     string `protobuf:"bytes,8,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -246,12 +272,17 @@ func (x *Auth) GetCreatedAt() string {
 	return ""
 }
 
+// Request to apply an authentication.
 type ApplyAuthRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	Properties    map[string]string      `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The external ID of the authentication.
+	ExternalId string `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	// The tenant ID associated with the authentication.
+	TenantId string `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	// The type of the authentication.
+	Type string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	// A map of properties for the authentication.
+	Properties    map[string]string `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -314,9 +345,11 @@ func (x *ApplyAuthRequest) GetProperties() map[string]string {
 	return nil
 }
 
+// Response for applying an authentication.
 type ApplyAuthResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Indicates whether the operation was successful.
+	Success       bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -358,9 +391,11 @@ func (x *ApplyAuthResponse) GetSuccess() bool {
 	return false
 }
 
+// Request to get an authentication.
 type GetAuthRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The external ID of the authentication to retrieve.
+	ExternalId    string `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -402,9 +437,11 @@ func (x *GetAuthRequest) GetExternalId() string {
 	return ""
 }
 
+// Response for getting an authentication.
 type GetAuthResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Auth          *Auth                  `protobuf:"bytes,1,opt,name=auth,proto3" json:"auth,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The retrieved authentication.
+	Auth          *Auth `protobuf:"bytes,1,opt,name=auth,proto3" json:"auth,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -446,11 +483,16 @@ func (x *GetAuthResponse) GetAuth() *Auth {
 	return nil
 }
 
+// Request to list authentications.
 type ListAuthsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"` // default value is 50; max value is 1000
-	NextPageToken string                 `protobuf:"bytes,3,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The tenant ID to list authentications for.
+	TenantId string `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	// The maximum number of authentications to return.
+	// Default value is 50; max value is 1000.
+	Limit int32 `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	// A token to retrieve the next page of results.
+	NextPageToken string `protobuf:"bytes,3,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -506,10 +548,13 @@ func (x *ListAuthsRequest) GetNextPageToken() string {
 	return ""
 }
 
+// Response for listing authentications.
 type ListAuthsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Auth          []*Auth                `protobuf:"bytes,1,rep,name=auth,proto3" json:"auth,omitempty"`
-	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// A list of authentications.
+	Auth []*Auth `protobuf:"bytes,1,rep,name=auth,proto3" json:"auth,omitempty"`
+	// A token to retrieve the next page of results.
+	NextPageToken string `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -558,9 +603,11 @@ func (x *ListAuthsResponse) GetNextPageToken() string {
 	return ""
 }
 
+// Request to remove an authentication.
 type RemoveAuthRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The external ID of the authentication to remove.
+	ExternalId    string `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -602,9 +649,11 @@ func (x *RemoveAuthRequest) GetExternalId() string {
 	return ""
 }
 
+// Response for removing an authentication.
 type RemoveAuthResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Indicates whether the operation was successful.
+	Success       bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }

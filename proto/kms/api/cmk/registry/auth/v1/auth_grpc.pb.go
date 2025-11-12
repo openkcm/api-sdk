@@ -28,10 +28,16 @@ const (
 // ServiceClient is the client API for Service service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// Service for managing authentications in the KMS system.
 type ServiceClient interface {
+	// ApplyAuth creates or updates an authentication. This method is idempotent - if an authentication with the same external_id already exists, it will be updated.
 	ApplyAuth(ctx context.Context, in *ApplyAuthRequest, opts ...grpc.CallOption) (*ApplyAuthResponse, error)
+	// GetAuth retrieves an authentication by its external ID.
 	GetAuth(ctx context.Context, in *GetAuthRequest, opts ...grpc.CallOption) (*GetAuthResponse, error)
+	// ListAuths lists all authentications for a given tenant. The results can be paginated.
 	ListAuths(ctx context.Context, in *ListAuthsRequest, opts ...grpc.CallOption) (*ListAuthsResponse, error)
+	// RemoveAuth removes an authentication by its external ID. This method is idempotent - if the authentication does not exist, it will return success.
 	RemoveAuth(ctx context.Context, in *RemoveAuthRequest, opts ...grpc.CallOption) (*RemoveAuthResponse, error)
 }
 
@@ -86,10 +92,16 @@ func (c *serviceClient) RemoveAuth(ctx context.Context, in *RemoveAuthRequest, o
 // ServiceServer is the server API for Service service.
 // All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
+//
+// Service for managing authentications in the KMS system.
 type ServiceServer interface {
+	// ApplyAuth creates or updates an authentication. This method is idempotent - if an authentication with the same external_id already exists, it will be updated.
 	ApplyAuth(context.Context, *ApplyAuthRequest) (*ApplyAuthResponse, error)
+	// GetAuth retrieves an authentication by its external ID.
 	GetAuth(context.Context, *GetAuthRequest) (*GetAuthResponse, error)
+	// ListAuths lists all authentications for a given tenant. The results can be paginated.
 	ListAuths(context.Context, *ListAuthsRequest) (*ListAuthsResponse, error)
+	// RemoveAuth removes an authentication by its external ID. This method is idempotent - if the authentication does not exist, it will return success.
 	RemoveAuth(context.Context, *RemoveAuthRequest) (*RemoveAuthResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
