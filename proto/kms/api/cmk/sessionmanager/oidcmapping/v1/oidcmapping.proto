@@ -16,7 +16,7 @@ message ApplyOIDCMappingRequest {
   repeated string jwks_uris = 3 [deprecated = true];
   repeated string audiences = 4;
   map<string, string> properties = 5;
-  string jwks_uri = 6;
+  optional string jwks_uri = 6;
 }
 
 message ApplyOIDCMappingResponse {
