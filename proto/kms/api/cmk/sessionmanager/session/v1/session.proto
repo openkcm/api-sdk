@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package kms.api.cmk.sessionmanager.session.v1;
+
+service Service {
+  rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {}
+}
+
+message GetSessionRequest {
+  string session_id = 1;
+  string tenant_id = 2;
+  string fingerprint = 3;
+}
+
+message GetSessionResponse {
+  bool valid = 1;
+  string issuer = 2;
+  string subject = 3;
+  string given_name = 4;
+  string family_name = 5;
+  string email = 6;
+  repeated string groups = 7;
+  map<string, string> auth_context = 8;
+}
