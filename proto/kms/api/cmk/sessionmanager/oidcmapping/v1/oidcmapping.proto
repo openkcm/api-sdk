@@ -13,10 +13,9 @@ service Service {
 message ApplyOIDCMappingRequest {
   string tenant_id = 1;
   string issuer = 2;
-  repeated string jwks_uris = 3 [deprecated = true];
+  optional string jwks_uri = 3;
   repeated string audiences = 4;
   map<string, string> properties = 5;
-  optional string jwks_uri = 6;
 }
 
 message ApplyOIDCMappingResponse {
