@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.13.0](https://github.com/openkcm/api-sdk/compare/v0.12.0...v0.13.0) (2025-11-26)
+
+
+### Features
+
+* **oidcmapping:** use a single jwks_uri ([#66](https://github.com/openkcm/api-sdk/issues/66)) ([3e567a9](https://github.com/openkcm/api-sdk/commit/3e567a9fd1f5153ddd0a32ed4beda8352e365038))
+* validate and get sessions ([#67](https://github.com/openkcm/api-sdk/issues/67)) ([3e4c583](https://github.com/openkcm/api-sdk/commit/3e4c583df4aa5939cfab41e7792839cc7a9c9d79))
+
+
+### Bug Fixes
+
+* remove obsolete oidcprovider and fix jwks_uri ([#68](https://github.com/openkcm/api-sdk/issues/68)) ([ba19c8d](https://github.com/openkcm/api-sdk/commit/ba19c8d6cc2f90de8b71bfcf9c25eb70d142ad90))
+
 ## [0.12.0](https://github.com/openkcm/api-sdk/compare/v0.11.0...v0.12.0) (2025-11-07)
 
 
