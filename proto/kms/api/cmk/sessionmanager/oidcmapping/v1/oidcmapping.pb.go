@@ -23,14 +23,12 @@ const (
 
 // apply (create or update) the OIDC provider mapping for the given tenant
 type ApplyOIDCMappingRequest struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	TenantId string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Issuer   string                 `protobuf:"bytes,2,opt,name=issuer,proto3" json:"issuer,omitempty"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/sessionmanager/oidcmapping/v1/oidcmapping.proto.
-	JwksUris      []string          `protobuf:"bytes,3,rep,name=jwks_uris,json=jwksUris,proto3" json:"jwks_uris,omitempty"`
-	Audiences     []string          `protobuf:"bytes,4,rep,name=audiences,proto3" json:"audiences,omitempty"`
-	Properties    map[string]string `protobuf:"bytes,5,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	JwksUri       *string           `protobuf:"bytes,6,opt,name=jwks_uri,json=jwksUri,proto3,oneof" json:"jwks_uri,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Issuer        string                 `protobuf:"bytes,2,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	JwksUri       *string                `protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri,proto3,oneof" json:"jwks_uri,omitempty"`
+	Audiences     []string               `protobuf:"bytes,4,rep,name=audiences,proto3" json:"audiences,omitempty"`
+	Properties    map[string]string      `protobuf:"bytes,5,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -79,12 +77,11 @@ func (x *ApplyOIDCMappingRequest) GetIssuer() string {
 	return ""
 }
 
-// Deprecated: Marked as deprecated in kms/api/cmk/sessionmanager/oidcmapping/v1/oidcmapping.proto.
-func (x *ApplyOIDCMappingRequest) GetJwksUris() []string {
-	if x != nil {
-		return x.JwksUris
+func (x *ApplyOIDCMappingRequest) GetJwksUri() string {
+	if x != nil && x.JwksUri != nil {
+		return *x.JwksUri
 	}
-	return nil
+	return ""
 }
 
 func (x *ApplyOIDCMappingRequest) GetAudiences() []string {
@@ -99,13 +96,6 @@ func (x *ApplyOIDCMappingRequest) GetProperties() map[string]string {
 		return x.Properties
 	}
 	return nil
-}
-
-func (x *ApplyOIDCMappingRequest) GetJwksUri() string {
-	if x != nil && x.JwksUri != nil {
-		return *x.JwksUri
-	}
-	return ""
 }
 
 type ApplyOIDCMappingResponse struct {
@@ -455,16 +445,15 @@ var File_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto protoreflec
 
 const file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDesc = "" +
 	"\n" +
-	";kms/api/cmk/sessionmanager/oidcmapping/v1/oidcmapping.proto\x12)kms.api.cmk.sessionmanager.oidcmapping.v1\"\xed\x02\n" +
+	";kms/api/cmk/sessionmanager/oidcmapping/v1/oidcmapping.proto\x12)kms.api.cmk.sessionmanager.oidcmapping.v1\"\xcc\x02\n" +
 	"\x17ApplyOIDCMappingRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
-	"\x06issuer\x18\x02 \x01(\tR\x06issuer\x12\x1f\n" +
-	"\tjwks_uris\x18\x03 \x03(\tB\x02\x18\x01R\bjwksUris\x12\x1c\n" +
+	"\x06issuer\x18\x02 \x01(\tR\x06issuer\x12\x1e\n" +
+	"\bjwks_uri\x18\x03 \x01(\tH\x00R\ajwksUri\x88\x01\x01\x12\x1c\n" +
 	"\taudiences\x18\x04 \x03(\tR\taudiences\x12r\n" +
 	"\n" +
 	"properties\x18\x05 \x03(\v2R.kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest.PropertiesEntryR\n" +
-	"properties\x12\x1e\n" +
-	"\bjwks_uri\x18\x06 \x01(\tH\x00R\ajwksUri\x88\x01\x01\x1a=\n" +
+	"properties\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\v\n" +
