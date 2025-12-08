@@ -653,7 +653,34 @@ func (m *DeleteSystemRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for ExternalId
+	if all {
+		switch v := interface{}(m.GetSystemIdentifier()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, DeleteSystemRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, DeleteSystemRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSystemIdentifier()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return DeleteSystemRequestValidationError{
+				field:  "SystemIdentifier",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	// no validation rules for Region
 
@@ -863,7 +890,34 @@ func (m *UpdateSystemL1KeyClaimRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for ExternalId
+	if all {
+		switch v := interface{}(m.GetSystemIdentifier()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, UpdateSystemL1KeyClaimRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, UpdateSystemL1KeyClaimRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSystemIdentifier()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return UpdateSystemL1KeyClaimRequestValidationError{
+				field:  "SystemIdentifier",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	// no validation rules for Region
 
@@ -1564,7 +1618,34 @@ func (m *UpdateSystemStatusRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for ExternalId
+	if all {
+		switch v := interface{}(m.GetSystemIdentifier()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, UpdateSystemStatusRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, UpdateSystemStatusRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSystemIdentifier()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return UpdateSystemStatusRequestValidationError{
+				field:  "SystemIdentifier",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	// no validation rules for Region
 
@@ -1778,7 +1859,7 @@ func (m *SystemIdentifier) validate(all bool) error {
 
 	// no validation rules for ExternalId
 
-	// no validation rules for Region
+	// no validation rules for Type
 
 	if len(errors) > 0 {
 		return SystemIdentifierMultiError(errors)
@@ -1880,7 +1961,34 @@ func (m *SetSystemLabelsRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for ExternalId
+	if all {
+		switch v := interface{}(m.GetSystemIdentifier()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SetSystemLabelsRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, SetSystemLabelsRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSystemIdentifier()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SetSystemLabelsRequestValidationError{
+				field:  "SystemIdentifier",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	// no validation rules for Region
 
@@ -2092,7 +2200,34 @@ func (m *RemoveSystemLabelsRequest) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for ExternalId
+	if all {
+		switch v := interface{}(m.GetSystemIdentifier()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, RemoveSystemLabelsRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, RemoveSystemLabelsRequestValidationError{
+					field:  "SystemIdentifier",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetSystemIdentifier()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return RemoveSystemLabelsRequestValidationError{
+				field:  "SystemIdentifier",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	// no validation rules for Region
 
