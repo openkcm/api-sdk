@@ -759,12 +759,11 @@ func (x *UpdateSystemStatusResponse) GetSuccess() bool {
 }
 
 type SetSystemLabelsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-	ExternalId    string            `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Region        string            `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	Labels        map[string]string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Type          string            `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	Region        string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	Labels        map[string]string      `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -799,7 +798,6 @@ func (*SetSystemLabelsRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{11}
 }
 
-// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
 func (x *SetSystemLabelsRequest) GetExternalId() string {
 	if x != nil {
 		return x.ExternalId
@@ -873,12 +871,11 @@ func (x *SetSystemLabelsResponse) GetSuccess() bool {
 }
 
 type RemoveSystemLabelsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-	ExternalId    string   `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Region        string   `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	LabelKeys     []string `protobuf:"bytes,3,rep,name=label_keys,json=labelKeys,proto3" json:"label_keys,omitempty"` // Keys of labels to delete
-	Type          string   `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	Region        string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	LabelKeys     []string               `protobuf:"bytes,3,rep,name=label_keys,json=labelKeys,proto3" json:"label_keys,omitempty"` // Keys of labels to delete
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -913,7 +910,6 @@ func (*RemoveSystemLabelsRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{13}
 }
 
-// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
 func (x *RemoveSystemLabelsRequest) GetExternalId() string {
 	if x != nil {
 		return x.ExternalId
@@ -1060,9 +1056,9 @@ const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"\x06status\x18\x03 \x01(\x0e2\x1c.kms.api.cmk.types.v1.StatusR\x06status\x12\x12\n" +
 	"\x04type\x18\x04 \x01(\tR\x04type\"6\n" +
 	"\x1aUpdateSystemStatusResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x80\x02\n" +
-	"\x16SetSystemLabelsRequest\x12#\n" +
-	"\vexternal_id\x18\x01 \x01(\tB\x02\x18\x01R\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xfc\x01\n" +
+	"\x16SetSystemLabelsRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x16\n" +
 	"\x06region\x18\x02 \x01(\tR\x06region\x12Z\n" +
 	"\x06labels\x18\x03 \x03(\v2B.kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.LabelsEntryR\x06labels\x12\x12\n" +
@@ -1071,9 +1067,9 @@ const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"3\n" +
 	"\x17SetSystemLabelsResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x8b\x01\n" +
-	"\x19RemoveSystemLabelsRequest\x12#\n" +
-	"\vexternal_id\x18\x01 \x01(\tB\x02\x18\x01R\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x87\x01\n" +
+	"\x19RemoveSystemLabelsRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x16\n" +
 	"\x06region\x18\x02 \x01(\tR\x06region\x12\x1d\n" +
 	"\n" +
