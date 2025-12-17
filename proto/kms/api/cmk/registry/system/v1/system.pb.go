@@ -423,13 +423,12 @@ func (x *ListSystemsResponse) GetNextPageToken() string {
 }
 
 type DeleteSystemRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-	ExternalId       string            `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Region           string            `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	SystemIdentifier *SystemIdentifier `protobuf:"bytes,3,opt,name=system_identifier,json=systemIdentifier,proto3" json:"system_identifier,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	Region        string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *DeleteSystemRequest) Reset() {
@@ -462,7 +461,6 @@ func (*DeleteSystemRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{5}
 }
 
-// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
 func (x *DeleteSystemRequest) GetExternalId() string {
 	if x != nil {
 		return x.ExternalId
@@ -477,11 +475,11 @@ func (x *DeleteSystemRequest) GetRegion() string {
 	return ""
 }
 
-func (x *DeleteSystemRequest) GetSystemIdentifier() *SystemIdentifier {
+func (x *DeleteSystemRequest) GetType() string {
 	if x != nil {
-		return x.SystemIdentifier
+		return x.Type
 	}
-	return nil
+	return ""
 }
 
 type DeleteSystemResponse struct {
@@ -529,15 +527,14 @@ func (x *DeleteSystemResponse) GetSuccess() bool {
 }
 
 type UpdateSystemL1KeyClaimRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-	ExternalId       string            `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Region           string            `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	TenantId         string            `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	L1KeyClaim       bool              `protobuf:"varint,4,opt,name=l1key_claim,json=l1keyClaim,proto3" json:"l1key_claim,omitempty"`
-	SystemIdentifier *SystemIdentifier `protobuf:"bytes,5,opt,name=system_identifier,json=systemIdentifier,proto3" json:"system_identifier,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	Region        string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	TenantId      string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	L1KeyClaim    bool                   `protobuf:"varint,4,opt,name=l1key_claim,json=l1keyClaim,proto3" json:"l1key_claim,omitempty"`
+	Type          string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateSystemL1KeyClaimRequest) Reset() {
@@ -570,7 +567,6 @@ func (*UpdateSystemL1KeyClaimRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{7}
 }
 
-// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
 func (x *UpdateSystemL1KeyClaimRequest) GetExternalId() string {
 	if x != nil {
 		return x.ExternalId
@@ -599,11 +595,11 @@ func (x *UpdateSystemL1KeyClaimRequest) GetL1KeyClaim() bool {
 	return false
 }
 
-func (x *UpdateSystemL1KeyClaimRequest) GetSystemIdentifier() *SystemIdentifier {
+func (x *UpdateSystemL1KeyClaimRequest) GetType() string {
 	if x != nil {
-		return x.SystemIdentifier
+		return x.Type
 	}
-	return nil
+	return ""
 }
 
 type UpdateSystemL1KeyClaimResponse struct {
@@ -650,204 +646,19 @@ func (x *UpdateSystemL1KeyClaimResponse) GetSuccess() bool {
 	return false
 }
 
-type UnlinkSystemsFromTenantRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	SystemIdentifiers []*SystemIdentifier    `protobuf:"bytes,1,rep,name=system_identifiers,json=systemIdentifiers,proto3" json:"system_identifiers,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
-}
-
-func (x *UnlinkSystemsFromTenantRequest) Reset() {
-	*x = UnlinkSystemsFromTenantRequest{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UnlinkSystemsFromTenantRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UnlinkSystemsFromTenantRequest) ProtoMessage() {}
-
-func (x *UnlinkSystemsFromTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UnlinkSystemsFromTenantRequest.ProtoReflect.Descriptor instead.
-func (*UnlinkSystemsFromTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *UnlinkSystemsFromTenantRequest) GetSystemIdentifiers() []*SystemIdentifier {
-	if x != nil {
-		return x.SystemIdentifiers
-	}
-	return nil
-}
-
-type UnlinkSystemsFromTenantResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UnlinkSystemsFromTenantResponse) Reset() {
-	*x = UnlinkSystemsFromTenantResponse{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UnlinkSystemsFromTenantResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UnlinkSystemsFromTenantResponse) ProtoMessage() {}
-
-func (x *UnlinkSystemsFromTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UnlinkSystemsFromTenantResponse.ProtoReflect.Descriptor instead.
-func (*UnlinkSystemsFromTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *UnlinkSystemsFromTenantResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-type LinkSystemsToTenantRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	SystemIdentifiers []*SystemIdentifier    `protobuf:"bytes,1,rep,name=system_identifiers,json=systemIdentifiers,proto3" json:"system_identifiers,omitempty"`
-	TenantId          string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
-}
-
-func (x *LinkSystemsToTenantRequest) Reset() {
-	*x = LinkSystemsToTenantRequest{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LinkSystemsToTenantRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LinkSystemsToTenantRequest) ProtoMessage() {}
-
-func (x *LinkSystemsToTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LinkSystemsToTenantRequest.ProtoReflect.Descriptor instead.
-func (*LinkSystemsToTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *LinkSystemsToTenantRequest) GetSystemIdentifiers() []*SystemIdentifier {
-	if x != nil {
-		return x.SystemIdentifiers
-	}
-	return nil
-}
-
-func (x *LinkSystemsToTenantRequest) GetTenantId() string {
-	if x != nil {
-		return x.TenantId
-	}
-	return ""
-}
-
-type LinkSystemsToTenantResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *LinkSystemsToTenantResponse) Reset() {
-	*x = LinkSystemsToTenantResponse{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *LinkSystemsToTenantResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LinkSystemsToTenantResponse) ProtoMessage() {}
-
-func (x *LinkSystemsToTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LinkSystemsToTenantResponse.ProtoReflect.Descriptor instead.
-func (*LinkSystemsToTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *LinkSystemsToTenantResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
 type UpdateSystemStatusRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-	ExternalId       string            `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Region           string            `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	Status           v1.Status         `protobuf:"varint,3,opt,name=status,proto3,enum=kms.api.cmk.types.v1.Status" json:"status,omitempty"`
-	SystemIdentifier *SystemIdentifier `protobuf:"bytes,4,opt,name=system_identifier,json=systemIdentifier,proto3" json:"system_identifier,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	Region        string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	Status        v1.Status              `protobuf:"varint,3,opt,name=status,proto3,enum=kms.api.cmk.types.v1.Status" json:"status,omitempty"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateSystemStatusRequest) Reset() {
 	*x = UpdateSystemStatusRequest{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[13]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -859,7 +670,7 @@ func (x *UpdateSystemStatusRequest) String() string {
 func (*UpdateSystemStatusRequest) ProtoMessage() {}
 
 func (x *UpdateSystemStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[13]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -872,10 +683,9 @@ func (x *UpdateSystemStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSystemStatusRequest.ProtoReflect.Descriptor instead.
 func (*UpdateSystemStatusRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{13}
+	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{9}
 }
 
-// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
 func (x *UpdateSystemStatusRequest) GetExternalId() string {
 	if x != nil {
 		return x.ExternalId
@@ -897,11 +707,11 @@ func (x *UpdateSystemStatusRequest) GetStatus() v1.Status {
 	return v1.Status(0)
 }
 
-func (x *UpdateSystemStatusRequest) GetSystemIdentifier() *SystemIdentifier {
+func (x *UpdateSystemStatusRequest) GetType() string {
 	if x != nil {
-		return x.SystemIdentifier
+		return x.Type
 	}
-	return nil
+	return ""
 }
 
 type UpdateSystemStatusResponse struct {
@@ -913,7 +723,7 @@ type UpdateSystemStatusResponse struct {
 
 func (x *UpdateSystemStatusResponse) Reset() {
 	*x = UpdateSystemStatusResponse{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[14]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -925,7 +735,7 @@ func (x *UpdateSystemStatusResponse) String() string {
 func (*UpdateSystemStatusResponse) ProtoMessage() {}
 
 func (x *UpdateSystemStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[14]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -938,7 +748,7 @@ func (x *UpdateSystemStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateSystemStatusResponse.ProtoReflect.Descriptor instead.
 func (*UpdateSystemStatusResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{14}
+	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdateSystemStatusResponse) GetSuccess() bool {
@@ -948,82 +758,19 @@ func (x *UpdateSystemStatusResponse) GetSuccess() bool {
 	return false
 }
 
-type SystemIdentifier struct {
-	state      protoimpl.MessageState `protogen:"open.v1"`
-	ExternalId string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-	Region        string `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	Type          string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+type SetSystemLabelsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	Region        string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	Labels        map[string]string      `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SystemIdentifier) Reset() {
-	*x = SystemIdentifier{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SystemIdentifier) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SystemIdentifier) ProtoMessage() {}
-
-func (x *SystemIdentifier) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SystemIdentifier.ProtoReflect.Descriptor instead.
-func (*SystemIdentifier) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *SystemIdentifier) GetExternalId() string {
-	if x != nil {
-		return x.ExternalId
-	}
-	return ""
-}
-
-// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-func (x *SystemIdentifier) GetRegion() string {
-	if x != nil {
-		return x.Region
-	}
-	return ""
-}
-
-func (x *SystemIdentifier) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
-type SetSystemLabelsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-	ExternalId       string            `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Region           string            `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	Labels           map[string]string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	SystemIdentifier *SystemIdentifier `protobuf:"bytes,4,opt,name=system_identifier,json=systemIdentifier,proto3" json:"system_identifier,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
-}
-
 func (x *SetSystemLabelsRequest) Reset() {
 	*x = SetSystemLabelsRequest{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[16]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1035,7 +782,7 @@ func (x *SetSystemLabelsRequest) String() string {
 func (*SetSystemLabelsRequest) ProtoMessage() {}
 
 func (x *SetSystemLabelsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[16]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1048,10 +795,9 @@ func (x *SetSystemLabelsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetSystemLabelsRequest.ProtoReflect.Descriptor instead.
 func (*SetSystemLabelsRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{16}
+	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{11}
 }
 
-// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
 func (x *SetSystemLabelsRequest) GetExternalId() string {
 	if x != nil {
 		return x.ExternalId
@@ -1073,11 +819,11 @@ func (x *SetSystemLabelsRequest) GetLabels() map[string]string {
 	return nil
 }
 
-func (x *SetSystemLabelsRequest) GetSystemIdentifier() *SystemIdentifier {
+func (x *SetSystemLabelsRequest) GetType() string {
 	if x != nil {
-		return x.SystemIdentifier
+		return x.Type
 	}
-	return nil
+	return ""
 }
 
 type SetSystemLabelsResponse struct {
@@ -1089,7 +835,7 @@ type SetSystemLabelsResponse struct {
 
 func (x *SetSystemLabelsResponse) Reset() {
 	*x = SetSystemLabelsResponse{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[17]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1101,7 +847,7 @@ func (x *SetSystemLabelsResponse) String() string {
 func (*SetSystemLabelsResponse) ProtoMessage() {}
 
 func (x *SetSystemLabelsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[17]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1114,7 +860,7 @@ func (x *SetSystemLabelsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SetSystemLabelsResponse.ProtoReflect.Descriptor instead.
 func (*SetSystemLabelsResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{17}
+	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *SetSystemLabelsResponse) GetSuccess() bool {
@@ -1125,19 +871,18 @@ func (x *SetSystemLabelsResponse) GetSuccess() bool {
 }
 
 type RemoveSystemLabelsRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
-	ExternalId       string            `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
-	Region           string            `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
-	LabelKeys        []string          `protobuf:"bytes,3,rep,name=label_keys,json=labelKeys,proto3" json:"label_keys,omitempty"` // Keys of labels to delete
-	SystemIdentifier *SystemIdentifier `protobuf:"bytes,4,opt,name=system_identifier,json=systemIdentifier,proto3" json:"system_identifier,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExternalId    string                 `protobuf:"bytes,1,opt,name=external_id,json=externalId,proto3" json:"external_id,omitempty"`
+	Region        string                 `protobuf:"bytes,2,opt,name=region,proto3" json:"region,omitempty"`
+	LabelKeys     []string               `protobuf:"bytes,3,rep,name=label_keys,json=labelKeys,proto3" json:"label_keys,omitempty"` // Keys of labels to delete
+	Type          string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *RemoveSystemLabelsRequest) Reset() {
 	*x = RemoveSystemLabelsRequest{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[18]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1149,7 +894,7 @@ func (x *RemoveSystemLabelsRequest) String() string {
 func (*RemoveSystemLabelsRequest) ProtoMessage() {}
 
 func (x *RemoveSystemLabelsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[18]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1162,10 +907,9 @@ func (x *RemoveSystemLabelsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveSystemLabelsRequest.ProtoReflect.Descriptor instead.
 func (*RemoveSystemLabelsRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{18}
+	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{13}
 }
 
-// Deprecated: Marked as deprecated in kms/api/cmk/registry/system/v1/system.proto.
 func (x *RemoveSystemLabelsRequest) GetExternalId() string {
 	if x != nil {
 		return x.ExternalId
@@ -1187,11 +931,11 @@ func (x *RemoveSystemLabelsRequest) GetLabelKeys() []string {
 	return nil
 }
 
-func (x *RemoveSystemLabelsRequest) GetSystemIdentifier() *SystemIdentifier {
+func (x *RemoveSystemLabelsRequest) GetType() string {
 	if x != nil {
-		return x.SystemIdentifier
+		return x.Type
 	}
-	return nil
+	return ""
 }
 
 type RemoveSystemLabelsResponse struct {
@@ -1203,7 +947,7 @@ type RemoveSystemLabelsResponse struct {
 
 func (x *RemoveSystemLabelsResponse) Reset() {
 	*x = RemoveSystemLabelsResponse{}
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[19]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1215,7 +959,7 @@ func (x *RemoveSystemLabelsResponse) String() string {
 func (*RemoveSystemLabelsResponse) ProtoMessage() {}
 
 func (x *RemoveSystemLabelsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[19]
+	mi := &file_kms_api_cmk_registry_system_v1_system_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1228,7 +972,7 @@ func (x *RemoveSystemLabelsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveSystemLabelsResponse.ProtoReflect.Descriptor instead.
 func (*RemoveSystemLabelsResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{19}
+	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *RemoveSystemLabelsResponse) GetSuccess() bool {
@@ -1287,73 +1031,57 @@ const file_kms_api_cmk_registry_system_v1_system_proto_rawDesc = "" +
 	"page_token\x18\x06 \x01(\tR\tpageToken\"\x7f\n" +
 	"\x13ListSystemsResponse\x12@\n" +
 	"\asystems\x18\x01 \x03(\v2&.kms.api.cmk.registry.system.v1.SystemR\asystems\x12&\n" +
-	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\xb1\x01\n" +
-	"\x13DeleteSystemRequest\x12#\n" +
-	"\vexternal_id\x18\x01 \x01(\tB\x02\x18\x01R\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"b\n" +
+	"\x13DeleteSystemRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x16\n" +
-	"\x06region\x18\x02 \x01(\tR\x06region\x12]\n" +
-	"\x11system_identifier\x18\x03 \x01(\v20.kms.api.cmk.registry.system.v1.SystemIdentifierR\x10systemIdentifier\"0\n" +
+	"\x06region\x18\x02 \x01(\tR\x06region\x12\x12\n" +
+	"\x04type\x18\x03 \x01(\tR\x04type\"0\n" +
 	"\x14DeleteSystemResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xf9\x01\n" +
-	"\x1dUpdateSystemL1KeyClaimRequest\x12#\n" +
-	"\vexternal_id\x18\x01 \x01(\tB\x02\x18\x01R\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xaa\x01\n" +
+	"\x1dUpdateSystemL1KeyClaimRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x16\n" +
 	"\x06region\x18\x02 \x01(\tR\x06region\x12\x1b\n" +
 	"\ttenant_id\x18\x03 \x01(\tR\btenantId\x12\x1f\n" +
 	"\vl1key_claim\x18\x04 \x01(\bR\n" +
-	"l1keyClaim\x12]\n" +
-	"\x11system_identifier\x18\x05 \x01(\v20.kms.api.cmk.registry.system.v1.SystemIdentifierR\x10systemIdentifier\":\n" +
+	"l1keyClaim\x12\x12\n" +
+	"\x04type\x18\x05 \x01(\tR\x04type\":\n" +
 	"\x1eUpdateSystemL1KeyClaimResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x81\x01\n" +
-	"\x1eUnlinkSystemsFromTenantRequest\x12_\n" +
-	"\x12system_identifiers\x18\x01 \x03(\v20.kms.api.cmk.registry.system.v1.SystemIdentifierR\x11systemIdentifiers\";\n" +
-	"\x1fUnlinkSystemsFromTenantResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x9a\x01\n" +
-	"\x1aLinkSystemsToTenantRequest\x12_\n" +
-	"\x12system_identifiers\x18\x01 \x03(\v20.kms.api.cmk.registry.system.v1.SystemIdentifierR\x11systemIdentifiers\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\"7\n" +
-	"\x1bLinkSystemsToTenantResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xed\x01\n" +
-	"\x19UpdateSystemStatusRequest\x12#\n" +
-	"\vexternal_id\x18\x01 \x01(\tB\x02\x18\x01R\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x9e\x01\n" +
+	"\x19UpdateSystemStatusRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x16\n" +
 	"\x06region\x18\x02 \x01(\tR\x06region\x124\n" +
-	"\x06status\x18\x03 \x01(\x0e2\x1c.kms.api.cmk.types.v1.StatusR\x06status\x12]\n" +
-	"\x11system_identifier\x18\x04 \x01(\v20.kms.api.cmk.registry.system.v1.SystemIdentifierR\x10systemIdentifier\"6\n" +
+	"\x06status\x18\x03 \x01(\x0e2\x1c.kms.api.cmk.types.v1.StatusR\x06status\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"6\n" +
 	"\x1aUpdateSystemStatusResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"c\n" +
-	"\x10SystemIdentifier\x12\x1f\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xfc\x01\n" +
+	"\x16SetSystemLabelsRequest\x12\x1f\n" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
-	"externalId\x12\x1a\n" +
-	"\x06region\x18\x02 \x01(\tB\x02\x18\x01R\x06region\x12\x12\n" +
-	"\x04type\x18\x03 \x01(\tR\x04type\"\xcb\x02\n" +
-	"\x16SetSystemLabelsRequest\x12#\n" +
-	"\vexternal_id\x18\x01 \x01(\tB\x02\x18\x01R\n" +
 	"externalId\x12\x16\n" +
 	"\x06region\x18\x02 \x01(\tR\x06region\x12Z\n" +
-	"\x06labels\x18\x03 \x03(\v2B.kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.LabelsEntryR\x06labels\x12]\n" +
-	"\x11system_identifier\x18\x04 \x01(\v20.kms.api.cmk.registry.system.v1.SystemIdentifierR\x10systemIdentifier\x1a9\n" +
+	"\x06labels\x18\x03 \x03(\v2B.kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.LabelsEntryR\x06labels\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"3\n" +
 	"\x17SetSystemLabelsResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xd6\x01\n" +
-	"\x19RemoveSystemLabelsRequest\x12#\n" +
-	"\vexternal_id\x18\x01 \x01(\tB\x02\x18\x01R\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x87\x01\n" +
+	"\x19RemoveSystemLabelsRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x16\n" +
 	"\x06region\x18\x02 \x01(\tR\x06region\x12\x1d\n" +
 	"\n" +
-	"label_keys\x18\x03 \x03(\tR\tlabelKeys\x12]\n" +
-	"\x11system_identifier\x18\x04 \x01(\v20.kms.api.cmk.registry.system.v1.SystemIdentifierR\x10systemIdentifier\"6\n" +
+	"label_keys\x18\x03 \x03(\tR\tlabelKeys\x12\x12\n" +
+	"\x04type\x18\x04 \x01(\tR\x04type\"6\n" +
 	"\x1aRemoveSystemLabelsResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xf9\t\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc7\a\n" +
 	"\aService\x12\x81\x01\n" +
 	"\x0eRegisterSystem\x125.kms.api.cmk.registry.system.v1.RegisterSystemRequest\x1a6.kms.api.cmk.registry.system.v1.RegisterSystemResponse\"\x00\x12x\n" +
 	"\vListSystems\x122.kms.api.cmk.registry.system.v1.ListSystemsRequest\x1a3.kms.api.cmk.registry.system.v1.ListSystemsResponse\"\x00\x12{\n" +
 	"\fDeleteSystem\x123.kms.api.cmk.registry.system.v1.DeleteSystemRequest\x1a4.kms.api.cmk.registry.system.v1.DeleteSystemResponse\"\x00\x12\x99\x01\n" +
-	"\x16UpdateSystemL1KeyClaim\x12=.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest\x1a>.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse\"\x00\x12\x9c\x01\n" +
-	"\x17UnlinkSystemsFromTenant\x12>.kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest\x1a?.kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantResponse\"\x00\x12\x90\x01\n" +
-	"\x13LinkSystemsToTenant\x12:.kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest\x1a;.kms.api.cmk.registry.system.v1.LinkSystemsToTenantResponse\"\x00\x12\x8d\x01\n" +
+	"\x16UpdateSystemL1KeyClaim\x12=.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest\x1a>.kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse\"\x00\x12\x8d\x01\n" +
 	"\x12UpdateSystemStatus\x129.kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest\x1a:.kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse\"\x00\x12\x84\x01\n" +
 	"\x0fSetSystemLabels\x126.kms.api.cmk.registry.system.v1.SetSystemLabelsRequest\x1a7.kms.api.cmk.registry.system.v1.SetSystemLabelsResponse\"\x00\x12\x8d\x01\n" +
 	"\x12RemoveSystemLabels\x129.kms.api.cmk.registry.system.v1.RemoveSystemLabelsRequest\x1a:.kms.api.cmk.registry.system.v1.RemoveSystemLabelsResponse\"\x00B\x9a\x02\n" +
@@ -1371,71 +1099,55 @@ func file_kms_api_cmk_registry_system_v1_system_proto_rawDescGZIP() []byte {
 	return file_kms_api_cmk_registry_system_v1_system_proto_rawDescData
 }
 
-var file_kms_api_cmk_registry_system_v1_system_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_kms_api_cmk_registry_system_v1_system_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_kms_api_cmk_registry_system_v1_system_proto_goTypes = []any{
-	(*System)(nil),                          // 0: kms.api.cmk.registry.system.v1.System
-	(*RegisterSystemRequest)(nil),           // 1: kms.api.cmk.registry.system.v1.RegisterSystemRequest
-	(*RegisterSystemResponse)(nil),          // 2: kms.api.cmk.registry.system.v1.RegisterSystemResponse
-	(*ListSystemsRequest)(nil),              // 3: kms.api.cmk.registry.system.v1.ListSystemsRequest
-	(*ListSystemsResponse)(nil),             // 4: kms.api.cmk.registry.system.v1.ListSystemsResponse
-	(*DeleteSystemRequest)(nil),             // 5: kms.api.cmk.registry.system.v1.DeleteSystemRequest
-	(*DeleteSystemResponse)(nil),            // 6: kms.api.cmk.registry.system.v1.DeleteSystemResponse
-	(*UpdateSystemL1KeyClaimRequest)(nil),   // 7: kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest
-	(*UpdateSystemL1KeyClaimResponse)(nil),  // 8: kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse
-	(*UnlinkSystemsFromTenantRequest)(nil),  // 9: kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest
-	(*UnlinkSystemsFromTenantResponse)(nil), // 10: kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantResponse
-	(*LinkSystemsToTenantRequest)(nil),      // 11: kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest
-	(*LinkSystemsToTenantResponse)(nil),     // 12: kms.api.cmk.registry.system.v1.LinkSystemsToTenantResponse
-	(*UpdateSystemStatusRequest)(nil),       // 13: kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest
-	(*UpdateSystemStatusResponse)(nil),      // 14: kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse
-	(*SystemIdentifier)(nil),                // 15: kms.api.cmk.registry.system.v1.SystemIdentifier
-	(*SetSystemLabelsRequest)(nil),          // 16: kms.api.cmk.registry.system.v1.SetSystemLabelsRequest
-	(*SetSystemLabelsResponse)(nil),         // 17: kms.api.cmk.registry.system.v1.SetSystemLabelsResponse
-	(*RemoveSystemLabelsRequest)(nil),       // 18: kms.api.cmk.registry.system.v1.RemoveSystemLabelsRequest
-	(*RemoveSystemLabelsResponse)(nil),      // 19: kms.api.cmk.registry.system.v1.RemoveSystemLabelsResponse
-	nil,                                     // 20: kms.api.cmk.registry.system.v1.System.LabelsEntry
-	nil,                                     // 21: kms.api.cmk.registry.system.v1.RegisterSystemRequest.LabelsEntry
-	nil,                                     // 22: kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.LabelsEntry
-	(v1.Status)(0),                          // 23: kms.api.cmk.types.v1.Status
+	(*System)(nil),                         // 0: kms.api.cmk.registry.system.v1.System
+	(*RegisterSystemRequest)(nil),          // 1: kms.api.cmk.registry.system.v1.RegisterSystemRequest
+	(*RegisterSystemResponse)(nil),         // 2: kms.api.cmk.registry.system.v1.RegisterSystemResponse
+	(*ListSystemsRequest)(nil),             // 3: kms.api.cmk.registry.system.v1.ListSystemsRequest
+	(*ListSystemsResponse)(nil),            // 4: kms.api.cmk.registry.system.v1.ListSystemsResponse
+	(*DeleteSystemRequest)(nil),            // 5: kms.api.cmk.registry.system.v1.DeleteSystemRequest
+	(*DeleteSystemResponse)(nil),           // 6: kms.api.cmk.registry.system.v1.DeleteSystemResponse
+	(*UpdateSystemL1KeyClaimRequest)(nil),  // 7: kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest
+	(*UpdateSystemL1KeyClaimResponse)(nil), // 8: kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse
+	(*UpdateSystemStatusRequest)(nil),      // 9: kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest
+	(*UpdateSystemStatusResponse)(nil),     // 10: kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse
+	(*SetSystemLabelsRequest)(nil),         // 11: kms.api.cmk.registry.system.v1.SetSystemLabelsRequest
+	(*SetSystemLabelsResponse)(nil),        // 12: kms.api.cmk.registry.system.v1.SetSystemLabelsResponse
+	(*RemoveSystemLabelsRequest)(nil),      // 13: kms.api.cmk.registry.system.v1.RemoveSystemLabelsRequest
+	(*RemoveSystemLabelsResponse)(nil),     // 14: kms.api.cmk.registry.system.v1.RemoveSystemLabelsResponse
+	nil,                                    // 15: kms.api.cmk.registry.system.v1.System.LabelsEntry
+	nil,                                    // 16: kms.api.cmk.registry.system.v1.RegisterSystemRequest.LabelsEntry
+	nil,                                    // 17: kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.LabelsEntry
+	(v1.Status)(0),                         // 18: kms.api.cmk.types.v1.Status
 }
 var file_kms_api_cmk_registry_system_v1_system_proto_depIdxs = []int32{
-	23, // 0: kms.api.cmk.registry.system.v1.System.status:type_name -> kms.api.cmk.types.v1.Status
-	20, // 1: kms.api.cmk.registry.system.v1.System.labels:type_name -> kms.api.cmk.registry.system.v1.System.LabelsEntry
-	23, // 2: kms.api.cmk.registry.system.v1.RegisterSystemRequest.status:type_name -> kms.api.cmk.types.v1.Status
-	21, // 3: kms.api.cmk.registry.system.v1.RegisterSystemRequest.labels:type_name -> kms.api.cmk.registry.system.v1.RegisterSystemRequest.LabelsEntry
+	18, // 0: kms.api.cmk.registry.system.v1.System.status:type_name -> kms.api.cmk.types.v1.Status
+	15, // 1: kms.api.cmk.registry.system.v1.System.labels:type_name -> kms.api.cmk.registry.system.v1.System.LabelsEntry
+	18, // 2: kms.api.cmk.registry.system.v1.RegisterSystemRequest.status:type_name -> kms.api.cmk.types.v1.Status
+	16, // 3: kms.api.cmk.registry.system.v1.RegisterSystemRequest.labels:type_name -> kms.api.cmk.registry.system.v1.RegisterSystemRequest.LabelsEntry
 	0,  // 4: kms.api.cmk.registry.system.v1.ListSystemsResponse.systems:type_name -> kms.api.cmk.registry.system.v1.System
-	15, // 5: kms.api.cmk.registry.system.v1.DeleteSystemRequest.system_identifier:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	15, // 6: kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest.system_identifier:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	15, // 7: kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest.system_identifiers:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	15, // 8: kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest.system_identifiers:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	23, // 9: kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest.status:type_name -> kms.api.cmk.types.v1.Status
-	15, // 10: kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest.system_identifier:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	22, // 11: kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.labels:type_name -> kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.LabelsEntry
-	15, // 12: kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.system_identifier:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	15, // 13: kms.api.cmk.registry.system.v1.RemoveSystemLabelsRequest.system_identifier:type_name -> kms.api.cmk.registry.system.v1.SystemIdentifier
-	1,  // 14: kms.api.cmk.registry.system.v1.Service.RegisterSystem:input_type -> kms.api.cmk.registry.system.v1.RegisterSystemRequest
-	3,  // 15: kms.api.cmk.registry.system.v1.Service.ListSystems:input_type -> kms.api.cmk.registry.system.v1.ListSystemsRequest
-	5,  // 16: kms.api.cmk.registry.system.v1.Service.DeleteSystem:input_type -> kms.api.cmk.registry.system.v1.DeleteSystemRequest
-	7,  // 17: kms.api.cmk.registry.system.v1.Service.UpdateSystemL1KeyClaim:input_type -> kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest
-	9,  // 18: kms.api.cmk.registry.system.v1.Service.UnlinkSystemsFromTenant:input_type -> kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantRequest
-	11, // 19: kms.api.cmk.registry.system.v1.Service.LinkSystemsToTenant:input_type -> kms.api.cmk.registry.system.v1.LinkSystemsToTenantRequest
-	13, // 20: kms.api.cmk.registry.system.v1.Service.UpdateSystemStatus:input_type -> kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest
-	16, // 21: kms.api.cmk.registry.system.v1.Service.SetSystemLabels:input_type -> kms.api.cmk.registry.system.v1.SetSystemLabelsRequest
-	18, // 22: kms.api.cmk.registry.system.v1.Service.RemoveSystemLabels:input_type -> kms.api.cmk.registry.system.v1.RemoveSystemLabelsRequest
-	2,  // 23: kms.api.cmk.registry.system.v1.Service.RegisterSystem:output_type -> kms.api.cmk.registry.system.v1.RegisterSystemResponse
-	4,  // 24: kms.api.cmk.registry.system.v1.Service.ListSystems:output_type -> kms.api.cmk.registry.system.v1.ListSystemsResponse
-	6,  // 25: kms.api.cmk.registry.system.v1.Service.DeleteSystem:output_type -> kms.api.cmk.registry.system.v1.DeleteSystemResponse
-	8,  // 26: kms.api.cmk.registry.system.v1.Service.UpdateSystemL1KeyClaim:output_type -> kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse
-	10, // 27: kms.api.cmk.registry.system.v1.Service.UnlinkSystemsFromTenant:output_type -> kms.api.cmk.registry.system.v1.UnlinkSystemsFromTenantResponse
-	12, // 28: kms.api.cmk.registry.system.v1.Service.LinkSystemsToTenant:output_type -> kms.api.cmk.registry.system.v1.LinkSystemsToTenantResponse
-	14, // 29: kms.api.cmk.registry.system.v1.Service.UpdateSystemStatus:output_type -> kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse
-	17, // 30: kms.api.cmk.registry.system.v1.Service.SetSystemLabels:output_type -> kms.api.cmk.registry.system.v1.SetSystemLabelsResponse
-	19, // 31: kms.api.cmk.registry.system.v1.Service.RemoveSystemLabels:output_type -> kms.api.cmk.registry.system.v1.RemoveSystemLabelsResponse
-	23, // [23:32] is the sub-list for method output_type
-	14, // [14:23] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	18, // 5: kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest.status:type_name -> kms.api.cmk.types.v1.Status
+	17, // 6: kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.labels:type_name -> kms.api.cmk.registry.system.v1.SetSystemLabelsRequest.LabelsEntry
+	1,  // 7: kms.api.cmk.registry.system.v1.Service.RegisterSystem:input_type -> kms.api.cmk.registry.system.v1.RegisterSystemRequest
+	3,  // 8: kms.api.cmk.registry.system.v1.Service.ListSystems:input_type -> kms.api.cmk.registry.system.v1.ListSystemsRequest
+	5,  // 9: kms.api.cmk.registry.system.v1.Service.DeleteSystem:input_type -> kms.api.cmk.registry.system.v1.DeleteSystemRequest
+	7,  // 10: kms.api.cmk.registry.system.v1.Service.UpdateSystemL1KeyClaim:input_type -> kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimRequest
+	9,  // 11: kms.api.cmk.registry.system.v1.Service.UpdateSystemStatus:input_type -> kms.api.cmk.registry.system.v1.UpdateSystemStatusRequest
+	11, // 12: kms.api.cmk.registry.system.v1.Service.SetSystemLabels:input_type -> kms.api.cmk.registry.system.v1.SetSystemLabelsRequest
+	13, // 13: kms.api.cmk.registry.system.v1.Service.RemoveSystemLabels:input_type -> kms.api.cmk.registry.system.v1.RemoveSystemLabelsRequest
+	2,  // 14: kms.api.cmk.registry.system.v1.Service.RegisterSystem:output_type -> kms.api.cmk.registry.system.v1.RegisterSystemResponse
+	4,  // 15: kms.api.cmk.registry.system.v1.Service.ListSystems:output_type -> kms.api.cmk.registry.system.v1.ListSystemsResponse
+	6,  // 16: kms.api.cmk.registry.system.v1.Service.DeleteSystem:output_type -> kms.api.cmk.registry.system.v1.DeleteSystemResponse
+	8,  // 17: kms.api.cmk.registry.system.v1.Service.UpdateSystemL1KeyClaim:output_type -> kms.api.cmk.registry.system.v1.UpdateSystemL1KeyClaimResponse
+	10, // 18: kms.api.cmk.registry.system.v1.Service.UpdateSystemStatus:output_type -> kms.api.cmk.registry.system.v1.UpdateSystemStatusResponse
+	12, // 19: kms.api.cmk.registry.system.v1.Service.SetSystemLabels:output_type -> kms.api.cmk.registry.system.v1.SetSystemLabelsResponse
+	14, // 20: kms.api.cmk.registry.system.v1.Service.RemoveSystemLabels:output_type -> kms.api.cmk.registry.system.v1.RemoveSystemLabelsResponse
+	14, // [14:21] is the sub-list for method output_type
+	7,  // [7:14] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_kms_api_cmk_registry_system_v1_system_proto_init() }
@@ -1449,7 +1161,7 @@ func file_kms_api_cmk_registry_system_v1_system_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_registry_system_v1_system_proto_rawDesc), len(file_kms_api_cmk_registry_system_v1_system_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   23,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
