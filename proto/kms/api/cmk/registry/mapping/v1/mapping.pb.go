@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: kms/api/cmk/registry/mapping/mapping.proto
+// source: kms/api/cmk/registry/mapping/v1/mapping.proto
 
 package mappingv1
 
@@ -32,7 +32,7 @@ type UnmapSystemFromTenantRequest struct {
 
 func (x *UnmapSystemFromTenantRequest) Reset() {
 	*x = UnmapSystemFromTenantRequest{}
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[0]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +44,7 @@ func (x *UnmapSystemFromTenantRequest) String() string {
 func (*UnmapSystemFromTenantRequest) ProtoMessage() {}
 
 func (x *UnmapSystemFromTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[0]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +57,7 @@ func (x *UnmapSystemFromTenantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnmapSystemFromTenantRequest.ProtoReflect.Descriptor instead.
 func (*UnmapSystemFromTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_mapping_mapping_proto_rawDescGZIP(), []int{0}
+	return file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *UnmapSystemFromTenantRequest) GetExternalId() string {
@@ -90,7 +90,7 @@ type UnmapSystemFromTenantResponse struct {
 
 func (x *UnmapSystemFromTenantResponse) Reset() {
 	*x = UnmapSystemFromTenantResponse{}
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[1]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -102,7 +102,7 @@ func (x *UnmapSystemFromTenantResponse) String() string {
 func (*UnmapSystemFromTenantResponse) ProtoMessage() {}
 
 func (x *UnmapSystemFromTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[1]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -115,7 +115,7 @@ func (x *UnmapSystemFromTenantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnmapSystemFromTenantResponse.ProtoReflect.Descriptor instead.
 func (*UnmapSystemFromTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_mapping_mapping_proto_rawDescGZIP(), []int{1}
+	return file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *UnmapSystemFromTenantResponse) GetSuccess() bool {
@@ -136,7 +136,7 @@ type MapSystemToTenantRequest struct {
 
 func (x *MapSystemToTenantRequest) Reset() {
 	*x = MapSystemToTenantRequest{}
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[2]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -148,7 +148,7 @@ func (x *MapSystemToTenantRequest) String() string {
 func (*MapSystemToTenantRequest) ProtoMessage() {}
 
 func (x *MapSystemToTenantRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[2]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -161,7 +161,7 @@ func (x *MapSystemToTenantRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MapSystemToTenantRequest.ProtoReflect.Descriptor instead.
 func (*MapSystemToTenantRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_mapping_mapping_proto_rawDescGZIP(), []int{2}
+	return file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *MapSystemToTenantRequest) GetExternalId() string {
@@ -194,7 +194,7 @@ type MapSystemToTenantResponse struct {
 
 func (x *MapSystemToTenantResponse) Reset() {
 	*x = MapSystemToTenantResponse{}
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[3]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -206,7 +206,7 @@ func (x *MapSystemToTenantResponse) String() string {
 func (*MapSystemToTenantResponse) ProtoMessage() {}
 
 func (x *MapSystemToTenantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[3]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -219,7 +219,7 @@ func (x *MapSystemToTenantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MapSystemToTenantResponse.ProtoReflect.Descriptor instead.
 func (*MapSystemToTenantResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_mapping_mapping_proto_rawDescGZIP(), []int{3}
+	return file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MapSystemToTenantResponse) GetSuccess() bool {
@@ -239,7 +239,7 @@ type GetRequest struct {
 
 func (x *GetRequest) Reset() {
 	*x = GetRequest{}
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[4]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -251,7 +251,7 @@ func (x *GetRequest) String() string {
 func (*GetRequest) ProtoMessage() {}
 
 func (x *GetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[4]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -264,7 +264,7 @@ func (x *GetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRequest.ProtoReflect.Descriptor instead.
 func (*GetRequest) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_mapping_mapping_proto_rawDescGZIP(), []int{4}
+	return file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetRequest) GetExternalId() string {
@@ -290,7 +290,7 @@ type GetResponse struct {
 
 func (x *GetResponse) Reset() {
 	*x = GetResponse{}
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[5]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -302,7 +302,7 @@ func (x *GetResponse) String() string {
 func (*GetResponse) ProtoMessage() {}
 
 func (x *GetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes[5]
+	mi := &file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -315,7 +315,7 @@ func (x *GetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResponse.ProtoReflect.Descriptor instead.
 func (*GetResponse) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_registry_mapping_mapping_proto_rawDescGZIP(), []int{5}
+	return file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetResponse) GetTenantId() string {
@@ -325,11 +325,11 @@ func (x *GetResponse) GetTenantId() string {
 	return ""
 }
 
-var File_kms_api_cmk_registry_mapping_mapping_proto protoreflect.FileDescriptor
+var File_kms_api_cmk_registry_mapping_v1_mapping_proto protoreflect.FileDescriptor
 
-const file_kms_api_cmk_registry_mapping_mapping_proto_rawDesc = "" +
+const file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDesc = "" +
 	"\n" +
-	"*kms/api/cmk/registry/mapping/mapping.proto\x12\x1fkms.api.cmk.registry.mapping.v1\"p\n" +
+	"-kms/api/cmk/registry/mapping/v1/mapping.proto\x12\x1fkms.api.cmk.registry.mapping.v1\"p\n" +
 	"\x1cUnmapSystemFromTenantRequest\x12\x1f\n" +
 	"\vexternal_id\x18\n" +
 	" \x01(\tR\n" +
@@ -360,23 +360,23 @@ const file_kms_api_cmk_registry_mapping_mapping_proto_rawDesc = "" +
 	"\aService\x12\x98\x01\n" +
 	"\x15UnmapSystemFromTenant\x12=.kms.api.cmk.registry.mapping.v1.UnmapSystemFromTenantRequest\x1a>.kms.api.cmk.registry.mapping.v1.UnmapSystemFromTenantResponse\"\x00\x12\x8c\x01\n" +
 	"\x11MapSystemToTenant\x129.kms.api.cmk.registry.mapping.v1.MapSystemToTenantRequest\x1a:.kms.api.cmk.registry.mapping.v1.MapSystemToTenantResponse\"\x00\x12b\n" +
-	"\x03Get\x12+.kms.api.cmk.registry.mapping.v1.GetRequest\x1a,.kms.api.cmk.registry.mapping.v1.GetResponse\"\x00B\x9f\x02\n" +
-	"#com.kms.api.cmk.registry.mapping.v1B\fMappingProtoP\x01ZGgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/mapping;mappingv1\xa2\x02\x05KACRM\xaa\x02\x1fKms.Api.Cmk.Registry.Mapping.V1\xca\x02\x1fKms\\Api\\Cmk\\Registry\\Mapping\\V1\xe2\x02+Kms\\Api\\Cmk\\Registry\\Mapping\\V1\\GPBMetadata\xea\x02$Kms::Api::Cmk::Registry::Mapping::V1b\x06proto3"
+	"\x03Get\x12+.kms.api.cmk.registry.mapping.v1.GetRequest\x1a,.kms.api.cmk.registry.mapping.v1.GetResponse\"\x00B\xa2\x02\n" +
+	"#com.kms.api.cmk.registry.mapping.v1B\fMappingProtoP\x01ZJgithub.com/openkcm/api-sdk/proto/kms/api/cmk/registry/mapping/v1;mappingv1\xa2\x02\x05KACRM\xaa\x02\x1fKms.Api.Cmk.Registry.Mapping.V1\xca\x02\x1fKms\\Api\\Cmk\\Registry\\Mapping\\V1\xe2\x02+Kms\\Api\\Cmk\\Registry\\Mapping\\V1\\GPBMetadata\xea\x02$Kms::Api::Cmk::Registry::Mapping::V1b\x06proto3"
 
 var (
-	file_kms_api_cmk_registry_mapping_mapping_proto_rawDescOnce sync.Once
-	file_kms_api_cmk_registry_mapping_mapping_proto_rawDescData []byte
+	file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescOnce sync.Once
+	file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescData []byte
 )
 
-func file_kms_api_cmk_registry_mapping_mapping_proto_rawDescGZIP() []byte {
-	file_kms_api_cmk_registry_mapping_mapping_proto_rawDescOnce.Do(func() {
-		file_kms_api_cmk_registry_mapping_mapping_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_kms_api_cmk_registry_mapping_mapping_proto_rawDesc), len(file_kms_api_cmk_registry_mapping_mapping_proto_rawDesc)))
+func file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescGZIP() []byte {
+	file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescOnce.Do(func() {
+		file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDesc), len(file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDesc)))
 	})
-	return file_kms_api_cmk_registry_mapping_mapping_proto_rawDescData
+	return file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDescData
 }
 
-var file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_kms_api_cmk_registry_mapping_mapping_proto_goTypes = []any{
+var file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_kms_api_cmk_registry_mapping_v1_mapping_proto_goTypes = []any{
 	(*UnmapSystemFromTenantRequest)(nil),  // 0: kms.api.cmk.registry.mapping.v1.UnmapSystemFromTenantRequest
 	(*UnmapSystemFromTenantResponse)(nil), // 1: kms.api.cmk.registry.mapping.v1.UnmapSystemFromTenantResponse
 	(*MapSystemToTenantRequest)(nil),      // 2: kms.api.cmk.registry.mapping.v1.MapSystemToTenantRequest
@@ -384,7 +384,7 @@ var file_kms_api_cmk_registry_mapping_mapping_proto_goTypes = []any{
 	(*GetRequest)(nil),                    // 4: kms.api.cmk.registry.mapping.v1.GetRequest
 	(*GetResponse)(nil),                   // 5: kms.api.cmk.registry.mapping.v1.GetResponse
 }
-var file_kms_api_cmk_registry_mapping_mapping_proto_depIdxs = []int32{
+var file_kms_api_cmk_registry_mapping_v1_mapping_proto_depIdxs = []int32{
 	0, // 0: kms.api.cmk.registry.mapping.v1.Service.UnmapSystemFromTenant:input_type -> kms.api.cmk.registry.mapping.v1.UnmapSystemFromTenantRequest
 	2, // 1: kms.api.cmk.registry.mapping.v1.Service.MapSystemToTenant:input_type -> kms.api.cmk.registry.mapping.v1.MapSystemToTenantRequest
 	4, // 2: kms.api.cmk.registry.mapping.v1.Service.Get:input_type -> kms.api.cmk.registry.mapping.v1.GetRequest
@@ -398,26 +398,26 @@ var file_kms_api_cmk_registry_mapping_mapping_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_kms_api_cmk_registry_mapping_mapping_proto_init() }
-func file_kms_api_cmk_registry_mapping_mapping_proto_init() {
-	if File_kms_api_cmk_registry_mapping_mapping_proto != nil {
+func init() { file_kms_api_cmk_registry_mapping_v1_mapping_proto_init() }
+func file_kms_api_cmk_registry_mapping_v1_mapping_proto_init() {
+	if File_kms_api_cmk_registry_mapping_v1_mapping_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_registry_mapping_mapping_proto_rawDesc), len(file_kms_api_cmk_registry_mapping_mapping_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDesc), len(file_kms_api_cmk_registry_mapping_v1_mapping_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_kms_api_cmk_registry_mapping_mapping_proto_goTypes,
-		DependencyIndexes: file_kms_api_cmk_registry_mapping_mapping_proto_depIdxs,
-		MessageInfos:      file_kms_api_cmk_registry_mapping_mapping_proto_msgTypes,
+		GoTypes:           file_kms_api_cmk_registry_mapping_v1_mapping_proto_goTypes,
+		DependencyIndexes: file_kms_api_cmk_registry_mapping_v1_mapping_proto_depIdxs,
+		MessageInfos:      file_kms_api_cmk_registry_mapping_v1_mapping_proto_msgTypes,
 	}.Build()
-	File_kms_api_cmk_registry_mapping_mapping_proto = out.File
-	file_kms_api_cmk_registry_mapping_mapping_proto_goTypes = nil
-	file_kms_api_cmk_registry_mapping_mapping_proto_depIdxs = nil
+	File_kms_api_cmk_registry_mapping_v1_mapping_proto = out.File
+	file_kms_api_cmk_registry_mapping_v1_mapping_proto_goTypes = nil
+	file_kms_api_cmk_registry_mapping_v1_mapping_proto_depIdxs = nil
 }

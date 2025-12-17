@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.0
 // - protoc             (unknown)
-// source: kms/api/cmk/registry/mapping/mapping.proto
+// source: kms/api/cmk/registry/mapping/v1/mapping.proto
 
 package mappingv1
 
@@ -193,5 +193,5 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "kms/api/cmk/registry/mapping/mapping.proto",
+	Metadata: "kms/api/cmk/registry/mapping/v1/mapping.proto",
 }
