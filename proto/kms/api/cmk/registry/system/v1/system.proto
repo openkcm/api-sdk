@@ -9,8 +9,6 @@ service Service {
   rpc ListSystems(ListSystemsRequest) returns (ListSystemsResponse) {}
   rpc DeleteSystem(DeleteSystemRequest) returns (DeleteSystemResponse) {}
   rpc UpdateSystemL1KeyClaim(UpdateSystemL1KeyClaimRequest) returns (UpdateSystemL1KeyClaimResponse) {}
-  rpc UnlinkSystemsFromTenant(UnlinkSystemsFromTenantRequest) returns (UnlinkSystemsFromTenantResponse) {}
-  rpc LinkSystemsToTenant(LinkSystemsToTenantRequest) returns (LinkSystemsToTenantResponse) {}
   rpc UpdateSystemStatus(UpdateSystemStatusRequest) returns (UpdateSystemStatusResponse) {}
   rpc SetSystemLabels(SetSystemLabelsRequest) returns (SetSystemLabelsResponse) {}
   rpc RemoveSystemLabels(RemoveSystemLabelsRequest) returns (RemoveSystemLabelsResponse) {}
@@ -65,9 +63,9 @@ message ListSystemsResponse {
 }
 
 message DeleteSystemRequest {
-  string external_id = 1 [deprecated = true];
+  string external_id = 1;
   string region = 2;
-  SystemIdentifier system_identifier = 3;
+  string type = 3;
 }
 
 message DeleteSystemResponse {
@@ -75,56 +73,33 @@ message DeleteSystemResponse {
 }
 
 message UpdateSystemL1KeyClaimRequest {
-  string external_id = 1 [deprecated = true];
+  string external_id = 1;
   string region = 2;
   string tenant_id = 3;
   bool l1key_claim = 4;
-  SystemIdentifier system_identifier = 5;
+  string type = 5;
 }
 
 message UpdateSystemL1KeyClaimResponse {
   bool success = 1;
 }
 
-message UnlinkSystemsFromTenantRequest {
-  repeated SystemIdentifier system_identifiers = 1;
-}
-
-message UnlinkSystemsFromTenantResponse {
-  bool success = 1;
-}
-
-message LinkSystemsToTenantRequest {
-  repeated SystemIdentifier system_identifiers = 1;
-  string tenant_id = 2;
-}
-
-message LinkSystemsToTenantResponse {
-  bool success = 1;
-}
-
 message UpdateSystemStatusRequest {
-  string external_id = 1 [deprecated = true];
+  string external_id = 1;
   string region = 2;
   kms.api.cmk.types.v1.Status status = 3;
-  SystemIdentifier system_identifier = 4;
+  string type = 4;
 }
 
 message UpdateSystemStatusResponse {
   bool success = 1;
 }
 
-message SystemIdentifier {
-  string external_id = 1;
-  string region = 2 [deprecated = true];
-  string type = 3;
-}
-
 message SetSystemLabelsRequest {
   string external_id = 1 [deprecated = true];
   string region = 2;
   map<string, string> labels = 3;
-  SystemIdentifier system_identifier = 4;
+  string type = 4;
 }
 
 message SetSystemLabelsResponse {
@@ -135,7 +110,7 @@ message RemoveSystemLabelsRequest {
   string external_id = 1 [deprecated = true];
   string region = 2;
   repeated string label_keys = 3; // Keys of labels to delete
-  SystemIdentifier system_identifier = 4;
+  string type = 4;
 }
 
 message RemoveSystemLabelsResponse {

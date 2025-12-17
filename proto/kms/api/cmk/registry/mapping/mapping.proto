@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package kms.api.cmk.registry.mapping.v1;
+
+service Service {
+  rpc UnmapSystemFromTenant(UnmapSystemFromTenantRequest) returns (UnmapSystemFromTenantResponse) {}
+  rpc MapSystemToTenant(MapSystemToTenantRequest) returns (MapSystemToTenantResponse) {}
+  rpc Get(GetRequest) returns (GetResponse) {}
+}
+
+message UnmapSystemFromTenantRequest {
+  string external_id = 10;
+  string type = 20;
+  string tenant_id = 30;
+}
+
+message UnmapSystemFromTenantResponse {
+  bool success = 10;
+}
+
+message MapSystemToTenantRequest {
+  string external_id = 10;
+  string type = 20;
+  string tenant_id = 30;
+}
+
+message MapSystemToTenantResponse {
+  bool success = 10;
+}
+
+message GetRequest {
+  string external_id = 10;
+  string type = 20;
+}
+
+message GetResponse {
+  string tenant_id = 10;
+}
