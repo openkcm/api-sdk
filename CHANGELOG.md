@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/openkcm/api-sdk/compare/v0.13.0...v0.14.0) (2025-12-18)
+
+
+### Features
+
+* updated SystemIdentifier to have type instead of region ([#70](https://github.com/openkcm/api-sdk/issues/70)) ([087d245](https://github.com/openkcm/api-sdk/commit/087d245694fd2c1dea36118e85fc97ab61fe2c1b))
+
 ## [0.13.0](https://github.com/openkcm/api-sdk/compare/v0.12.0...v0.13.0) (2025-11-26)
 
 
