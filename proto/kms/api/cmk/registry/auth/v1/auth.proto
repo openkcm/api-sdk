@@ -2,81 +2,135 @@ syntax = "proto3";
 
 package kms.api.cmk.registry.auth.v1;
 
+// Service for managing authentications in the KMS system.
 service Service {
+  // ApplyAuth creates or updates an authentication. This method is idempotent - if an authentication with the same external_id already exists, it will be updated.
   rpc ApplyAuth(ApplyAuthRequest) returns (ApplyAuthResponse) {}
+  // GetAuth retrieves an authentication by its external ID.
   rpc GetAuth(GetAuthRequest) returns (GetAuthResponse) {}
+  // ListAuths lists all authentications for a given tenant. The results can be paginated.
   rpc ListAuths(ListAuthsRequest) returns (ListAuthsResponse) {}
+  // RemoveAuth removes an authentication by its external ID. This method is idempotent - if the authentication does not exist, it will return success.
   rpc RemoveAuth(RemoveAuthRequest) returns (RemoveAuthResponse) {}
 }
 
+// Represents an authentication.
 message Auth {
+  // The external ID of the authentication.
   string external_id = 1;
+  // The tenant ID associated with the authentication.
   string tenant_id = 2;
+  // The type of the authentication.
   string type = 3;
+  // A map of properties for the authentication.
   map<string, string> properties = 4;
+  // The status of the authentication.
   AuthStatus status = 5;
+  // An error message, if any.
   string error_message = 6;
+  // The timestamp of the last update.
   string updated_at = 7;
+  // The timestamp of creation.
   string created_at = 8;
 }
 
+// Request to apply an authentication.
 message ApplyAuthRequest {
+  // The external ID of the authentication.
   string external_id = 1;
+  // The tenant ID associated with the authentication.
   string tenant_id = 2;
+  // The type of the authentication.
   string type = 3;
+  // A map of properties for the authentication.
   map<string, string> properties = 4;
 }
 
+// Response for applying an authentication.
 message ApplyAuthResponse {
+  // Indicates whether the operation was successful.
   bool success = 1;
 }
 
+// Request to get an authentication.
 message GetAuthRequest {
+  // The external ID of the authentication to retrieve.
   string external_id = 1;
 }
 
+// Response for getting an authentication.
 message GetAuthResponse {
+  // The retrieved authentication.
   Auth auth = 1;
 }
 
+// Request to list authentications.
 message ListAuthsRequest {
+  // The tenant ID to list authentications for.
   string tenant_id = 1;
 
-  int32 limit = 2; // default value is 50; max value is 1000
+  // The maximum number of authentications to return.
+  // Default value is 50; max value is 1000.
+  int32 limit = 2;
+  // A token to retrieve the next page of results.
   string next_page_token = 3;
 }
 
+// Response for listing authentications.
 message ListAuthsResponse {
+  // A list of authentications.
   repeated Auth auth = 1;
 
+  // A token to retrieve the next page of results.
   string next_page_token = 2;
 }
 
+// Request to remove an authentication.
 message RemoveAuthRequest {
+  // The external ID of the authentication to remove.
   string external_id = 1;
 }
 
+// Response for removing an authentication.
 message RemoveAuthResponse {
+  // Indicates whether the operation was successful.
   bool success = 1;
 }
 
+// The status of an authentication.
 enum AuthStatus {
+  // The status is not specified.
   AUTH_STATUS_UNSPECIFIED = 0;
+  // The authentication is being applied.
   AUTH_STATUS_APPLYING = 1;
+  // An error occurred while applying the authentication.
   AUTH_STATUS_APPLYING_ERROR = 2;
+  // The authentication has been applied.
   AUTH_STATUS_APPLIED = 3;
+  // The authentication is being removed.
   AUTH_STATUS_REMOVING = 4;
+  // An error occurred while removing the authentication.
   AUTH_STATUS_REMOVING_ERROR = 5;
+  // The authentication has been removed.
   AUTH_STATUS_REMOVED = 6;
+  // The authentication is being blocked.
   AUTH_STATUS_BLOCKING = 7;
+  // An error occurred while blocking the authentication.
   AUTH_STATUS_BLOCKING_ERROR = 8;
+  // The authentication has been blocked.
   AUTH_STATUS_BLOCKED = 9;
+  // The authentication is being unblocked.
   AUTH_STATUS_UNBLOCKING = 10;
+  // An error occurred while unblocking the authentication.
   AUTH_STATUS_UNBLOCKING_ERROR = 11;
 }
 
+// The action to perform on an authentication.
 enum AuthAction {
+  // The action is not specified.
   AUTH_ACTION_UNSPECIFIED = 0;
+  // Apply an authentication.
   AUTH_ACTION_APPLY_AUTH = 1;
+  // Remove an authentication.
   AUTH_ACTION_REMOVE_AUTH = 2;
 }

@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Protocol Documentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic"/>
+    <style>
+      body {
+        width: 60em;
+        margin: 1em auto;
+        color: #222;
+        font-family: "Ubuntu", sans-serif;
+        padding-bottom: 4em;
+      }
+
+      h1 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      h2 {
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+        margin: 1.5em 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 0.5ex;
+      }
+
+      a {
+        text-decoration: none;
+        color: #567e25;
+      }
+
+      table {
+        width: 100%;
+        font-size: 80%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        font-weight: 700;
+        background-color: #dcdcdc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #fbfbfb;
+      }
+
+      td {
+        border: 1px solid #ccc;
+        padding: 0.5ex 2ex;
+      }
+
+      td p {
+        text-indent: 1em;
+        margin: 0;
+      }
+
+      td p:nth-child(1) {
+        text-indent: 0;  
+      }
+
+       
+      .field-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .field-table td:nth-child(3) {  
+        width: 6em;
+      }
+      .field-table td:nth-child(4) {  
+        width: auto;
+      }
+
+       
+      .extension-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(3) {  
+        width: 10em;
+      }
+      .extension-table td:nth-child(4) {  
+        width: 5em;
+      }
+      .extension-table td:nth-child(5) {  
+        width: auto;
+      }
+
+       
+      .enum-table td:nth-child(1) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(2) {  
+        width: 10em;
+      }
+      .enum-table td:nth-child(3) {  
+        width: auto;
+      }
+
+       
+      .scalar-value-types-table tr {
+        height: 3em;
+      }
+
+       
+      #toc-container ul {
+        list-style-type: none;
+        padding-left: 1em;
+        line-height: 180%;
+        margin: 0;
+      }
+      #toc > li > a {
+        font-weight: bold;
+      }
+
+       
+      .file-heading {
+        width: 100%;
+        display: table;
+        border-bottom: 1px solid #aaa;
+        margin: 4em 0 1.5em 0;
+      }
+      .file-heading h2 {
+        border: none;
+        display: table-cell;
+      }
+      .file-heading a {
+        text-align: right;
+        display: table-cell;
+      }
+
+       
+      .badge {
+        width: 1.6em;
+        height: 1.6em;
+        display: inline-block;
+
+        line-height: 1.6em;
+        text-align: center;
+        font-weight: bold;
+        font-size: 60%;
+
+        color: #89ba48;
+        background-color: #dff0c8;
+
+        margin: 0.5ex 1em 0.5ex -1em;
+        border: 1px solid #fbfbfb;
+        border-radius: 1ex;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+  </head>
+
+  <body>
+
+    <h1 id="title">Protocol Documentation</h1>
+
+    <h2>Table of Contents</h2>
+
+    <div id="toc-container">
+      <ul id="toc">
+        
+          
+          <li>
+            <a href="#kms%2fapi%2fcmk%2fregistry%2fauth%2fv1%2fauth.proto">kms/api/cmk/registry/auth/v1/auth.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.ApplyAuthRequest"><span class="badge">M</span>ApplyAuthRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntry"><span class="badge">M</span>ApplyAuthRequest.PropertiesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.ApplyAuthResponse"><span class="badge">M</span>ApplyAuthResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.Auth"><span class="badge">M</span>Auth</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.Auth.PropertiesEntry"><span class="badge">M</span>Auth.PropertiesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.GetAuthRequest"><span class="badge">M</span>GetAuthRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.GetAuthResponse"><span class="badge">M</span>GetAuthResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.ListAuthsRequest"><span class="badge">M</span>ListAuthsRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.ListAuthsResponse"><span class="badge">M</span>ListAuthsResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.RemoveAuthRequest"><span class="badge">M</span>RemoveAuthRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.RemoveAuthResponse"><span class="badge">M</span>RemoveAuthResponse</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.AuthAction"><span class="badge">E</span>AuthAction</a>
+                </li>
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.AuthStatus"><span class="badge">E</span>AuthStatus</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#kms.api.cmk.registry.auth.v1.Service"><span class="badge">S</span>Service</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+        <li><a href="#scalar-value-types">Scalar Value Types</a></li>
+      </ul>
+    </div>
+
+    
+      
+      <div class="file-heading">
+        <h2 id="kms/api/cmk/registry/auth/v1/auth.proto">kms/api/cmk/registry/auth/v1/auth.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.ApplyAuthRequest">ApplyAuthRequest</h3>
+        <p>Request to apply an authentication.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>external_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The external ID of the authentication. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tenant_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The tenant ID associated with the authentication. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The type of the authentication. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>properties</td>
+                  <td><a href="#kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntry">ApplyAuthRequest.PropertiesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>A map of properties for the authentication. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntry">ApplyAuthRequest.PropertiesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.ApplyAuthResponse">ApplyAuthResponse</h3>
+        <p>Response for applying an authentication.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>success</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Indicates whether the operation was successful. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.Auth">Auth</h3>
+        <p>Represents an authentication.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>external_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The external ID of the authentication. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tenant_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The tenant ID associated with the authentication. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The type of the authentication. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>properties</td>
+                  <td><a href="#kms.api.cmk.registry.auth.v1.Auth.PropertiesEntry">Auth.PropertiesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>A map of properties for the authentication. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#kms.api.cmk.registry.auth.v1.AuthStatus">AuthStatus</a></td>
+                  <td></td>
+                  <td><p>The status of the authentication. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>error_message</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>An error message, if any. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The timestamp of the last update. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The timestamp of creation. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.Auth.PropertiesEntry">Auth.PropertiesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.GetAuthRequest">GetAuthRequest</h3>
+        <p>Request to get an authentication.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>external_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The external ID of the authentication to retrieve. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.GetAuthResponse">GetAuthResponse</h3>
+        <p>Response for getting an authentication.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>auth</td>
+                  <td><a href="#kms.api.cmk.registry.auth.v1.Auth">Auth</a></td>
+                  <td></td>
+                  <td><p>The retrieved authentication. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.ListAuthsRequest">ListAuthsRequest</h3>
+        <p>Request to list authentications.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The tenant ID to list authentications for. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The maximum number of authentications to return.
+Default value is 50; max value is 1000. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>next_page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A token to retrieve the next page of results. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.ListAuthsResponse">ListAuthsResponse</h3>
+        <p>Response for listing authentications.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>auth</td>
+                  <td><a href="#kms.api.cmk.registry.auth.v1.Auth">Auth</a></td>
+                  <td>repeated</td>
+                  <td><p>A list of authentications. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>next_page_token</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>A token to retrieve the next page of results. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.RemoveAuthRequest">RemoveAuthRequest</h3>
+        <p>Request to remove an authentication.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>external_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The external ID of the authentication to remove. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.RemoveAuthResponse">RemoveAuthResponse</h3>
+        <p>Response for removing an authentication.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>success</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Indicates whether the operation was successful. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.AuthAction">AuthAction</h3>
+        <p>The action to perform on an authentication.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>AUTH_ACTION_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>The action is not specified.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_ACTION_APPLY_AUTH</td>
+                <td>1</td>
+                <td><p>Apply an authentication.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_ACTION_REMOVE_AUTH</td>
+                <td>2</td>
+                <td><p>Remove an authentication.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.AuthStatus">AuthStatus</h3>
+        <p>The status of an authentication.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>AUTH_STATUS_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>The status is not specified.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_APPLYING</td>
+                <td>1</td>
+                <td><p>The authentication is being applied.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_APPLYING_ERROR</td>
+                <td>2</td>
+                <td><p>An error occurred while applying the authentication.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_APPLIED</td>
+                <td>3</td>
+                <td><p>The authentication has been applied.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_REMOVING</td>
+                <td>4</td>
+                <td><p>The authentication is being removed.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_REMOVING_ERROR</td>
+                <td>5</td>
+                <td><p>An error occurred while removing the authentication.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_REMOVED</td>
+                <td>6</td>
+                <td><p>The authentication has been removed.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_BLOCKING</td>
+                <td>7</td>
+                <td><p>The authentication is being blocked.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_BLOCKING_ERROR</td>
+                <td>8</td>
+                <td><p>An error occurred while blocking the authentication.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_BLOCKED</td>
+                <td>9</td>
+                <td><p>The authentication has been blocked.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_UNBLOCKING</td>
+                <td>10</td>
+                <td><p>The authentication is being unblocked.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUTH_STATUS_UNBLOCKING_ERROR</td>
+                <td>11</td>
+                <td><p>An error occurred while unblocking the authentication.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="kms.api.cmk.registry.auth.v1.Service">Service</h3>
+        <p>Service for managing authentications in the KMS system.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>ApplyAuth</td>
+                <td><a href="#kms.api.cmk.registry.auth.v1.ApplyAuthRequest">ApplyAuthRequest</a></td>
+                <td><a href="#kms.api.cmk.registry.auth.v1.ApplyAuthResponse">ApplyAuthResponse</a></td>
+                <td><p>ApplyAuth creates or updates an authentication. This method is idempotent - if an authentication with the same external_id already exists, it will be updated.</p></td>
+              </tr>
+            
+              <tr>
+                <td>GetAuth</td>
+                <td><a href="#kms.api.cmk.registry.auth.v1.GetAuthRequest">GetAuthRequest</a></td>
+                <td><a href="#kms.api.cmk.registry.auth.v1.GetAuthResponse">GetAuthResponse</a></td>
+                <td><p>GetAuth retrieves an authentication by its external ID.</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListAuths</td>
+                <td><a href="#kms.api.cmk.registry.auth.v1.ListAuthsRequest">ListAuthsRequest</a></td>
+                <td><a href="#kms.api.cmk.registry.auth.v1.ListAuthsResponse">ListAuthsResponse</a></td>
+                <td><p>ListAuths lists all authentications for a given tenant. The results can be paginated.</p></td>
+              </tr>
+            
+              <tr>
+                <td>RemoveAuth</td>
+                <td><a href="#kms.api.cmk.registry.auth.v1.RemoveAuthRequest">RemoveAuthRequest</a></td>
+                <td><a href="#kms.api.cmk.registry.auth.v1.RemoveAuthResponse">RemoveAuthResponse</a></td>
+                <td><p>RemoveAuth removes an authentication by its external ID. This method is idempotent - if the authentication does not exist, it will return success.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+
+    <h2 id="scalar-value-types">Scalar Value Types</h2>
+    <table class="scalar-value-types-table">
+      <thead>
+        <tr><td>.proto Type</td><td>Notes</td><td>C++</td><td>Java</td><td>Python</td><td>Go</td><td>C#</td><td>PHP</td><td>Ruby</td></tr>
+      </thead>
+      <tbody>
+        
+          <tr id="double">
+            <td>double</td>
+            <td></td>
+            <td>double</td>
+            <td>double</td>
+            <td>float</td>
+            <td>float64</td>
+            <td>double</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="float">
+            <td>float</td>
+            <td></td>
+            <td>float</td>
+            <td>float</td>
+            <td>float</td>
+            <td>float32</td>
+            <td>float</td>
+            <td>float</td>
+            <td>Float</td>
+          </tr>
+        
+          <tr id="int32">
+            <td>int32</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="int64">
+            <td>int64</td>
+            <td>Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="uint32">
+            <td>uint32</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int/long</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="uint64">
+            <td>uint64</td>
+            <td>Uses variable-length encoding.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint32">
+            <td>sint32</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sint64">
+            <td>sint64</td>
+            <td>Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="fixed32">
+            <td>fixed32</td>
+            <td>Always four bytes. More efficient than uint32 if values are often greater than 2^28.</td>
+            <td>uint32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>uint32</td>
+            <td>uint</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="fixed64">
+            <td>fixed64</td>
+            <td>Always eight bytes. More efficient than uint64 if values are often greater than 2^56.</td>
+            <td>uint64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>uint64</td>
+            <td>ulong</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="sfixed32">
+            <td>sfixed32</td>
+            <td>Always four bytes.</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>int</td>
+            <td>int32</td>
+            <td>int</td>
+            <td>integer</td>
+            <td>Bignum or Fixnum (as required)</td>
+          </tr>
+        
+          <tr id="sfixed64">
+            <td>sfixed64</td>
+            <td>Always eight bytes.</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>int/long</td>
+            <td>int64</td>
+            <td>long</td>
+            <td>integer/string</td>
+            <td>Bignum</td>
+          </tr>
+        
+          <tr id="bool">
+            <td>bool</td>
+            <td></td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>boolean</td>
+            <td>bool</td>
+            <td>bool</td>
+            <td>boolean</td>
+            <td>TrueClass/FalseClass</td>
+          </tr>
+        
+          <tr id="string">
+            <td>string</td>
+            <td>A string must always contain UTF-8 encoded or 7-bit ASCII text.</td>
+            <td>string</td>
+            <td>String</td>
+            <td>str/unicode</td>
+            <td>string</td>
+            <td>string</td>
+            <td>string</td>
+            <td>String (UTF-8)</td>
+          </tr>
+        
+          <tr id="bytes">
+            <td>bytes</td>
+            <td>May contain any arbitrary sequence of bytes.</td>
+            <td>string</td>
+            <td>ByteString</td>
+            <td>str</td>
+            <td>[]byte</td>
+            <td>ByteString</td>
+            <td>string</td>
+            <td>String (ASCII-8BIT)</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </body>
+</html>
+
