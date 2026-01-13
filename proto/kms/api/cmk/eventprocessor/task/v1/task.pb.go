@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: kms/api/cmk/eventprocessor/v1/task.proto
+// source: kms/api/cmk/eventprocessor/task/v1/task.proto
 
 package taskv1
 
@@ -69,11 +69,11 @@ func (x TaskType) String() string {
 }
 
 func (TaskType) Descriptor() protoreflect.EnumDescriptor {
-	return file_kms_api_cmk_eventprocessor_v1_task_proto_enumTypes[0].Descriptor()
+	return file_kms_api_cmk_eventprocessor_task_v1_task_proto_enumTypes[0].Descriptor()
 }
 
 func (TaskType) Type() protoreflect.EnumType {
-	return &file_kms_api_cmk_eventprocessor_v1_task_proto_enumTypes[0]
+	return &file_kms_api_cmk_eventprocessor_task_v1_task_proto_enumTypes[0]
 }
 
 func (x TaskType) Number() protoreflect.EnumNumber {
@@ -82,7 +82,7 @@ func (x TaskType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use TaskType.Descriptor instead.
 func (TaskType) EnumDescriptor() ([]byte, []int) {
-	return file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescGZIP(), []int{0}
+	return file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescGZIP(), []int{0}
 }
 
 // Wrapped proto for Orbital TaskRequest.data
@@ -100,7 +100,7 @@ type Data struct {
 
 func (x *Data) Reset() {
 	*x = Data{}
-	mi := &file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes[0]
+	mi := &file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -112,7 +112,7 @@ func (x *Data) String() string {
 func (*Data) ProtoMessage() {}
 
 func (x *Data) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes[0]
+	mi := &file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -125,7 +125,7 @@ func (x *Data) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Data.ProtoReflect.Descriptor instead.
 func (*Data) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescGZIP(), []int{0}
+	return file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Data) GetTaskType() TaskType {
@@ -188,7 +188,7 @@ type KeyAction struct {
 
 func (x *KeyAction) Reset() {
 	*x = KeyAction{}
-	mi := &file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes[1]
+	mi := &file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -200,7 +200,7 @@ func (x *KeyAction) String() string {
 func (*KeyAction) ProtoMessage() {}
 
 func (x *KeyAction) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes[1]
+	mi := &file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -213,7 +213,7 @@ func (x *KeyAction) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use KeyAction.ProtoReflect.Descriptor instead.
 func (*KeyAction) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescGZIP(), []int{1}
+	return file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *KeyAction) GetKeyId() string {
@@ -257,7 +257,7 @@ type SystemAction struct {
 
 func (x *SystemAction) Reset() {
 	*x = SystemAction{}
-	mi := &file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes[2]
+	mi := &file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -269,7 +269,7 @@ func (x *SystemAction) String() string {
 func (*SystemAction) ProtoMessage() {}
 
 func (x *SystemAction) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes[2]
+	mi := &file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -282,7 +282,7 @@ func (x *SystemAction) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SystemAction.ProtoReflect.Descriptor instead.
 func (*SystemAction) Descriptor() ([]byte, []int) {
-	return file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescGZIP(), []int{2}
+	return file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SystemAction) GetSystemId() string {
@@ -362,11 +362,11 @@ func (x *SystemAction) GetCmkRegion() string {
 	return ""
 }
 
-var File_kms_api_cmk_eventprocessor_v1_task_proto protoreflect.FileDescriptor
+var File_kms_api_cmk_eventprocessor_task_v1_task_proto protoreflect.FileDescriptor
 
-const file_kms_api_cmk_eventprocessor_v1_task_proto_rawDesc = "" +
+const file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDesc = "" +
 	"\n" +
-	"(kms/api/cmk/eventprocessor/v1/task.proto\x12\"kms.api.cmk.eventprocessor.task.v1\"\x82\x02\n" +
+	"-kms/api/cmk/eventprocessor/task/v1/task.proto\x12\"kms.api.cmk.eventprocessor.task.v1\"\x82\x02\n" +
 	"\x04Data\x12I\n" +
 	"\ttask_type\x18\x05 \x01(\x0e2,.kms.api.cmk.eventprocessor.task.v1.TaskTypeR\btaskType\x12N\n" +
 	"\n" +
@@ -407,30 +407,30 @@ const file_kms_api_cmk_eventprocessor_v1_task_proto_rawDesc = "" +
 	"\rSYSTEM_UNLINK\x10\x05\x12\x11\n" +
 	"\rSYSTEM_SWITCH\x10\x06\x12\x0e\n" +
 	"\n" +
-	"KEY_DETACH\x10\aB\xa9\x02\n" +
-	"&com.kms.api.cmk.eventprocessor.task.v1B\tTaskProtoP\x01ZEgithub.com/openkcm/api-sdk/proto/kms/api/cmk/eventprocessor/v1;taskv1\xa2\x02\x05KACET\xaa\x02\"Kms.Api.Cmk.Eventprocessor.Task.V1\xca\x02\"Kms\\Api\\Cmk\\Eventprocessor\\Task\\V1\xe2\x02.Kms\\Api\\Cmk\\Eventprocessor\\Task\\V1\\GPBMetadata\xea\x02'Kms::Api::Cmk::Eventprocessor::Task::V1b\x06proto3"
+	"KEY_DETACH\x10\aB\xae\x02\n" +
+	"&com.kms.api.cmk.eventprocessor.task.v1B\tTaskProtoP\x01ZJgithub.com/openkcm/api-sdk/proto/kms/api/cmk/eventprocessor/task/v1;taskv1\xa2\x02\x05KACET\xaa\x02\"Kms.Api.Cmk.Eventprocessor.Task.V1\xca\x02\"Kms\\Api\\Cmk\\Eventprocessor\\Task\\V1\xe2\x02.Kms\\Api\\Cmk\\Eventprocessor\\Task\\V1\\GPBMetadata\xea\x02'Kms::Api::Cmk::Eventprocessor::Task::V1b\x06proto3"
 
 var (
-	file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescOnce sync.Once
-	file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescData []byte
+	file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescOnce sync.Once
+	file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescData []byte
 )
 
-func file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescGZIP() []byte {
-	file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescOnce.Do(func() {
-		file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_kms_api_cmk_eventprocessor_v1_task_proto_rawDesc), len(file_kms_api_cmk_eventprocessor_v1_task_proto_rawDesc)))
+func file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescGZIP() []byte {
+	file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescOnce.Do(func() {
+		file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDesc), len(file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDesc)))
 	})
-	return file_kms_api_cmk_eventprocessor_v1_task_proto_rawDescData
+	return file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescData
 }
 
-var file_kms_api_cmk_eventprocessor_v1_task_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_kms_api_cmk_eventprocessor_v1_task_proto_goTypes = []any{
+var file_kms_api_cmk_eventprocessor_task_v1_task_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_kms_api_cmk_eventprocessor_task_v1_task_proto_goTypes = []any{
 	(TaskType)(0),        // 0: kms.api.cmk.eventprocessor.task.v1.TaskType
 	(*Data)(nil),         // 1: kms.api.cmk.eventprocessor.task.v1.Data
 	(*KeyAction)(nil),    // 2: kms.api.cmk.eventprocessor.task.v1.KeyAction
 	(*SystemAction)(nil), // 3: kms.api.cmk.eventprocessor.task.v1.SystemAction
 }
-var file_kms_api_cmk_eventprocessor_v1_task_proto_depIdxs = []int32{
+var file_kms_api_cmk_eventprocessor_task_v1_task_proto_depIdxs = []int32{
 	0, // 0: kms.api.cmk.eventprocessor.task.v1.Data.task_type:type_name -> kms.api.cmk.eventprocessor.task.v1.TaskType
 	2, // 1: kms.api.cmk.eventprocessor.task.v1.Data.key_action:type_name -> kms.api.cmk.eventprocessor.task.v1.KeyAction
 	3, // 2: kms.api.cmk.eventprocessor.task.v1.Data.system_action:type_name -> kms.api.cmk.eventprocessor.task.v1.SystemAction
@@ -441,12 +441,12 @@ var file_kms_api_cmk_eventprocessor_v1_task_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_kms_api_cmk_eventprocessor_v1_task_proto_init() }
-func file_kms_api_cmk_eventprocessor_v1_task_proto_init() {
-	if File_kms_api_cmk_eventprocessor_v1_task_proto != nil {
+func init() { file_kms_api_cmk_eventprocessor_task_v1_task_proto_init() }
+func file_kms_api_cmk_eventprocessor_task_v1_task_proto_init() {
+	if File_kms_api_cmk_eventprocessor_task_v1_task_proto != nil {
 		return
 	}
-	file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes[0].OneofWrappers = []any{
+	file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes[0].OneofWrappers = []any{
 		(*Data_KeyAction)(nil),
 		(*Data_SystemAction)(nil),
 	}
@@ -454,18 +454,18 @@ func file_kms_api_cmk_eventprocessor_v1_task_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_eventprocessor_v1_task_proto_rawDesc), len(file_kms_api_cmk_eventprocessor_v1_task_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDesc), len(file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_kms_api_cmk_eventprocessor_v1_task_proto_goTypes,
-		DependencyIndexes: file_kms_api_cmk_eventprocessor_v1_task_proto_depIdxs,
-		EnumInfos:         file_kms_api_cmk_eventprocessor_v1_task_proto_enumTypes,
-		MessageInfos:      file_kms_api_cmk_eventprocessor_v1_task_proto_msgTypes,
+		GoTypes:           file_kms_api_cmk_eventprocessor_task_v1_task_proto_goTypes,
+		DependencyIndexes: file_kms_api_cmk_eventprocessor_task_v1_task_proto_depIdxs,
+		EnumInfos:         file_kms_api_cmk_eventprocessor_task_v1_task_proto_enumTypes,
+		MessageInfos:      file_kms_api_cmk_eventprocessor_task_v1_task_proto_msgTypes,
 	}.Build()
-	File_kms_api_cmk_eventprocessor_v1_task_proto = out.File
-	file_kms_api_cmk_eventprocessor_v1_task_proto_goTypes = nil
-	file_kms_api_cmk_eventprocessor_v1_task_proto_depIdxs = nil
+	File_kms_api_cmk_eventprocessor_task_v1_task_proto = out.File
+	file_kms_api_cmk_eventprocessor_task_v1_task_proto_goTypes = nil
+	file_kms_api_cmk_eventprocessor_task_v1_task_proto_depIdxs = nil
 }
