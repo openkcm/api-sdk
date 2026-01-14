@@ -4,6 +4,14 @@ modules:
 lint:
   use:
     - STANDARD
+  ignore_only:
+    # To not break existing APIs.
+    ENUM_FIRST_VALUE_ZERO:
+      - proto/kms/api/cmk/eventprocessor/task/v1/task.proto
+    ENUM_VALUE_PREFIX:
+      - proto/kms/api/cmk/eventprocessor/task/v1/task.proto
+    ENUM_ZERO_VALUE_SUFFIX:
+      - proto/kms/api/cmk/eventprocessor/task/v1/task.proto
 breaking:
   use:
     - FILE
