@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.15.0](https://github.com/openkcm/api-sdk/compare/v0.14.0...v0.15.0) (2026-02-04)
+
+
+### Features
+
+* add api for event processor ([28763c6](https://github.com/openkcm/api-sdk/commit/28763c6e2b8e6b2c800686e056d1f2e6895d4428)), closes [#75](https://github.com/openkcm/api-sdk/issues/75)
+* **session-manager:** GetOIDCProvider method ([#76](https://github.com/openkcm/api-sdk/issues/76)) ([6901f65](https://github.com/openkcm/api-sdk/commit/6901f65d5b8fadcb2c671adbbb0b286d91a0bb05))
+
 ## [0.14.0](https://github.com/openkcm/api-sdk/compare/v0.13.0...v0.14.0) (2025-12-18)
 
 
