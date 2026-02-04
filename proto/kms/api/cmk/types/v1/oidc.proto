@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package kms.api.cmk.types.v1;
+
+message OIDCProvider {
+  string issuer_url = 1;
+  string jwks_uri = 2;
+  repeated string audiences = 3;
+}

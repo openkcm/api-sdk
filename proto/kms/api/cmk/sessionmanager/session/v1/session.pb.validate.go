@@ -258,3 +258,238 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = GetSessionResponseValidationError{}
+
+// Validate checks the field values on GetOIDCProviderRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GetOIDCProviderRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetOIDCProviderRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetOIDCProviderRequestMultiError, or nil if none found.
+func (m *GetOIDCProviderRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetOIDCProviderRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for TenantId
+
+	if len(errors) > 0 {
+		return GetOIDCProviderRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetOIDCProviderRequestMultiError is an error wrapping multiple validation
+// errors returned by GetOIDCProviderRequest.ValidateAll() if the designated
+// constraints aren't met.
+type GetOIDCProviderRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetOIDCProviderRequestMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetOIDCProviderRequestMultiError) AllErrors() []error { return m }
+
+// GetOIDCProviderRequestValidationError is the validation error returned by
+// GetOIDCProviderRequest.Validate if the designated constraints aren't met.
+type GetOIDCProviderRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetOIDCProviderRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetOIDCProviderRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetOIDCProviderRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetOIDCProviderRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetOIDCProviderRequestValidationError) ErrorName() string {
+	return "GetOIDCProviderRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GetOIDCProviderRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetOIDCProviderRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetOIDCProviderRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetOIDCProviderRequestValidationError{}
+
+// Validate checks the field values on GetOIDCProviderResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GetOIDCProviderResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetOIDCProviderResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetOIDCProviderResponseMultiError, or nil if none found.
+func (m *GetOIDCProviderResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetOIDCProviderResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetProvider()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, GetOIDCProviderResponseValidationError{
+					field:  "Provider",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, GetOIDCProviderResponseValidationError{
+					field:  "Provider",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetProvider()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return GetOIDCProviderResponseValidationError{
+				field:  "Provider",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return GetOIDCProviderResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetOIDCProviderResponseMultiError is an error wrapping multiple validation
+// errors returned by GetOIDCProviderResponse.ValidateAll() if the designated
+// constraints aren't met.
+type GetOIDCProviderResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetOIDCProviderResponseMultiError) Error() string {
+	msgs := make([]string, 0, len(m))
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetOIDCProviderResponseMultiError) AllErrors() []error { return m }
+
+// GetOIDCProviderResponseValidationError is the validation error returned by
+// GetOIDCProviderResponse.Validate if the designated constraints aren't met.
+type GetOIDCProviderResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetOIDCProviderResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetOIDCProviderResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetOIDCProviderResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetOIDCProviderResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetOIDCProviderResponseValidationError) ErrorName() string {
+	return "GetOIDCProviderResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GetOIDCProviderResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetOIDCProviderResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetOIDCProviderResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetOIDCProviderResponseValidationError{}
