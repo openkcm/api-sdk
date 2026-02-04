@@ -2,8 +2,11 @@ syntax = "proto3";
 
 package kms.api.cmk.sessionmanager.session.v1;
 
+import "kms/api/cmk/types/v1/oidc.proto";
+
 service Service {
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {}
+  rpc GetOIDCProvider(GetOIDCProviderRequest) returns (GetOIDCProviderResponse) {}
 }
 
 message GetSessionRequest {
@@ -21,4 +24,12 @@ message GetSessionResponse {
   string email = 6;
   repeated string groups = 7;
   map<string, string> auth_context = 8;
+}
+
+message GetOIDCProviderRequest {
+  string tenant_id = 1;
+}
+
+message GetOIDCProviderResponse {
+  kms.api.cmk.types.v1.OIDCProvider provider = 1;
 }

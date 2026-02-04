@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Service_GetSession_FullMethodName = "/kms.api.cmk.sessionmanager.session.v1.Service/GetSession"
+	Service_GetSession_FullMethodName      = "/kms.api.cmk.sessionmanager.session.v1.Service/GetSession"
+	Service_GetOIDCProvider_FullMethodName = "/kms.api.cmk.sessionmanager.session.v1.Service/GetOIDCProvider"
 )
 
 // ServiceClient is the client API for Service service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ServiceClient interface {
 	GetSession(ctx context.Context, in *GetSessionRequest, opts ...grpc.CallOption) (*GetSessionResponse, error)
+	GetOIDCProvider(ctx context.Context, in *GetOIDCProviderRequest, opts ...grpc.CallOption) (*GetOIDCProviderResponse, error)
 }
 
 type serviceClient struct {
@@ -47,11 +49,22 @@ func (c *serviceClient) GetSession(ctx context.Context, in *GetSessionRequest, o
 	return out, nil
 }
 
+func (c *serviceClient) GetOIDCProvider(ctx context.Context, in *GetOIDCProviderRequest, opts ...grpc.CallOption) (*GetOIDCProviderResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetOIDCProviderResponse)
+	err := c.cc.Invoke(ctx, Service_GetOIDCProvider_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServiceServer is the server API for Service service.
 // All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
 type ServiceServer interface {
 	GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error)
+	GetOIDCProvider(context.Context, *GetOIDCProviderRequest) (*GetOIDCProviderResponse, error)
 	mustEmbedUnimplementedServiceServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedServiceServer struct{}
 
 func (UnimplementedServiceServer) GetSession(context.Context, *GetSessionRequest) (*GetSessionResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetSession not implemented")
+}
+func (UnimplementedServiceServer) GetOIDCProvider(context.Context, *GetOIDCProviderRequest) (*GetOIDCProviderResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetOIDCProvider not implemented")
 }
 func (UnimplementedServiceServer) mustEmbedUnimplementedServiceServer() {}
 func (UnimplementedServiceServer) testEmbeddedByValue()                 {}
@@ -104,6 +120,24 @@ func _Service_GetSession_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Service_GetOIDCProvider_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOIDCProviderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServiceServer).GetOIDCProvider(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Service_GetOIDCProvider_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServiceServer).GetOIDCProvider(ctx, req.(*GetOIDCProviderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Service_ServiceDesc is the grpc.ServiceDesc for Service service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var Service_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetSession",
 			Handler:    _Service_GetSession_Handler,
+		},
+		{
+			MethodName: "GetOIDCProvider",
+			Handler:    _Service_GetOIDCProvider_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
