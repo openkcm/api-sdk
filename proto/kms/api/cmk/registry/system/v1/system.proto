@@ -23,15 +23,70 @@ message System {
   string region = 5;
   string type = 6;
 
-  oneof metadata {
-    GlobalTenantSubaccountMetadata global_tenant_subaccount = 61;
-    SystemAccountMetadata system_account = 62;
-  }
+  // as metadata
+  repeated Scope1 op1_scopes = 7;
+  repeated Scope2 op2_scopes = 8;
+  Scope3 op3_scopes = 9;
 
-  kms.api.cmk.types.v1.Status status = 7;
-  google.protobuf.Timestamp updated_at = 8;
-  google.protobuf.Timestamp created_at = 9;
-  map<string, string> labels = 10;
+  kms.api.cmk.types.v1.Status status = 10;
+  google.protobuf.Timestamp updated_at = 11;
+  google.protobuf.Timestamp created_at = 12;
+  map<string, string> labels = 13;
+}
+
+// ----------------  Scope1  ------------------------
+
+// Represents a not set-level request
+message Scope1 {
+  oneof value {
+    SystemType system = 2;
+    SubAccountType subaccount = 3;
+    AccountType account = 4;
+  }
+}
+
+// Represents a system-level request
+message SystemType {
+  optional string id = 1;
+}
+
+// Represents Global Tenant request
+message GlobalTenantType {
+  optional string id = 1;
+}
+
+// Represents a subaccount-level request
+message SubAccountType {
+  optional string id = 1;
+}
+
+// Represents an account-level request
+message AccountType {
+  optional string id = 1;
+}
+
+
+// -------------   Scope2  ------------------
+message Scope2 {
+  ScopeType type = 1;
+  string id = 2;
+}
+
+enum ScopeType {
+  SCOPE_TYPE_UNSPECIFIED = 0;
+  SCOPE_TYPE_SYSTEM = 1;
+  SCOPE_TYPE_GLOBAL_TENANT = 2;
+  SCOPE_TYPE_SUBACCOUNT = 3;
+  SCOPE_TYPE_ACCOUNT = 4;
+}
+
+// -------------   Scope3  ------------------
+
+message Scope3 {
+  oneof op3_scopes {
+    GlobalTenantSubaccountMetadata global_tenant_subaccount = 1;
+    SystemAccountMetadata system_account = 2;
+  }
 }
 
 message SystemAccountMetadata {
@@ -53,6 +108,8 @@ message GlobalTenantSubaccountMetadata {
     SUBACCOUNT = 2;
   }
 }
+
+// ----------------------------------------
 
 message RegisterSystemRequest {
   string external_id = 1;
