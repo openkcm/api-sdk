@@ -3,6 +3,7 @@ syntax = "proto3";
 package kms.api.cmk.registry.system.v1;
 
 import "kms/api/cmk/types/v1/status.proto";
+import "google/protobuf/timestamp.proto";
 
 service Service {
   rpc RegisterSystem(RegisterSystemRequest) returns (RegisterSystemResponse) {}
@@ -21,10 +22,36 @@ message System {
   bool has_l1key_claim = 4;
   string region = 5;
   string type = 6;
+
+  oneof metadata {
+    GlobalTenantSubaccountMetadata global_tenant_subaccount = 61;
+    SystemAccountMetadata system_account = 62;
+  }
+
   kms.api.cmk.types.v1.Status status = 7;
-  string updated_at = 8;
-  string created_at = 9;
+  google.protobuf.Timestamp updated_at = 8;
+  google.protobuf.Timestamp created_at = 9;
   map<string, string> labels = 10;
+}
+
+message SystemAccountMetadata {
+  SystemAccountSystemType system_type = 1;
+
+  enum SystemAccountSystemType {
+    SYSTEM_TYPE_UNSPECIFIED = 0;
+    SYSTEM = 1;
+    ACCOUNT = 2;
+  }
+}
+
+message GlobalTenantSubaccountMetadata {
+  GlobalTenantSubaccountSystemType system_type = 1;
+
+  enum GlobalTenantSubaccountSystemType {
+    SYSTEM_TYPE_UNSPECIFIED = 0;
+    GTID = 1;
+    SUBACCOUNT = 2;
+  }
 }
 
 message RegisterSystemRequest {
