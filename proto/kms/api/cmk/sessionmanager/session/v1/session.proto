@@ -5,6 +5,14 @@ package kms.api.cmk.sessionmanager.session.v1;
 import "kms/api/cmk/types/v1/oidc.proto";
 
 service Service {
+  // GetSession matches the fingerprint, tenant id, and returns a session
+  // and its status. Additionally, the method checks whether the tenant is blocked.
+  //
+  // The method may return the following statuses with a rich error description (see kms.api.cmk.rpc.v1 package):
+  // FailedPrecondition:
+  //   PreconditionFailure:
+  //     violations:
+  //       type: "tenant_blocked"
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {}
   rpc GetOIDCProvider(GetOIDCProviderRequest) returns (GetOIDCProviderResponse) {}
 }
