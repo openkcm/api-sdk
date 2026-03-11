@@ -16,6 +16,7 @@ message ApplyOIDCMappingRequest {
   optional string jwks_uri = 3;
   repeated string audiences = 4;
   map<string, string> properties = 5;
+  optional string client_id = 6;
 }
 
 message ApplyOIDCMappingResponse {
