@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.16.0](https://github.com/openkcm/api-sdk/compare/v0.15.0...v0.16.0) (2026-03-11)
+
+
+### Features
+
+* extend oidc mapping with client_id ([#84](https://github.com/openkcm/api-sdk/issues/84)) ([70c0939](https://github.com/openkcm/api-sdk/commit/70c09398a4a1ae791ca984be03b8fbfd796cf844))
+* rpc error details ([#79](https://github.com/openkcm/api-sdk/issues/79)) ([9679065](https://github.com/openkcm/api-sdk/commit/96790658fc0fcd7ecedab2e8e93e95d3fe4a7c28))
+
 ## [0.15.0](https://github.com/openkcm/api-sdk/compare/v0.14.0...v0.15.0) (2026-02-04)
 
 
