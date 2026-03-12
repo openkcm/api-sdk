@@ -67,6 +67,10 @@ func (m *ApplyOIDCMappingRequest) validate(all bool) error {
 		// no validation rules for JwksUri
 	}
 
+	if m.ClientId != nil {
+		// no validation rules for ClientId
+	}
+
 	if len(errors) > 0 {
 		return ApplyOIDCMappingRequestMultiError(errors)
 	}
