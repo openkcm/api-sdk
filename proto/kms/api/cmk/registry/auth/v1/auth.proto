@@ -25,6 +25,7 @@ message ApplyAuthRequest {
   string tenant_id = 2;
   string type = 3;
   map<string, string> properties = 4;
+  optional string client_id = 5;
 }
 
 message ApplyAuthResponse {

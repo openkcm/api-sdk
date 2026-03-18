@@ -252,6 +252,7 @@ type ApplyAuthRequest struct {
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	Properties    map[string]string      `protobuf:"bytes,4,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ClientId      *string                `protobuf:"bytes,5,opt,name=client_id,json=clientId,proto3,oneof" json:"client_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -312,6 +313,13 @@ func (x *ApplyAuthRequest) GetProperties() map[string]string {
 		return x.Properties
 	}
 	return nil
+}
+
+func (x *ApplyAuthRequest) GetClientId() string {
+	if x != nil && x.ClientId != nil {
+		return *x.ClientId
+	}
+	return ""
 }
 
 type ApplyAuthResponse struct {
@@ -667,7 +675,7 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"created_at\x18\b \x01(\tR\tcreatedAt\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x83\x02\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb3\x02\n" +
 	"\x10ApplyAuthRequest\x12\x1f\n" +
 	"\vexternal_id\x18\x01 \x01(\tR\n" +
 	"externalId\x12\x1b\n" +
@@ -675,10 +683,13 @@ const file_kms_api_cmk_registry_auth_v1_auth_proto_rawDesc = "" +
 	"\x04type\x18\x03 \x01(\tR\x04type\x12^\n" +
 	"\n" +
 	"properties\x18\x04 \x03(\v2>.kms.api.cmk.registry.auth.v1.ApplyAuthRequest.PropertiesEntryR\n" +
-	"properties\x1a=\n" +
+	"properties\x12 \n" +
+	"\tclient_id\x18\x05 \x01(\tH\x00R\bclientId\x88\x01\x01\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"-\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\f\n" +
+	"\n" +
+	"_client_id\"-\n" +
 	"\x11ApplyAuthResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"1\n" +
 	"\x0eGetAuthRequest\x12\x1f\n" +
@@ -781,6 +792,7 @@ func file_kms_api_cmk_registry_auth_v1_auth_proto_init() {
 	if File_kms_api_cmk_registry_auth_v1_auth_proto != nil {
 		return
 	}
+	file_kms_api_cmk_registry_auth_v1_auth_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

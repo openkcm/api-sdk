@@ -179,6 +179,10 @@ func (m *ApplyAuthRequest) validate(all bool) error {
 
 	// no validation rules for Properties
 
+	if m.ClientId != nil {
+		// no validation rules for ClientId
+	}
+
 	if len(errors) > 0 {
 		return ApplyAuthRequestMultiError(errors)
 	}
