@@ -476,12 +476,13 @@ func (x *RegisterTenantResponse) GetId() string {
 }
 
 type ListTenantsRequest struct {
-	state     protoimpl.MessageState `protogen:"open.v1"`
-	Id        string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name      string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Region    string                 `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
-	OwnerId   string                 `protobuf:"bytes,4,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
-	OwnerType string                 `protobuf:"bytes,5,opt,name=owner_type,json=ownerType,proto3" json:"owner_type,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Deprecated: Marked as deprecated in kms/api/cmk/registry/tenant/v1/tenant.proto.
+	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name      string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Region    string `protobuf:"bytes,3,opt,name=region,proto3" json:"region,omitempty"`
+	OwnerId   string `protobuf:"bytes,4,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
+	OwnerType string `protobuf:"bytes,5,opt,name=owner_type,json=ownerType,proto3" json:"owner_type,omitempty"`
 	// Default value is 50.
 	// Max value is 1000.
 	Limit int32 `protobuf:"varint,6,opt,name=limit,proto3" json:"limit,omitempty"`
@@ -522,6 +523,7 @@ func (*ListTenantsRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDescGZIP(), []int{3}
 }
 
+// Deprecated: Marked as deprecated in kms/api/cmk/registry/tenant/v1/tenant.proto.
 func (x *ListTenantsRequest) GetId() string {
 	if x != nil {
 		return x.Id
@@ -1310,9 +1312,9 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"(\n" +
 	"\x16RegisterTenantResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"\xd2\x02\n" +
-	"\x12ListTenantsRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"\xd6\x02\n" +
+	"\x12ListTenantsRequest\x12\x12\n" +
+	"\x02id\x18\x01 \x01(\tB\x02\x18\x01R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
 	"\x06region\x18\x03 \x01(\tR\x06region\x12\x19\n" +
 	"\bowner_id\x18\x04 \x01(\tR\aownerId\x12\x1d\n" +
