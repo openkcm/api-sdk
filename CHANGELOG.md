@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.17.0](https://github.com/openkcm/api-sdk/compare/v0.16.0...v0.17.0) (2026-03-31)
+
+
+### Features
+
+* Add Code of Conduct link and EU funding logo to README ([1815ca8](https://github.com/openkcm/api-sdk/commit/1815ca83e8cd47030794c3b5efe5f26511a3057c))
+* remove tenant id filter from ListTenantsRequest ([#90](https://github.com/openkcm/api-sdk/issues/90)) ([5ace377](https://github.com/openkcm/api-sdk/commit/5ace377accfe4363cc60eedd8974d5bf7583924e))
+
+
+### Bug Fixes
+
+* **deps:** bump google.golang.org/grpc from 1.79.2 to 1.79.3 ([#88](https://github.com/openkcm/api-sdk/issues/88)) ([edde2e4](https://github.com/openkcm/api-sdk/commit/edde2e4ed735077946ecc9eff1ac96c798ebb0f0))
+* Update dependabot config ([#86](https://github.com/openkcm/api-sdk/issues/86)) ([f86303e](https://github.com/openkcm/api-sdk/commit/f86303ebcb65b7632254ccfb8d803842636a7830))
+
 ## [0.16.0](https://github.com/openkcm/api-sdk/compare/v0.15.0...v0.16.0) (2026-03-11)
 
 
