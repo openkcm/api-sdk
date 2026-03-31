@@ -44,7 +44,7 @@ message RegisterTenantResponse {
 }
 
 message ListTenantsRequest {
-  string id = 1;
+  string id = 1 [deprecated = true];
   string name = 2;
   string region = 3;
   string owner_id = 4;
