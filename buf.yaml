@@ -1,9 +1,12 @@
 version: v2
 modules:
   - path: proto
+  - path: vendor-proto
 lint:
   use:
     - STANDARD
+  ignore:
+    - vendor-proto
   ignore_only:
     # To not break existing APIs.
     ENUM_FIRST_VALUE_ZERO:

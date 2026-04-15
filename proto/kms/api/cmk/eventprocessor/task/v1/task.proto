@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package kms.api.cmk.eventprocessor.task.v1;
 
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/eventprocessor/task/v1;taskv1";
+
 enum TaskType {
   KEY_ENABLE = 0;
   KEY_DISABLE = 1;

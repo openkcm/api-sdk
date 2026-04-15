@@ -4,36 +4,77 @@
 
 Have all service definitions and code generated stubs for OpenKCM APIs.
 
-## Generate protobuf code
+## Pre-requisites
 
-1. **Install `buf`:** If you haven't already, install `buf` by following the instructions on
-   the [Buf website](https://buf.build/docs/installation/).
-   You can install buf on macOS or Linux using Homebrew:
+Several tools are required to generate the code:
 
-```sh
-   brew install bufbuild/buf/buf
+1. **`protoc compiler`**: see the instruction on the official [web site](https://protobuf.dev/installation) or install using homebrew `brew install protobuf`.
+2. **`protoc-gen-go`**: install via `go install google.golang.org/protobuf/cmd/protoc-gen-go@latest`.
+3. **`protoc-gen-go-grpc`**: install via `go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest`.
+4. **`protofetch`**: download from the [releases page](https://github.com/coralogix/protofetch/releases/latest) of [the GitHub repository](https://github.com/coralogix/protofetch) or install via `cargo install protofetch` or `npm install -g @coralogix/protofetch`, or using any similar tool compatible with the npm registry.
+
+## Optional tools
+
+Optionally, the [`buf` CLI](https://github.com/bufbuild/buf) tool can be used to validate, detect breaking changes, and format `.proto` files:
+
+- **`buf breaking --against https://github.com/openkcm/api-sdk.git#branch=main`**: detect breaking changes against the main branch of the remote repository.
+- **`buf format -w`**: format `.proto` files.
+- **`buf lint`**: lint `.proto` files.
+
+## Makefile
+
+There are several `make` targets defined in the `Makefile`:
+
+- **`fetch-protos`**: download `.proto` dependencies using `protofetch`.
+- **`generate`**: fetches `.proto` dependencies, formats `.proto` files, and generates Go code.
+- **`install-tools`**: installs the tools (including optional) from the following sources: Homebrew, Go registry (via `go install`), NPM registry (via `npm install -g`). See the target definition for the details.
+- **`validate`**: formats and lints `.proto` files, detects breaking changes.
+
+For the rest `make` targets see `Makefile`.
+
+## Dependencies
+
+`.proto` dependencies are managed with the [`protofetch`](https://github.com/coralogix/protofetch) tool. This tool downloads `.proto` files from a specified location of a git repository and places them into the `vendor-proto` directory. The dependencies are specified in the `protofetch.toml` file.
+
+For instance, a dependency on the [`protovalidate`](https://github.com/bufbuild/protovalidate) proto definitions can be specified as follow:
+
+``` toml
+name = "github.com/openkcm/api-sdk"
+description = "API proto definitions and Go generated code used in the openkcm project"
+
+[protovalidate]
+url = "github.com/bufbuild/protovalidate"
+revision = "v1.1.1"
+content_roots = ["/proto/protovalidate"]
+allow_policies = ["buf/validate/*"]
 ```
 
-2. **Generate code:** Use the ```sh make generate``` command to run the entire process.
+In order to fetch dependencies, execute:
+
+``` sh
+$ protofetch -o vendor-proto fetch
+```
+
+## Generate Go code from the .proto definitions
+
+The code can be generated with executing the following Make target
 
 ```sh 
-   make generate
+$ make generate
 ```
-
----
 
 ## Using a specific branch
 
 Ensure that the GOPRIVATE environment variable is set up:
 
-   ```sh
-     go env -w GOPRIVATE="github.com/*"  
-   ```
+```sh
+$ go env -w GOPRIVATE="github.com/openkcm/*"
+```
 
 To use a specific branch of a repository in your Go project, you can use the `go get` command with the branch name.
 Here's an example:
 
-> go get github.com/openkcm/api-sdk/proto/kms/api/cmk/registry/system/v1@<branch-name>
+> go get github.com/openkcm/api-sdk/proto/kms/api/cmk/registry/system/v1@\<branch-name\>
 
 To switch back to the default branch, follow these steps:
 
@@ -44,7 +85,7 @@ To switch back to the default branch, follow these steps:
 2. Clean up:
 
 ```sh
-  go mod tidy
+$ go mod tidy
 ```
 
 ## Support, Feedback, Contributing
