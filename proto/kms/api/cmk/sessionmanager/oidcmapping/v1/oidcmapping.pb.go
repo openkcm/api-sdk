@@ -7,6 +7,7 @@
 package oidcmappingv1
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -29,7 +30,7 @@ type ApplyOIDCMappingRequest struct {
 	JwksUri       *string                `protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri,proto3,oneof" json:"jwks_uri,omitempty"`
 	Audiences     []string               `protobuf:"bytes,4,rep,name=audiences,proto3" json:"audiences,omitempty"`
 	Properties    map[string]string      `protobuf:"bytes,5,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	ClientId      *string                `protobuf:"bytes,6,opt,name=client_id,json=clientId,proto3,oneof" json:"client_id,omitempty"`
+	ClientId      string                 `protobuf:"bytes,6,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -100,8 +101,8 @@ func (x *ApplyOIDCMappingRequest) GetProperties() map[string]string {
 }
 
 func (x *ApplyOIDCMappingRequest) GetClientId() string {
-	if x != nil && x.ClientId != nil {
-		return *x.ClientId
+	if x != nil {
+		return x.ClientId
 	}
 	return ""
 }
@@ -453,7 +454,7 @@ var File_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto protoreflec
 
 const file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDesc = "" +
 	"\n" +
-	";kms/api/cmk/sessionmanager/oidcmapping/v1/oidcmapping.proto\x12)kms.api.cmk.sessionmanager.oidcmapping.v1\"\xfc\x02\n" +
+	";kms/api/cmk/sessionmanager/oidcmapping/v1/oidcmapping.proto\x12)kms.api.cmk.sessionmanager.oidcmapping.v1\x1a\x1bbuf/validate/validate.proto\"\xf2\x02\n" +
 	"\x17ApplyOIDCMappingRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
 	"\x06issuer\x18\x02 \x01(\tR\x06issuer\x12\x1e\n" +
@@ -461,14 +462,12 @@ const file_kms_api_cmk_sessionmanager_oidcmapping_v1_oidcmapping_proto_rawDesc =
 	"\taudiences\x18\x04 \x03(\tR\taudiences\x12r\n" +
 	"\n" +
 	"properties\x18\x05 \x03(\v2R.kms.api.cmk.sessionmanager.oidcmapping.v1.ApplyOIDCMappingRequest.PropertiesEntryR\n" +
-	"properties\x12 \n" +
-	"\tclient_id\x18\x06 \x01(\tH\x01R\bclientId\x88\x01\x01\x1a=\n" +
+	"properties\x12$\n" +
+	"\tclient_id\x18\x06 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\bclientId\x1a=\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\v\n" +
-	"\t_jwks_uriB\f\n" +
-	"\n" +
-	"_client_id\"_\n" +
+	"\t_jwks_uri\"_\n" +
 	"\x18ApplyOIDCMappingResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1d\n" +
 	"\amessage\x18\x02 \x01(\tH\x00R\amessage\x88\x01\x01B\n" +

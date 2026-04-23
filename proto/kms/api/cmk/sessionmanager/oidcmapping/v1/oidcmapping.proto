@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package kms.api.cmk.sessionmanager.oidcmapping.v1;
 
+import "buf/validate/validate.proto";
+
 option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/oidcmapping/v1;oidcmappingv1";
 
 service Service {
@@ -18,7 +20,7 @@ message ApplyOIDCMappingRequest {
   optional string jwks_uri = 3;
   repeated string audiences = 4;
   map<string, string> properties = 5;
-  optional string client_id = 6;
+  string client_id = 6 [(buf.validate.field).string.min_len = 1];
 }
 
 message ApplyOIDCMappingResponse {
