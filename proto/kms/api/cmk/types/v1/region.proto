@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package kms.api.cmk.types.v1;
 
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1";
+
 enum Region {
   REGION_UNSPECIFIED = 0;
   REGION_EU = 1;

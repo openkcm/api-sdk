@@ -4,6 +4,8 @@ package kms.api.cmk.registry.system.v1;
 
 import "kms/api/cmk/types/v1/status.proto";
 
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/registry/system/v1;systemv1";
+
 service Service {
   rpc RegisterSystem(RegisterSystemRequest) returns (RegisterSystemResponse) {}
   rpc ListSystems(ListSystemsRequest) returns (ListSystemsResponse) {}

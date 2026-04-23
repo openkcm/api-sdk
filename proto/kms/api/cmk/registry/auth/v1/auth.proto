@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package kms.api.cmk.registry.auth.v1;
 
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/registry/auth/v1;authv1";
+
 service Service {
   rpc ApplyAuth(ApplyAuthRequest) returns (ApplyAuthResponse) {}
   rpc GetAuth(GetAuthRequest) returns (GetAuthResponse) {}

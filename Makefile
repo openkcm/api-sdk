@@ -1,27 +1,50 @@
 .PHONY: generate
+generate: fetch-protos format go-gen
 
-generate: patch-swagger-doc format
-	go mod tidy
-	go mod vendor
+.PHONY: clean
+clean:
+	@find ./proto -type f -name '*.go' -exec rm {} +
 
-patch-swagger-doc: buf-gen
-	#./scripts/update_swagger.sh docs/openapiv2/apidocs.swagger.json
+.PHONY: fetch-protos
+fetch-protos:
+	@protofetch -o vendor-proto fetch
 
-init-git-hooks:
-	git config --local core.hooksPath .githooks/
+.PHONY: go-gen
+go-gen: clean
+	@find ./proto -type f -iname '*.proto' -exec \
+		protoc -I./proto -I./vendor-proto \
+		--go_out=./proto \
+		--go_opt=paths=import \
+		--go_opt=module=github.com/openkcm/api-sdk/proto \
+		--go-grpc_out=./proto \
+		--go-grpc_opt=paths=import \
+		--go-grpc_opt=module=github.com/openkcm/api-sdk/proto \
+		{} +
+	@go mod tidy
 
-buf-gen: init-git-hooks
-	buf dep update
-	./buf.gen.yaml
+.PHONY: install-tools
+install-tools:
+	brew install protobuf
+	go install \
+		google.golang.org/protobuf/cmd/protoc-gen-go@latest \
+		google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+	brew install bufbuild/buf/buf
+	npm install -g @coralogix/protofetch
 
-format: buf-gen
-	buf format -w
+.PHONY: validate
+validate: format lint breaking
 
-.PHONY: test
-test:
-	go test -race -coverprofile cover.out ./...
-	# On a Mac, you can use the following command to open the coverage report in the browser
-	# go tool cover -html=cover.out -o cover.html && open cover.html
+.PHONY: lint
+lint:
+	@buf lint
+
+.PHONY: breaking
+breaking:
+	@buf breaking --against https://github.com/openkcm/api-sdk.git#branch=main
+
+.PHONY: format
+format:
+	@buf format -w
 
 .PHONY: reuse-lint
 reuse-lint:

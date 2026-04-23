@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package kms.api.cmk.types.v1;
 
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1";
+
 enum Status {
   STATUS_UNSPECIFIED = 0;
   STATUS_AVAILABLE = 1;
