@@ -29,6 +29,13 @@ const (
 	Status_STATUS_PROCESSING          Status = 2
 	Status_STATUS_TERMINATION_PENDING Status = 3
 	Status_STATUS_TERMINATED          Status = 4
+	// STATUS_LOCKED means that the L1 key is unavailable and therefore the data
+	// of the system can't be decrypted. This is because the key chain to decrypt
+	// the data encryption key is incomplete.
+	// A system transition into STATUS_LOCKED happens when the tenant is terminated
+	// from the blocked status. The system can only be reactivated by creating a new
+	// tenant, presenting the original L1 key material and mapping the system.
+	Status_STATUS_LOCKED Status = 5
 )
 
 // Enum value maps for Status.
@@ -39,6 +46,7 @@ var (
 		2: "STATUS_PROCESSING",
 		3: "STATUS_TERMINATION_PENDING",
 		4: "STATUS_TERMINATED",
+		5: "STATUS_LOCKED",
 	}
 	Status_value = map[string]int32{
 		"STATUS_UNSPECIFIED":         0,
@@ -46,6 +54,7 @@ var (
 		"STATUS_PROCESSING":          2,
 		"STATUS_TERMINATION_PENDING": 3,
 		"STATUS_TERMINATED":          4,
+		"STATUS_LOCKED":              5,
 	}
 )
 
@@ -80,13 +89,14 @@ var File_kms_api_cmk_types_v1_status_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_types_v1_status_proto_rawDesc = "" +
 	"\n" +
-	"!kms/api/cmk/types/v1/status.proto\x12\x14kms.api.cmk.types.v1*\x84\x01\n" +
+	"!kms/api/cmk/types/v1/status.proto\x12\x14kms.api.cmk.types.v1*\x97\x01\n" +
 	"\x06Status\x12\x16\n" +
 	"\x12STATUS_UNSPECIFIED\x10\x00\x12\x14\n" +
 	"\x10STATUS_AVAILABLE\x10\x01\x12\x15\n" +
 	"\x11STATUS_PROCESSING\x10\x02\x12\x1e\n" +
 	"\x1aSTATUS_TERMINATION_PENDING\x10\x03\x12\x15\n" +
-	"\x11STATUS_TERMINATED\x10\x04B?Z=github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1b\x06proto3"
+	"\x11STATUS_TERMINATED\x10\x04\x12\x11\n" +
+	"\rSTATUS_LOCKED\x10\x05B?Z=github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1b\x06proto3"
 
 var (
 	file_kms_api_cmk_types_v1_status_proto_rawDescOnce sync.Once
