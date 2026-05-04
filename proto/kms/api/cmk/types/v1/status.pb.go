@@ -32,9 +32,10 @@ const (
 	// STATUS_LOCKED means that the L1 key is unavailable and therefore the data
 	// of the system can't be decrypted. This is because the key chain to decrypt
 	// the data encryption key is incomplete.
-	// A system transition into STATUS_LOCKED happens when the tenant is terminated
-	// from the blocked status. The system can only be reactivated by creating a new
-	// tenant, presenting the original L1 key material and mapping the system.
+	// A system transition into STATUS_LOCKED can happen when the tenant is terminated
+	// from the blocked status.
+	// In such a case the system can only be reactivated by creating a new tenant,
+	// presenting the original L1 key material and mapping the system.
 	Status_STATUS_LOCKED Status = 5
 )
 
