@@ -3,6 +3,6 @@ description = "API proto definitions and Go generated code used in the openkcm p
 
 [protovalidate]
 url = "github.com/bufbuild/protovalidate"
-revision = "v1.1.1"
+revision = "v1.2.0"
 content_roots = ["/proto/protovalidate"]
 allow_policies = ["buf/validate/*"]

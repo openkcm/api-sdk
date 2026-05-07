@@ -1,14 +1,16 @@
+// Deprecated: use kms.api.cmk.sessionmanager.trustmapping.v1 instead.
 syntax = "proto3";
 
 package kms.api.cmk.sessionmanager.oidcmapping.v1;
 
+option deprecated = true;
 option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/oidcmapping/v1;oidcmappingv1";
 
 service Service {
-  rpc ApplyOIDCMapping(ApplyOIDCMappingRequest) returns (ApplyOIDCMappingResponse) {}
-  rpc RemoveOIDCMapping(RemoveOIDCMappingRequest) returns (RemoveOIDCMappingResponse) {}
-  rpc BlockOIDCMapping(BlockOIDCMappingRequest) returns (BlockOIDCMappingResponse) {}
-  rpc UnblockOIDCMapping(UnblockOIDCMappingRequest) returns (UnblockOIDCMappingResponse) {}
+  rpc ApplyOIDCMapping(ApplyOIDCMappingRequest) returns (ApplyOIDCMappingResponse);
+  rpc RemoveOIDCMapping(RemoveOIDCMappingRequest) returns (RemoveOIDCMappingResponse);
+  rpc BlockOIDCMapping(BlockOIDCMappingRequest) returns (BlockOIDCMappingResponse);
+  rpc UnblockOIDCMapping(UnblockOIDCMappingRequest) returns (UnblockOIDCMappingResponse);
 }
 
 // apply (create or update) the OIDC provider mapping for the given tenant

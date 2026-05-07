@@ -1,0 +1,10 @@
+edition = "2024";
+
+package kms.api.cmk.trust.oidc.flow.v1;
+
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/trust/oidc/flow/v1;flowv1";
+
+message Attribute {
+  string key = 1;
+  string value = 2;
+}
