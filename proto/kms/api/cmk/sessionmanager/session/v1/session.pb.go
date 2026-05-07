@@ -7,6 +7,7 @@
 package sessionv1
 
 import (
+	v11 "github.com/openkcm/api-sdk/proto/kms/api/cmk/trust/v1"
 	v1 "github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -272,11 +273,99 @@ func (x *GetOIDCProviderResponse) GetProvider() *v1.OIDCProvider {
 	return nil
 }
 
+type GetTrustRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTrustRequest) Reset() {
+	*x = GetTrustRequest{}
+	mi := &file_kms_api_cmk_sessionmanager_session_v1_session_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTrustRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTrustRequest) ProtoMessage() {}
+
+func (x *GetTrustRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kms_api_cmk_sessionmanager_session_v1_session_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTrustRequest.ProtoReflect.Descriptor instead.
+func (*GetTrustRequest) Descriptor() ([]byte, []int) {
+	return file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetTrustRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+type GetTrustResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Trust         *v11.Trust             `protobuf:"bytes,1,opt,name=trust,proto3" json:"trust,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetTrustResponse) Reset() {
+	*x = GetTrustResponse{}
+	mi := &file_kms_api_cmk_sessionmanager_session_v1_session_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetTrustResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTrustResponse) ProtoMessage() {}
+
+func (x *GetTrustResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kms_api_cmk_sessionmanager_session_v1_session_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTrustResponse.ProtoReflect.Descriptor instead.
+func (*GetTrustResponse) Descriptor() ([]byte, []int) {
+	return file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetTrustResponse) GetTrust() *v11.Trust {
+	if x != nil {
+		return x.Trust
+	}
+	return nil
+}
+
 var File_kms_api_cmk_sessionmanager_session_v1_session_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDesc = "" +
 	"\n" +
-	"3kms/api/cmk/sessionmanager/session/v1/session.proto\x12%kms.api.cmk.sessionmanager.session.v1\x1a\x1fkms/api/cmk/types/v1/oidc.proto\"q\n" +
+	"3kms/api/cmk/sessionmanager/session/v1/session.proto\x12%kms.api.cmk.sessionmanager.session.v1\x1a kms/api/cmk/trust/v1/trust.proto\x1a\x1fkms/api/cmk/types/v1/oidc.proto\"q\n" +
 	"\x11GetSessionRequest\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\tR\tsessionId\x12\x1b\n" +
@@ -299,11 +388,16 @@ const file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDesc = "" +
 	"\x16GetOIDCProviderRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\"Y\n" +
 	"\x17GetOIDCProviderResponse\x12>\n" +
-	"\bprovider\x18\x01 \x01(\v2\".kms.api.cmk.types.v1.OIDCProviderR\bprovider2\xa4\x02\n" +
-	"\aService\x12\x83\x01\n" +
+	"\bprovider\x18\x01 \x01(\v2\".kms.api.cmk.types.v1.OIDCProviderR\bprovider\".\n" +
+	"\x0fGetTrustRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\"E\n" +
+	"\x10GetTrustResponse\x121\n" +
+	"\x05trust\x18\x01 \x01(\v2\x1b.kms.api.cmk.trust.v1.TrustR\x05trust2\xa2\x03\n" +
+	"\aService\x12\x81\x01\n" +
 	"\n" +
-	"GetSession\x128.kms.api.cmk.sessionmanager.session.v1.GetSessionRequest\x1a9.kms.api.cmk.sessionmanager.session.v1.GetSessionResponse\"\x00\x12\x92\x01\n" +
-	"\x0fGetOIDCProvider\x12=.kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderRequest\x1a>.kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderResponse\"\x00BRZPgithub.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/session/v1;sessionv1b\x06proto3"
+	"GetSession\x128.kms.api.cmk.sessionmanager.session.v1.GetSessionRequest\x1a9.kms.api.cmk.sessionmanager.session.v1.GetSessionResponse\x12\x95\x01\n" +
+	"\x0fGetOIDCProvider\x12=.kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderRequest\x1a>.kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderResponse\"\x03\x88\x02\x01\x12{\n" +
+	"\bGetTrust\x126.kms.api.cmk.sessionmanager.session.v1.GetTrustRequest\x1a7.kms.api.cmk.sessionmanager.session.v1.GetTrustResponseBRZPgithub.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/session/v1;sessionv1b\x06proto3"
 
 var (
 	file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDescOnce sync.Once
@@ -317,27 +411,33 @@ func file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDescGZIP() []by
 	return file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDescData
 }
 
-var file_kms_api_cmk_sessionmanager_session_v1_session_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_kms_api_cmk_sessionmanager_session_v1_session_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_kms_api_cmk_sessionmanager_session_v1_session_proto_goTypes = []any{
 	(*GetSessionRequest)(nil),       // 0: kms.api.cmk.sessionmanager.session.v1.GetSessionRequest
 	(*GetSessionResponse)(nil),      // 1: kms.api.cmk.sessionmanager.session.v1.GetSessionResponse
 	(*GetOIDCProviderRequest)(nil),  // 2: kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderRequest
 	(*GetOIDCProviderResponse)(nil), // 3: kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderResponse
-	nil,                             // 4: kms.api.cmk.sessionmanager.session.v1.GetSessionResponse.AuthContextEntry
-	(*v1.OIDCProvider)(nil),         // 5: kms.api.cmk.types.v1.OIDCProvider
+	(*GetTrustRequest)(nil),         // 4: kms.api.cmk.sessionmanager.session.v1.GetTrustRequest
+	(*GetTrustResponse)(nil),        // 5: kms.api.cmk.sessionmanager.session.v1.GetTrustResponse
+	nil,                             // 6: kms.api.cmk.sessionmanager.session.v1.GetSessionResponse.AuthContextEntry
+	(*v1.OIDCProvider)(nil),         // 7: kms.api.cmk.types.v1.OIDCProvider
+	(*v11.Trust)(nil),               // 8: kms.api.cmk.trust.v1.Trust
 }
 var file_kms_api_cmk_sessionmanager_session_v1_session_proto_depIdxs = []int32{
-	4, // 0: kms.api.cmk.sessionmanager.session.v1.GetSessionResponse.auth_context:type_name -> kms.api.cmk.sessionmanager.session.v1.GetSessionResponse.AuthContextEntry
-	5, // 1: kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderResponse.provider:type_name -> kms.api.cmk.types.v1.OIDCProvider
-	0, // 2: kms.api.cmk.sessionmanager.session.v1.Service.GetSession:input_type -> kms.api.cmk.sessionmanager.session.v1.GetSessionRequest
-	2, // 3: kms.api.cmk.sessionmanager.session.v1.Service.GetOIDCProvider:input_type -> kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderRequest
-	1, // 4: kms.api.cmk.sessionmanager.session.v1.Service.GetSession:output_type -> kms.api.cmk.sessionmanager.session.v1.GetSessionResponse
-	3, // 5: kms.api.cmk.sessionmanager.session.v1.Service.GetOIDCProvider:output_type -> kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	6, // 0: kms.api.cmk.sessionmanager.session.v1.GetSessionResponse.auth_context:type_name -> kms.api.cmk.sessionmanager.session.v1.GetSessionResponse.AuthContextEntry
+	7, // 1: kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderResponse.provider:type_name -> kms.api.cmk.types.v1.OIDCProvider
+	8, // 2: kms.api.cmk.sessionmanager.session.v1.GetTrustResponse.trust:type_name -> kms.api.cmk.trust.v1.Trust
+	0, // 3: kms.api.cmk.sessionmanager.session.v1.Service.GetSession:input_type -> kms.api.cmk.sessionmanager.session.v1.GetSessionRequest
+	2, // 4: kms.api.cmk.sessionmanager.session.v1.Service.GetOIDCProvider:input_type -> kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderRequest
+	4, // 5: kms.api.cmk.sessionmanager.session.v1.Service.GetTrust:input_type -> kms.api.cmk.sessionmanager.session.v1.GetTrustRequest
+	1, // 6: kms.api.cmk.sessionmanager.session.v1.Service.GetSession:output_type -> kms.api.cmk.sessionmanager.session.v1.GetSessionResponse
+	3, // 7: kms.api.cmk.sessionmanager.session.v1.Service.GetOIDCProvider:output_type -> kms.api.cmk.sessionmanager.session.v1.GetOIDCProviderResponse
+	5, // 8: kms.api.cmk.sessionmanager.session.v1.Service.GetTrust:output_type -> kms.api.cmk.sessionmanager.session.v1.GetTrustResponse
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_kms_api_cmk_sessionmanager_session_v1_session_proto_init() }
@@ -351,7 +451,7 @@ func file_kms_api_cmk_sessionmanager_session_v1_session_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDesc), len(file_kms_api_cmk_sessionmanager_session_v1_session_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
