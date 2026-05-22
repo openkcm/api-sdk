@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package kms.api.cmk.registry.mapping.v1;
 
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/registry/mapping/v1;mappingv1";
+
 service Service {
   rpc UnmapSystemFromTenant(UnmapSystemFromTenantRequest) returns (UnmapSystemFromTenantResponse) {}
   rpc MapSystemToTenant(MapSystemToTenantRequest) returns (MapSystemToTenantResponse) {}

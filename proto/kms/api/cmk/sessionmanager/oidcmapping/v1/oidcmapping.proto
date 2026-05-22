@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package kms.api.cmk.sessionmanager.oidcmapping.v1;
 
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/oidcmapping/v1;oidcmappingv1";
+
 service Service {
   rpc ApplyOIDCMapping(ApplyOIDCMappingRequest) returns (ApplyOIDCMappingResponse) {}
   rpc RemoveOIDCMapping(RemoveOIDCMappingRequest) returns (RemoveOIDCMappingResponse) {}

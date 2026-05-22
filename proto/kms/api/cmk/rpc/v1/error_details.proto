@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package kms.api.cmk.rpc.v1;
 
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/rpc/v1;rpcv1";
+
 // PreconditionFailure describes what preconditions have failed.
 message PreconditionFailure {
   message Violation {
