@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.18.0](https://github.com/openkcm/api-sdk/compare/v0.17.0...v0.18.0) (2026-05-28)
+
+
+### Features
+
+* add system locked status ([#96](https://github.com/openkcm/api-sdk/issues/96)) ([7bdf6a1](https://github.com/openkcm/api-sdk/commit/7bdf6a1f78a3f2f164c6192617f853046636807a))
+
+
+### Bug Fixes
+
+* **deps:** bump google.golang.org/grpc from 1.79.3 to 1.80.0 in the gomod-group group ([#92](https://github.com/openkcm/api-sdk/issues/92)) ([a5894da](https://github.com/openkcm/api-sdk/commit/a5894daec262fb0538d7d81cd7c09065e2b6ba6e))
+* **deps:** bump google.golang.org/grpc from 1.80.0 to 1.81.0 in the gomod-group group ([#97](https://github.com/openkcm/api-sdk/issues/97)) ([e032445](https://github.com/openkcm/api-sdk/commit/e0324456f70e5fd7e7f9917398ff9e6c2bdd06c1))
+
 ## [0.17.0](https://github.com/openkcm/api-sdk/compare/v0.16.0...v0.17.0) (2026-03-31)
 
 
