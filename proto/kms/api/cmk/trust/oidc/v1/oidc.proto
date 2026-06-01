@@ -1,0 +1,50 @@
+edition = "2024";
+
+package kms.api.cmk.trust.oidc.v1;
+
+import option "buf/validate/validate.proto";
+
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/trust/oidc/v1;oidcv1";
+
+message OIDC {
+  string issuer = 1 [(buf.validate.field).required = true];
+  string client_id = 2 [(buf.validate.field).required = true];
+  string jwks_uri = 3;
+  repeated string audiences = 4;
+
+  extensions 50 to 99 [
+    verification = DECLARATION,
+    declaration = {
+      number: 50
+      full_name: ".kms.api.cmk.trust.oidc.flow.v1.auth_attributes"
+      type: ".kms.api.cmk.trust.oidc.flow.v1.Attribute"
+      repeated: true
+    },
+    declaration = {
+      number: 51
+      full_name: ".kms.api.cmk.trust.oidc.flow.v1.token_attributes"
+      type: ".kms.api.cmk.trust.oidc.flow.v1.Attribute"
+      repeated: true
+    },
+    declaration = {
+      number: 52
+      full_name: ".kms.api.cmk.trust.oidc.flow.v1.logout_attributes"
+      type: ".kms.api.cmk.trust.oidc.flow.v1.Attribute"
+      repeated: true
+    },
+    declaration = {
+      number: 53
+      full_name: ".kms.api.cmk.trust.oidc.flow.v1.auth_context"
+      type: ".kms.api.cmk.trust.oidc.flow.v1.Attribute"
+      repeated: true
+    },
+    declaration = {
+      number: 54
+      full_name: ".kms.api.cmk.trust.oidc.flow.v1.post_logout_redirect_url"
+      type: "string"
+      repeated: false
+    }
+  ];
+
+  extensions 100 to 199;
+}

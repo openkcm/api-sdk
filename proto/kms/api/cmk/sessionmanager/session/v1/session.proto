@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package kms.api.cmk.sessionmanager.session.v1;
 
+import "kms/api/cmk/trust/v1/trust.proto";
 import "kms/api/cmk/types/v1/oidc.proto";
 
 option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/session/v1;sessionv1";
@@ -15,8 +16,12 @@ service Service {
   //   PreconditionFailure:
   //     violations:
   //       type: "tenant_blocked"
-  rpc GetSession(GetSessionRequest) returns (GetSessionResponse) {}
-  rpc GetOIDCProvider(GetOIDCProviderRequest) returns (GetOIDCProviderResponse) {}
+  rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
+  // Deprecated: use GetTrust instead.
+  rpc GetOIDCProvider(GetOIDCProviderRequest) returns (GetOIDCProviderResponse) {
+    option deprecated = true;
+  }
+  rpc GetTrust(GetTrustRequest) returns (GetTrustResponse);
 }
 
 message GetSessionRequest {
@@ -42,4 +47,12 @@ message GetOIDCProviderRequest {
 
 message GetOIDCProviderResponse {
   kms.api.cmk.types.v1.OIDCProvider provider = 1;
+}
+
+message GetTrustRequest {
+  string tenant_id = 1;
+}
+
+message GetTrustResponse {
+  kms.api.cmk.trust.v1.Trust trust = 1;
 }
