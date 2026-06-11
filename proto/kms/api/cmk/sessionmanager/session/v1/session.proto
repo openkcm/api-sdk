@@ -23,7 +23,6 @@ message GetSessionRequest {
   string session_id = 1;
   string tenant_id = 2;
   // Deprecated: fingerprint is no longer used for session validation.
-  // See ADR 202604241438 - Remove Browser Fingerprinting.
   string fingerprint = 3 [deprecated = true];
 }
 
