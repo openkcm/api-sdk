@@ -23,10 +23,11 @@ const (
 )
 
 type GetSessionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
-	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Fingerprint   string                 `protobuf:"bytes,3,opt,name=fingerprint,proto3" json:"fingerprint,omitempty"`
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	SessionId string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	TenantId  string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	// Deprecated: Marked as deprecated in kms/api/cmk/sessionmanager/session/v1/session.proto.
+	Fingerprint   string `protobuf:"bytes,3,opt,name=fingerprint,proto3" json:"fingerprint,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -75,6 +76,7 @@ func (x *GetSessionRequest) GetTenantId() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in kms/api/cmk/sessionmanager/session/v1/session.proto.
 func (x *GetSessionRequest) GetFingerprint() string {
 	if x != nil {
 		return x.Fingerprint
