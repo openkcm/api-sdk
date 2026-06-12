@@ -7,7 +7,7 @@ import "kms/api/cmk/types/v1/oidc.proto";
 option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/session/v1;sessionv1";
 
 service Service {
-  // GetSession matches the fingerprint, tenant id, and returns a session
+  // GetSession validates the session and tenant, and returns the session
   // and its status. Additionally, the method checks whether the tenant is blocked.
   //
   // The method may return the following statuses with a rich error description (see kms.api.cmk.rpc.v1 package):
@@ -22,7 +22,8 @@ service Service {
 message GetSessionRequest {
   string session_id = 1;
   string tenant_id = 2;
-  string fingerprint = 3;
+  // Deprecated: fingerprint is no longer used for session validation.
+  string fingerprint = 3 [deprecated = true];
 }
 
 message GetSessionResponse {

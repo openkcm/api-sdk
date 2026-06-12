@@ -27,7 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ServiceClient interface {
-	// GetSession matches the fingerprint, tenant id, and returns a session
+	// GetSession validates the session and tenant, and returns the session
 	// and its status. Additionally, the method checks whether the tenant is blocked.
 	//
 	// The method may return the following statuses with a rich error description (see kms.api.cmk.rpc.v1 package):
@@ -72,7 +72,7 @@ func (c *serviceClient) GetOIDCProvider(ctx context.Context, in *GetOIDCProvider
 // All implementations must embed UnimplementedServiceServer
 // for forward compatibility.
 type ServiceServer interface {
-	// GetSession matches the fingerprint, tenant id, and returns a session
+	// GetSession validates the session and tenant, and returns the session
 	// and its status. Additionally, the method checks whether the tenant is blocked.
 	//
 	// The method may return the following statuses with a rich error description (see kms.api.cmk.rpc.v1 package):
