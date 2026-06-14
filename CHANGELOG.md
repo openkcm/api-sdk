@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.1](https://github.com/openkcm/api-sdk/compare/v0.18.0...v0.18.1) (2026-06-14)
+
+
+### Bug Fixes
+
+* Deprecate browser fingerprint ([#101](https://github.com/openkcm/api-sdk/issues/101)) ([9ce672a](https://github.com/openkcm/api-sdk/commit/9ce672a17e9bc4531802749dd4d1b6a59b4d8ecc))
+
 ## [0.18.0](https://github.com/openkcm/api-sdk/compare/v0.17.0...v0.18.0) (2026-05-28)
 
 
