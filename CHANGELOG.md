@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.0](https://github.com/openkcm/api-sdk/compare/v0.18.1...v0.19.0) (2026-06-22)
+
+
+### Features
+
+* trust extensions ([#98](https://github.com/openkcm/api-sdk/issues/98)) ([03cce43](https://github.com/openkcm/api-sdk/commit/03cce436c05f42f939f345e444f0339e18196127))
+
 ## [0.18.1](https://github.com/openkcm/api-sdk/compare/v0.18.0...v0.18.1) (2026-06-15)
 
 
