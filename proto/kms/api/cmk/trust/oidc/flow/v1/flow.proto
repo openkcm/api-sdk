@@ -1,0 +1,15 @@
+edition = "2024";
+
+package kms.api.cmk.trust.oidc.flow.v1;
+
+import "kms/api/cmk/trust/oidc/flow/v1/attribute.proto";
+import "kms/api/cmk/trust/oidc/v1/oidc.proto";
+
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/trust/oidc/flow/v1;flowv1";
+
+extend trust.oidc.v1.OIDC {
+  repeated Attribute auth_attributes = 50;
+  repeated Attribute token_attributes = 51;
+  repeated Attribute logout_attributes = 52;
+  repeated Attribute auth_context = 53;
+}
