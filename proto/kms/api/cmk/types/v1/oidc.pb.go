@@ -27,6 +27,7 @@ type OIDCProvider struct {
 	IssuerUrl     string                 `protobuf:"bytes,1,opt,name=issuer_url,json=issuerUrl,proto3" json:"issuer_url,omitempty"`
 	JwksUri       string                 `protobuf:"bytes,2,opt,name=jwks_uri,json=jwksUri,proto3" json:"jwks_uri,omitempty"`
 	Audiences     []string               `protobuf:"bytes,3,rep,name=audiences,proto3" json:"audiences,omitempty"`
+	ClientId      string                 `protobuf:"bytes,4,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -82,16 +83,24 @@ func (x *OIDCProvider) GetAudiences() []string {
 	return nil
 }
 
+func (x *OIDCProvider) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
 var File_kms_api_cmk_types_v1_oidc_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_types_v1_oidc_proto_rawDesc = "" +
 	"\n" +
-	"\x1fkms/api/cmk/types/v1/oidc.proto\x12\x14kms.api.cmk.types.v1\"j\n" +
+	"\x1fkms/api/cmk/types/v1/oidc.proto\x12\x14kms.api.cmk.types.v1\"\x87\x01\n" +
 	"\fOIDCProvider\x12\x1d\n" +
 	"\n" +
 	"issuer_url\x18\x01 \x01(\tR\tissuerUrl\x12\x19\n" +
 	"\bjwks_uri\x18\x02 \x01(\tR\ajwksUri\x12\x1c\n" +
-	"\taudiences\x18\x03 \x03(\tR\taudiences:\x02\x18\x01B?Z=github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1b\x06proto3"
+	"\taudiences\x18\x03 \x03(\tR\taudiences\x12\x1b\n" +
+	"\tclient_id\x18\x04 \x01(\tR\bclientId:\x02\x18\x01B?Z=github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1b\x06proto3"
 
 var (
 	file_kms_api_cmk_types_v1_oidc_proto_rawDescOnce sync.Once
