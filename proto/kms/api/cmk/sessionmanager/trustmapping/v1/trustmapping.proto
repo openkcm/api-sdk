@@ -1,0 +1,66 @@
+edition = "2024";
+
+package kms.api.cmk.sessionmanager.trustmapping.v1;
+
+import option "buf/validate/validate.proto";
+
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/trustmapping/v1;trustmappingv1";
+
+service Service {
+  rpc ApplyTrustMapping(ApplyTrustMappingRequest) returns (ApplyTrustMappingResponse) {}
+  rpc RemoveTrustMapping(RemoveTrustMappingRequest) returns (RemoveTrustMappingResponse) {}
+  rpc BlockTrustMapping(BlockTrustMappingRequest) returns (BlockTrustMappingResponse) {}
+  rpc UnblockTrustMapping(UnblockTrustMappingRequest) returns (UnblockTrustMappingResponse) {}
+}
+
+// apply (create or update) the Trust provider mapping for the given tenant
+message ApplyTrustMappingRequest {
+  message ApplyOIDCTrust {
+    string issuer = 1 [(buf.validate.field).required = true];
+    string client_id = 2 [(buf.validate.field).required = true];
+    string jwks_uri = 3;
+    repeated string audiences = 4;
+  }
+
+  string tenant_id = 1 [(buf.validate.field).required = true];
+  oneof details {
+    option (buf.validate.oneof).required = true;
+    ApplyOIDCTrust oidc = 2;
+    // ApplySAMLTrust saml = 3; // We may add SAML later
+  }
+}
+
+message ApplyTrustMappingResponse {
+  bool success = 1 [features.field_presence = IMPLICIT];
+  string message = 2;
+}
+
+// remove the Trust provider mapping for the given tenant
+message RemoveTrustMappingRequest {
+  string tenant_id = 1;
+}
+
+message RemoveTrustMappingResponse {
+  bool success = 1 [features.field_presence = IMPLICIT];
+  string message = 2;
+}
+
+// block Trust provider for the given tenant
+message BlockTrustMappingRequest {
+  string tenant_id = 1;
+}
+
+message BlockTrustMappingResponse {
+  bool success = 1 [features.field_presence = IMPLICIT];
+  string message = 2;
+}
+
+// unblock Trust provider for the given tenant
+message UnblockTrustMappingRequest {
+  string tenant_id = 1;
+}
+
+message UnblockTrustMappingResponse {
+  bool success = 1 [features.field_presence = IMPLICIT];
+  string message = 2;
+}

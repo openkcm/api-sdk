@@ -5,6 +5,8 @@ package kms.api.cmk.types.v1;
 option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/types/v1;typesv1";
 
 message OIDCProvider {
+  option deprecated = true;
+
   string issuer_url = 1;
   string jwks_uri = 2;
   repeated string audiences = 3;

@@ -1,0 +1,18 @@
+edition = "2024";
+
+package kms.api.cmk.trust.v1;
+
+import "kms/api/cmk/trust/oidc/v1/oidc.proto";
+import option "buf/validate/validate.proto";
+
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/trust/v1;trustv1";
+
+message Trust {
+  string tenant_id = 1 [(buf.validate.field).required = true];
+  bool blocked = 2;
+  oneof details {
+    option (buf.validate.oneof).required = true;
+    kms.api.cmk.trust.oidc.v1.OIDC oidc = 3;
+    // kms.api.cmk.trust.saml.v1 Trust saml = 4; // We may add SAML later
+  }
+}
