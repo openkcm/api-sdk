@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.19.1](https://github.com/openkcm/api-sdk/compare/v0.19.0...v0.19.1) (2026-06-25)
+
+
+### Bug Fixes
+
+* **deps:** bump actions/checkout from 6 to 7 ([#104](https://github.com/openkcm/api-sdk/issues/104)) ([5b60db5](https://github.com/openkcm/api-sdk/commit/5b60db5789ad38fc127a02c190a11fd41a8cad8b))
+* make the client_id mandatory ([#95](https://github.com/openkcm/api-sdk/issues/95)) ([2dc0aee](https://github.com/openkcm/api-sdk/commit/2dc0aeea3a9eef7c6a73700fca2c030c2e9cacb1))
+* return missing client_id in GetOIDCProvider ([#107](https://github.com/openkcm/api-sdk/issues/107)) ([303162b](https://github.com/openkcm/api-sdk/commit/303162b6c23d28279ad0f12af2a882cb8ac36b17))
+* validate the tenant ID ([#106](https://github.com/openkcm/api-sdk/issues/106)) ([eace9c3](https://github.com/openkcm/api-sdk/commit/eace9c38833773b79f3f5fbf486e9a046e1767cf))
+
 ## [0.19.0](https://github.com/openkcm/api-sdk/compare/v0.18.1...v0.19.0) (2026-06-22)
 
 
