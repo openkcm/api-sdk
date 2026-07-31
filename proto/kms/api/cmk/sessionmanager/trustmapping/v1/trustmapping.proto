@@ -2,6 +2,7 @@ edition = "2024";
 
 package kms.api.cmk.sessionmanager.trustmapping.v1;
 
+import "kms/api/cmk/trust/oidc/v1/oidc.proto";
 import option "buf/validate/validate.proto";
 
 option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/trustmapping/v1;trustmappingv1";
@@ -15,17 +16,10 @@ service Service {
 
 // apply (create or update) the Trust provider mapping for the given tenant
 message ApplyTrustMappingRequest {
-  message ApplyOIDCTrust {
-    string issuer = 1 [(buf.validate.field).required = true];
-    string client_id = 2 [(buf.validate.field).required = true];
-    string jwks_uri = 3;
-    repeated string audiences = 4;
-  }
-
   string tenant_id = 1 [(buf.validate.field).required = true];
   oneof details {
     option (buf.validate.oneof).required = true;
-    ApplyOIDCTrust oidc = 2;
+    trust.oidc.v1.OIDC oidc = 2;
     // ApplySAMLTrust saml = 3; // We may add SAML later
   }
 }
