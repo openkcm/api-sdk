@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.3](https://github.com/openkcm/api-sdk/compare/v0.19.2...v0.19.3) (2026-08-03)
+
+
+### Bug Fixes
+
+* regenerate code ([#116](https://github.com/openkcm/api-sdk/issues/116)) ([917a265](https://github.com/openkcm/api-sdk/commit/917a265ce7f68e2eaf21c3ea232aba8914e6a0ca))
+
 ## [0.19.2](https://github.com/openkcm/api-sdk/compare/v0.19.1...v0.19.2) (2026-08-03)
 
 
