@@ -7,6 +7,7 @@
 package trustmappingv1
 
 import (
+	v1 "github.com/openkcm/api-sdk/proto/kms/api/cmk/trust/oidc/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -66,7 +67,7 @@ func (x *ApplyTrustMappingRequest) GetTenantId() string {
 	return ""
 }
 
-func (x *ApplyTrustMappingRequest) GetOidc() *ApplyTrustMappingRequest_ApplyOIDCTrust {
+func (x *ApplyTrustMappingRequest) GetOidc() *v1.OIDC {
 	if x != nil {
 		if x, ok := x.xxx_hidden_Details.(*applyTrustMappingRequest_Oidc); ok {
 			return x.Oidc
@@ -80,7 +81,7 @@ func (x *ApplyTrustMappingRequest) SetTenantId(v string) {
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 2)
 }
 
-func (x *ApplyTrustMappingRequest) SetOidc(v *ApplyTrustMappingRequest_ApplyOIDCTrust) {
+func (x *ApplyTrustMappingRequest) SetOidc(v *v1.OIDC) {
 	if v == nil {
 		x.xxx_hidden_Details = nil
 		return
@@ -145,7 +146,7 @@ type ApplyTrustMappingRequest_builder struct {
 
 	TenantId *string
 	// Fields of oneof xxx_hidden_Details:
-	Oidc *ApplyTrustMappingRequest_ApplyOIDCTrust
+	Oidc *v1.OIDC
 	// -- end of xxx_hidden_Details
 }
 
@@ -178,7 +179,7 @@ type isApplyTrustMappingRequest_Details interface {
 }
 
 type applyTrustMappingRequest_Oidc struct {
-	Oidc *ApplyTrustMappingRequest_ApplyOIDCTrust `protobuf:"bytes,2,opt,name=oidc,oneof"` // ApplySAMLTrust saml = 3; // We may add SAML later
+	Oidc *v1.OIDC `protobuf:"bytes,2,opt,name=oidc,oneof"` // ApplySAMLTrust saml = 3; // We may add SAML later
 }
 
 func (*applyTrustMappingRequest_Oidc) isApplyTrustMappingRequest_Details() {}
@@ -788,177 +789,14 @@ func (b0 UnblockTrustMappingResponse_builder) Build() *UnblockTrustMappingRespon
 	return m0
 }
 
-type ApplyTrustMappingRequest_ApplyOIDCTrust struct {
-	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Issuer      *string                `protobuf:"bytes,1,opt,name=issuer"`
-	xxx_hidden_ClientId    *string                `protobuf:"bytes,2,opt,name=client_id,json=clientId"`
-	xxx_hidden_JwksUri     *string                `protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri"`
-	xxx_hidden_Audiences   []string               `protobuf:"bytes,4,rep,name=audiences"`
-	XXX_raceDetectHookData protoimpl.RaceDetectHookData
-	XXX_presence           [1]uint32
-	unknownFields          protoimpl.UnknownFields
-	sizeCache              protoimpl.SizeCache
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) Reset() {
-	*x = ApplyTrustMappingRequest_ApplyOIDCTrust{}
-	mi := &file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ApplyTrustMappingRequest_ApplyOIDCTrust) ProtoMessage() {}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) ProtoReflect() protoreflect.Message {
-	mi := &file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) GetIssuer() string {
-	if x != nil {
-		if x.xxx_hidden_Issuer != nil {
-			return *x.xxx_hidden_Issuer
-		}
-		return ""
-	}
-	return ""
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) GetClientId() string {
-	if x != nil {
-		if x.xxx_hidden_ClientId != nil {
-			return *x.xxx_hidden_ClientId
-		}
-		return ""
-	}
-	return ""
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) GetJwksUri() string {
-	if x != nil {
-		if x.xxx_hidden_JwksUri != nil {
-			return *x.xxx_hidden_JwksUri
-		}
-		return ""
-	}
-	return ""
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) GetAudiences() []string {
-	if x != nil {
-		return x.xxx_hidden_Audiences
-	}
-	return nil
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) SetIssuer(v string) {
-	x.xxx_hidden_Issuer = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) SetClientId(v string) {
-	x.xxx_hidden_ClientId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 4)
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) SetJwksUri(v string) {
-	x.xxx_hidden_JwksUri = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) SetAudiences(v []string) {
-	x.xxx_hidden_Audiences = v
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) HasIssuer() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) HasClientId() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) HasJwksUri() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) ClearIssuer() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_Issuer = nil
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) ClearClientId() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
-	x.xxx_hidden_ClientId = nil
-}
-
-func (x *ApplyTrustMappingRequest_ApplyOIDCTrust) ClearJwksUri() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
-	x.xxx_hidden_JwksUri = nil
-}
-
-type ApplyTrustMappingRequest_ApplyOIDCTrust_builder struct {
-	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
-
-	Issuer    *string
-	ClientId  *string
-	JwksUri   *string
-	Audiences []string
-}
-
-func (b0 ApplyTrustMappingRequest_ApplyOIDCTrust_builder) Build() *ApplyTrustMappingRequest_ApplyOIDCTrust {
-	m0 := &ApplyTrustMappingRequest_ApplyOIDCTrust{}
-	b, x := &b0, m0
-	_, _ = b, x
-	if b.Issuer != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
-		x.xxx_hidden_Issuer = b.Issuer
-	}
-	if b.ClientId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
-		x.xxx_hidden_ClientId = b.ClientId
-	}
-	if b.JwksUri != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
-		x.xxx_hidden_JwksUri = b.JwksUri
-	}
-	x.xxx_hidden_Audiences = b.Audiences
-	return m0
-}
-
 var File_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_rawDesc = "" +
 	"\n" +
-	"=kms/api/cmk/sessionmanager/trustmapping/v1/trustmapping.proto\x12*kms.api.cmk.sessionmanager.trustmapping.v1\"\xcd\x02\n" +
+	"=kms/api/cmk/sessionmanager/trustmapping/v1/trustmapping.proto\x12*kms.api.cmk.sessionmanager.trustmapping.v1\x1a$kms/api/cmk/trust/oidc/v1/oidc.proto\"\x88\x01\n" +
 	"\x18ApplyTrustMappingRequest\x12#\n" +
-	"\ttenant_id\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\btenantId\x12i\n" +
-	"\x04oidc\x18\x02 \x01(\v2S.kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingRequest.ApplyOIDCTrustH\x00R\x04oidc\x1a\x8e\x01\n" +
-	"\x0eApplyOIDCTrust\x12\x1e\n" +
-	"\x06issuer\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\x06issuer\x12#\n" +
-	"\tclient_id\x18\x02 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bclientId\x12\x19\n" +
-	"\bjwks_uri\x18\x03 \x01(\tR\ajwksUri\x12\x1c\n" +
-	"\taudiences\x18\x04 \x03(\tR\taudiencesB\x10\n" +
+	"\ttenant_id\x18\x01 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\btenantId\x125\n" +
+	"\x04oidc\x18\x02 \x01(\v2\x1f.kms.api.cmk.trust.oidc.v1.OIDCH\x00R\x04oidcB\x10\n" +
 	"\adetails\x12\x05\xbaH\x02\b\x01\"V\n" +
 	"\x19ApplyTrustMappingResponse\x12\x1f\n" +
 	"\asuccess\x18\x01 \x01(\bB\x05\xaa\x01\x02\b\x02R\asuccess\x12\x18\n" +
@@ -984,20 +822,20 @@ const file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_rawDesc
 	"\x11BlockTrustMapping\x12D.kms.api.cmk.sessionmanager.trustmapping.v1.BlockTrustMappingRequest\x1aE.kms.api.cmk.sessionmanager.trustmapping.v1.BlockTrustMappingResponse\"\x00\x12\xa8\x01\n" +
 	"\x13UnblockTrustMapping\x12F.kms.api.cmk.sessionmanager.trustmapping.v1.UnblockTrustMappingRequest\x1aG.kms.api.cmk.sessionmanager.trustmapping.v1.UnblockTrustMappingResponse\"\x00B\\ZZgithub.com/openkcm/api-sdk/proto/kms/api/cmk/sessionmanager/trustmapping/v1;trustmappingv1b\beditionsp\xe9\az\x1bbuf/validate/validate.proto"
 
-var file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_goTypes = []any{
-	(*ApplyTrustMappingRequest)(nil),                // 0: kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingRequest
-	(*ApplyTrustMappingResponse)(nil),               // 1: kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingResponse
-	(*RemoveTrustMappingRequest)(nil),               // 2: kms.api.cmk.sessionmanager.trustmapping.v1.RemoveTrustMappingRequest
-	(*RemoveTrustMappingResponse)(nil),              // 3: kms.api.cmk.sessionmanager.trustmapping.v1.RemoveTrustMappingResponse
-	(*BlockTrustMappingRequest)(nil),                // 4: kms.api.cmk.sessionmanager.trustmapping.v1.BlockTrustMappingRequest
-	(*BlockTrustMappingResponse)(nil),               // 5: kms.api.cmk.sessionmanager.trustmapping.v1.BlockTrustMappingResponse
-	(*UnblockTrustMappingRequest)(nil),              // 6: kms.api.cmk.sessionmanager.trustmapping.v1.UnblockTrustMappingRequest
-	(*UnblockTrustMappingResponse)(nil),             // 7: kms.api.cmk.sessionmanager.trustmapping.v1.UnblockTrustMappingResponse
-	(*ApplyTrustMappingRequest_ApplyOIDCTrust)(nil), // 8: kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingRequest.ApplyOIDCTrust
+	(*ApplyTrustMappingRequest)(nil),    // 0: kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingRequest
+	(*ApplyTrustMappingResponse)(nil),   // 1: kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingResponse
+	(*RemoveTrustMappingRequest)(nil),   // 2: kms.api.cmk.sessionmanager.trustmapping.v1.RemoveTrustMappingRequest
+	(*RemoveTrustMappingResponse)(nil),  // 3: kms.api.cmk.sessionmanager.trustmapping.v1.RemoveTrustMappingResponse
+	(*BlockTrustMappingRequest)(nil),    // 4: kms.api.cmk.sessionmanager.trustmapping.v1.BlockTrustMappingRequest
+	(*BlockTrustMappingResponse)(nil),   // 5: kms.api.cmk.sessionmanager.trustmapping.v1.BlockTrustMappingResponse
+	(*UnblockTrustMappingRequest)(nil),  // 6: kms.api.cmk.sessionmanager.trustmapping.v1.UnblockTrustMappingRequest
+	(*UnblockTrustMappingResponse)(nil), // 7: kms.api.cmk.sessionmanager.trustmapping.v1.UnblockTrustMappingResponse
+	(*v1.OIDC)(nil),                     // 8: kms.api.cmk.trust.oidc.v1.OIDC
 }
 var file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_depIdxs = []int32{
-	8, // 0: kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingRequest.oidc:type_name -> kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingRequest.ApplyOIDCTrust
+	8, // 0: kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingRequest.oidc:type_name -> kms.api.cmk.trust.oidc.v1.OIDC
 	0, // 1: kms.api.cmk.sessionmanager.trustmapping.v1.Service.ApplyTrustMapping:input_type -> kms.api.cmk.sessionmanager.trustmapping.v1.ApplyTrustMappingRequest
 	2, // 2: kms.api.cmk.sessionmanager.trustmapping.v1.Service.RemoveTrustMapping:input_type -> kms.api.cmk.sessionmanager.trustmapping.v1.RemoveTrustMappingRequest
 	4, // 3: kms.api.cmk.sessionmanager.trustmapping.v1.Service.BlockTrustMapping:input_type -> kms.api.cmk.sessionmanager.trustmapping.v1.BlockTrustMappingRequest
@@ -1027,7 +865,7 @@ func file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_rawDesc), len(file_kms_api_cmk_sessionmanager_trustmapping_v1_trustmapping_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
