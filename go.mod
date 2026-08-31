@@ -8,7 +8,7 @@ tool (
 )
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.12-20260709200747-435963d16310.1
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.12-20260825204119-511051f7f437.1
 	google.golang.org/grpc v1.83.1
 	google.golang.org/protobuf v1.36.12
 )
