@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.19.4](https://github.com/openkcm/api-sdk/compare/v0.19.3...v0.19.4) (2026-09-07)
+
+
+### Bug Fixes
+
+* **deps:** bump buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go from 1.36.12-20260709200747-435963d16310.1 to 1.36.12-20260825204119-511051f7f437.1 ([#121](https://github.com/openkcm/api-sdk/issues/121)) ([97e6337](https://github.com/openkcm/api-sdk/commit/97e6337aceeafe49aaa98b487e80f336c286db9f))
+* **deps:** bump buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go from 1.36.12-20260825204119-511051f7f437.1 to 1.36.12-20260825204119-511051f7f437.2 ([#122](https://github.com/openkcm/api-sdk/issues/122)) ([9080ec1](https://github.com/openkcm/api-sdk/commit/9080ec10f493c6cf337f0327dd434a7a60ce7074))
+* **deps:** bump google.golang.org/grpc from 1.82.1 to 1.83.0 in the gomod-group group ([#114](https://github.com/openkcm/api-sdk/issues/114)) ([c41d2a8](https://github.com/openkcm/api-sdk/commit/c41d2a8429983f09878cc8a20b5355fb719aa91e))
+* **deps:** bump google.golang.org/grpc from 1.83.0 to 1.83.1 in the gomod-group group ([#119](https://github.com/openkcm/api-sdk/issues/119)) ([40830da](https://github.com/openkcm/api-sdk/commit/40830da6003475e180f37ec62494b35612d9c270))
+* **deps:** bump google.golang.org/grpc from 1.83.1 to 1.83.2 in the gomod-group group across 1 directory ([#120](https://github.com/openkcm/api-sdk/issues/120)) ([a4b194e](https://github.com/openkcm/api-sdk/commit/a4b194e1c7402fa5692edb894c4ac09db539dcee))
+* **deps:** bump the gomod-group group with 2 updates ([#118](https://github.com/openkcm/api-sdk/issues/118)) ([652852c](https://github.com/openkcm/api-sdk/commit/652852cf28d6bbab70f885cbaaccf69e0d8b0365))
+
 ## [0.19.3](https://github.com/openkcm/api-sdk/compare/v0.19.2...v0.19.3) (2026-08-03)
 
 
