@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.0](https://github.com/openkcm/api-sdk/compare/v0.19.4...v0.20.0) (2026-09-11)
+
+
+### Features
+
+* add GetTenantConfig and UpdateTenantConfig RPCs for tenant-specific configuration ([#124](https://github.com/openkcm/api-sdk/issues/124)) ([57c1d9d](https://github.com/openkcm/api-sdk/commit/57c1d9d82f62a7b1f78af3a80485290a69081e5c))
+
 ## [0.19.4](https://github.com/openkcm/api-sdk/compare/v0.19.3...v0.19.4) (2026-09-07)
 
 
