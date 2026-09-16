@@ -41,10 +41,6 @@ message UpdateTenantConfigRequest {
 message UpdateTenantConfigResponse {
   string tenant_id = 1;
   TenantConfigurationValues values = 2;
-  TenantConfigStatus status = 3;
-  string error_message = 4;
-  string created_at = 5;
-  string updated_at = 6;
 }
 
 enum TenantConfigStatus {
