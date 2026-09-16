@@ -34,7 +34,7 @@ message GetTenantConfigResponse {
 }
 
 message UpdateTenantConfigRequest {
-  string id = 1 [(buf.validate.field).string.min_len = 1];
+  string tenant_id = 1 [(buf.validate.field).string.min_len = 1];
   // Configuration to update.
   TenantConfiguration config = 2;
   // Fields to update. Only paths listed here are applied.
