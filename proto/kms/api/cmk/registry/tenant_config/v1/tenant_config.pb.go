@@ -683,9 +683,9 @@ var File_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto protoreflect.
 
 const file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDesc = "" +
 	"\n" +
-	"9kms/api/cmk/registry/tenant_config/v1/tenant_config.proto\x12%kms.api.cmk.registry.tenant_config.v1\x1a google/protobuf/field_mask.proto\">\n" +
-	"\x19TenantConfigurationValues\x12!\n" +
-	"\fsystem_limit\x18\x01 \x01(\x05R\vsystemLimit\">\n" +
+	"9kms/api/cmk/registry/tenant_config/v1/tenant_config.proto\x12%kms.api.cmk.registry.tenant_config.v1\x1a google/protobuf/field_mask.proto\"G\n" +
+	"\x19TenantConfigurationValues\x12*\n" +
+	"\fsystem_limit\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02(\x01R\vsystemLimit\">\n" +
 	"\x16GetTenantConfigRequest\x12$\n" +
 	"\ttenant_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\btenantId\"\xc6\x02\n" +
 	"\x17GetTenantConfigResponse\x12\x1b\n" +

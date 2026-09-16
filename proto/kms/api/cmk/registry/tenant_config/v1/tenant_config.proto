@@ -16,7 +16,7 @@ service Service {
 message TenantConfigurationValues {
   // Maximum number of systems allowed per key configuration.
   // Default: system default (global limit).
-  int32 system_limit = 1;
+  int32 system_limit = 1 [(buf.validate.field).int32.gte = 1];
 }
 
 message GetTenantConfigRequest {
