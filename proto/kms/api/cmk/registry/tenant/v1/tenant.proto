@@ -3,7 +3,6 @@ syntax = "proto3";
 package kms.api.cmk.registry.tenant.v1;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/field_mask.proto";
 
 option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/registry/tenant/v1;tenantv1";
 
@@ -17,8 +16,6 @@ service Service {
   rpc SetTenantLabels(SetTenantLabelsRequest) returns (SetTenantLabelsResponse) {}
   rpc RemoveTenantLabels(RemoveTenantLabelsRequest) returns (RemoveTenantLabelsResponse) {}
   rpc SetTenantUserGroups(SetTenantUserGroupsRequest) returns (SetTenantUserGroupsResponse) {}
-  rpc GetTenantConfig(GetTenantConfigRequest) returns (GetTenantConfigResponse) {}
-  rpc UpdateTenantConfig(UpdateTenantConfigRequest) returns (UpdateTenantConfigResponse) {}
 }
 
 message Tenant {
@@ -137,39 +134,6 @@ message GetTenantResponse {
   Tenant tenant = 1;
 }
 
-// TenantConfiguration holds tenant-specific configuration settings and their reconciliation status.
-message TenantConfiguration {
-  // Maximum number of systems allowed per key configuration.
-  // Default: system default (global limit).
-  optional int32 system_limit = 1;
-  TenantConfigStatus status = 2;
-  string error_message = 3;
-  string updated_at = 4;
-}
-
-message GetTenantConfigRequest {
-  string id = 1 [(buf.validate.field).string.min_len = 1];
-}
-
-message GetTenantConfigResponse {
-  TenantConfiguration config = 1;
-}
-
-message UpdateTenantConfigRequest {
-  string id = 1 [(buf.validate.field).string.min_len = 1];
-  // Configuration to update.
-  TenantConfiguration config = 2;
-  // Fields to update. Only paths listed here are applied.
-  // To clear a field back to default, include it in update_mask
-  // but leave it unset (or set to default value) in config.
-  google.protobuf.FieldMask update_mask = 3;
-}
-
-message UpdateTenantConfigResponse {
-  // The updated configuration.
-  TenantConfiguration config = 1;
-}
-
 enum Status {
   STATUS_UNSPECIFIED = 0;
   STATUS_REQUESTED = 1;
@@ -200,11 +164,4 @@ enum ACTION {
   ACTION_UNBLOCK_TENANT = 3;
   ACTION_TERMINATE_TENANT = 4;
   ACTION_UPDATE_TENANT_CONFIG = 5;
-}
-
-enum TenantConfigStatus {
-  TENANT_CONFIG_STATUS_UNSPECIFIED = 0;
-  TENANT_CONFIG_STATUS_UPDATING = 1;
-  TENANT_CONFIG_STATUS_UPDATING_ERROR = 2;
-  TENANT_CONFIG_STATUS_ACTIVE = 3;
 }
