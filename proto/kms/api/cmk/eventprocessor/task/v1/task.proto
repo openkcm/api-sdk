@@ -13,7 +13,6 @@ enum TaskType {
   SYSTEM_UNLINK = 5;
   SYSTEM_SWITCH = 6;
   KEY_DETACH = 7;
-  TENANT_CONFIG = 8;
 }
 
 // Wrapped proto for Orbital TaskRequest.data
@@ -22,7 +21,6 @@ message Data {
   oneof data {
     KeyAction key_action = 10;
     SystemAction system_action = 20;
-    TenantConfigAction tenant_config_action = 30;
   }
 }
 
@@ -46,9 +44,4 @@ message SystemAction {
   string tenant_owner_id = 51;
   string tenant_owner_type = 52;
   string cmk_region = 60;
-}
-
-// TaskType TENANT_RECONFIGURE
-message TenantConfigAction {
-  string tenant_id = 10;
 }

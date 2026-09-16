@@ -156,12 +156,11 @@ func (Role) EnumDescriptor() ([]byte, []int) {
 type ACTION int32
 
 const (
-	ACTION_ACTION_UNSPECIFIED          ACTION = 0
-	ACTION_ACTION_PROVISION_TENANT     ACTION = 1
-	ACTION_ACTION_BLOCK_TENANT         ACTION = 2
-	ACTION_ACTION_UNBLOCK_TENANT       ACTION = 3
-	ACTION_ACTION_TERMINATE_TENANT     ACTION = 4
-	ACTION_ACTION_UPDATE_TENANT_CONFIG ACTION = 5
+	ACTION_ACTION_UNSPECIFIED      ACTION = 0
+	ACTION_ACTION_PROVISION_TENANT ACTION = 1
+	ACTION_ACTION_BLOCK_TENANT     ACTION = 2
+	ACTION_ACTION_UNBLOCK_TENANT   ACTION = 3
+	ACTION_ACTION_TERMINATE_TENANT ACTION = 4
 )
 
 // Enum value maps for ACTION.
@@ -172,15 +171,13 @@ var (
 		2: "ACTION_BLOCK_TENANT",
 		3: "ACTION_UNBLOCK_TENANT",
 		4: "ACTION_TERMINATE_TENANT",
-		5: "ACTION_UPDATE_TENANT_CONFIG",
 	}
 	ACTION_value = map[string]int32{
-		"ACTION_UNSPECIFIED":          0,
-		"ACTION_PROVISION_TENANT":     1,
-		"ACTION_BLOCK_TENANT":         2,
-		"ACTION_UNBLOCK_TENANT":       3,
-		"ACTION_TERMINATE_TENANT":     4,
-		"ACTION_UPDATE_TENANT_CONFIG": 5,
+		"ACTION_UNSPECIFIED":      0,
+		"ACTION_PROVISION_TENANT": 1,
+		"ACTION_BLOCK_TENANT":     2,
+		"ACTION_UNBLOCK_TENANT":   3,
+		"ACTION_TERMINATE_TENANT": 4,
 	}
 )
 
@@ -1390,14 +1387,13 @@ const file_kms_api_cmk_registry_tenant_v1_tenant_proto_rawDesc = "" +
 	"\tROLE_LIVE\x10\x01\x12\r\n" +
 	"\tROLE_TEST\x10\x02\x12\x0e\n" +
 	"\n" +
-	"ROLE_TRIAL\x10\x03*\xaf\x01\n" +
+	"ROLE_TRIAL\x10\x03*\x8e\x01\n" +
 	"\x06ACTION\x12\x16\n" +
 	"\x12ACTION_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17ACTION_PROVISION_TENANT\x10\x01\x12\x17\n" +
 	"\x13ACTION_BLOCK_TENANT\x10\x02\x12\x19\n" +
 	"\x15ACTION_UNBLOCK_TENANT\x10\x03\x12\x1b\n" +
-	"\x17ACTION_TERMINATE_TENANT\x10\x04\x12\x1f\n" +
-	"\x1bACTION_UPDATE_TENANT_CONFIG\x10\x052\xa6\t\n" +
+	"\x17ACTION_TERMINATE_TENANT\x10\x042\xa6\t\n" +
 	"\aService\x12\x81\x01\n" +
 	"\x0eRegisterTenant\x125.kms.api.cmk.registry.tenant.v1.RegisterTenantRequest\x1a6.kms.api.cmk.registry.tenant.v1.RegisterTenantResponse\"\x00\x12x\n" +
 	"\vListTenants\x122.kms.api.cmk.registry.tenant.v1.ListTenantsRequest\x1a3.kms.api.cmk.registry.tenant.v1.ListTenantsResponse\"\x00\x12r\n" +
