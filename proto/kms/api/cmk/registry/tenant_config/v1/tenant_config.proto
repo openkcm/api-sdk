@@ -1,9 +1,9 @@
-syntax = "proto3";
+edition = "2024";
 
 package kms.api.cmk.registry.tenant_config.v1;
 
-import "buf/validate/validate.proto";
 import "google/protobuf/field_mask.proto";
+import option "buf/validate/validate.proto";
 
 option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/registry/tenant_config/v1;tenantconfigv1";
 
@@ -16,7 +16,7 @@ service Service {
 message TenantConfigurationValues {
   // Maximum number of systems allowed per key configuration.
   // Default: system default (global limit).
-  optional int32 system_limit = 1;
+  int32 system_limit = 1;
 }
 
 message GetTenantConfigRequest {
@@ -34,7 +34,12 @@ message GetTenantConfigResponse {
 
 message UpdateTenantConfigRequest {
   string tenant_id = 1 [(buf.validate.field).string.min_len = 1];
+  // Configuration values to apply. Only fields listed in update_mask are written.
   TenantConfigurationValues values = 2;
+  // Controls which fields in values are applied. Only paths listed here are written.
+  // To update a field, include its path and set the desired value in values.
+  // To clear a field back to the system default, include its path in update_mask
+  // but leave it unset in values.
   google.protobuf.FieldMask update_mask = 3;
 }
 
