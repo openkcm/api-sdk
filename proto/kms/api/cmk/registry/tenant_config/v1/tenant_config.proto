@@ -14,12 +14,15 @@ service Service {
 
 // TenantConfiguration holds tenant-specific configuration settings and their reconciliation status.
 message TenantConfiguration {
-  // Maximum number of systems allowed per key configuration.
-  // Default: system default (global limit).
-  optional int32 system_limit = 1;
+  string tenant_id = 1;
   TenantConfigStatus status = 2;
   string error_message = 3;
   string updated_at = 4;
+  string created_at = 5;
+
+  // Maximum number of systems allowed per key configuration.
+  // Default: system default (global limit).
+  optional int32 system_limit = 11;
 }
 
 message GetTenantConfigRequest {
