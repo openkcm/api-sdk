@@ -12,17 +12,11 @@ service Service {
   rpc UpdateTenantConfig(UpdateTenantConfigRequest) returns (UpdateTenantConfigResponse) {}
 }
 
-// TenantConfiguration holds tenant-specific configuration settings and their reconciliation status.
-message TenantConfiguration {
-  string tenant_id = 1;
-  TenantConfigStatus status = 2;
-  string error_message = 3;
-  string updated_at = 4;
-  string created_at = 5;
-
+// TenantConfigurationValues holds the user-settable tenant configuration overrides.
+message TenantConfigurationValues {
   // Maximum number of systems allowed per key configuration.
   // Default: system default (global limit).
-  optional int32 system_limit = 11;
+  optional int32 system_limit = 1;
 }
 
 message GetTenantConfigRequest {
@@ -30,22 +24,27 @@ message GetTenantConfigRequest {
 }
 
 message GetTenantConfigResponse {
-  TenantConfiguration config = 1;
+  string tenant_id = 1;
+  TenantConfigurationValues values = 2;
+  TenantConfigStatus status = 3;
+  string error_message = 4;
+  string created_at = 5;
+  string updated_at = 6;
 }
 
 message UpdateTenantConfigRequest {
   string tenant_id = 1 [(buf.validate.field).string.min_len = 1];
-  // Configuration to update.
-  TenantConfiguration config = 2;
-  // Fields to update. Only paths listed here are applied.
-  // To clear a field back to default, include it in update_mask
-  // but leave it unset (or set to default value) in config.
+  TenantConfigurationValues values = 2;
   google.protobuf.FieldMask update_mask = 3;
 }
 
 message UpdateTenantConfigResponse {
-  // The updated configuration.
-  TenantConfiguration config = 1;
+  string tenant_id = 1;
+  TenantConfigurationValues values = 2;
+  TenantConfigStatus status = 3;
+  string error_message = 4;
+  string created_at = 5;
+  string updated_at = 6;
 }
 
 enum TenantConfigStatus {

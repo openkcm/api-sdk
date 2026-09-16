@@ -121,33 +121,30 @@ func (TenantConfigAction) EnumDescriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDescGZIP(), []int{1}
 }
 
-// TenantConfiguration holds tenant-specific configuration settings and their reconciliation status.
-type TenantConfiguration struct {
+// TenantConfigurationValues holds the user-settable tenant configuration overrides.
+type TenantConfigurationValues struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Maximum number of systems allowed per key configuration.
 	// Default: system default (global limit).
-	SystemLimit   *int32             `protobuf:"varint,1,opt,name=system_limit,json=systemLimit,proto3,oneof" json:"system_limit,omitempty"`
-	Status        TenantConfigStatus `protobuf:"varint,2,opt,name=status,proto3,enum=kms.api.cmk.registry.tenant_config.v1.TenantConfigStatus" json:"status,omitempty"`
-	ErrorMessage  string             `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
-	UpdatedAt     string             `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	SystemLimit   *int32 `protobuf:"varint,1,opt,name=system_limit,json=systemLimit,proto3,oneof" json:"system_limit,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TenantConfiguration) Reset() {
-	*x = TenantConfiguration{}
+func (x *TenantConfigurationValues) Reset() {
+	*x = TenantConfigurationValues{}
 	mi := &file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TenantConfiguration) String() string {
+func (x *TenantConfigurationValues) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TenantConfiguration) ProtoMessage() {}
+func (*TenantConfigurationValues) ProtoMessage() {}
 
-func (x *TenantConfiguration) ProtoReflect() protoreflect.Message {
+func (x *TenantConfigurationValues) ProtoReflect() protoreflect.Message {
 	mi := &file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -159,42 +156,21 @@ func (x *TenantConfiguration) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TenantConfiguration.ProtoReflect.Descriptor instead.
-func (*TenantConfiguration) Descriptor() ([]byte, []int) {
+// Deprecated: Use TenantConfigurationValues.ProtoReflect.Descriptor instead.
+func (*TenantConfigurationValues) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TenantConfiguration) GetSystemLimit() int32 {
+func (x *TenantConfigurationValues) GetSystemLimit() int32 {
 	if x != nil && x.SystemLimit != nil {
 		return *x.SystemLimit
 	}
 	return 0
 }
 
-func (x *TenantConfiguration) GetStatus() TenantConfigStatus {
-	if x != nil {
-		return x.Status
-	}
-	return TenantConfigStatus_TENANT_CONFIG_STATUS_UNSPECIFIED
-}
-
-func (x *TenantConfiguration) GetErrorMessage() string {
-	if x != nil {
-		return x.ErrorMessage
-	}
-	return ""
-}
-
-func (x *TenantConfiguration) GetUpdatedAt() string {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return ""
-}
-
 type GetTenantConfigRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -229,16 +205,21 @@ func (*GetTenantConfigRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetTenantConfigRequest) GetId() string {
+func (x *GetTenantConfigRequest) GetTenantId() string {
 	if x != nil {
-		return x.Id
+		return x.TenantId
 	}
 	return ""
 }
 
 type GetTenantConfigResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Config        *TenantConfiguration   `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	TenantId      string                     `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Values        *TenantConfigurationValues `protobuf:"bytes,2,opt,name=values,proto3" json:"values,omitempty"`
+	Status        TenantConfigStatus         `protobuf:"varint,3,opt,name=status,proto3,enum=kms.api.cmk.registry.tenant_config.v1.TenantConfigStatus" json:"status,omitempty"`
+	ErrorMessage  string                     `protobuf:"bytes,4,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	CreatedAt     string                     `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     string                     `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -273,22 +254,53 @@ func (*GetTenantConfigResponse) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetTenantConfigResponse) GetConfig() *TenantConfiguration {
+func (x *GetTenantConfigResponse) GetTenantId() string {
 	if x != nil {
-		return x.Config
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetTenantConfigResponse) GetValues() *TenantConfigurationValues {
+	if x != nil {
+		return x.Values
 	}
 	return nil
 }
 
+func (x *GetTenantConfigResponse) GetStatus() TenantConfigStatus {
+	if x != nil {
+		return x.Status
+	}
+	return TenantConfigStatus_TENANT_CONFIG_STATUS_UNSPECIFIED
+}
+
+func (x *GetTenantConfigResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *GetTenantConfigResponse) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *GetTenantConfigResponse) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
 type UpdateTenantConfigRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Configuration to update.
-	Config *TenantConfiguration `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
-	// Fields to update. Only paths listed here are applied.
-	// To clear a field back to default, include it in update_mask
-	// but leave it unset (or set to default value) in config.
-	UpdateMask    *fieldmaskpb.FieldMask `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	TenantId      string                     `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Values        *TenantConfigurationValues `protobuf:"bytes,2,opt,name=values,proto3" json:"values,omitempty"`
+	UpdateMask    *fieldmaskpb.FieldMask     `protobuf:"bytes,3,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -323,16 +335,16 @@ func (*UpdateTenantConfigRequest) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UpdateTenantConfigRequest) GetId() string {
+func (x *UpdateTenantConfigRequest) GetTenantId() string {
 	if x != nil {
-		return x.Id
+		return x.TenantId
 	}
 	return ""
 }
 
-func (x *UpdateTenantConfigRequest) GetConfig() *TenantConfiguration {
+func (x *UpdateTenantConfigRequest) GetValues() *TenantConfigurationValues {
 	if x != nil {
-		return x.Config
+		return x.Values
 	}
 	return nil
 }
@@ -345,9 +357,13 @@ func (x *UpdateTenantConfigRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 }
 
 type UpdateTenantConfigResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// The updated configuration.
-	Config        *TenantConfiguration `protobuf:"bytes,1,opt,name=config,proto3" json:"config,omitempty"`
+	state         protoimpl.MessageState     `protogen:"open.v1"`
+	TenantId      string                     `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Values        *TenantConfigurationValues `protobuf:"bytes,2,opt,name=values,proto3" json:"values,omitempty"`
+	Status        TenantConfigStatus         `protobuf:"varint,3,opt,name=status,proto3,enum=kms.api.cmk.registry.tenant_config.v1.TenantConfigStatus" json:"status,omitempty"`
+	ErrorMessage  string                     `protobuf:"bytes,4,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	CreatedAt     string                     `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     string                     `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -382,36 +398,81 @@ func (*UpdateTenantConfigResponse) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateTenantConfigResponse) GetConfig() *TenantConfiguration {
+func (x *UpdateTenantConfigResponse) GetTenantId() string {
 	if x != nil {
-		return x.Config
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *UpdateTenantConfigResponse) GetValues() *TenantConfigurationValues {
+	if x != nil {
+		return x.Values
 	}
 	return nil
+}
+
+func (x *UpdateTenantConfigResponse) GetStatus() TenantConfigStatus {
+	if x != nil {
+		return x.Status
+	}
+	return TenantConfigStatus_TENANT_CONFIG_STATUS_UNSPECIFIED
+}
+
+func (x *UpdateTenantConfigResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *UpdateTenantConfigResponse) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *UpdateTenantConfigResponse) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
 }
 
 var File_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDesc = "" +
 	"\n" +
-	"9kms/api/cmk/registry/tenant_config/v1/tenant_config.proto\x12%kms.api.cmk.registry.tenant_config.v1\x1a\x1bbuf/validate/validate.proto\x1a google/protobuf/field_mask.proto\"\xe5\x01\n" +
-	"\x13TenantConfiguration\x12&\n" +
-	"\fsystem_limit\x18\x01 \x01(\x05H\x00R\vsystemLimit\x88\x01\x01\x12Q\n" +
-	"\x06status\x18\x02 \x01(\x0e29.kms.api.cmk.registry.tenant_config.v1.TenantConfigStatusR\x06status\x12#\n" +
-	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\x12\x1d\n" +
+	"9kms/api/cmk/registry/tenant_config/v1/tenant_config.proto\x12%kms.api.cmk.registry.tenant_config.v1\x1a\x1bbuf/validate/validate.proto\x1a google/protobuf/field_mask.proto\"T\n" +
+	"\x19TenantConfigurationValues\x12&\n" +
+	"\fsystem_limit\x18\x01 \x01(\x05H\x00R\vsystemLimit\x88\x01\x01B\x0f\n" +
+	"\r_system_limit\">\n" +
+	"\x16GetTenantConfigRequest\x12$\n" +
+	"\ttenant_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\btenantId\"\xc6\x02\n" +
+	"\x17GetTenantConfigResponse\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12X\n" +
+	"\x06values\x18\x02 \x01(\v2@.kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValuesR\x06values\x12Q\n" +
+	"\x06status\x18\x03 \x01(\x0e29.kms.api.cmk.registry.tenant_config.v1.TenantConfigStatusR\x06status\x12#\n" +
+	"\rerror_message\x18\x04 \x01(\tR\ferrorMessage\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x04 \x01(\tR\tupdatedAtB\x0f\n" +
-	"\r_system_limit\"1\n" +
-	"\x16GetTenantConfigRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\"m\n" +
-	"\x17GetTenantConfigResponse\x12R\n" +
-	"\x06config\x18\x01 \x01(\v2:.kms.api.cmk.registry.tenant_config.v1.TenantConfigurationR\x06config\"\xc5\x01\n" +
-	"\x19UpdateTenantConfigRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\x02id\x12R\n" +
-	"\x06config\x18\x02 \x01(\v2:.kms.api.cmk.registry.tenant_config.v1.TenantConfigurationR\x06config\x12;\n" +
+	"created_at\x18\x05 \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\tR\tupdatedAt\"\xd8\x01\n" +
+	"\x19UpdateTenantConfigRequest\x12$\n" +
+	"\ttenant_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\btenantId\x12X\n" +
+	"\x06values\x18\x02 \x01(\v2@.kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValuesR\x06values\x12;\n" +
 	"\vupdate_mask\x18\x03 \x01(\v2\x1a.google.protobuf.FieldMaskR\n" +
-	"updateMask\"p\n" +
-	"\x1aUpdateTenantConfigResponse\x12R\n" +
-	"\x06config\x18\x01 \x01(\v2:.kms.api.cmk.registry.tenant_config.v1.TenantConfigurationR\x06config*\xa7\x01\n" +
+	"updateMask\"\xc9\x02\n" +
+	"\x1aUpdateTenantConfigResponse\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12X\n" +
+	"\x06values\x18\x02 \x01(\v2@.kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValuesR\x06values\x12Q\n" +
+	"\x06status\x18\x03 \x01(\x0e29.kms.api.cmk.registry.tenant_config.v1.TenantConfigStatusR\x06status\x12#\n" +
+	"\rerror_message\x18\x04 \x01(\tR\ferrorMessage\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\x06 \x01(\tR\tupdatedAt*\xa7\x01\n" +
 	"\x12TenantConfigStatus\x12$\n" +
 	" TENANT_CONFIG_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x1dTENANT_CONFIG_STATUS_UPDATING\x10\x01\x12'\n" +
@@ -441,7 +502,7 @@ var file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_msgTypes = ma
 var file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_goTypes = []any{
 	(TenantConfigStatus)(0),            // 0: kms.api.cmk.registry.tenant_config.v1.TenantConfigStatus
 	(TenantConfigAction)(0),            // 1: kms.api.cmk.registry.tenant_config.v1.TenantConfigAction
-	(*TenantConfiguration)(nil),        // 2: kms.api.cmk.registry.tenant_config.v1.TenantConfiguration
+	(*TenantConfigurationValues)(nil),  // 2: kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValues
 	(*GetTenantConfigRequest)(nil),     // 3: kms.api.cmk.registry.tenant_config.v1.GetTenantConfigRequest
 	(*GetTenantConfigResponse)(nil),    // 4: kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse
 	(*UpdateTenantConfigRequest)(nil),  // 5: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest
@@ -449,20 +510,21 @@ var file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_goTypes = []a
 	(*fieldmaskpb.FieldMask)(nil),      // 7: google.protobuf.FieldMask
 }
 var file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_depIdxs = []int32{
-	0, // 0: kms.api.cmk.registry.tenant_config.v1.TenantConfiguration.status:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigStatus
-	2, // 1: kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse.config:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfiguration
-	2, // 2: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest.config:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfiguration
+	2, // 0: kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse.values:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValues
+	0, // 1: kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse.status:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigStatus
+	2, // 2: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest.values:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValues
 	7, // 3: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest.update_mask:type_name -> google.protobuf.FieldMask
-	2, // 4: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigResponse.config:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfiguration
-	3, // 5: kms.api.cmk.registry.tenant_config.v1.Service.GetTenantConfig:input_type -> kms.api.cmk.registry.tenant_config.v1.GetTenantConfigRequest
-	5, // 6: kms.api.cmk.registry.tenant_config.v1.Service.UpdateTenantConfig:input_type -> kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest
-	4, // 7: kms.api.cmk.registry.tenant_config.v1.Service.GetTenantConfig:output_type -> kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse
-	6, // 8: kms.api.cmk.registry.tenant_config.v1.Service.UpdateTenantConfig:output_type -> kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigResponse
-	7, // [7:9] is the sub-list for method output_type
-	5, // [5:7] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	2, // 4: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigResponse.values:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValues
+	0, // 5: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigResponse.status:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigStatus
+	3, // 6: kms.api.cmk.registry.tenant_config.v1.Service.GetTenantConfig:input_type -> kms.api.cmk.registry.tenant_config.v1.GetTenantConfigRequest
+	5, // 7: kms.api.cmk.registry.tenant_config.v1.Service.UpdateTenantConfig:input_type -> kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest
+	4, // 8: kms.api.cmk.registry.tenant_config.v1.Service.GetTenantConfig:output_type -> kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse
+	6, // 9: kms.api.cmk.registry.tenant_config.v1.Service.UpdateTenantConfig:output_type -> kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigResponse
+	8, // [8:10] is the sub-list for method output_type
+	6, // [6:8] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_init() }
