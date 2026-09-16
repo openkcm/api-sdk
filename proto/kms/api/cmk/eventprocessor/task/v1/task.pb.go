@@ -24,15 +24,15 @@ const (
 type TaskType int32
 
 const (
-	TaskType_KEY_ENABLE         TaskType = 0
-	TaskType_KEY_DISABLE        TaskType = 1
-	TaskType_KEY_DELETE         TaskType = 2
-	TaskType_KEY_ROTATE         TaskType = 3
-	TaskType_SYSTEM_LINK        TaskType = 4
-	TaskType_SYSTEM_UNLINK      TaskType = 5
-	TaskType_SYSTEM_SWITCH      TaskType = 6
-	TaskType_KEY_DETACH         TaskType = 7
-	TaskType_TENANT_RECONFIGURE TaskType = 8
+	TaskType_KEY_ENABLE    TaskType = 0
+	TaskType_KEY_DISABLE   TaskType = 1
+	TaskType_KEY_DELETE    TaskType = 2
+	TaskType_KEY_ROTATE    TaskType = 3
+	TaskType_SYSTEM_LINK   TaskType = 4
+	TaskType_SYSTEM_UNLINK TaskType = 5
+	TaskType_SYSTEM_SWITCH TaskType = 6
+	TaskType_KEY_DETACH    TaskType = 7
+	TaskType_TENANT_CONFIG TaskType = 8
 )
 
 // Enum value maps for TaskType.
@@ -46,18 +46,18 @@ var (
 		5: "SYSTEM_UNLINK",
 		6: "SYSTEM_SWITCH",
 		7: "KEY_DETACH",
-		8: "TENANT_RECONFIGURE",
+		8: "TENANT_CONFIG",
 	}
 	TaskType_value = map[string]int32{
-		"KEY_ENABLE":         0,
-		"KEY_DISABLE":        1,
-		"KEY_DELETE":         2,
-		"KEY_ROTATE":         3,
-		"SYSTEM_LINK":        4,
-		"SYSTEM_UNLINK":      5,
-		"SYSTEM_SWITCH":      6,
-		"KEY_DETACH":         7,
-		"TENANT_RECONFIGURE": 8,
+		"KEY_ENABLE":    0,
+		"KEY_DISABLE":   1,
+		"KEY_DELETE":    2,
+		"KEY_ROTATE":    3,
+		"SYSTEM_LINK":   4,
+		"SYSTEM_UNLINK": 5,
+		"SYSTEM_SWITCH": 6,
+		"KEY_DETACH":    7,
+		"TENANT_CONFIG": 8,
 	}
 )
 
@@ -462,7 +462,7 @@ const file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDesc = "" +
 	"cmk_region\x18< \x01(\tR\tcmkRegion\"1\n" +
 	"\x12TenantConfigAction\x12\x1b\n" +
 	"\ttenant_id\x18\n" +
-	" \x01(\tR\btenantId*\xaa\x01\n" +
+	" \x01(\tR\btenantId*\xa5\x01\n" +
 	"\bTaskType\x12\x0e\n" +
 	"\n" +
 	"KEY_ENABLE\x10\x00\x12\x0f\n" +
@@ -475,8 +475,8 @@ const file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDesc = "" +
 	"\rSYSTEM_UNLINK\x10\x05\x12\x11\n" +
 	"\rSYSTEM_SWITCH\x10\x06\x12\x0e\n" +
 	"\n" +
-	"KEY_DETACH\x10\a\x12\x16\n" +
-	"\x12TENANT_RECONFIGURE\x10\bBLZJgithub.com/openkcm/api-sdk/proto/kms/api/cmk/eventprocessor/task/v1;taskv1b\x06proto3"
+	"KEY_DETACH\x10\a\x12\x11\n" +
+	"\rTENANT_CONFIG\x10\bBLZJgithub.com/openkcm/api-sdk/proto/kms/api/cmk/eventprocessor/task/v1;taskv1b\x06proto3"
 
 var (
 	file_kms_api_cmk_eventprocessor_task_v1_task_proto_rawDescOnce sync.Once
