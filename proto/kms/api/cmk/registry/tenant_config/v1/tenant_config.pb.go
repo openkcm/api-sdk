@@ -75,6 +75,8 @@ func (TenantConfigStatus) EnumDescriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDescGZIP(), []int{0}
 }
 
+// TenantConfigAction defines the orbital job types used by the registry service
+// to drive tenant config reconciliation.
 type TenantConfigAction int32
 
 const (
@@ -357,9 +359,7 @@ func (x *UpdateTenantConfigRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
 }
 
 type UpdateTenantConfigResponse struct {
-	state         protoimpl.MessageState     `protogen:"open.v1"`
-	TenantId      string                     `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	Values        *TenantConfigurationValues `protobuf:"bytes,2,opt,name=values,proto3" json:"values,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -394,20 +394,6 @@ func (*UpdateTenantConfigResponse) Descriptor() ([]byte, []int) {
 	return file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateTenantConfigResponse) GetTenantId() string {
-	if x != nil {
-		return x.TenantId
-	}
-	return ""
-}
-
-func (x *UpdateTenantConfigResponse) GetValues() *TenantConfigurationValues {
-	if x != nil {
-		return x.Values
-	}
-	return nil
-}
-
 var File_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto protoreflect.FileDescriptor
 
 const file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDesc = "" +
@@ -431,10 +417,8 @@ const file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDesc = "
 	"\ttenant_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\btenantId\x12X\n" +
 	"\x06values\x18\x02 \x01(\v2@.kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValuesR\x06values\x12;\n" +
 	"\vupdate_mask\x18\x03 \x01(\v2\x1a.google.protobuf.FieldMaskR\n" +
-	"updateMask\"\x93\x01\n" +
-	"\x1aUpdateTenantConfigResponse\x12\x1b\n" +
-	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12X\n" +
-	"\x06values\x18\x02 \x01(\v2@.kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValuesR\x06values*\xa7\x01\n" +
+	"updateMask\"\x1c\n" +
+	"\x1aUpdateTenantConfigResponse*\xa7\x01\n" +
 	"\x12TenantConfigStatus\x12$\n" +
 	" TENANT_CONFIG_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x1dTENANT_CONFIG_STATUS_UPDATING\x10\x01\x12'\n" +
@@ -476,16 +460,15 @@ var file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_depIdxs = []i
 	0, // 1: kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse.status:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigStatus
 	2, // 2: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest.values:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValues
 	7, // 3: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest.update_mask:type_name -> google.protobuf.FieldMask
-	2, // 4: kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigResponse.values:type_name -> kms.api.cmk.registry.tenant_config.v1.TenantConfigurationValues
-	3, // 5: kms.api.cmk.registry.tenant_config.v1.Service.GetTenantConfig:input_type -> kms.api.cmk.registry.tenant_config.v1.GetTenantConfigRequest
-	5, // 6: kms.api.cmk.registry.tenant_config.v1.Service.UpdateTenantConfig:input_type -> kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest
-	4, // 7: kms.api.cmk.registry.tenant_config.v1.Service.GetTenantConfig:output_type -> kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse
-	6, // 8: kms.api.cmk.registry.tenant_config.v1.Service.UpdateTenantConfig:output_type -> kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigResponse
-	7, // [7:9] is the sub-list for method output_type
-	5, // [5:7] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	3, // 4: kms.api.cmk.registry.tenant_config.v1.Service.GetTenantConfig:input_type -> kms.api.cmk.registry.tenant_config.v1.GetTenantConfigRequest
+	5, // 5: kms.api.cmk.registry.tenant_config.v1.Service.UpdateTenantConfig:input_type -> kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigRequest
+	4, // 6: kms.api.cmk.registry.tenant_config.v1.Service.GetTenantConfig:output_type -> kms.api.cmk.registry.tenant_config.v1.GetTenantConfigResponse
+	6, // 7: kms.api.cmk.registry.tenant_config.v1.Service.UpdateTenantConfig:output_type -> kms.api.cmk.registry.tenant_config.v1.UpdateTenantConfigResponse
+	6, // [6:8] is the sub-list for method output_type
+	4, // [4:6] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_init() }

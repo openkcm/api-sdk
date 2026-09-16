@@ -38,11 +38,10 @@ message UpdateTenantConfigRequest {
   google.protobuf.FieldMask update_mask = 3;
 }
 
-message UpdateTenantConfigResponse {
-  string tenant_id = 1;
-  TenantConfigurationValues values = 2;
-}
+message UpdateTenantConfigResponse {}
 
+// TenantConfigStatus represents the reconciliation state of a tenant's configuration.
+// It is used by the orbital job handler in the registry service to track progress.
 enum TenantConfigStatus {
   TENANT_CONFIG_STATUS_UNSPECIFIED = 0;
   TENANT_CONFIG_STATUS_UPDATING = 1;
@@ -50,6 +49,8 @@ enum TenantConfigStatus {
   TENANT_CONFIG_STATUS_ACTIVE = 3;
 }
 
+// TenantConfigAction defines the orbital job types used by the registry service
+// to drive tenant config reconciliation.
 enum TenantConfigAction {
   TENANT_CONFIG_ACTION_UNSPECIFIED = 0;
   TENANT_CONFIG_ACTION_UPDATE = 1;
