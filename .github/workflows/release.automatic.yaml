@@ -1,15 +1,16 @@
 name: Release New Version
 
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches:
+      - main
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
   release:
+    if: github.actor != 'dependabot[bot]'
     uses: openkcm/build/.github/workflows/release.lib.yaml@main
     secrets: inherit
