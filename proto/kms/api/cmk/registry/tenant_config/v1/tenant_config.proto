@@ -1,0 +1,62 @@
+edition = "2024";
+
+package kms.api.cmk.registry.tenant_config.v1;
+
+import "google/protobuf/field_mask.proto";
+import option "buf/validate/validate.proto";
+
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/registry/tenant_config/v1;tenantconfigv1";
+
+service Service {
+  rpc GetTenantConfig(GetTenantConfigRequest) returns (GetTenantConfigResponse) {}
+  rpc UpdateTenantConfig(UpdateTenantConfigRequest) returns (UpdateTenantConfigResponse) {}
+}
+
+// TenantConfigurationValues holds the user-settable tenant configuration overrides.
+message TenantConfigurationValues {
+  // Maximum number of systems allowed per key configuration.
+  // Default: system default (global limit).
+  int32 system_limit = 1 [(buf.validate.field).int32.gte = 1];
+}
+
+message GetTenantConfigRequest {
+  string tenant_id = 1 [(buf.validate.field).string.min_len = 1];
+}
+
+message GetTenantConfigResponse {
+  string tenant_id = 1;
+  TenantConfigurationValues values = 2;
+  TenantConfigStatus status = 3;
+  string error_message = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}
+
+message UpdateTenantConfigRequest {
+  string tenant_id = 1 [(buf.validate.field).string.min_len = 1];
+  // Configuration values to apply. Only fields listed in update_mask are written.
+  TenantConfigurationValues values = 2;
+  // Controls which fields in values are applied. Only paths listed here are written.
+  // To update a field, include its path and set the desired value in values.
+  // To clear a field back to the system default, include its path in update_mask
+  // but leave it unset in values.
+  google.protobuf.FieldMask update_mask = 3;
+}
+
+message UpdateTenantConfigResponse {}
+
+// TenantConfigStatus represents the reconciliation state of a tenant's configuration.
+// It is used by the orbital job handler in the registry service to track progress.
+enum TenantConfigStatus {
+  TENANT_CONFIG_STATUS_UNSPECIFIED = 0;
+  TENANT_CONFIG_STATUS_UPDATING = 1;
+  TENANT_CONFIG_STATUS_UPDATING_ERROR = 2;
+  TENANT_CONFIG_STATUS_ACTIVE = 3;
+}
+
+// TenantConfigAction defines the orbital job types used by the registry service
+// to drive tenant config reconciliation.
+enum TenantConfigAction {
+  TENANT_CONFIG_ACTION_UNSPECIFIED = 0;
+  TENANT_CONFIG_ACTION_UPDATE = 1;
+}
