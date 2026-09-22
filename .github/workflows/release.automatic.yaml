@@ -4,13 +4,25 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    types:
+      - closed
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  release:
-    if: github.actor != 'dependabot[bot]'
+  prepare-release-pr:
+    if: |
+      github.event_name == 'push' &&
+      github.event.head_commit.author.username != 'dependabot[bot]' &&
+      !startsWith(github.event.head_commit.message, 'fix(deps)') &&
+      !startsWith(github.event.head_commit.message, 'chore(main): release')
+    uses: openkcm/build/.github/workflows/release.manual.yaml@main
+    secrets: inherit
+
+  publish-release:
+    if: github.event_name == 'pull_request'
     uses: openkcm/build/.github/workflows/release.lib.yaml@main
     secrets: inherit
