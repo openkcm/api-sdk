@@ -117,6 +117,7 @@ func (x TenantConfigAction) Number() protoreflect.EnumNumber {
 type TenantConfigurationValues struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_SystemLimit int32                  `protobuf:"varint,1,opt,name=system_limit,json=systemLimit"`
+	xxx_hidden_KeyLimit    int32                  `protobuf:"varint,2,opt,name=key_limit,json=keyLimit"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -155,9 +156,21 @@ func (x *TenantConfigurationValues) GetSystemLimit() int32 {
 	return 0
 }
 
+func (x *TenantConfigurationValues) GetKeyLimit() int32 {
+	if x != nil {
+		return x.xxx_hidden_KeyLimit
+	}
+	return 0
+}
+
 func (x *TenantConfigurationValues) SetSystemLimit(v int32) {
 	x.xxx_hidden_SystemLimit = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 2)
+}
+
+func (x *TenantConfigurationValues) SetKeyLimit(v int32) {
+	x.xxx_hidden_KeyLimit = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 2)
 }
 
 func (x *TenantConfigurationValues) HasSystemLimit() bool {
@@ -167,9 +180,21 @@ func (x *TenantConfigurationValues) HasSystemLimit() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
+func (x *TenantConfigurationValues) HasKeyLimit() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
 func (x *TenantConfigurationValues) ClearSystemLimit() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_SystemLimit = 0
+}
+
+func (x *TenantConfigurationValues) ClearKeyLimit() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_KeyLimit = 0
 }
 
 type TenantConfigurationValues_builder struct {
@@ -178,6 +203,9 @@ type TenantConfigurationValues_builder struct {
 	// Maximum number of systems allowed per key configuration.
 	// Default: system default (global limit).
 	SystemLimit *int32
+	// Maximum number of keys allowed per tenant.
+	// Default: system default (global limit).
+	KeyLimit *int32
 }
 
 func (b0 TenantConfigurationValues_builder) Build() *TenantConfigurationValues {
@@ -185,8 +213,12 @@ func (b0 TenantConfigurationValues_builder) Build() *TenantConfigurationValues {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.SystemLimit != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 2)
 		x.xxx_hidden_SystemLimit = *b.SystemLimit
+	}
+	if b.KeyLimit != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 2)
+		x.xxx_hidden_KeyLimit = *b.KeyLimit
 	}
 	return m0
 }
@@ -683,9 +715,10 @@ var File_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto protoreflect.
 
 const file_kms_api_cmk_registry_tenant_config_v1_tenant_config_proto_rawDesc = "" +
 	"\n" +
-	"9kms/api/cmk/registry/tenant_config/v1/tenant_config.proto\x12%kms.api.cmk.registry.tenant_config.v1\x1a google/protobuf/field_mask.proto\"G\n" +
+	"9kms/api/cmk/registry/tenant_config/v1/tenant_config.proto\x12%kms.api.cmk.registry.tenant_config.v1\x1a google/protobuf/field_mask.proto\"m\n" +
 	"\x19TenantConfigurationValues\x12*\n" +
-	"\fsystem_limit\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02(\x01R\vsystemLimit\">\n" +
+	"\fsystem_limit\x18\x01 \x01(\x05B\a\xbaH\x04\x1a\x02(\x01R\vsystemLimit\x12$\n" +
+	"\tkey_limit\x18\x02 \x01(\x05B\a\xbaH\x04\x1a\x02(\x01R\bkeyLimit\">\n" +
 	"\x16GetTenantConfigRequest\x12$\n" +
 	"\ttenant_id\x18\x01 \x01(\tB\a\xbaH\x04r\x02\x10\x01R\btenantId\"\xc6\x02\n" +
 	"\x17GetTenantConfigResponse\x12\x1b\n" +

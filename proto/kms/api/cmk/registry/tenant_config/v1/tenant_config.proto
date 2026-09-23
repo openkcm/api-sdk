@@ -17,6 +17,9 @@ message TenantConfigurationValues {
   // Maximum number of systems allowed per key configuration.
   // Default: system default (global limit).
   int32 system_limit = 1 [(buf.validate.field).int32.gte = 1];
+  // Maximum number of keys allowed per tenant.
+  // Default: system default (global limit).
+  int32 key_limit = 2 [(buf.validate.field).int32.gte = 1];
 }
 
 message GetTenantConfigRequest {
