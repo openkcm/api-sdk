@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.23.0](https://github.com/openkcm/api-sdk/compare/v0.22.0...v0.23.0) (2026-10-06)
+
+
+### Features
+
+* add key_config_limit ([#136](https://github.com/openkcm/api-sdk/issues/136)) ([0be5eb8](https://github.com/openkcm/api-sdk/commit/0be5eb880a207b4e0982c17f0920feddbcbea7d9))
+
 ## [0.22.0](https://github.com/openkcm/api-sdk/compare/v0.21.0...v0.22.0) (2026-09-28)
 
 
