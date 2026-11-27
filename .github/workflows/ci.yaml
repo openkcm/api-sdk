@@ -7,10 +7,10 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'docs/**'
-      - 'LICENSES/**'
-      - '.releases/**'
-      - '.github/**'
+      - "docs/**"
+      - "LICENSES/**"
+      - ".releases/**"
+      - ".github/**"
   pull_request:
 
 permissions:
@@ -19,5 +19,5 @@ permissions:
 
 jobs:
   check:
-    uses: openkcm/build/.github/workflows/ci.lib.api.yaml@main
+    uses: openkcm/build/.github/workflows/ci.lib.yaml@main
     secrets: inherit

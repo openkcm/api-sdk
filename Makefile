@@ -11,6 +11,8 @@ fetch-protos:
 
 .PHONY: go-gen
 go-gen: clean
+	@go install ./cmd/protoc-gen-go-eventbuilders
+	@go install ./cmd/protoc-gen-go-otlpconverters
 	@find ./proto -type f -iname '*.proto' -exec \
 		protoc -I./proto -I./vendor-proto \
 		--go_out=./proto \
@@ -20,6 +22,16 @@ go-gen: clean
 		--go-grpc_opt=paths=import \
 		--go-grpc_opt=module=github.com/openkcm/api-sdk/proto \
 		{} +
+	@protoc -I./proto -I./vendor-proto \
+		--go-eventbuilders_out=./proto \
+		--go-eventbuilders_opt=paths=import \
+		--go-eventbuilders_opt=module=github.com/openkcm/api-sdk/proto \
+		./proto/kms/api/cmk/auditlog/events/v1/events.proto
+	@protoc -I./proto -I./vendor-proto \
+		--go-otlpconverters_out=./proto \
+		--go-otlpconverters_opt=paths=import \
+		--go-otlpconverters_opt=module=github.com/openkcm/api-sdk/proto \
+		./proto/kms/api/cmk/auditlog/events/v1/events.proto
 	@go mod tidy
 
 .PHONY: install-tools
@@ -28,8 +40,14 @@ install-tools:
 	go install \
 		google.golang.org/protobuf/cmd/protoc-gen-go@latest \
 		google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+	go install ./cmd/protoc-gen-go-eventbuilders
+	go install ./cmd/protoc-gen-go-otlpconverters
 	brew install bufbuild/buf/buf
 	npm install -g @coralogix/protofetch
+
+.PHONY: test
+test:
+	go test -count=1 -race -coverprofile cover.out ./...
 
 .PHONY: validate
 validate: format lint breaking

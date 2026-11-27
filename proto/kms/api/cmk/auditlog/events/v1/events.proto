@@ -1,0 +1,184 @@
+edition = "2024";
+
+package kms.api.cmk.auditlog.events.v1;
+
+import "google/protobuf/timestamp.proto";
+import option "buf/validate/validate.proto";
+
+option go_package = "github.com/openkcm/api-sdk/proto/kms/api/cmk/auditlog/events/v1;auditlogeventsv1";
+
+// Login Methods
+enum LoginMethod {
+  LOGIN_METHOD_UNSPECIFIED = 0;
+  LOGIN_METHOD_BEARER_TOKEN = 1;
+  LOGIN_METHOD_OPEN_ID_CONNECT = 2;
+  LOGIN_METHOD_X509_CERTIFICATE = 3;
+}
+
+// Login Failures
+enum LoginFailure {
+  LOGIN_FAILURE_UNSPECIFIED = 0;
+  LOGIN_FAILURE_INVALID_TOKEN = 1;
+  LOGIN_FAILURE_INVALID_SESSION = 2;
+  LOGIN_FAILURE_INVALID_CERTIFICATE = 3;
+}
+
+// Common fields for all messages
+message Common {
+  // Timestamp of the event
+  google.protobuf.Timestamp timestamp = 1 [(buf.validate.field).required = true];
+  // Properties map
+  map<string, string> properties = 2;
+  // The trace-id (32 lowercase hex characters, e.g., "4bf92f3577b34da6a3ce929d0e0e4736")
+  string trace_id = 3 [(buf.validate.field).string.pattern = "^[0-9a-f]{32}$"];
+  // The span-id (16 lowercase hex characters, e.g., "00f067aa0ba902b7")
+  string span_id = 4 [(buf.validate.field).string.pattern = "^[0-9a-f]{16}$"];
+}
+
+// === Access Management === //
+
+// Login succeeded
+message LoginSucceeded {
+  Common common = 1 [(buf.validate.field).required = true];
+  string user_id = 2 [(buf.validate.field).required = true];
+  LoginMethod method = 3 [(buf.validate.field).required = true];
+}
+// Login failed
+message LoginFailed {
+  Common common = 1 [(buf.validate.field).required = true];
+  string user_id = 2 [(buf.validate.field).required = true];
+  LoginMethod method = 3 [(buf.validate.field).required = true];
+  LoginFailure failure = 4 [(buf.validate.field).required = true];
+}
+// Unauthenticated request (HTTP 401)
+message UnauthenticatedRequest {
+  Common common = 1 [(buf.validate.field).required = true];
+  string user_id = 2;
+}
+// Unauthorized request (HTTP 403)
+message UnauthorizedRequest {
+  Common common = 1 [(buf.validate.field).required = true];
+  string user_id = 2 [(buf.validate.field).required = true];
+}
+// Access granted
+message AccessGranted {
+  Common common = 1 [(buf.validate.field).required = true];
+  string resource = 2 [(buf.validate.field).required = true];
+  string action = 3 [(buf.validate.field).required = true];
+}
+
+// === Tenant Operations === //
+
+// Tenant created
+message TenantCreated {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+}
+// Tenant updated
+message TenantUpdated {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string property_name = 3 [(buf.validate.field).required = true];
+  string old_value = 4 [(buf.validate.field).required = true];
+  string new_value = 5 [(buf.validate.field).required = true];
+}
+// Tenant deleted
+message TenantDeleted {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+}
+
+// === Customer Managed Key (CMK) Operations === //
+
+// CMK got created
+message CMKCreated {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string cmk_id = 3 [(buf.validate.field).required = true];
+}
+// CMK got rotated
+message CMKRotated {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string cmk_id = 3 [(buf.validate.field).required = true];
+}
+// CMK has become unavailable
+message CMKUnavailable {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string cmk_id = 3 [(buf.validate.field).required = true];
+}
+// CMK has become available
+message CMKAvailable {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string cmk_id = 3 [(buf.validate.field).required = true];
+}
+// CMK got disabled
+message CMKDisabled {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string cmk_id = 3 [(buf.validate.field).required = true];
+}
+// CMK got enabled
+message CMKEnabled {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string cmk_id = 3 [(buf.validate.field).required = true];
+}
+// CMK got deleted
+message CMKDeleted {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string cmk_id = 3 [(buf.validate.field).required = true];
+}
+
+// === System Operations === //
+
+// System onboarded to CMK
+message SystemOnboarded {
+  Common common = 1 [(buf.validate.field).required = true];
+  string system_id = 2 [(buf.validate.field).required = true];
+  string tenant_id = 3 [(buf.validate.field).required = true];
+  string cmk_id = 4 [(buf.validate.field).required = true];
+}
+// System switched CMK
+message SystemSwitched {
+  Common common = 1 [(buf.validate.field).required = true];
+  string system_id = 2 [(buf.validate.field).required = true];
+  string tenant_id = 3 [(buf.validate.field).required = true];
+  string cmk_id_old = 4 [(buf.validate.field).required = true];
+  string cmk_id_new = 5 [(buf.validate.field).required = true];
+}
+// System offboarded from CMK
+message SystemOffboarded {
+  Common common = 1 [(buf.validate.field).required = true];
+  string system_id = 2 [(buf.validate.field).required = true];
+  string tenant_id = 3 [(buf.validate.field).required = true];
+  string cmk_id = 4 [(buf.validate.field).required = true];
+}
+
+// === Personally Identifiable Information (PII) Operations === //
+
+// PII created
+message PIICreated {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string data_subject_type = 3 [(buf.validate.field).required = true];
+  string data_subject_id = 4 [(buf.validate.field).required = true];
+  string object_type = 5 [(buf.validate.field).required = true];
+  string object_id = 6 [(buf.validate.field).required = true];
+  string attribute = 7 [(buf.validate.field).required = true];
+  string value = 8;
+}
+// PII deleted
+message PIIDeleted {
+  Common common = 1 [(buf.validate.field).required = true];
+  string tenant_id = 2 [(buf.validate.field).required = true];
+  string data_subject_type = 3 [(buf.validate.field).required = true];
+  string data_subject_id = 4 [(buf.validate.field).required = true];
+  string object_type = 5 [(buf.validate.field).required = true];
+  string object_id = 6 [(buf.validate.field).required = true];
+  string attribute = 7 [(buf.validate.field).required = true];
+  string value = 8;
+}
